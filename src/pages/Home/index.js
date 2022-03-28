@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
-import Auth from "pages/Auth";
+import Auth from "components/Auth";
 
 const Home = () => {
   return (
