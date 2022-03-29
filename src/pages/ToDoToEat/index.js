@@ -12,7 +12,7 @@ import { addGuest } from "api/api";
 //   entree = "",
 // }
 
-const ThingsToDo = () => {
+const ToDoToEat = () => {
   const addNewGuest = () => {
     addGuest({
       firstName: "fakefn2",
@@ -33,4 +33,4 @@ const ThingsToDo = () => {
   );
 };
 
-export default ThingsToDo;
+export default ToDoToEat;

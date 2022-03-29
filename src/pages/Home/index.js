@@ -5,8 +5,8 @@ import Auth from "components/Auth";
 const Home = () => {
   return (
     <Box>
-      <Auth />
-      <Text>HOME PAGE</Text>
+      <Text>Home</Text>
+      {/* <Auth /> */}
     </Box>
   );
 };

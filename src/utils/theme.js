@@ -59,9 +59,9 @@ const theme = extendTheme({
     //   },
   },
   fonts: {
-    // heading: "",
-    // body: "",
-    // mono: "",
+    heading: "Great Vibs",
+    body: "Montserrat",
+    mono: "Montserrat",
   },
 });
 
