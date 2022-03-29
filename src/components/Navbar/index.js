@@ -25,10 +25,6 @@ const NAVBAR_ROUTES = [
     path: "/thingstodo",
   },
   {
-    label: "RSVP",
-    path: "/rsvp",
-  },
-  {
     label: "Registry",
     path: "/registry",
   },
@@ -44,7 +40,9 @@ const Navbar = () => {
       {NAVBAR_ROUTES.map((navroute) => (
         <NavLink to={navroute.path}>
           <Flex alignItems="center" px="12px" py="20px">
-            <Text whiteSpace="nowrap">{navroute.label}</Text>
+            <Text whiteSpace="nowrap" _hover={{ color: "text.tertiary" }}>
+              {navroute.label}
+            </Text>
           </Flex>
         </NavLink>
       ))}
@@ -52,7 +50,4 @@ const Navbar = () => {
   );
 };
 
-{
-  /* <NavItem label={navroute.label} path={navroute.path} /> */
-}
 export default Navbar;

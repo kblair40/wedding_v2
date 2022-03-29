@@ -5,6 +5,8 @@ import { Link } from "@chakra-ui/react";
 const NavLink = ({ to, children }) => {
   return (
     <Link
+      fontWeight="700"
+      fontSize="xl"
       as={RRLink}
       to={to}
       _focus={{ outline: "none" }}

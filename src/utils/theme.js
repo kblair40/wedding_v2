@@ -29,7 +29,31 @@ const theme = extendTheme({
       },
       defaultProps: {
         size: "md",
-        fontWeight: "normal",
+      },
+      baseStyle: {
+        color: "#2d2d2d",
+        fontWeight: "500",
+      },
+    },
+    Heading: {
+      sizes: {
+        xs: { fontSize: "14px" },
+        sm: { fontSize: "18px" },
+        md: { fontSize: "22px" },
+        lg: { fontSize: "24px" },
+        xl: { fontSize: "26px" },
+        "2xl": { fontSize: "28px" },
+        "3xl": { fontSize: "30px" },
+        "4xl": { fontSize: "32px" },
+        "5xl": { fontSize: "34px" },
+        "6xl": { fontSize: "36px" },
+      },
+      defaultProps: {
+        size: "md",
+      },
+      baseStyle: {
+        color: "#2d2d2d",
+        fontWeight: "300",
       },
     },
     //   Button: {
@@ -59,9 +83,9 @@ const theme = extendTheme({
     //   },
   },
   fonts: {
-    heading: "Great Vibs",
-    body: "Montserrat",
-    mono: "Montserrat",
+    heading: "Josefin Sans",
+    body: "Josefin Slab",
+    mono: "Josefin Slab",
   },
 });
 

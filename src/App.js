@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 import firebaseApp from "api/firebaseConfig";
 import Navbar from "components/Navbar";
-
+import OurNames from "components/OurNames";
 import Home from "pages/Home";
 import ToDoToEat from "pages/ToDoToEat";
 import RSVP from "pages/RSVP";
@@ -15,6 +15,7 @@ import Registry from "pages/Registry";
 function App() {
   return (
     <Box>
+      <OurNames />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
