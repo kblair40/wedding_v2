@@ -32,6 +32,10 @@ const NAVBAR_ROUTES = [
     label: "Wedding Party",
     path: "/weddingparty",
   },
+  {
+    label: "Admin Stuff",
+    path: "/admin",
+  },
 ];
 
 const Navbar = () => {
