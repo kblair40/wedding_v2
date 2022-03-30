@@ -9,38 +9,67 @@ import {
   Th,
   Td,
   HStack,
+  Text,
+  Button,
+  useDisclosure,
 } from "@chakra-ui/react";
 
+import ManageGuestModal from "./ManageGuestModal";
+
 const InviteList = ({ data }) => {
+  const { onOpen, isOpen, onClose } = useDisclosure();
+
+  const [selectedRow, setSelectedRow] = useState(null);
   console.log(data);
 
   const getHeader = () => {
-    return data[0].map((label, i) => (
-      <Th textAlign={i > 0 ? "center" : undefined}>{label}</Th>
-    ));
+    return (
+      <Tr>
+        {data[0].map((label, i) => (
+          <Th textAlign={i > 0 ? "center" : undefined}>{label}</Th>
+        ))}
+
+        <Th>Manage</Th>
+      </Tr>
+    );
   };
 
   const getBody = () => {
     return data.slice(1).map((row) => {
       return (
         <Tr>
-          <Td>{row[0]}</Td>
-          <Td textAlign="center">{row[1]}</Td>
-          <Td textAlign="center">{row[2]}</Td>
+          {row.map((text) => (
+            <Td>{text}</Td>
+          ))}
+          <Td>
+            <Button
+              onClick={() => {
+                setSelectedRow(row);
+                onOpen();
+              }}
+            >
+              Manage
+            </Button>
+          </Td>
         </Tr>
       );
     });
   };
 
   return (
-    <TableContainer mt="24px">
-      <Table size="sm" variant="striped">
-        <Thead>
-          <Tr>{getHeader()}</Tr>
-        </Thead>
-        <Tbody>{getBody()}</Tbody>
-      </Table>
-    </TableContainer>
+    <React.Fragment>
+      <TableContainer mt="24px">
+        <Table size="sm" variant="striped">
+          <Thead>{getHeader()}</Thead>
+          <Tbody>{getBody()}</Tbody>
+        </Table>
+      </TableContainer>
+      <ManageGuestModal
+        isOpen={isOpen}
+        onClose={onClose}
+        selectedRow={selectedRow}
+      />
+    </React.Fragment>
   );
 };
 
