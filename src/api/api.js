@@ -12,10 +12,11 @@ export const addGuest = async ({
   age_range,
   special_requests,
   plus_one,
-  reponse,
+  response,
   email,
   phone_number,
   side,
+  passcode
 }) => {
   console.log("DATA RECEIVED", {
     first_name,
@@ -27,14 +28,16 @@ export const addGuest = async ({
     age_range,
     special_requests,
     plus_one,
-    reponse,
+    response,
     email,
     phone_number,
     side,
+    passcode,
     timestamp: Timestamp.now(),
   });
+  // return;
   try {
-    const response = await addDoc(collection(db, "invitees"), {
+    const dbResponse = await addDoc(collection(db, "invitees"), {
       first_name,
       last_name,
       priority,
@@ -44,13 +47,13 @@ export const addGuest = async ({
       age_range,
       special_requests,
       plus_one,
-      reponse,
+      response,
       email,
       phone_number,
       side,
       timestamp: Timestamp.now(),
     });
-    console.log("RESPONSE:", response);
+    console.log("RESPONSE:", dbResponse);
   } catch (err) {
     console.error("FAILED ADDING GUEST:", err);
   }

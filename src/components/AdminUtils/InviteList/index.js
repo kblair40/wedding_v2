@@ -14,6 +14,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
+import uniqueRandom from 'unique-random';
 import { addGuest } from "api/api";
 import ManageGuestModal from "./ManageGuestModal";
 
@@ -36,7 +37,7 @@ const InviteList = ({ data }) => {
   };
 
   const getBody = () => {
-    return data.slice(1).map((row) => {
+    return data.slice(1).map((row, idx) => {
       return (
         <Tr>
           {row.map((text, i) => (
@@ -46,6 +47,7 @@ const InviteList = ({ data }) => {
           ))}
           <Td>
             <Button
+            bg={idx % 2 ? 'white' : "#EDF2F7"}
               onClick={() => {
                 setSelectedRow(row);
                 onOpen();
@@ -60,9 +62,22 @@ const InviteList = ({ data }) => {
   };
 
   const uploadGuests = async () => {
+    const random = uniqueRandom(1000, 9999);
+    const randomNums = [];
     //
     // addGuest();
+    let i = 1;
     for (let row of data) {
+      let num = random()
+      while (true) {
+        if (randomNums.includes(num)) {
+          num = random();
+        } else {
+          randomNums.push(num);
+          break;
+        }
+      }
+      
       let guestData = {
         first_name: row[0].split(" ")[0],
         last_name: row[0].split(" ")[1],
@@ -77,20 +92,20 @@ const InviteList = ({ data }) => {
         email: row[9],
         phone_number: row[10],
         side: row[11],
+        passcode: num,
       };
       // console.log("row:", row);
       console.log("\nGUEST DATA:", guestData);
-      // let [first_name, last_name] = row[0].split(' ')
-      // guestData.first_name = first_name;
-      // guestData.last_name = last_name;
-
-      // guestData.priority = row[1]
-      // guestData.att_exp = row[2]
-      // guestData.replied = row[3]
-      // guestData.dinner_selection = row[4]
-      // guestData.age_range = row[5]
-      // guestData.
+      try{
+        await addGuest(guestData);
+        console.log('\n\nSUCCESS\n\n')
+      } catch (err) {
+        console.log(`FAILED - ${i}`)
+      }
+      i += 1
+      
     }
+    console.log('RANDOM NUMBERS:', randomNums);
   };
 
   // {
@@ -103,7 +118,7 @@ const InviteList = ({ data }) => {
   //   age_range,
   //   special_requests,
   //   plus_one,
-  //   reponse,
+  //   response,
   //   email,
   //   phone_number,
   //   side,
