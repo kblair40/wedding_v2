@@ -3,10 +3,10 @@ import { Box } from "@chakra-ui/react";
 
 import CodeInput from "components/Auth/CodeInput";
 
-const Auth = () => {
+const Auth = ({ getGuest }) => {
   return (
     <Box>
-      <CodeInput />
+      <CodeInput getGuest={getGuest} />
     </Box>
   );
 };

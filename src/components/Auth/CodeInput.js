@@ -14,11 +14,13 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const CodeInput = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true });
+const CodeInput = ({ getGuest }) => {
+  const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
 
-  const validateCode = (code) => {
+  const validateCode = async (code) => {
     console.log("CODE:", code);
+    let guest = await getGuest(parseInt(code));
+    console.log("\n\nFOUND GUEST:", guest);
     onClose();
   };
 
