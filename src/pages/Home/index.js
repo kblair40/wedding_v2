@@ -5,12 +5,11 @@ import bw_hor_img from "assets/images/bw_dock.jpg";
 // import color_hor_img from "assets/images/color_dock2.jpg";
 import Auth from "components/Auth";
 import Invitation from "components/Invitation";
-import {getGuest} from 'api/api'
+import { getGuest } from "api/api";
 
 const Home = () => {
   return (
     <Box px="24px">
-      {/* <Text>Home</Text> */}
       <Auth getGuest={getGuest} />
       <AspectRatio maxH="400px">
         <Image src={bw_hor_img} borderRadius="4px" w="100%" />

@@ -14,7 +14,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import uniqueRandom from 'unique-random';
+import uniqueRandom from "unique-random";
 import { addGuest } from "api/api";
 import ManageGuestModal from "./ManageGuestModal";
 
@@ -47,7 +47,7 @@ const InviteList = ({ data }) => {
           ))}
           <Td>
             <Button
-            bg={idx % 2 ? 'white' : "#EDF2F7"}
+              bg={idx % 2 ? "white" : "#EDF2F7"}
               onClick={() => {
                 setSelectedRow(row);
                 onOpen();
@@ -68,7 +68,7 @@ const InviteList = ({ data }) => {
     // addGuest();
     let i = 1;
     for (let row of data) {
-      let num = random()
+      let num = random();
       while (true) {
         if (randomNums.includes(num)) {
           num = random();
@@ -77,35 +77,39 @@ const InviteList = ({ data }) => {
           break;
         }
       }
-      
+
       let guestData = {
         first_name: row[0].split(" ")[0],
-        last_name: row[0].split(" ")[1],
+        last_name: row[0].split(" ")[1] || "",
         priority: row[1],
         att_exp: row[2],
         replied: row[3],
-        dinner_selection: row[4],
-        age_range: row[5],
-        special_requests: row[6],
-        plus_one: row[7],
-        response: row[8],
-        email: row[9],
-        phone_number: row[10],
-        side: row[11],
+        significant_other: row[4],
+        other_family: row[5],
+        dinner_selection: row[6],
+        age_range: row[7],
+        special_requests: row[8],
+        plus_one: row[9],
+        response: row[10],
+        email: row[11],
+        phone_number: row[12],
+        side: row[13],
         passcode: num,
       };
-      // console.log("row:", row);
-      console.log("\nGUEST DATA:", guestData);
-      try{
-        await addGuest(guestData);
-        console.log('\n\nSUCCESS\n\n')
-      } catch (err) {
-        console.log(`FAILED - ${i}`)
+      if (guestData.significant_other) {
+        console.log("GUEST DATA:", guestData);
       }
-      i += 1
-      
+      // console.log("row:", row);
+      // console.log("\nGUEST DATA:", guestData);
+      try {
+        await addGuest(guestData);
+        console.log("\n\nSUCCESS\n\n");
+      } catch (err) {
+        console.log(`FAILED - ${i}`);
+      }
+      i += 1;
     }
-    console.log('RANDOM NUMBERS:', randomNums);
+    console.log("RANDOM NUMBERS:", randomNums);
   };
 
   // {

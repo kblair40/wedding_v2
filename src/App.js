@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 
+import UserProvider from "store/UserContext";
 import firebaseApp from "api/firebaseConfig";
 import Navbar from "components/Navbar";
 import OurNames from "components/OurNames";
@@ -15,16 +16,18 @@ import Registry from "pages/Registry";
 function App() {
   return (
     <Box>
-      {/* <OurNames /> */}
+      <OurNames />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/thingstodo" element={<ToDoToEat />} />
-        <Route path="/travel" element={<Travel />} />
-        <Route path="/weddingparty" element={<WeddingPartyPage />} />
-        <Route path="/registry" element={<Registry />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
+      <UserProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/thingstodo" element={<ToDoToEat />} />
+          <Route path="/travel" element={<Travel />} />
+          <Route path="/weddingparty" element={<WeddingPartyPage />} />
+          <Route path="/registry" element={<Registry />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </UserProvider>
     </Box>
   );
 }

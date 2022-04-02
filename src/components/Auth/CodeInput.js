@@ -9,19 +9,16 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
-  useDisclosure,
   Button,
 } from "@chakra-ui/react";
 
-const CodeInput = ({ getGuest }) => {
-  const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
-
+const CodeInput = ({ getGuest, isOpen, onClose }) => {
   const validateCode = async (code) => {
-    console.log("CODE:", code);
+    // console.log("CODE:", code);
     let guest = await getGuest(parseInt(code));
-    console.log("\n\nFOUND GUEST:", guest);
-    onClose();
+    // console.log("\n\nFOUND GUEST:", guest);
+
+    onClose(guest);
   };
 
   return (
