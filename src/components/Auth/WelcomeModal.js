@@ -14,11 +14,17 @@ import {
 
 import RSVPForm from "components/RSVPForm";
 import { getRelatedGuests } from "api/api";
+import useUserContext from "hooks/useUserContext";
 
 const WelcomeModal = ({ isOpen, onClose, guest }) => {
   console.log("\n\nGUEST:", guest);
   const [loading, setLoading] = useState(false);
   const [relatedGuests, setRelatedGuests] = useState(null);
+  const [checkedGuests, setCheckedGuests] = useState([]);
+
+  const { user } = useUserContext();
+
+  // console.log("\n\nUSER:", user, "\n\n");
 
   useEffect(() => {
     const getOtherGuests = async () => {
@@ -55,6 +61,14 @@ const WelcomeModal = ({ isOpen, onClose, guest }) => {
     getOtherGuests();
   }, [guest]);
 
+  const handleChangeRespondingGuests = (i) => {
+    if (checkedGuests.includes(i)) {
+      setCheckedGuests(checkedGuests.filter((idx) => idx !== i));
+    } else {
+      setCheckedGuests([...checkedGuests, i]);
+    }
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
@@ -66,7 +80,12 @@ const WelcomeModal = ({ isOpen, onClose, guest }) => {
             </ModalHeader>
 
             <ModalBody>
-              <RSVPForm guest={guest} relatedGuests={relatedGuests} />
+              <RSVPForm
+                guest={guest}
+                relatedGuests={relatedGuests}
+                checkedGuests={checkedGuests}
+                handleChangeRespondingGuests={handleChangeRespondingGuests}
+              />
             </ModalBody>
           </React.Fragment>
         ) : (
@@ -74,6 +93,10 @@ const WelcomeModal = ({ isOpen, onClose, guest }) => {
             <Spinner />
           </Center>
         )}
+
+        <ModalFooter>
+          <Button>Next</Button>
+        </ModalFooter>
       </ModalContent>
     </Modal>
   );

@@ -12,13 +12,24 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const CodeInput = ({ getGuest, isOpen, onClose }) => {
-  const validateCode = async (code) => {
-    // console.log("CODE:", code);
-    let guest = await getGuest(parseInt(code));
-    // console.log("\n\nFOUND GUEST:", guest);
+import useUserContext from "hooks/useUserContext";
 
-    onClose(guest);
+const CodeInput = ({ getGuest, isOpen, onClose }) => {
+  const { handleAuthenticated } = useUserContext();
+
+  const validateCode = async (code) => {
+    try {
+      let guest = await getGuest(parseInt(code));
+      // console.log("\n\nGUEST:", guest, "\n\n");
+
+      // pass user object back to context for use elsewhere
+      handleAuthenticated(guest);
+
+      onClose(guest);
+    } catch (err) {
+      console.log("FAILED TO FETCH GUEST:", err);
+    }
+    // console.log("\n\nFOUND GUEST:", guest);
   };
 
   return (

@@ -1,28 +1,17 @@
-import React, { createContext, useReducer } from "react";
-
-const authReducer = (state, action) => {
-  switch (action.type) {
-    case "authenticate_passcode":
-      return { ...state, errorMessage: action.payload };
-    default:
-      return state;
-  }
-};
+import React, { createContext, useState } from "react";
 
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, {
-    authenticated: false,
-    user: null,
-  });
+  const [user, setUser] = useState();
+
+  const handleAuthenticated = (userObject) => {
+    console.log("USER OBJECT:", userObject);
+    setUser(userObject);
+  };
 
   return (
-    <UserContext.Provider
-      value={{
-        ...state,
-      }}
-    >
+    <UserContext.Provider value={{ user, handleAuthenticated }}>
       {children}
     </UserContext.Provider>
   );

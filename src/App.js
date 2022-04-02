@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 
 import UserProvider from "store/UserContext";
-import firebaseApp from "api/firebaseConfig";
+// import firebaseApp from "api/firebaseConfig";
 import Navbar from "components/Navbar";
 import OurNames from "components/OurNames";
 import Home from "pages/Home";

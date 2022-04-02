@@ -49,10 +49,8 @@ export const addGuest = async ({
     other_family,
     timestamp: Timestamp.now(),
   });
-  // return;
-  try {
-    // const dbResponse = await addDoc(collection(db, "invitees"), {
 
+  try {
     const inviteesRef = collection(db, "invitees");
     const dbResponse = await addDoc(inviteesRef, {
       first_name,
@@ -119,7 +117,7 @@ export const getRelatedGuests = async (names) => {
 
   if (queries.length) {
     const allOthers = await Promise.all(queries);
-    console.log("ALL OTHERS:", allOthers);
+    // console.log("ALL OTHERS:", allOthers);
 
     return allOthers.map((oth) => oth.docs[0].data());
   }
