@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 import {
   HStack,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
+  Box,
+  VStack,
   Button,
   Center,
   Spinner,
+  Slide,
+  Heading,
 } from "@chakra-ui/react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-import RSVPForm from "components/RSVPForm";
+import SelectGuests from "components/SelectGuests";
 import { getRelatedGuests } from "api/api";
 import useUserContext from "hooks/useUserContext";
 
-const WelcomeModal = ({ isOpen, onClose, guest }) => {
+const SelectGuestsForm = ({ guest }) => {
   console.log("\n\nGUEST:", guest);
   const [loading, setLoading] = useState(false);
   const [relatedGuests, setRelatedGuests] = useState(null);
   const [checkedGuests, setCheckedGuests] = useState([]);
+  const [step, setStep] = useState("select guests");
 
   const { user } = useUserContext();
 
@@ -68,38 +68,20 @@ const WelcomeModal = ({ isOpen, onClose, guest }) => {
       setCheckedGuests([...checkedGuests, i]);
     }
   };
-
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl">
-      <ModalOverlay />
-      <ModalContent minH="300px">
-        {guest && !loading && relatedGuests !== null ? (
-          <React.Fragment>
-            <ModalHeader>
-              Welcome, {`${guest.first_name} ${guest.last_name}`}!
-            </ModalHeader>
+    <Box px="24px" py="24px" borderRadius="12px">
+      {guest ? (
+        <Heading>Welcome, {`${guest.first_name} ${guest.last_name}`}!</Heading>
+      ) : null}
 
-            <ModalBody>
-              <RSVPForm
-                guest={guest}
-                relatedGuests={relatedGuests}
-                checkedGuests={checkedGuests}
-                handleChangeRespondingGuests={handleChangeRespondingGuests}
-              />
-            </ModalBody>
-          </React.Fragment>
-        ) : (
-          <Center>
-            <Spinner />
-          </Center>
-        )}
-
-        <ModalFooter>
-          <Button>Next</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+      <SelectGuests
+        guest={guest}
+        relatedGuests={relatedGuests}
+        handleChangeRespondingGuests={handleChangeRespondingGuests}
+        step={step}
+      />
+    </Box>
   );
 };
 
-export default WelcomeModal;
+export default SelectGuestsForm;

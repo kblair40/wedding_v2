@@ -89,6 +89,7 @@ export const getGuest = async (passcode) => {
     if (inviteeDocs.length) {
       inviteeDocs.forEach((doc) => console.log("DOC:", doc.data()));
 
+      console.log("GET GUEST RETURNING:", inviteeDocs[0].data());
       return inviteeDocs[0].data();
     }
   } catch (err) {
