@@ -7,15 +7,11 @@ import {
   Checkbox,
 } from "@chakra-ui/react";
 
-// import useUserContext from "hooks/useUserContext";
-
 const SelectGuests = ({
   guest,
   relatedGuests,
   handleChangeRespondingGuests,
 }) => {
-  // const { user } = useUserContext();
-
   return (
     <Box>
       <FormControl>

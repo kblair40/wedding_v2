@@ -7,11 +7,15 @@ import useUserContext from "hooks/useUserContext";
 import CodeInputForm from "components/Auth/CodeInputForm";
 import SelectGuestsForm from "components/Auth/SelectGuestsForm";
 import SlideWrapper from "components/Auth/SlideWrapper";
+import RSVPForm from "components/Auth/RSVPForm";
 
 const Auth = ({ getGuest }) => {
   const [guest, setGuest] = useState(null);
-  // code_input -> select_guests -> rsvp_form
+  // code_input -> select_guests -> rsvp_form -> done
   const [step, setStep] = useState("code_input");
+  const [relatedGuests, setRelatedGuests] = useState(null);
+  const [checkedGuests, setCheckedGuests] = useState([]);
+  // const [respondin]
 
   const { handleAuthenticated } = useUserContext();
 
@@ -21,29 +25,12 @@ const Auth = ({ getGuest }) => {
     handleAuthenticated(guestObject);
   };
 
-  const getButton = () => {
-    return (
-      <Button
-        onClick={() => {
-          if (!step) {
-            setStep("code_input");
-          } else if (step === "code_input") {
-            setStep("select_guests");
-          } else if (step === "select_guests") {
-            setStep("code_input");
-          }
-        }}
-        position="fixed"
-        top="1rem"
-        left="1rem"
-      >
-        {step === "code_input"
-          ? "Select Guests"
-          : step === "select_guests"
-          ? "RSVP Form"
-          : "Code Input"}
-      </Button>
-    );
+  const handleChangeRespondingGuests = (i) => {
+    if (checkedGuests.includes(i)) {
+      setCheckedGuests(checkedGuests.filter((idx) => idx !== i));
+    } else {
+      setCheckedGuests([...checkedGuests, i]);
+    }
   };
 
   const transitionStyle = {
@@ -53,8 +40,6 @@ const Auth = ({ getGuest }) => {
 
   return (
     <React.Fragment>
-      {/* {getButton()} */}
-
       <TransitionGroup commponent={null}>
         <Transition in={step === "code_input"} timeout={300}>
           <SlideWrapper
@@ -71,16 +56,37 @@ const Auth = ({ getGuest }) => {
           <SlideWrapper
             style={transitionStyle[step === "select_guests" ? "enter" : "exit"]}
           >
-            <SelectGuestsForm guest={guest} />
-            <Footer handleClickNext={() => setStep("rsvp_form")} />
+            <SelectGuestsForm
+              guest={guest}
+              relatedGuests={relatedGuests}
+              setRelatedGuests={setRelatedGuests}
+              handleChangeRespondingGuests={handleChangeRespondingGuests}
+            />
+            <Footer
+              handleClickNext={() => {
+                console.log("STEP:", step);
+                setStep("rsvp_form");
+              }}
+            />
           </SlideWrapper>
         </Transition>
 
-        <Transition in={step === "rsvp_form"} timeout={300}>
+        <Transition
+          in={step === "rsvp_form"}
+          timeout={300}
+          component={null}
+          unmountOnExit
+        >
           <SlideWrapper
             style={transitionStyle[step === "rsvp_form" ? "enter" : "exit"]}
           >
-            <SelectGuestsForm guest={guest} />
+            {step === "rsvp_form" && (
+              <RSVPForm
+                guest={guest}
+                relatedGuests={relatedGuests}
+                checkedGuests={checkedGuests}
+              />
+            )}
             <Footer handleClickNext={() => setStep("done")} />
           </SlideWrapper>
         </Transition>
@@ -93,7 +99,7 @@ export default Auth;
 
 const Footer = ({ handleClickNext }) => {
   return (
-    <HStack justifyContent="flex-end" p="0 8px 4px">
+    <HStack justifyContent="flex-end" p="0 12px 4px">
       <Button onClick={handleClickNext} rightIcon={<ArrowForwardIcon />}>
         Next
       </Button>
