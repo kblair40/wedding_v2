@@ -123,6 +123,8 @@ export const getRelatedGuests = async (names) => {
 
     const res = [];
     allOthers.forEach((doc) => {
+      if (!doc || !doc.docs || !doc.docs[0]) return;
+
       let id = doc.docs[0].id;
       let data = doc.docs[0].data();
       console.log("\n\n\n\n", { id, data });
