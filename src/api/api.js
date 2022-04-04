@@ -79,23 +79,24 @@ export const addGuest = async ({
   console.log("\ndatabase:", db);
 };
 
-export const getGuest = async (passcode) => {
+export const getAllInvitees = async () => {
   const inviteesRef = collection(db, `invitees`);
-  const q = query(inviteesRef, where("passcode", "==", passcode));
 
-  try {
-    const invitees = await getDocs(q);
-    const inviteeDocs = invitees.docs;
+  const allDocs = await getDocs(inviteesRef);
 
-    if (inviteeDocs.length) {
-      inviteeDocs.forEach((doc) => console.log("DOC:", doc.data()));
+  const res = [];
+  allDocs.forEach((doc) => {
+    // console.log("\n", doc.id, " -> ", doc.data());
+    let id = doc.id;
+    let data = doc.data();
+    // console.log("\n\n\n\n", { id, ...data });
+    let mergedDoc = { id, ...data };
+    res.push(mergedDoc);
+  });
+};
 
-      console.log("GET GUEST RETURNING:", inviteeDocs[0].data());
-      return inviteeDocs[0].data();
-    }
-  } catch (err) {
-    console.log("QUERY FAILED!");
-  }
+export const patchGuest = (id) => {
+  console.log("\n\n\n\nID RCVD:", id, "\n\n\n\n\n");
 };
 
 export const getRelatedGuests = async (names) => {
@@ -133,22 +134,46 @@ export const getRelatedGuests = async (names) => {
   }
 };
 
-export const getAllInvitees = async () => {
+export const getGuest = async (passcode) => {
   const inviteesRef = collection(db, `invitees`);
+  const q = query(inviteesRef, where("passcode", "==", passcode));
 
-  const allDocs = await getDocs(inviteesRef);
+  try {
+    const invitees = await getDocs(q);
+    const inviteeDocs = invitees.docs;
 
-  const res = [];
-  allDocs.forEach((doc) => {
-    // console.log("\n", doc.id, " -> ", doc.data());
-    let id = doc.id;
-    let data = doc.data();
-    // console.log("\n\n\n\n", { id, ...data });
-    let mergedDoc = { id, ...data };
-    res.push(mergedDoc);
-  });
+    if (inviteeDocs.length) {
+      inviteeDocs.forEach((doc) => console.log("DOC:", doc.data()));
+
+      console.log("GET GUEST RETURNING:", inviteeDocs[0].data());
+      return inviteeDocs[0].data();
+    }
+  } catch (err) {
+    console.log("QUERY FAILED!");
+  }
 };
 
-export const patchGuest = (id) => {
-  console.log("\n\n\n\nID RCVD:", id, "\n\n\n\n\n");
+export const getGuestByName = async (fn, ln) => {
+  const inviteesRef = collection(db, `invitees`);
+
+  try {
+    const q = query(
+      inviteesRef,
+      where("first_name", "==", fn),
+      where("last_name", "==", ln)
+    );
+
+    const invitees = await getDocs(q);
+    const inviteeDocs = invitees.docs;
+    console.log("INVITEE DOCS:", inviteeDocs);
+
+    if (inviteeDocs.length) {
+      inviteeDocs.forEach((doc) => console.log("DOC:", doc.data()));
+
+      console.log("GET GUEST RETURNING:", inviteeDocs[0].data());
+      return inviteeDocs[0].data();
+    }
+  } catch (err) {
+    console.log("QUERY FAILED!");
+  }
 };

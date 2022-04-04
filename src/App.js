@@ -12,6 +12,7 @@ import Admin from "pages/Admin";
 import Travel from "pages/Travel";
 import WeddingPartyPage from "pages/WeddingPartyPage";
 import Registry from "pages/Registry";
+import RSVP from "pages/RSVP";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/weddingparty" element={<WeddingPartyPage />} />
           <Route path="/registry" element={<Registry />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/rsvp" element={<RSVP />} />
         </Routes>
       </UserProvider>
     </Box>
