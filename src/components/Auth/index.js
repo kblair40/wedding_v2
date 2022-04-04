@@ -8,6 +8,7 @@ import CodeInputForm from "components/Auth/CodeInputForm";
 import SelectGuestsForm from "components/Auth/SelectGuestsForm";
 import SlideWrapper from "components/Auth/SlideWrapper";
 import RSVPForm from "components/Auth/RSVPForm";
+import { patchGuest } from "api/api";
 
 const Auth = ({ getGuest }) => {
   const [guest, setGuest] = useState(null);
@@ -15,7 +16,6 @@ const Auth = ({ getGuest }) => {
   const [step, setStep] = useState("code_input");
   const [relatedGuests, setRelatedGuests] = useState(null);
   const [checkedGuests, setCheckedGuests] = useState([]);
-  // const [respondin]
 
   const { handleAuthenticated } = useUserContext();
 
@@ -31,6 +31,36 @@ const Auth = ({ getGuest }) => {
     } else {
       setCheckedGuests([...checkedGuests, i]);
     }
+  };
+
+  const handleSubmit = async (formData, extraNotes) => {
+    let finalData = {};
+    let isValid = true;
+    console.log("values:", Object.values(formData));
+
+    for (let key in formData) {
+      if (formData[key]["isAttending"] === "yes") {
+        let data = formData[key];
+        console.log("\n\nDATA:", data);
+
+        if (!data.mealChoice) {
+          setStep();
+          return false;
+        }
+
+        finalData[key] = data;
+      }
+    }
+
+    console.log("FINAL DATA:", finalData);
+
+    if (isValid) {
+      console.log("\n\nVALID");
+    } else {
+      console.log("\n\nNOT VALID");
+    }
+
+    setStep();
   };
 
   const transitionStyle = {
@@ -85,9 +115,10 @@ const Auth = ({ getGuest }) => {
                 guest={guest}
                 relatedGuests={relatedGuests}
                 checkedGuests={checkedGuests}
+                handleSubmit={handleSubmit}
               />
             )}
-            <Footer handleClickNext={() => setStep("done")} />
+            {/* <Footer handleClickNext={() => setStep("done")} step={step} /> */}
           </SlideWrapper>
         </Transition>
       </TransitionGroup>

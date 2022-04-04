@@ -33,6 +33,14 @@ const NAVBAR_ROUTES = [
     path: "/weddingparty",
   },
   {
+    label: "Gallery",
+    path: "/gallery",
+  },
+  {
+    label: "RSVP",
+    path: "/rsvp",
+  },
+  {
     label: "Admin Stuff",
     path: "/admin",
   },
@@ -41,10 +49,14 @@ const NAVBAR_ROUTES = [
 const Navbar = () => {
   return (
     <Flex w="100%" justifyContent="center" maxW="1080px">
-      {NAVBAR_ROUTES.map((navroute) => (
-        <NavLink to={navroute.path}>
+      {NAVBAR_ROUTES.map((navroute, i) => (
+        <NavLink to={navroute.path} key={i}>
           <Flex alignItems="center" px="12px" py="20px">
-            <Text whiteSpace="nowrap" _hover={{ color: "text.tertiary" }}>
+            <Text
+              fontFamily="EB Garamond"
+              whiteSpace="nowrap"
+              _hover={{ color: "text.tertiary" }}
+            >
               {navroute.label}
             </Text>
           </Flex>

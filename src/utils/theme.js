@@ -83,7 +83,9 @@ const theme = extendTheme({
     //   },
   },
   fonts: {
-    heading: "Josefin Sans",
+    // heading: "Josefin Sans",
+    heading: "EB Garamond",
+    // heading: "Sawarbe Mincho",
     body: "Josefin Slab",
     mono: "Josefin Slab",
   },

@@ -9,6 +9,7 @@ import {
   setDoc,
   query,
   where,
+  updateDoc,
 } from "firebase/firestore";
 // console.log("API DATABASE:", db);
 
@@ -118,8 +119,36 @@ export const getRelatedGuests = async (names) => {
 
   if (queries.length) {
     const allOthers = await Promise.all(queries);
-    // console.log("ALL OTHERS:", allOthers);
 
-    return allOthers.map((oth) => oth.docs[0].data());
+    const res = [];
+    allOthers.forEach((doc) => {
+      let id = doc.docs[0].id;
+      let data = doc.docs[0].data();
+      console.log("\n\n\n\n", { id, data });
+      let mergedDoc = { id, ...data };
+      res.push(mergedDoc);
+    });
+
+    return res;
   }
+};
+
+export const getAllInvitees = async () => {
+  const inviteesRef = collection(db, `invitees`);
+
+  const allDocs = await getDocs(inviteesRef);
+
+  const res = [];
+  allDocs.forEach((doc) => {
+    // console.log("\n", doc.id, " -> ", doc.data());
+    let id = doc.id;
+    let data = doc.data();
+    // console.log("\n\n\n\n", { id, ...data });
+    let mergedDoc = { id, ...data };
+    res.push(mergedDoc);
+  });
+};
+
+export const patchGuest = (id) => {
+  console.log("\n\n\n\nID RCVD:", id, "\n\n\n\n\n");
 };

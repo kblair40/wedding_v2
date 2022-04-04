@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Box,
   Flex,
@@ -15,15 +15,20 @@ import {
   Heading,
   Text,
   Divider,
+  Button,
   Textarea,
 } from "@chakra-ui/react";
 
-const RSVPForm = ({ guest, relatedGuests, checkedGuests }) => {
+const RSVPForm = ({ guest, relatedGuests, checkedGuests, handleSubmit }) => {
   console.log("\n\nRSVP FORM RCVD:", { guest, relatedGuests, checkedGuests });
 
   const [respondingGuests, setRespondingGuests] = useState([]);
   const [respondingGuestNames, setRespondingGuestNames] = useState([]);
   const [multipleRespondants, setMultipleRespondants] = useState(null);
+  const [attendingNames, setAttendingNames] = useState([]);
+  const [formData, setFormData] = useState(null);
+
+  const anythingElseRef = useRef();
 
   const formatName = (fn, ln) => {
     return `${fn} ${ln}`;
@@ -37,33 +42,61 @@ const RSVPForm = ({ guest, relatedGuests, checkedGuests }) => {
       }
     }
     setRespondingGuests(rgs);
-    setRespondingGuestNames(
-      rgs.map((rg) => formatName(rg.first_name, rg.last_name))
-    );
-    setMultipleRespondants(rgs.length > 1);
+
+    let guestNames = rgs.map((rg) => formatName(rg.first_name, rg.last_name));
+    setRespondingGuestNames(guestNames);
+
+    let multipleRespondants = rgs.length > 1;
+    setMultipleRespondants(multipleRespondants);
+
+    const blankFormData = {
+      isAttending: undefined,
+      mealChoice: "",
+      mealNotes: "",
+    };
+
+    if (multipleRespondants) {
+      let blankDataObjects = {};
+      for (let name of guestNames) {
+        blankDataObjects[name] = blankFormData;
+      }
+      console.log("\n\nBLANK OBJECTS:", blankDataObjects);
+      setFormData(blankDataObjects);
+    }
   }, [relatedGuests, checkedGuests]);
 
+  const handleChangeAttendance = (val, name) => {
+    setFormData({
+      ...formData,
+      [name]: { ...formData[name], isAttending: val },
+    });
+
+    if (val === "yes") {
+      if (!attendingNames.includes(name)) {
+        setAttendingNames([...attendingNames, name]);
+      }
+    } else if (val === "no") {
+      if (attendingNames.includes(name)) {
+        setAttendingNames([...attendingNames].filter((n) => n !== name));
+      }
+    }
+  };
+
+  const handleChangeMeal = (val, name, field) => {
+    setFormData({
+      ...formData,
+      [name]: { ...formData[name], [field]: val },
+    });
+  };
+
   return (
-    <Box
-      // overflowY="hidden"
-      mb="16px"
-      px="16px"
-      py="16px"
-      // border="1px solid #2d2d2d"
-      // flex={1}
-      maxH="100%"
-    >
-      <Text color="text.secondary" h="50px">
+    <Box mb="16px" px="16px" py="16px" maxH="100%">
+      <Text color="text.secondary">
         Replying for {`${respondingGuestNames.join(", ")}`}
       </Text>
-      <Divider my="12px" />
+      <Divider my="16px" />
 
-      <Box
-        // border="1px solid red"
-        overflowY="hidden"
-        flex={1}
-        //
-      >
+      <Box overflowY="hidden" flex={1}>
         <FormControl>
           {!multipleRespondants ? (
             <React.Fragment>
@@ -81,9 +114,13 @@ const RSVPForm = ({ guest, relatedGuests, checkedGuests }) => {
               <FormLabel fontWeight="600">
                 Please let us know who can and cannot make it
               </FormLabel>
-              {respondingGuestNames.map((name) => {
+              {respondingGuestNames.map((name, i) => {
                 return (
-                  <RadioGroup mb="8px">
+                  <RadioGroup
+                    key={i}
+                    mb="16px"
+                    onChange={(val) => handleChangeAttendance(val, name)}
+                  >
                     <Box>
                       <Text>{name}</Text>
                       <HStack spacing="16px">
@@ -98,7 +135,7 @@ const RSVPForm = ({ guest, relatedGuests, checkedGuests }) => {
           )}
         </FormControl>
 
-        <Divider my="12px" />
+        <Divider my="16px" />
 
         {!multipleRespondants ? (
           <FormControl>
@@ -108,8 +145,8 @@ const RSVPForm = ({ guest, relatedGuests, checkedGuests }) => {
 
             <RadioGroup>
               <HStack spacing="16px" flexWrap="wrap">
-                <Radio value="yes">Chicken</Radio>
-                <Radio value="no">Beef</Radio>
+                <Radio value="chicken">Chicken</Radio>
+                <Radio value="beef">Beef</Radio>
               </HStack>
             </RadioGroup>
           </FormControl>
@@ -119,28 +156,41 @@ const RSVPForm = ({ guest, relatedGuests, checkedGuests }) => {
               Please select a dinner entree for each guest
             </FormLabel>
 
-            {respondingGuestNames.map((name) => {
+            {respondingGuestNames.map((name, i) => {
               return (
                 <HStack
+                  key={i}
                   justifyContent="flex-start"
                   spacing="24px"
-                  mb="12px"
+                  mb="16px"
                   alignItems="flex-start"
                   h="100%"
                 >
-                  <RadioGroup h="100%">
+                  <RadioGroup
+                    h="100%"
+                    onChange={(val) =>
+                      handleChangeMeal(val, name, "mealChoice")
+                    }
+                    isDisabled={formData[name]["isAttending"] === "no"}
+                  >
                     <Box>
                       <Text>{name}</Text>
                       <HStack>
-                        <Radio value="yes">Chicken</Radio>
-                        <Radio value="no">Beef</Radio>
+                        <Radio value="chicken">Chicken</Radio>
+                        <Radio value="beef">Beef</Radio>
                       </HStack>
                     </Box>
                   </RadioGroup>
 
                   <Box flex={1}>
-                    <Text>Special requests?</Text>
-                    <Input size="sm" fontSize="md" />
+                    <Text>Special requests? (optional)</Text>
+                    <Input
+                      size="sm"
+                      fontSize="md"
+                      onChange={(e) =>
+                        handleChangeMeal(e.target.value, name, "mealNotes")
+                      }
+                    />
                   </Box>
                 </HStack>
               );
@@ -150,9 +200,18 @@ const RSVPForm = ({ guest, relatedGuests, checkedGuests }) => {
         <Divider my="12px" />
         <FormControl>
           <FormLabel>Anything else we should know? (optional)</FormLabel>
-          <Textarea />
+          <Textarea ref={anythingElseRef} />
         </FormControl>
       </Box>
+      <HStack pt="16px" pb="8px" justifyContent="flex-end">
+        <Button
+          onClick={() => {
+            handleSubmit(formData, anythingElseRef.current.value);
+          }}
+        >
+          Submit
+        </Button>
+      </HStack>
     </Box>
   );
 };
