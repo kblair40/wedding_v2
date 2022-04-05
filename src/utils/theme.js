@@ -17,8 +17,30 @@ const theme = extendTheme({
     gold: {
       main: "#DCCAAA",
     },
+    darkScheme: {
+      50: "#999",
+      100: "#888",
+      200: "#777",
+      300: "#666",
+      400: "#555",
+      500: "#444",
+      600: "#333",
+      700: "#2d2d2d",
+      800: "#1b1b1b",
+      900: "#0d0d0d",
+    },
   },
   components: {
+    Radio: {
+      defaultProps: {
+        colorScheme: "darkScheme",
+      },
+    },
+    Checkbox: {
+      defaultProps: {
+        colorScheme: "darkScheme",
+      },
+    },
     Text: {
       sizes: {
         xs: { fontSize: "12px" },
@@ -56,31 +78,6 @@ const theme = extendTheme({
         fontWeight: "300",
       },
     },
-    //   Button: {
-    //     // 1. We can update the base styles
-    //     baseStyle: {
-    //       fontWeight: 'bold', // Normally, it is "semibold"
-    //     },
-    //     // 2. We can add a new button size or extend existing
-    //     sizes: {
-    //       xl: {
-    //         h: '56px',
-    //         fontSize: 'lg',
-    //         px: '32px',
-    //       },
-    //     },
-    //     // 3. We can add a new visual variant
-    //     variants: {
-    //       'with-shadow': {
-    //         bg: 'red.400',
-    //         boxShadow: '0 0 2px 2px #efdfde',
-    //       },
-    //       // 4. We can override existing variants
-    //       solid: (props) => ({
-    //         bg: props.colorMode === 'dark' ? 'red.300' : 'red.500',
-    //       }),
-    //     },
-    //   },
   },
   fonts: {
     // heading: "Josefin Sans",
