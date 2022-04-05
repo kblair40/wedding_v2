@@ -18,7 +18,17 @@ const RSVP = () => {
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
     }
-    // setStep(2);
+  };
+
+  const getCheckedGuests = (guestIndexes) => {
+    setCheckedGuests(guestIndexes);
+    setTimeout(() => {
+      setStep(3);
+    }, 500); // timeoutDuration = 500
+  };
+
+  const handleSubmitRSVPForm = (data) => {
+    console.log("DATA:", data);
   };
 
   const defaultStyle = {
@@ -34,17 +44,15 @@ const RSVP = () => {
   };
 
   return (
-    <Box
-      px="24px"
-      // border="1px solid #ccc"
-      pt="16px"
-      //
-    >
+    <Box px="24px" pt="16px">
       <Transition
-        // in={step === 1}
         in={!relatedGuests}
         timeout={500}
-        onExited={() => setStep(2)}
+        onExited={() => {
+          // setTimeout(() => {
+          setStep(2);
+          // }, 500);
+        }}
         unmountOnExit
       >
         {(state) => (
@@ -60,10 +68,26 @@ const RSVP = () => {
       </Transition>
 
       <Center>
-        <SelectGuests step={step} guest={guest} relatedGuests={relatedGuests} />
+        <SelectGuests
+          checkedGuests={checkedGuests}
+          // nextStep={() => {
+          //   console.log("setting to step 3");
+          //   setStep(3);
+          // }}
+          getCheckedGuests={getCheckedGuests}
+          step={step}
+          guest={guest}
+          relatedGuests={relatedGuests}
+        />
       </Center>
 
-      {/* <RSVPForm /> */}
+      <RSVPForm
+        step={step}
+        guest={guest}
+        relatedGuests={relatedGuests}
+        checkedGuests={checkedGuests}
+        handleSubmit={handleSubmitRSVPForm}
+      />
 
       {/* <Button
         position="fixed"
