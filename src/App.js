@@ -2,6 +2,8 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 
+import "focus-visible/dist/focus-visible";
+
 import UserProvider from "store/UserContext";
 // import firebaseApp from "api/firebaseConfig";
 import Navbar from "components/Navbar";

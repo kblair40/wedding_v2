@@ -4,6 +4,8 @@ import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 
+import styles from "./index.css";
+
 import theme from "utils/theme";
 
 ReactDOM.render(
