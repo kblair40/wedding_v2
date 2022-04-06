@@ -8,7 +8,10 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
+  Text,
 } from "@chakra-ui/react";
+
+import PaymentForm from "components/PaymentForm";
 
 const RegistryItemModal = ({ isOpen, onClose }) => {
   return (
@@ -18,9 +21,13 @@ const RegistryItemModal = ({ isOpen, onClose }) => {
         <ModalHeader>Trip to Hawaii</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          Stuff about the trip Nostrud eiusmod ad commodo cupidatat mollit nisi
-          qui elit irure. Consequat nulla consequat ea qui sit ea laboris non
-          veniam. Qui fugiat esse ex ex.
+          <Text mb="2rem">
+            Stuff about the trip Nostrud eiusmod ad commodo cupidatat mollit
+            nisi qui elit irure. Consequat nulla consequat ea qui sit ea laboris
+            non veniam. Qui fugiat esse ex ex.
+          </Text>
+
+          <PaymentForm />
         </ModalBody>
 
         <ModalFooter>

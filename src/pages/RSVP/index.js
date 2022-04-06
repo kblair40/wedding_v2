@@ -5,6 +5,8 @@ import { Transition } from "react-transition-group";
 import RSVPForm from "components/RSVPForm";
 import GuestSearch from "./GuestSearch";
 import SelectGuests from "components/SelectGuests";
+import PageContainer from "components/containers/PageContainer";
+
 // import { getGuestByName, getRelatedGuests } from "api/api";
 
 const RSVP = () => {
@@ -44,15 +46,11 @@ const RSVP = () => {
   };
 
   return (
-    <Box px="24px" pt="16px">
+    <PageContainer center pt="16px">
       <Transition
         in={!relatedGuests}
         timeout={500}
-        onExited={() => {
-          // setTimeout(() => {
-          setStep(2);
-          // }, 500);
-        }}
+        onExited={() => setStep(2)}
         unmountOnExit
       >
         {(state) => (
@@ -97,7 +95,7 @@ const RSVP = () => {
       >
         Toggle fade
       </Button> */}
-    </Box>
+    </PageContainer>
   );
 };
 
