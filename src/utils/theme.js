@@ -9,6 +9,7 @@ const theme = extendTheme({
     text: {
       primary: "#2D2D2D",
       secondary: "#343A40",
+      // secondary: "rgba(0, 0, 0, 0.92)",
       tertiary: "#6C757D",
     },
     creme: {
@@ -17,6 +18,7 @@ const theme = extendTheme({
     gold: {
       main: "#DCCAAA",
     },
+    // colorScheme for use with Radio and Checkbox components
     darkScheme: {
       50: "#999",
       100: "#888",

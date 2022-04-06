@@ -16,32 +16,33 @@ import hawaii from "assets/images/hawaii.jpg";
 const RegistryItem = ({ onClick }) => {
   return (
     <Box
-      w="250px"
+      w="275px"
       borderRadius="4px"
-      border="1px solid #cdcdcd"
+      bg="neutral.white"
       overflow="hidden"
       pb="8px"
+      shadow="md"
     >
-      <Image src={hawaii} w="100%" />
-      {/* <HStack p="16px 8px 0" justifyContent="space-between"> */}
-      <Box p="16px 8px 0">
-        <Text fontWeight="700">Trip to Hawaii</Text>
+      <Box w="100%">
+        <AspectRatio ratio={5 / 3.5}>
+          <Image src={hawaii} w="100%" />
+        </AspectRatio>
+      </Box>
+
+      <Box h="90px" p="12px 8px 0" w="100%" textOverflow="hidden">
+        <Text fontWeight="700" noOfLines={2}>
+          Trip to Hawaii
+        </Text>
         <Text fontWeight="700">$9,000</Text>
       </Box>
-      {/* </HStack> */}
-      {/* <HStack w="100%" justifyContent="flex-end" pr="8px">
-        <Text color="text.secondary" fontStyle="italic">
-          ($4,327) remaining
-        </Text>
-      </HStack> */}
       <HStack w="100%" justifyContent="center" px="8px" mt="16px">
         <VStack w="100%">
           <Button w="100%" onClick={onClick}>
             Contribute
           </Button>
 
-          <Text color="text.secondary" fontStyle="italic" fontSize="sm">
-            $4,327 contributed
+          <Text color="text.secondary" fontSize="sm">
+            ($4,327 contributed)
           </Text>
         </VStack>
       </HStack>
