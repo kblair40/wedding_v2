@@ -1,20 +1,14 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Image,
-  AspectRatio,
-  Center,
-  Text,
-} from "@chakra-ui/react";
+import { Image, Center, Text } from "@chakra-ui/react";
 
 // import bw_hor_img from "assets/images/bw_dock.jpg";
 // import color_hor_img from "assets/images/color_dock2.jpg";
 import color_hor_img from "assets/images/dock_kiss2.jpg";
-import Auth from "components/Auth";
+// import Auth from "components/Auth";
 import Invitation from "components/Invitation";
-import { getGuest, getAllInvitees } from "api/api";
+import { getAllInvitees } from "api/api";
 import CountdownClock from "components/CountdownClock";
+import PageContainer from "components/containers/PageContainer";
 
 const Home = () => {
   const fetchGuests = () => {
@@ -22,7 +16,7 @@ const Home = () => {
     getAllInvitees();
   };
   return (
-    <Box px="24px">
+    <PageContainer center>
       {/* <Auth getGuest={getGuest} /> */}
       <Center>
         <Image src={color_hor_img} borderRadius="4px" maxW="100%" />
@@ -41,7 +35,7 @@ const Home = () => {
       >
         until we celebrate!
       </Text>
-    </Box>
+    </PageContainer>
   );
 };
 

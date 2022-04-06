@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Box } from "@chakra-ui/react";
+import React, { useState } from "react";
+// import { Box } from "@chakra-ui/react";
 
 import RegistryItem from "components/RegistryItem";
 import RegistryItemModal from "components/RegistryItemModal";
+import PageContainer from "components/containers/PageContainer";
 
 const Registry = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Box px="24px">
-      <Box>
-        <RegistryItem onClick={() => setOpen(true)} />
-      </Box>
+    <PageContainer center>
+      <RegistryItem onClick={() => setOpen(true)} />
 
       {open && (
         <RegistryItemModal isOpen={open} onClose={() => setOpen(false)} />
       )}
-    </Box>
+    </PageContainer>
   );
 };
 

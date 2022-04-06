@@ -1,13 +1,14 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+// import { Box } from "@chakra-ui/react";
 
 import WeddingParty from "components/WeddingParty";
+import PageContainer from "components/containers/PageContainer";
 
 const WeddingPartyPage = () => {
   return (
-    <Box px="24px">
+    <PageContainer center>
       <WeddingParty />
-    </Box>
+    </PageContainer>
   );
 };
 

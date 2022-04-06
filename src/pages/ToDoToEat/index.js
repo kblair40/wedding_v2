@@ -1,16 +1,8 @@
 import React from "react";
-import { Box, Text, Button } from "@chakra-ui/react";
+import { Text, Button } from "@chakra-ui/react";
 
 import { addGuest } from "api/api";
-
-// {
-//   firstName,
-//   lastName,
-//   email,
-//   phoneNumber,
-//   side,
-//   entree = "",
-// }
+import PageContainer from "components/containers/PageContainer";
 
 const ToDoToEat = () => {
   const addNewGuest = () => {
@@ -24,12 +16,12 @@ const ToDoToEat = () => {
     });
   };
   return (
-    <Box>
+    <PageContainer>
       <Text>Things to do</Text>
       <Button onClick={addNewGuest} size="sm">
         Add Guest
       </Button>
-    </Box>
+    </PageContainer>
   );
 };
 
