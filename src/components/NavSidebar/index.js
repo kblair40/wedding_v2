@@ -14,25 +14,32 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 
 import { NAV_ITEMS } from "utils/constants";
 import NavLink from "components/NavLink";
+import OurNames from "components/OurNames";
 
 const Nav = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box mt="8px">
+    <Box mt={{ base: 0, md: "8px" }} mb="16px">
       <Flex
         mx="auto"
         minH="60px"
         p={{ base: "8px 32px", sm: "8px 16px" }}
-        border="1px solid #eee"
         justify="center"
         align="center"
         w="100%"
         maxW={{ base: "800px", md: "100vw" }}
-        // maxW={{ base: "350px", sm: "472px", md: "736px" }}
       >
-        <Flex display={{ base: "flex", md: "none" }}>
+        <Flex
+          w="100%"
+          display={{ base: "flex", md: "none" }}
+          alignItems="center"
+          position="relative"
+          justifyContent="center"
+        >
           <IconButton
+            position="absolute"
+            left={0}
             onClick={onToggle}
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
@@ -40,6 +47,7 @@ const Nav = () => {
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
           />
+          <OurNames size="small" />
         </Flex>
 
         <Flex flex={1} justify="center">

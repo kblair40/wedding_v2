@@ -20,7 +20,9 @@ import RSVP from "pages/RSVP";
 function App() {
   return (
     <Box>
-      <OurNames />
+      <Box display={{ base: "none", md: "block" }}>
+        <OurNames size="large" />
+      </Box>
       {/* <Navbar /> */}
       <NavSidebar />
       <UserProvider>
