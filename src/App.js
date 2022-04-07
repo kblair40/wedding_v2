@@ -7,7 +7,6 @@ import "focus-visible/dist/focus-visible";
 import UserProvider from "store/UserContext";
 // import firebaseApp from "api/firebaseConfig";
 import Navbar from "components/Navbar";
-import NavSidebar from "components/NavSidebar";
 import OurNames from "components/OurNames";
 import Home from "pages/Home";
 import ToDoToEat from "pages/ToDoToEat";
@@ -24,7 +23,7 @@ function App() {
         <OurNames size="large" />
       </Box>
       {/* <Navbar /> */}
-      <NavSidebar />
+      <Navbar />
       <UserProvider>
         <Routes>
           <Route path="/" element={<Home />} />

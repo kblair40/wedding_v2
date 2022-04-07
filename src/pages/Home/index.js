@@ -35,6 +35,42 @@ const Home = () => {
       >
         until we celebrate!
       </Text>
+      <Text
+        mt="8px"
+        mb="24px"
+        fontSize="42px"
+        fontFamily="Great Vibes"
+        textAlign="center"
+      >
+        until we celebrate!
+      </Text>
+      <Text
+        mt="8px"
+        mb="24px"
+        fontSize="42px"
+        fontFamily="Great Vibes"
+        textAlign="center"
+      >
+        until we celebrate!
+      </Text>
+      <Text
+        mt="8px"
+        mb="24px"
+        fontSize="42px"
+        fontFamily="Great Vibes"
+        textAlign="center"
+      >
+        until we celebrate!
+      </Text>
+      <Text
+        mt="8px"
+        mb="24px"
+        fontSize="42px"
+        fontFamily="Great Vibes"
+        textAlign="center"
+      >
+        until we celebrate!
+      </Text>
     </PageContainer>
   );
 };
