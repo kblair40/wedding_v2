@@ -67,10 +67,6 @@ export default function WithSubnavigation() {
 }
 
 const DesktopNav = () => {
-  // const linkColor = useColorModeValue("gray.600", "gray.200");
-  // const linkHoverColor = useColorModeValue("gray.800", "white");
-  // const popoverContentBgColor = useColorModeValue("white", "gray.800");
-
   return (
     <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
@@ -223,65 +219,34 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "Home",
+    href: "/",
   },
   {
     label: "Travel",
+    href: "/travel",
   },
   {
     label: "To Do/To Eat",
+    href: "/thingstodo",
   },
   {
     label: "Registry",
+    href: "/registry",
   },
   {
     label: "Wedding Party",
+    href: "/weddingparty",
   },
   {
     label: "Gallery",
+    href: "/gallery",
   },
   {
     label: "RSVP",
+    href: "/rsvp",
   },
   {
     label: "Admin Stuff",
+    href: "/admin",
   },
-
-  // {
-  //   label: "Inspiration",
-  //   children: [
-  //     {
-  //       label: "Explore Design Work",
-  //       subLabel: "Trending Design to inspire you",
-  //       href: "#",
-  //     },
-  //     {
-  //       label: "New & Noteworthy",
-  //       subLabel: "Up-and-coming Designers",
-  //       href: "#",
-  //     },
-  //   ],
-  // },
-  // {
-  //   label: "Find Work",
-  //   children: [
-  //     {
-  //       label: "Job Board",
-  //       subLabel: "Find your dream design job",
-  //       href: "#",
-  //     },
-  //     {
-  //       label: "Freelance Projects",
-  //       subLabel: "An exclusive list for contract work",
-  //       href: "#",
-  //     },
-  //   ],
-  // },
-  // {
-  //   label: "Learn Design",
-  //   href: "#",
-  // },
-  // {
-  //   label: "Hire Designers",
-  //   href: "#",
-  // },
 ];
