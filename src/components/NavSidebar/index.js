@@ -21,13 +21,15 @@ const Nav = () => {
   return (
     <Box mt="8px">
       <Flex
+        mx="auto"
         minH="60px"
-        p={{ base: "8px 32px", md: "8px 16px" }}
-        // border="1px solid #eee"
+        p={{ base: "8px 32px", sm: "8px 16px" }}
+        border="1px solid #eee"
         justify="center"
         align="center"
         w="100%"
         maxW={{ base: "800px", md: "100vw" }}
+        // maxW={{ base: "350px", sm: "472px", md: "736px" }}
       >
         <Flex display={{ base: "flex", md: "none" }}>
           <IconButton
@@ -58,7 +60,7 @@ export default Nav;
 
 const DesktopNav = () => {
   return (
-    <Stack direction={"row"} spacing="16px">
+    <Stack direction={"row"} spacing="2px">
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <NavLink to={navItem.href}>{navItem.label}</NavLink>
