@@ -10,10 +10,34 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
+import {
+  CardNumberElement,
+  CardExpiryElement,
+  CardCvcElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
 
 import PaymentForm from "components/PaymentForm";
 
 const RegistryItemModal = ({ isOpen, onClose }) => {
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const cardNumber = elements.getElement(CardNumberElement);
+    const cardExp = elements.getElement(CardExpiryElement);
+    const cardCvc = elements.getElement(CardCvcElement);
+    console.log("\n\nVALUES:", { cardNumber, cardExp, cardCvc });
+
+    cardExp.clear();
+    cardNumber.clear();
+    cardCvc.clear();
+
+    // handlePaymentSubmit(e);
+  };
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -27,15 +51,19 @@ const RegistryItemModal = ({ isOpen, onClose }) => {
             non veniam. Qui fugiat esse ex ex.
           </Text>
 
-          <PaymentForm />
+          <PaymentForm handleSubmit={handleSubmit} />
         </ModalBody>
 
-        <ModalFooter>
+        {/* <ModalFooter>
           <Button variant="ghost">Close</Button>
-          <Button mr={3} onClick={onClose}>
+          <Button
+            mr={3}
+            onClick={handleSubmit}
+            isDisabled={!stripe || !elements}
+          >
             Buy
           </Button>
-        </ModalFooter>
+        </ModalFooter> */}
       </ModalContent>
     </Modal>
   );

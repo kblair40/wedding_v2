@@ -1,28 +1,81 @@
-import React, { useRef } from "react";
-import { Box, VStack, Text, HStack, Input } from "@chakra-ui/react";
+import React, { useRef, useState, useEffect } from "react";
+import { Box, VStack, Text, HStack, Input, Button } from "@chakra-ui/react";
 import {
   CardNumberElement,
   CardExpiryElement,
   CardCvcElement,
+  PaymentRequestButtonElement,
   useElements,
+  useStripe,
 } from "@stripe/react-stripe-js";
 
 const PaymentForm = () => {
+  const [paymentRequest, setPaymentRequest] = useState(null);
+
+  const stripe = useStripe();
   const elements = useElements();
 
   const fnRef = useRef();
   const lnRef = useRef();
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const getStripe = async () => {
+      if (stripe) {
+        const pr = stripe.paymentRequest({
+          country: "US",
+          currency: "usd",
+          total: {
+            label: "Demo total",
+            amount: 1099,
+          },
+          // requestPayerName: true,
+          // requestPayerEmail: true,
+        });
+
+        console.log("\n\nPR OBJECT:", pr);
+        let cmp = await pr.canMakePayment();
+        console.log("Can make payment:", cmp);
+
+        // Check the availability of the Payment Request API.
+        pr.canMakePayment().then((result) => {
+          if (result) {
+            console.log("SUCCESS RESULT:", result);
+            setPaymentRequest(pr);
+          } else {
+            console.log("FAILED RESULT:", result);
+          }
+        });
+      }
+    };
+    getStripe();
+  }, [stripe]);
+
+  const handleSubmit = async (e) => {
+    console.log("SUBMITTING\n");
     e.preventDefault();
 
     const cardNumber = elements.getElement(CardNumberElement);
     const cardExp = elements.getElement(CardExpiryElement);
     const cardCvc = elements.getElement(CardCvcElement);
+    console.log("\n\nVALUES:", { cardNumber, cardExp, cardCvc });
 
-    cardExp.clear();
-    cardNumber.clear();
-    cardCvc.clear();
+    const result = await stripe.confirmPayment({
+      //`Elements` instance that was used to create the Payment Element
+      elements,
+      confirmParams: {
+        return_url: "http://localhost:3001/registry",
+      },
+    });
+
+    if (result.error) {
+      console.log("\n\nPAYMENT ERROR:", result.error.message);
+    } else {
+      console.log("PAYMENT SUCCESSFUL!");
+    }
+
+    // cardExp.clear();
+    // cardNumber.clear();
+    // cardCvc.clear();
 
     // handlePaymentSubmit(e);
   };
@@ -99,6 +152,15 @@ const PaymentForm = () => {
             </Box>
           </HStack>
         </HStack>
+        <HStack justifyContent="flex-end" mt="8px" py="8px">
+          {paymentRequest && (
+            <PaymentRequestButtonElement options={{ PaymentRequest }} />
+          )}
+          {/* <Button onClick={handleSubmit} size="sm" fontWeight="700" w="60px">
+            Buy
+          </Button> */}
+        </HStack>
+        {/* <PaymentRequestButtonElement /> */}
       </form>
     </Box>
   );
