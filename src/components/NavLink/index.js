@@ -6,7 +6,7 @@ const NavLink = ({ to, children }) => {
   return (
     <Link
       fontWeight="700"
-      fontSize="xl"
+      fontSize="lg"
       as={RRLink}
       to={to}
       _focus={{ outline: "none" }}

@@ -26,7 +26,7 @@ const OurNames = () => {
         </Flex>
       </Center>
       <HStack justifyContent="center">
-        <Box h="4px" bg="black" w="100%" maxW="600px" />
+        <Box h="4px" bg="black" w="calc(100% - 64px)" maxW="800px" />
       </HStack>
     </React.Fragment>
   );

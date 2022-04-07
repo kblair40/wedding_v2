@@ -3,7 +3,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -22,15 +21,15 @@ const Nav = () => {
   return (
     <Box mt="8px">
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
-        color={useColorModeValue("gray.600", "white")}
-        minH={"60px"}
-        p="8px 16px"
-        border="1px solid #ccc"
+        minH="60px"
+        p={{ base: "8px 32px", md: "8px 16px" }}
+        // border="1px solid #eee"
         justify="center"
-        align={"center"}
+        align="center"
+        w="100%"
+        maxW={{ base: "800px", md: "100vw" }}
       >
-        <Flex border="1px solid red" display={{ base: "flex", md: "none" }}>
+        <Flex display={{ base: "flex", md: "none" }}>
           <IconButton
             onClick={onToggle}
             icon={
@@ -41,8 +40,8 @@ const Nav = () => {
           />
         </Flex>
 
-        <Flex flex={1} justify="center" border="1px solid blue">
-          <Flex display={{ base: "none", md: "flex" }} justifyContent="center">
+        <Flex flex={1} justify="center">
+          <Flex display={{ base: "none", md: "flex" }} justify="center">
             <DesktopNav />
           </Flex>
         </Flex>
@@ -71,11 +70,7 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
   return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      p={4}
-      display={{ md: "none" }}
-    >
+    <Stack px="36px" py="16px" display={{ md: "none" }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
