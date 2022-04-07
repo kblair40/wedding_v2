@@ -1,26 +1,33 @@
 import React from "react";
-import { Center, Flex, Heading, Box, HStack } from "@chakra-ui/react";
+import {
+  Center,
+  Flex,
+  Heading,
+  Box,
+  HStack,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
-// size === 'small' | 'large'
-// const OurNames = ({ size = "small" }) => {
-// const OurNames = ({ size = "large" }) => {
-const OurNames = ({ size }) => {
-  const isSmall = size === "small";
-  const headingSize = isSmall ? "2xl" : "6xl";
-  const subHeadingSize = isSmall ? "md" : "xl";
+const OurNames = () => {
+  const headingSize = useBreakpointValue({ base: "lg", sm: "3xl", md: "6xl" });
+  const subHeadingSize = useBreakpointValue({
+    base: "sm",
+    sm: "lg",
+    md: "3xl",
+  });
 
   return (
     <React.Fragment>
       <Center py={{ base: "none", md: "8px" }}>
         <Flex
-          direction={isSmall ? "row" : "column"}
+          direction={{ base: "row", md: "column" }}
           justifyContent="center"
           alignItems="center"
         >
           <Heading letterSpacing="1.5px" fontSize={headingSize}>
             KEVIN
           </Heading>
-          <Heading mx={isSmall ? "6px" : "0"} fontSize={subHeadingSize}>
+          <Heading mx="6px" fontSize={subHeadingSize}>
             AND
           </Heading>
           <Heading letterSpacing="1.5px" fontSize={headingSize}>
@@ -29,15 +36,14 @@ const OurNames = ({ size }) => {
         </Flex>
       </Center>
 
-      {size === "large" && (
-        <HStack justifyContent="center">
-          <Box
-            h="4px"
-            bg="black"
-            w={{ base: "350px", sm: "472px", md: "736px" }}
-          />
-        </HStack>
-      )}
+      <HStack justifyContent="center" display={{ base: "none", md: "flex" }}>
+        <Box
+          h="4px"
+          bg="black"
+          w="736px"
+          // w={{ base: "350px", sm: "472px", md: "736px" }}
+        />
+      </HStack>
     </React.Fragment>
   );
 };

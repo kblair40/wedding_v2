@@ -34,11 +34,13 @@ const Navbar = () => {
       <Flex
         mx="auto"
         minH="60px"
-        p={{ base: "8px 32px", sm: "8px 16px" }}
+        p="8px 16px"
+        // p={{ base: "8px 16px", sm: "8px 16px" }}
         justify="center"
         align="center"
         w="100%"
         maxW={{ base: "800px", md: "100vw" }}
+        // border="1px solid red"
       >
         <Flex
           w="100%"
@@ -46,12 +48,13 @@ const Navbar = () => {
           alignItems="center"
           position="relative"
           justifyContent="center"
+          // border="1px solid blue"
         >
           <IconButton
             _hover={{ bg: "transparent" }}
             _active={{ bg: "transparent" }}
             position="absolute"
-            left="8px"
+            left={{ base: 0, sm: "8px" }}
             onClick={onToggle}
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />

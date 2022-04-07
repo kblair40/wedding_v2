@@ -20,9 +20,8 @@ function App() {
   return (
     <Box>
       <Box display={{ base: "none", md: "block" }}>
-        <OurNames size="large" />
+        <OurNames />
       </Box>
-      {/* <Navbar /> */}
       <Navbar />
       <UserProvider>
         <Routes>
