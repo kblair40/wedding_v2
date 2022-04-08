@@ -1,3 +1,4 @@
+import React, { useRef, useEffect } from "react";
 import {
   Box,
   Flex,
@@ -17,8 +18,41 @@ import OurNames from "components/OurNames";
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
 
+  const stickyRef = useRef();
+
+  useEffect(() => {
+    console.log("new current:", stickyRef.current);
+    const el = stickyRef.current;
+
+    const observer = new IntersectionObserver(
+      ([e]) => {
+        const ratio = e.intersectionRatio;
+        console.log("\nE:", ratio);
+        if (ratio < 1) {
+          console.log("LESS THAN 1\n");
+        } else {
+          console.log("GREATER THAN OR EQUAL TO 1");
+        }
+      },
+      // {
+      // if (e.intersectionRatio < 1) {
+      //   console.log("PINNED");
+      // }
+      // e.target.classList.toggle("is-pinned", e.intersectionRatio < 1);
+      // },
+      { threshold: [1] }
+    );
+    // const observer = new IntersectionObserver(
+    //   ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
+    //   { threshold: [1] }
+    // );
+
+    observer.observe(el);
+  }, [stickyRef.current]);
+
   return (
     <Box
+      ref={stickyRef}
       zIndex={10000}
       bg="white"
       mt={{ base: 0, md: "8px" }}
@@ -28,7 +62,8 @@ const Navbar = () => {
       sx={{
         position: "-webkit-sticky",
         /* Safari */ position: "sticky",
-        top: "0",
+        // top: "0",
+        top: "-1px",
       }}
     >
       <Flex
