@@ -39,6 +39,7 @@ const CountdownClock = () => {
     base: "2xl",
     sm: "4xl",
   });
+
   return (
     <Box mt="32px">
       <HStack w="100%" justifyContent="center" spacing="16px" flexWrap="wrap">

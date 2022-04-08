@@ -7,6 +7,7 @@ import {
   HStack,
   useBreakpointValue,
 } from "@chakra-ui/react";
+// import { useInView } from "react-intersection-observer";
 
 const OurNames = () => {
   const headingSize = useBreakpointValue({ base: "lg", sm: "3xl", md: "6xl" });
@@ -17,16 +18,12 @@ const OurNames = () => {
   });
 
   return (
-    <React.Fragment>
-      <Center
-        py={{ base: "none", md: "8px" }}
-        // border="2px solid orange"
-      >
+    <Box display={{ base: "none", md: "block" }}>
+      <Center py={{ base: "none", md: "8px" }}>
         <Flex
           direction={{ base: "row", md: "column" }}
           justifyContent="center"
           alignItems="center"
-          // border="2px solid orange"
         >
           <Heading letterSpacing="1.5px" fontSize={headingSize}>
             KEVIN
@@ -40,15 +37,14 @@ const OurNames = () => {
         </Flex>
       </Center>
 
-      <HStack justifyContent="center" display={{ base: "none", md: "flex" }}>
-        <Box
-          h="4px"
-          bg="black"
-          w="736px"
-          // w={{ base: "350px", sm: "472px", md: "736px" }}
-        />
+      <HStack
+        bgColor="transparent"
+        justifyContent="center"
+        display={{ base: "none", md: "flex" }}
+      >
+        <Box h="4px" bg="black" w="736px" />
       </HStack>
-    </React.Fragment>
+    </Box>
   );
 };
 

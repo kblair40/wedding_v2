@@ -1,11 +1,6 @@
 import React from "react";
 import { Text, Box } from "@chakra-ui/react";
 
-// import bw_hor_img from "assets/images/bw_dock.jpg";
-// import color_hor_img from "assets/images/color_dock2.jpg";
-// import Auth from "components/Auth";
-// import Invitation from "components/Invitation";
-// import { getAllInvitees } from "api/api";
 import color_hor_img from "assets/images/dock_kiss.jpg";
 import CountdownClock from "components/CountdownClock";
 import PageContainer from "components/containers/PageContainer";
@@ -14,11 +9,12 @@ const Home = () => {
   return (
     <PageContainer px={0} center>
       <Box
+        zIndex={-1}
+        position="relative"
         bgImage={color_hor_img}
         w="100vw"
-        h={{ base: "25vh", sm: "70vh" }}
-        // bgSize="cover"
-        bgPosition={{ base: "center 20%", md: "center center" }}
+        h={{ base: "25vh", sm: "67vh" }}
+        bgPosition={{ base: "center 80%", md: "center 55%" }}
         bgAttachment="fixed"
         bgRepeat="no-repeat"
       />

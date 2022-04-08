@@ -2,7 +2,7 @@ import React from "react";
 import { Link as RRLink } from "react-router-dom";
 import { Link, Text, Flex } from "@chakra-ui/react";
 
-const NavLink = ({ to, pinned, textColor, children }) => {
+const NavLink = ({ to, children }) => {
   return (
     <Link
       as={RRLink}
@@ -10,21 +10,13 @@ const NavLink = ({ to, pinned, textColor, children }) => {
       _focus={{ outline: "none" }}
       fontFamily="Josefin Sans"
       fontWeight="500"
-      // py="8px"
       _hover={{ textDecoration: "none", color: "text.secondary" }}
     >
-      <Flex
-        py="8px"
-        // border="1px solid #ddd"
-        alignItems="center"
-        px="12px"
-      >
+      <Flex py="8px" alignItems="center" px="12px">
         <Text
           // fontFamily="EB Garamond"
           whiteSpace="nowrap"
-          // color={pinned ? "black" : "white"}
-          // _hover={{ color: "text.tertiary" }}
-          color={textColor}
+          className="nav-link"
         >
           {children}
         </Text>

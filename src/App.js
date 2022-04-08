@@ -6,8 +6,8 @@ import "focus-visible/dist/focus-visible";
 
 import UserProvider from "store/UserContext";
 // import firebaseApp from "api/firebaseConfig";
-import Navbar from "components/Navbar";
-import OurNames from "components/OurNames";
+// import Navbar from "components/Navbar";
+// import OurNames from "components/OurNames";
 import Home from "pages/Home";
 import ToDoToEat from "pages/ToDoToEat";
 import Admin from "pages/Admin";
@@ -15,20 +15,12 @@ import Travel from "pages/Travel";
 import WeddingPartyPage from "pages/WeddingPartyPage";
 import Registry from "pages/Registry";
 import RSVP from "pages/RSVP";
+import OurNamesPlusNav from "components/OurNamesPlusNav";
 
 function App() {
   return (
     <Box>
-      <Box
-        // bg="transparent"
-        display={{ base: "none", md: "block" }}
-        // border="1px solid red"
-      >
-        <OurNames />
-      </Box>
-      {/* <Box border="1px solid red"> */}
-      <Navbar />
-      {/* </Box> */}
+      <OurNamesPlusNav />
       <UserProvider>
         <Routes>
           <Route path="/" element={<Home />} />

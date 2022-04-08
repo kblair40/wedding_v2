@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import {
   Box,
   Flex,
@@ -7,113 +7,81 @@ import {
   Stack,
   Collapse,
   Link,
+  Heading,
   useDisclosure,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { useInView } from "react-intersection-observer";
 
 import { NAV_ITEMS } from "utils/constants";
 import NavLink from "components/NavLink";
-import OurNames from "components/OurNames";
-
-import "./index.css";
 
 const Navbar = () => {
-  const [navBG, setNavBG] = useState("#fff");
-  const [pinned, setPinned] = useState(false);
-  const [opacity, setOpacity] = useState(1);
-
   const { isOpen, onToggle } = useDisclosure();
 
-  // const stickyRef = useRef();
-
-  const {
-    ref: stickyRef,
-    inView,
-    entry,
-  } = useInView({
-    /* Optional options */
-    threshold: 1,
-  });
-
-  useEffect(() => {
-    console.log("\n\nIN VIEW:", inView, "\n\n");
-  }, [inView]);
-
   return (
-    <Box
-      h="60px"
-      ref={stickyRef}
-      // bg={navBG}
-      bg={inView ? "white" : "transparent"}
-      transition=".75s ease-in-out"
-      zIndex={10000}
-      mt={{ base: 0, md: "8px" }}
-      // border="1px solid red"
-      // bg="transparent"
-      sx={{
-        position: "-webkit-sticky",
-        /* Safari */ position: "sticky",
-        top: "-1px",
-      }}
-    >
+    <React.Fragment>
       <Flex
-        mx="auto"
-        // minH="60px"
-        p={{ base: "8px 0px", sm: "8px 16px", md: pinned ? 0 : "8px 16px" }}
+        p={{ base: "8px 0px", sm: "8px 16px", md: "8px 16px" }}
         justify="center"
         align="center"
         w="100%"
         maxW={{ base: "800px", md: "100vw" }}
-        // border="1px solid blue"
-        bg="transparent"
+        h="60px"
       >
-        <Flex
-          w="100%"
+        <Box
           display={{ base: "flex", md: "none" }}
-          alignItems="center"
-          position="relative"
-          justifyContent="center"
-          bg="transparent"
-          // border="1px solid blue"
+          position="absolute"
+          top={0}
+          w="100%"
+          h="60px"
         >
-          <IconButton
-            _hover={{ bg: "transparent" }}
-            _active={{ bg: "transparent" }}
-            position="absolute"
-            left={{ base: 0, sm: "8px" }}
-            onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
-          />
-          <OurNames />
-        </Flex>
+          <Flex
+            w="100%"
+            alignItems="center"
+            justifyContent="center"
+            position="relative"
+          >
+            <IconButton
+              position="absolute"
+              left={{ base: 0, md: "4px" }}
+              top="8px"
+              _hover={{ bg: "transparent" }}
+              _active={{ bg: "transparent" }}
+              position="absolute"
+              left={{ base: 0, sm: "8px" }}
+              onClick={onToggle}
+              icon={
+                isOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={5} h={5} />
+                )
+              }
+              variant={"ghost"}
+              aria-label={"Toggle Navigation"}
+            />
+            <OurNamesHorizontal />
+          </Flex>
+        </Box>
 
         <Flex
           flex={1}
           display={{ base: "none", md: "flex" }}
           justify="center"
           w="100%"
+          backgroundColor="rgba(0,0,0,0)"
         >
           <Stack
             direction={"row"}
             justify="space-between"
             w="100%"
             maxW={{ md: "768px" }}
+            backgroundColor="rgba(0,0,0,0)"
           >
             {NAV_ITEMS.map((navItem) => (
-              <Box key={navItem.label} border="1px solid #ccc">
-                <NavLink
-                  to={navItem.href}
-                  pinned={pinned}
-                  textColor={inView ? "text.primary" : "white"}
-                  //
-                >
-                  {navItem.label}
-                </NavLink>
+              <Box key={navItem.label} backgroundColor="rgba(0,0,0,0)">
+                <NavLink to={navItem.href}>{navItem.label}</NavLink>
               </Box>
             ))}
           </Stack>
@@ -123,7 +91,7 @@ const Navbar = () => {
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
-    </Box>
+    </React.Fragment>
   );
 };
 
@@ -131,13 +99,7 @@ export default Navbar;
 
 const MobileNav = () => {
   return (
-    <Stack
-      px="36px"
-      py="16px"
-      display={{ md: "none" }}
-      spacing={0}
-      // border="1px solid blue"
-    >
+    <Stack px="36px" py="16px" display={{ md: "none" }} spacing={0}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -146,7 +108,7 @@ const MobileNav = () => {
 };
 
 const MobileNavItem = ({ label, href }) => {
-  const { isOpen, onToggle } = useDisclosure();
+  const { onToggle } = useDisclosure();
 
   return (
     <Stack onClick={onToggle} justifyContent="center">
@@ -171,5 +133,33 @@ const MobileNavItem = ({ label, href }) => {
         </Text>
       </Flex>
     </Stack>
+  );
+};
+
+const OurNamesHorizontal = () => {
+  const headingSize = useBreakpointValue({ base: "lg", sm: "3xl", md: "6xl" });
+  const subHeadingSize = useBreakpointValue({
+    base: "sm",
+    sm: "lg",
+    md: "3xl",
+  });
+  return (
+    <Flex
+      w="100%"
+      justifyContent="center"
+      alignItems="start"
+      // border="1px solid red"
+    >
+      <Heading size={headingSize} letterSpacing="1.5px">
+        Shannon
+      </Heading>
+      {/* <Heading size={subHeadingSize} mx="6px"> */}
+      <Heading size={headingSize} mx="8px">
+        &
+      </Heading>
+      <Heading size={headingSize} letterSpacing="1.5px">
+        Kevin
+      </Heading>
+    </Flex>
   );
 };
