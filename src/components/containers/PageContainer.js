@@ -1,15 +1,15 @@
 import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
-const PageContainer = ({ children, center, ...rest }) => {
+const PageContainer = ({ children, center, px = "24px", ...rest }) => {
   return (
     <Flex
       w="100%"
-      px="24px"
+      px={px}
       justifyContent={center ? "center" : undefined}
       {...rest}
     >
-      <Box maxW="600px">{children}</Box>
+      <Box>{children}</Box>
     </Flex>
   );
 };
