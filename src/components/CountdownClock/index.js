@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Box, HStack, Text, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  HStack,
+  Text,
+  Heading,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
 const CountdownClock = () => {
   const [timeDiff, setTimeDiff] = useState({
@@ -29,16 +35,20 @@ const CountdownClock = () => {
     setTimeDiff({ days, hours, minutes });
   };
 
+  const countdownFontSize = useBreakpointValue({
+    base: "2xl",
+    sm: "4xl",
+  });
   return (
     <Box mt="32px">
       <HStack w="100%" justifyContent="center" spacing="16px" flexWrap="wrap">
-        <Heading fontSize="44px" whiteSpace="nowrap">
+        <Heading fontSize={countdownFontSize} whiteSpace="nowrap">
           {timeDiff.days ? timeDiff.days : "00"} Days
         </Heading>
-        <Heading fontSize="44px" whiteSpace="nowrap">
+        <Heading fontSize={countdownFontSize} whiteSpace="nowrap">
           {timeDiff.hours ? timeDiff.hours : "00"} Hours
         </Heading>
-        <Heading fontSize="44px" whiteSpace="nowrap">
+        <Heading fontSize={countdownFontSize} whiteSpace="nowrap">
           {timeDiff.minutes ? timeDiff.minutes : "00"} Minutes
         </Heading>
       </HStack>

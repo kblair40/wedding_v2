@@ -16,9 +16,9 @@ const Home = () => {
       <Box
         bgImage={color_hor_img}
         w="100vw"
-        h="80vh"
-        bgSize="cover"
-        bgPosition="center center"
+        h={{ base: "25vh", sm: "70vh" }}
+        // bgSize="cover"
+        bgPosition={{ base: "center 20%", md: "center center" }}
         bgAttachment="fixed"
         bgRepeat="no-repeat"
       />

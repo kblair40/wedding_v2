@@ -22,8 +22,8 @@ const Navbar = () => {
       zIndex={10000}
       bg="white"
       mt={{ base: 0, md: "8px" }}
-      mb="16px"
-      // shadow="sm"
+      // mb="16px"
+      shadow="sm"
       // border="1px solid #eee"
       sx={{
         position: "-webkit-sticky",
@@ -34,8 +34,8 @@ const Navbar = () => {
       <Flex
         mx="auto"
         minH="60px"
-        p="8px 16px"
-        // p={{ base: "8px 16px", sm: "8px 16px" }}
+        // p="8px 16px"
+        p={{ base: "8px 0px", sm: "8px 16px" }}
         justify="center"
         align="center"
         w="100%"
@@ -62,7 +62,7 @@ const Navbar = () => {
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
           />
-          <OurNames size="small" />
+          <OurNames />
         </Flex>
 
         <Flex flex={1} justify="center">
@@ -95,7 +95,13 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
   return (
-    <Stack px="36px" py="16px" display={{ md: "none" }}>
+    <Stack
+      px="36px"
+      py="16px"
+      display={{ md: "none" }}
+      spacing={0}
+      // border="1px solid blue"
+    >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -103,22 +109,28 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label, href }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack onClick={onToggle} justifyContent="center">
       <Flex
-        py={2}
+        py="8px"
         as={Link}
         href={href ?? "#"}
-        justify={"space-between"}
         align={"center"}
+        justifyContent="center"
         _hover={{
           textDecoration: "none",
         }}
       >
-        <Text fontWeight={700} color="text.primary">
+        <Text
+          fontFamily="Josefin Sans"
+          fontWeight={600}
+          fontSize="lg"
+          color="text.primary"
+          textAlign="center"
+        >
           {label}
         </Text>
       </Flex>
