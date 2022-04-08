@@ -18,11 +18,15 @@ const OurNames = () => {
 
   return (
     <React.Fragment>
-      <Center py={{ base: "none", md: "8px" }}>
+      <Center
+        py={{ base: "none", md: "8px" }}
+        // border="2px solid orange"
+      >
         <Flex
           direction={{ base: "row", md: "column" }}
           justifyContent="center"
           alignItems="center"
+          // border="2px solid orange"
         >
           <Heading letterSpacing="1.5px" fontSize={headingSize}>
             KEVIN

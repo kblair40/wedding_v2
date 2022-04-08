@@ -27,8 +27,8 @@ export const NAV_ITEMS = [
     label: "RSVP",
     href: "/rsvp",
   },
-  {
-    label: "Admin Stuff",
-    href: "/admin",
-  },
+  // {
+  //   label: "Admin Stuff",
+  //   href: "/admin",
+  // },
 ];

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -10,72 +10,63 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { useInView } from "react-intersection-observer";
 
 import { NAV_ITEMS } from "utils/constants";
 import NavLink from "components/NavLink";
 import OurNames from "components/OurNames";
 
+import "./index.css";
+
 const Navbar = () => {
+  const [navBG, setNavBG] = useState("#fff");
+  const [pinned, setPinned] = useState(false);
+  const [opacity, setOpacity] = useState(1);
+
   const { isOpen, onToggle } = useDisclosure();
 
-  const stickyRef = useRef();
+  // const stickyRef = useRef();
+
+  const {
+    ref: stickyRef,
+    inView,
+    entry,
+  } = useInView({
+    /* Optional options */
+    threshold: 1,
+  });
 
   useEffect(() => {
-    console.log("new current:", stickyRef.current);
-    const el = stickyRef.current;
-
-    const observer = new IntersectionObserver(
-      ([e]) => {
-        const ratio = e.intersectionRatio;
-        console.log("\nE:", ratio);
-        if (ratio < 1) {
-          console.log("LESS THAN 1\n");
-        } else {
-          console.log("GREATER THAN OR EQUAL TO 1");
-        }
-      },
-      // {
-      // if (e.intersectionRatio < 1) {
-      //   console.log("PINNED");
-      // }
-      // e.target.classList.toggle("is-pinned", e.intersectionRatio < 1);
-      // },
-      { threshold: [1] }
-    );
-    // const observer = new IntersectionObserver(
-    //   ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-    //   { threshold: [1] }
-    // );
-
-    observer.observe(el);
-  }, [stickyRef.current]);
+    console.log("\n\nIN VIEW:", inView, "\n\n");
+  }, [inView]);
 
   return (
     <Box
+      h="60px"
       ref={stickyRef}
+      // bg={navBG}
+      bg={inView ? "white" : "transparent"}
+      transition=".75s ease-in-out"
       zIndex={10000}
-      bg="white"
       mt={{ base: 0, md: "8px" }}
-      // mb="16px"
-      shadow="sm"
-      // border="1px solid #eee"
+      // border="1px solid red"
+      // bg="transparent"
       sx={{
         position: "-webkit-sticky",
         /* Safari */ position: "sticky",
-        // top: "0",
         top: "-1px",
       }}
     >
       <Flex
         mx="auto"
-        minH="60px"
-        // p="8px 16px"
-        p={{ base: "8px 0px", sm: "8px 16px" }}
+        // minH="60px"
+        p={{ base: "8px 0px", sm: "8px 16px", md: pinned ? 0 : "8px 16px" }}
         justify="center"
         align="center"
         w="100%"
         maxW={{ base: "800px", md: "100vw" }}
-        // border="1px solid red"
+        // border="1px solid blue"
+        bg="transparent"
       >
         <Flex
           w="100%"
@@ -83,6 +74,7 @@ const Navbar = () => {
           alignItems="center"
           position="relative"
           justifyContent="center"
+          bg="transparent"
           // border="1px solid blue"
         >
           <IconButton
@@ -100,10 +92,31 @@ const Navbar = () => {
           <OurNames />
         </Flex>
 
-        <Flex flex={1} justify="center">
-          <Flex display={{ base: "none", md: "flex" }} justify="center">
-            <DesktopNav />
-          </Flex>
+        <Flex
+          flex={1}
+          display={{ base: "none", md: "flex" }}
+          justify="center"
+          w="100%"
+        >
+          <Stack
+            direction={"row"}
+            justify="space-between"
+            w="100%"
+            maxW={{ md: "768px" }}
+          >
+            {NAV_ITEMS.map((navItem) => (
+              <Box key={navItem.label} border="1px solid #ccc">
+                <NavLink
+                  to={navItem.href}
+                  pinned={pinned}
+                  textColor={inView ? "text.primary" : "white"}
+                  //
+                >
+                  {navItem.label}
+                </NavLink>
+              </Box>
+            ))}
+          </Stack>
         </Flex>
       </Flex>
 
@@ -115,18 +128,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-const DesktopNav = () => {
-  return (
-    <Stack direction={"row"} spacing="2px">
-      {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
-          <NavLink to={navItem.href}>{navItem.label}</NavLink>
-        </Box>
-      ))}
-    </Stack>
-  );
-};
 
 const MobileNav = () => {
   return (

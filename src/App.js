@@ -19,10 +19,16 @@ import RSVP from "pages/RSVP";
 function App() {
   return (
     <Box>
-      <Box display={{ base: "none", md: "block" }}>
+      <Box
+        // bg="transparent"
+        display={{ base: "none", md: "block" }}
+        // border="1px solid red"
+      >
         <OurNames />
       </Box>
+      {/* <Box border="1px solid red"> */}
       <Navbar />
+      {/* </Box> */}
       <UserProvider>
         <Routes>
           <Route path="/" element={<Home />} />
