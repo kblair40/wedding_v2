@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <Box
       maxH="50px"
-      // border="1px solid red"
+      // border="1px solid #ccc"
       position="relative"
       w="100%"
       // maxW={{ base: "480px", md: "768px" }}
