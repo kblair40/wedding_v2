@@ -13,33 +13,30 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-import { NAV_ITEMS } from "utils/constants";
+import { NAV_ITEMS, MAX_WIDTHS } from "utils/constants";
 import NavLink from "./NavLink";
 
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box maxH="50px">
+    <Box
+      maxH="50px"
+      // border="1px solid red"
+      position="relative"
+      w="100%"
+      // maxW={{ base: "480px", md: "768px" }}
+      maxW={MAX_WIDTHS()}
+    >
       <Flex
         py="8px"
-        px={{ base: 0, sm: "16px" }}
-        // p={{ base: "8px 0px", sm: "8px 16px", md: "8px 16px" }}
+        // border="1px solid blue"
         justify="center"
         align="center"
         w="100%"
-        maxW={{ base: "800px", md: "100vw" }}
         h="50px"
-        // h="100%"
       >
-        <Box
-          display={{ base: "flex", md: "none" }}
-          position="absolute"
-          top={0}
-          w="100%"
-          h="50px"
-          // h="100%"
-        >
+        <Box display={{ base: "flex", md: "none" }} w="100%" h="50px">
           <Flex
             w="100%"
             alignItems="center"
@@ -53,7 +50,6 @@ const Navbar = () => {
               _hover={{ bg: "transparent" }}
               _active={{ bg: "transparent" }}
               position="absolute"
-              left={{ base: 0, sm: "8px" }}
               onClick={onToggle}
               icon={
                 isOpen ? (
@@ -69,22 +65,15 @@ const Navbar = () => {
           </Flex>
         </Box>
 
-        <Flex
-          flex={1}
-          display={{ base: "none", md: "flex" }}
-          justify="center"
-          w="100%"
-          backgroundColor="rgba(0,0,0,0)"
-        >
+        <Flex display={{ base: "none", md: "flex" }} justify="center" w="100%">
           <Stack
             direction={"row"}
-            justify="space-between"
+            justify="center"
             w="100%"
             maxW={{ md: "768px" }}
-            backgroundColor="rgba(0,0,0,0)"
           >
             {NAV_ITEMS.map((navItem) => (
-              <Box key={navItem.label} backgroundColor="rgba(0,0,0,0)">
+              <Box key={navItem.label}>
                 <NavLink to={navItem.href}>{navItem.label}</NavLink>
               </Box>
             ))}
@@ -92,16 +81,8 @@ const Navbar = () => {
         </Flex>
       </Flex>
 
-      <Box
-        // py={isOpen ? "8px" : 0}
-        bg="white"
-        // border="1px solid #000"
-      >
-        <Collapse
-          in={isOpen}
-          // position="absolute"
-          animateOpacity
-        >
+      <Box bg="white">
+        <Collapse in={isOpen} animateOpacity>
           <MobileNav />
         </Collapse>
       </Box>

@@ -15,6 +15,7 @@ const NavLink = ({ to, children }) => {
       }}
     >
       <Flex
+        // border="1px solid green"
         borderRadius="full"
         py="4px"
         alignItems="center"
@@ -24,7 +25,9 @@ const NavLink = ({ to, children }) => {
         _active={{ bg: "neutral.200" }}
         transition=".2s ease-in-out"
       >
-        <Text whiteSpace="nowrap">{children}</Text>
+        <Text whiteSpace="nowrap" fontSize="lg">
+          {children}
+        </Text>
       </Flex>
     </Link>
   );

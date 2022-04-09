@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Box, useBreakpointValue } from "@chakra-ui/react";
+import { Box, useBreakpointValue, Flex } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
+import { MAX_WIDTHS } from "utils/constants";
 import OurNames from "./OurNames";
 import Navbar from "./Navbar";
 
@@ -24,18 +25,26 @@ const OurNamesPlusNav = () => {
     md: !inView,
   });
 
+  console.log("MAX WIDTHS:", MAX_WIDTHS());
+
   return (
-    <React.Fragment>
-      <Box
+    <Flex
+      direction="column"
+      alignItems="center"
+      // border="1px solid black"
+    >
+      <Flex
+        justify="center"
         w="100%"
-        display={{ base: "none", md: "block" }}
+        display={{ base: "none", md: "flex" }}
         ref={ref}
         zIndex={-1}
       >
         <OurNames />
-      </Box>
+      </Flex>
 
       <Box
+        // border="1px solid black"
         transition=".5s ease-in-out"
         zIndex={1}
         bg="white"
@@ -43,12 +52,20 @@ const OurNamesPlusNav = () => {
         top="0"
         sx={{
           position: "-webkit-sticky",
-          /* Safari */ position: "sticky",
+          position: "sticky",
         }}
+        w="100%"
       >
-        <Navbar />
+        <Flex
+          // border="1px solid orange"
+          // w="100%"
+          justify="center"
+          //
+        >
+          <Navbar />
+        </Flex>
       </Box>
-    </React.Fragment>
+    </Flex>
   );
 };
 

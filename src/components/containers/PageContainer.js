@@ -11,16 +11,18 @@ const PageContainer = ({
 }) => {
   const flexStyles = {
     px,
+    direction: "column",
     w: "100%",
+    // justifyContent: "center",
+    border: "1px solid black",
     justifyContent: center ? "center" : undefined,
     ...rest,
   };
 
   const boxStyles = {
     w: "100%",
-    maxW: !responsive
-      ? undefined
-      : { base: "480px", md: "768px", xl: "1280px" },
+    maxW: !responsive ? "100%" : { base: "480px", md: "500px", xl: "1280px" },
+    // : { base: "480px", md: "768px", xl: "1280px" },
     border: showBorder ? "1px solid #ccc" : "none",
   };
 

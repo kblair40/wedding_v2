@@ -3,7 +3,14 @@ import { Box } from "@chakra-ui/react";
 
 const Paper = ({ children, ...rest }) => {
   return (
-    <Box shadow="sm" borderRadius="8px" p="8px" {...rest}>
+    <Box
+      m={0}
+      shadow="md"
+      borderRadius="8px"
+      p="16px"
+      bg="neutral.100"
+      {...rest}
+    >
       {children}
     </Box>
   );

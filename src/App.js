@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 
-import "focus-visible/dist/focus-visible";
+// import "focus-visible/dist/focus-visible";
 
 import UserProvider from "store/UserContext";
 import Home from "pages/Home";
@@ -14,9 +14,12 @@ import Registry from "pages/Registry";
 import RSVP from "pages/RSVP";
 import Nav from "components/Nav";
 
+import "./App.css";
+
 function App() {
   return (
-    <Box>
+    // <Box border="2px solid orange" maxW="100vw">
+    <Box position="relative" sx={{ overflow: "hidden !important" }}>
       <Nav />
       <UserProvider>
         <Routes>

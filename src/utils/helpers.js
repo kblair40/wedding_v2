@@ -14,3 +14,26 @@ export const toTitleCase = (str, removeWhitespace = true) => {
     })
     .join(" ");
 };
+
+export const getMaxWidths = (arr) => {
+  const base = ["420px", "480px", "600px", "800px"];
+  const baseObj = {
+    base: "420px",
+    sm: "480px",
+    md: "600px",
+    lg: "800px",
+  };
+
+  if (arr) {
+    base = base.map((val) => {
+      if (!val) return;
+    });
+  }
+
+  return {
+    base: base[0],
+    sm: base[1],
+    md: base[2],
+    lg: base[3],
+  };
+};

@@ -1,7 +1,16 @@
-*:focus {
+/* *:focus {
   box-shadow: none !important;
 }
 
 *[data-focus] {
   box-shadow: none !important;
+} */
+
+* {
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
