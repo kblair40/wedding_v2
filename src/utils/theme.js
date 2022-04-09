@@ -6,7 +6,7 @@ const theme = extendTheme({
       black: "#2D2D2D",
       white: "#FAFAFA",
       50: "#FAFAFA",
-      100: "#F0F0F0",
+      100: "#F5F5F5",
     },
     text: {
       primary: "#2D2D2D",
@@ -86,8 +86,8 @@ const theme = extendTheme({
   },
   fonts: {
     // heading: "Josefin Sans",
-    heading: "EB Garamond",
-    // heading: "Sawarbe Mincho",
+    // heading: "EB Garamond",
+    heading: "Cormorant Garamond",
     // body: "Josefin Slab",
     body: "Cormorant Garamond",
     mono: "Josefin Slab",

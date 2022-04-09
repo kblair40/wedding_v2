@@ -13,7 +13,7 @@ const Home = () => {
         position="relative"
         bgImage={color_hor_img}
         w="100vw"
-        h={{ base: "25vh", sm: "67vh" }}
+        h={{ base: "50vh", sm: "60vh", lg: "67vh" }}
         bgPosition={{ base: "center 80%", md: "center 55%" }}
         bgAttachment="fixed"
         bgRepeat="no-repeat"

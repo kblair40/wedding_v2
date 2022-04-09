@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, useBreakpointValue } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import OurNames from "components/OurNames";
@@ -11,9 +11,14 @@ const OurNamesPlusNav = () => {
   });
 
   useEffect(() => {
-    console.log("\n\nIN VIEW:", inView);
-    console.log("ENTRY:", entry, "\n\n");
+    // console.log("\n\nIN VIEW:", inView);
+    // console.log("ENTRY:", entry, "\n\n");
   }, [inView]);
+
+  const showShadow = useBreakpointValue({
+    base: true,
+    md: !inView,
+  });
 
   return (
     <React.Fragment>
@@ -30,8 +35,7 @@ const OurNamesPlusNav = () => {
         transition=".5s ease-in-out"
         zIndex={1}
         bg="white"
-        // bg={inView ? "white" : "#F9F0F9"}
-        shadow={inView ? "none" : "sm"}
+        shadow={showShadow ? "sm" : "none"}
         top="0"
         sx={{
           position: "-webkit-sticky",

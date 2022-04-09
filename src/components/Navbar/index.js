@@ -20,21 +20,25 @@ const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <React.Fragment>
+    <Box maxH="50px">
       <Flex
-        p={{ base: "8px 0px", sm: "8px 16px", md: "8px 16px" }}
+        py="8px"
+        px={{ base: 0, sm: "16px" }}
+        // p={{ base: "8px 0px", sm: "8px 16px", md: "8px 16px" }}
         justify="center"
         align="center"
         w="100%"
         maxW={{ base: "800px", md: "100vw" }}
-        h="60px"
+        h="50px"
+        // h="100%"
       >
         <Box
           display={{ base: "flex", md: "none" }}
           position="absolute"
           top={0}
           w="100%"
-          h="60px"
+          h="50px"
+          // h="100%"
         >
           <Flex
             w="100%"
@@ -45,7 +49,7 @@ const Navbar = () => {
             <IconButton
               position="absolute"
               left={{ base: 0, md: "4px" }}
-              top="8px"
+              top="4px"
               _hover={{ bg: "transparent" }}
               _active={{ bg: "transparent" }}
               position="absolute"
@@ -88,10 +92,20 @@ const Navbar = () => {
         </Flex>
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
-    </React.Fragment>
+      <Box
+        // py={isOpen ? "8px" : 0}
+        bg="white"
+        // border="1px solid #000"
+      >
+        <Collapse
+          in={isOpen}
+          // position="absolute"
+          animateOpacity
+        >
+          <MobileNav />
+        </Collapse>
+      </Box>
+    </Box>
   );
 };
 
@@ -99,7 +113,13 @@ export default Navbar;
 
 const MobileNav = () => {
   return (
-    <Stack px="36px" py="16px" display={{ md: "none" }} spacing={0}>
+    <Stack
+      display={{ md: "none" }}
+      spacing="2px"
+      w="100%"
+      p="16px"
+      // border="1px solid #000"
+    >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -111,15 +131,31 @@ const MobileNavItem = ({ label, href }) => {
   const { onToggle } = useDisclosure();
 
   return (
-    <Stack onClick={onToggle} justifyContent="center">
+    <Stack
+      w="100%"
+      // bg="white"
+      onClick={onToggle}
+      justifyContent="center"
+      h="100%"
+      // border="1px solid #ccc"
+      // mb="4px"
+      // px="8px"
+      // position="relative"
+      // top="40px"
+    >
       <Flex
+        // mb="4px"
+        // border="1px solid #ccc"
+        borderRadius="4px"
         py="8px"
         as={Link}
         href={href ?? "#"}
-        align={"center"}
+        alignItems="center"
         justifyContent="center"
+        transition=".25s ease-in-out"
         _hover={{
           textDecoration: "none",
+          bg: "neutral.100",
         }}
       >
         <Text
