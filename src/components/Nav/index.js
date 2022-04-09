@@ -2,11 +2,15 @@ import React, { useEffect } from "react";
 import { Box, useBreakpointValue } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
-import OurNames from "components/OurNames";
-import Navbar from "components/Navbar";
+import OurNames from "./OurNames";
+import Navbar from "./Navbar";
 
 const OurNamesPlusNav = () => {
-  const { ref, inView, entry } = useInView({
+  const {
+    ref,
+    inView,
+    // entry
+  } = useInView({
     threshold: 0,
   });
 

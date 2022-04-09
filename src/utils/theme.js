@@ -4,9 +4,11 @@ const theme = extendTheme({
   colors: {
     neutral: {
       black: "#2D2D2D",
+
       white: "#FAFAFA",
       50: "#FAFAFA",
-      100: "#F5F5F5",
+      100: "#F7F5F0",
+      200: "#F0F0F0",
     },
     text: {
       primary: "#2D2D2D",

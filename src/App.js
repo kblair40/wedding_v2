@@ -5,9 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import "focus-visible/dist/focus-visible";
 
 import UserProvider from "store/UserContext";
-// import firebaseApp from "api/firebaseConfig";
-// import Navbar from "components/Navbar";
-// import OurNames from "components/OurNames";
 import Home from "pages/Home";
 import ToDoToEat from "pages/ToDoToEat";
 import Admin from "pages/Admin";
@@ -15,12 +12,12 @@ import Travel from "pages/Travel";
 import WeddingPartyPage from "pages/WeddingPartyPage";
 import Registry from "pages/Registry";
 import RSVP from "pages/RSVP";
-import OurNamesPlusNav from "components/OurNamesPlusNav";
+import Nav from "components/Nav";
 
 function App() {
   return (
     <Box>
-      <OurNamesPlusNav />
+      <Nav />
       <UserProvider>
         <Routes>
           <Route path="/" element={<Home />} />

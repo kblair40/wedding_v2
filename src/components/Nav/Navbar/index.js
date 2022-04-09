@@ -14,7 +14,7 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 import { NAV_ITEMS } from "utils/constants";
-import NavLink from "components/NavLink";
+import NavLink from "./NavLink";
 
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
