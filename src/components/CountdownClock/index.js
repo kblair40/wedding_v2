@@ -41,8 +41,26 @@ const CountdownClock = () => {
   });
 
   return (
-    <Box mt="32px">
-      <HStack w="100%" justifyContent="center" spacing="16px" flexWrap="wrap">
+    <Box
+      // mt="32px"
+      // borderTop="1px solid #f0f0f0"
+      shadow="md"
+      bg="white"
+      // bg="neutral.white"
+      py="8px"
+      position="fixed"
+      bottom={0}
+      left={0}
+      right={0}
+      // border="1px solid red"
+    >
+      <HStack
+        w="100%"
+        justifyContent="center"
+        spacing="16px"
+        flexWrap="wrap"
+        // border="1px solid #bbb"
+      >
         <Heading fontSize={countdownFontSize} whiteSpace="nowrap">
           {timeDiff.days ? timeDiff.days : "00"} Days
         </Heading>
@@ -53,6 +71,14 @@ const CountdownClock = () => {
           {timeDiff.minutes ? timeDiff.minutes : "00"} Minutes
         </Heading>
       </HStack>
+      <Text
+        mt="8px"
+        fontSize="42px"
+        fontFamily="Great Vibes"
+        textAlign="center"
+      >
+        until we celebrate!
+      </Text>
     </Box>
   );
 };

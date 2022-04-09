@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 import color_hor_img from "assets/images/dock_kiss.jpg";
 import CountdownClock from "components/CountdownClock";
@@ -19,16 +19,6 @@ const Home = () => {
         bgRepeat="no-repeat"
       />
       <CountdownClock />
-      <Text
-        mt="8px"
-        mb="24px"
-        fontSize="42px"
-        fontFamily="Great Vibes"
-        textAlign="center"
-      >
-        until we celebrate!
-      </Text>
-      <Box h="1000px" />
     </PageContainer>
   );
 };
