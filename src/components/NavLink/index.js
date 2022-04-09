@@ -8,18 +8,22 @@ const NavLink = ({ to, children }) => {
       as={RRLink}
       to={to}
       _focus={{ outline: "none" }}
-      fontFamily="Josefin Sans"
       fontWeight="500"
-      _hover={{ textDecoration: "none", color: "text.secondary" }}
+      color="text.primary"
+      _hover={{
+        textDecoration: "none",
+      }}
     >
-      <Flex py="8px" alignItems="center" px="12px">
-        <Text
-          // fontFamily="EB Garamond"
-          whiteSpace="nowrap"
-          className="nav-link"
-        >
-          {children}
-        </Text>
+      <Flex
+        borderRadius="4px"
+        py="8px"
+        alignItems="center"
+        px="12px"
+        _hover={{ bg: "neutral.100" }}
+        _focus={{ bg: "neutral.50" }}
+        transition=".2s ease-in-out"
+      >
+        <Text whiteSpace="nowrap">{children}</Text>
       </Flex>
     </Link>
   );

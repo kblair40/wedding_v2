@@ -5,6 +5,8 @@ const theme = extendTheme({
     neutral: {
       black: "#2D2D2D",
       white: "#FAFAFA",
+      50: "#FAFAFA",
+      100: "#F0F0F0",
     },
     text: {
       primary: "#2D2D2D",
@@ -45,11 +47,12 @@ const theme = extendTheme({
     },
     Text: {
       sizes: {
+        "2xs": { fontSize: "9px" },
         xs: { fontSize: "12px" },
-        sm: { fontSize: "14px" },
-        md: { fontSize: "16px" },
-        lg: { fontSize: "18px" },
-        xl: { fontSize: "20px" },
+        sm: { fontSize: "15px" },
+        md: { fontSize: "19px" },
+        lg: { fontSize: "22px" },
+        xl: { fontSize: "25px" },
       },
       defaultProps: {
         size: "md",
@@ -85,7 +88,8 @@ const theme = extendTheme({
     // heading: "Josefin Sans",
     heading: "EB Garamond",
     // heading: "Sawarbe Mincho",
-    body: "Josefin Slab",
+    // body: "Josefin Slab",
+    body: "Cormorant Garamond",
     mono: "Josefin Slab",
   },
 });

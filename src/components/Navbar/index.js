@@ -123,7 +123,7 @@ const MobileNavItem = ({ label, href }) => {
         }}
       >
         <Text
-          fontFamily="Josefin Sans"
+          // fontFamily="Cormorant Garamond"
           fontWeight={600}
           fontSize="lg"
           color="text.primary"
