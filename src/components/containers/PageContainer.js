@@ -1,21 +1,32 @@
 import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
-const PageContainer = ({ children, center, px = "24px", ...rest }) => {
+const PageContainer = ({
+  children,
+  center,
+  responsive,
+  showBorder,
+  px = "24px",
+  ...rest
+}) => {
+  const flexStyles = {
+    px,
+    w: "100%",
+    justifyContent: center ? "center" : undefined,
+    ...rest,
+  };
+
+  const boxStyles = {
+    w: "100%",
+    maxW: !responsive
+      ? undefined
+      : { base: "480px", md: "768px", xl: "1280px" },
+    border: showBorder ? "1px solid #ccc" : "none",
+  };
+
   return (
-    <Flex
-      // position="absolute"
-      // top={"260px"}
-      // bottom={0}
-      // right={0}
-      // left={0}
-      // backgroundColor="rgba(0,0,0,0)"
-      w="100%"
-      px={px}
-      justifyContent={center ? "center" : undefined}
-      {...rest}
-    >
-      <Box>{children}</Box>
+    <Flex {...flexStyles}>
+      <Box {...boxStyles}>{children}</Box>
     </Flex>
   );
 };
