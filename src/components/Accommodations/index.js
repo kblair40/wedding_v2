@@ -19,7 +19,9 @@ import hgi_lobby from "assets/images/hgi_lobby.jpeg";
 const Accommodations = () => {
   return (
     <Flex w="100%" direction="column">
-      <Heading fontSize="4xl">ACCOMMODATIONS</Heading>
+      <Heading fontSize="4xl" textAlign="center">
+        ACCOMMODATIONS
+      </Heading>
       <Text mt="8px">
         Voluptate adipisicing quis velit consequat non do consectetur est ipsum
         laboris. Adipisicing tempor culpa cillum cillum eu commodo nulla officia

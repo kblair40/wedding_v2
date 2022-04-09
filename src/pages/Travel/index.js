@@ -9,7 +9,13 @@ import Map from "components/Map";
 const Travel = () => {
   return (
     <Flex justify="center">
-      <Box maxW={MAX_WIDTHS()} w="100%" pb="32px">
+      <Box
+        // maxW={{}}
+        // border="1px solid black"
+        maxW={MAX_WIDTHS()}
+        w="100%"
+        pb="32px"
+      >
         <TravelInfo />
         <Box mt="32px">
           <Accommodations />

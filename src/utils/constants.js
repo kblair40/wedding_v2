@@ -37,5 +37,5 @@ export const MAX_WIDTHS = () => ({
   base: "420px",
   sm: "480px",
   md: "720px",
-  lg: "840px",
+  lg: "900px",
 });

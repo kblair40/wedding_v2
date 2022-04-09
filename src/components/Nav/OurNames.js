@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 const OurNames = () => {
-  const headingSize = useBreakpointValue({ base: "lg", sm: "3xl", md: "6xl" });
+  const headingSize = useBreakpointValue({ base: "lg", sm: "2xl", md: "6xl" });
   const subHeadingSize = useBreakpointValue({
     base: "sm",
     sm: "lg",
@@ -27,13 +27,27 @@ const OurNames = () => {
           w="100%"
           maxW="600px"
         >
-          <Heading letterSpacing="1.5px" fontSize={headingSize}>
+          <Heading
+            // letterSpacing="1.5px"
+            letterSpacing="3px"
+            fontSize={headingSize}
+          >
             KEVIN
           </Heading>
-          <Heading mx="6px" fontSize={subHeadingSize}>
-            AND
+          <Heading
+            mx="6px"
+            // fontSize={subHeadingSize}
+            fontSize="4xl"
+            letterSpacing="3px"
+            fontFamily="Great Vibes"
+          >
+            and
           </Heading>
-          <Heading letterSpacing="1.5px" fontSize={headingSize}>
+          <Heading
+            // letterSpacing="1.5px"
+            letterSpacing="3px"
+            fontSize={headingSize}
+          >
             SHANNON
           </Heading>
         </Flex>

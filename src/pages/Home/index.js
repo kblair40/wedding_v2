@@ -18,6 +18,7 @@ const Home = () => {
         bgAttachment="fixed"
         bgRepeat="no-repeat"
       />
+      <Box h="1000px" />
       <CountdownClock />
     </PageContainer>
   );

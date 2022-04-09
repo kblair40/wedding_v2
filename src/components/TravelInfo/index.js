@@ -16,137 +16,143 @@ import { AiOutlineCar } from "react-icons/ai";
 // import { MAX_WIDTHS } from "utils/constants";
 import Paper from "components/containers/Paper";
 
+const paperStyles = {
+  flex: 1,
+  w: { base: "300px", sm: "350px", md: "300px", lg: "350px" },
+};
+
 const TravelInfo = () => {
   return (
-    <Flex
-      mt="32px"
-      direction={{ base: "column", md: "row" }}
-      alignItems="center"
-    >
-      <Paper w="50%">
-        <VStack alignItems="center" spacing="1rem">
-          <Icon as={FaPlaneDeparture} boxSize="48px" color="neutral.black" />
-          <Heading fontSize="4xl">By Plane</Heading>
-          <VStack>
-            <Text
-              lineHeight="20px"
-              fontWeight="600"
-              //
-            >
-              Orlando Int'l Airport (ORL) is predominantly served by Southwest
-              and Delta, although you'll be able to find flights from all major
-              airlines. Alternatively, Orlando-Sanford (SFB) Int'l Airport
-              offers flights mostly from Allegiant.
-            </Text>
-            <Text
-              lineHeight="20px"
-              fontWeight="600"
-              //
-            >
-              The drive from either airport to Winter Park is roughly 30
-              minutes. Taxi and rideshare services (Uber, Lyft) are available at
-              both airports
-            </Text>
-          </VStack>
-          <Box
-            //
-            pt="8px"
-            w="100%"
-          >
-            <Button
-              w="100%"
-              bg="white"
-              fontSize="lg"
-              transition=".25s ease-in-out"
-              border="1px solid"
-              borderColor="transparent"
-              _hover={{
-                borderColor: "neutral.200",
-                bg: "neutral.50",
-              }}
-              _active={{ bg: "neutral.200" }}
-            >
-              Search Flights
-            </Button>
-          </Box>
-        </VStack>
-      </Paper>
+    <React.Fragment>
+      <Heading mt="32px" textAlign="center" fontSize="4xl">
+        By Plane or By Car
+      </Heading>
 
       <Flex
-        mx={{ base: 0, md: "16px" }}
-        my={{ base: "16px", md: 0 }}
+        mt="8px"
+        direction={{ base: "column", md: "row" }}
         alignItems="center"
+        justifyContent="center"
+        // border="1px solid black"
       >
-        <Text fontSize="2xl" fontWeight="600" whiteSpace="nowrap">
-          And
-        </Text>
-        <Text mx="4px" fontSize="2xl" fontWeight="600" whiteSpace="nowrap">
-          /
-        </Text>
-        <Text fontSize="2xl" fontWeight="600" whiteSpace="nowrap">
-          Or
-        </Text>
-      </Flex>
-
-      <Paper w="50%">
-        <VStack alignItems="center" spacing="1rem">
-          <Icon as={AiOutlineCar} boxSize="48px" color="neutral.black" />
-          <Heading fontSize="4xl">By Car</Heading>
-          <VStack>
-            <Text lineHeight="20px" fontWeight="600">
-              Orlando Int'l Airport (ORL) is predominantly served by Southwest
-              and Delta, although you'll be able to find flights from all major
-              airlines. Alternatively, Orlando-Sanford (SFB) Int'l Airport
-              offers flights mostly from Allegiant.
-            </Text>
-            <Text lineHeight="20px" fontWeight="600">
-              The drive from either airport to Winter Park is roughly 30
-              minutes. Taxi and rideshare services (Uber, Lyft) are available at
-              both airports
-            </Text>
+        <Paper {...paperStyles}>
+          <VStack alignItems="center" spacing="1rem">
+            <Icon as={FaPlaneDeparture} boxSize="48px" color="neutral.black" />
+            <Heading fontSize="4xl">By Plane</Heading>
+            <VStack>
+              <Text
+                lineHeight="20px"
+                fontWeight="600"
+                //
+              >
+                Orlando Int'l Airport (ORL) is predominantly served by Southwest
+                and Delta, although you'll be able to find flights from all
+                major airlines. Alternatively, Orlando-Sanford (SFB) Int'l
+                Airport offers flights mostly from Allegiant.
+              </Text>
+              <Text
+                lineHeight="20px"
+                fontWeight="600"
+                //
+              >
+                The drive from either airport to Winter Park is roughly 30
+                minutes. Taxi and rideshare services (Uber, Lyft) are available
+                at both airports
+              </Text>
+            </VStack>
+            <Box
+              //
+              pt="8px"
+              w="100%"
+            >
+              <Button
+                w="100%"
+                bg="white"
+                fontSize="lg"
+                transition=".25s ease-in-out"
+                border="1px solid"
+                borderColor="transparent"
+                _hover={{
+                  borderColor: "neutral.200",
+                  bg: "neutral.50",
+                }}
+                _active={{ bg: "neutral.200" }}
+              >
+                Search Flights
+              </Button>
+            </Box>
           </VStack>
-          <Box
-            //
-            pt="8px"
-            w="100%"
-          >
-            <HStack>
-              <Button
-                w="100%"
-                bg="white"
-                fontSize="lg"
-                transition=".25s ease-in-out"
-                border="1px solid"
-                borderColor="transparent"
-                _hover={{
-                  borderColor: "neutral.200",
-                  bg: "neutral.50",
-                }}
-                _active={{ bg: "neutral.200" }}
-              >
-                Search Car Rentals
-              </Button>
-              <Button
-                w="100%"
-                bg="white"
-                fontSize="lg"
-                transition=".25s ease-in-out"
-                border="1px solid"
-                borderColor="transparent"
-                _hover={{
-                  borderColor: "neutral.200",
-                  bg: "neutral.50",
-                }}
-                _active={{ bg: "neutral.200" }}
-              >
-                Get Directions
-              </Button>
-            </HStack>
-          </Box>
-        </VStack>
-      </Paper>
-      {/*  */}
-    </Flex>
+        </Paper>
+
+        {/* <Text
+          mx={{ base: 0, md: "8px" }}
+          my={{ base: "8px", md: 0 }}
+          fontSize="2xl"
+          fontWeight="600"
+          whiteSpace="nowrap"
+        >
+          And / Or
+        </Text> */}
+
+        <Paper {...paperStyles} ml="1rem">
+          <VStack alignItems="center" spacing="1rem">
+            <Icon as={AiOutlineCar} boxSize="48px" color="neutral.black" />
+            <Heading fontSize="4xl">By Car</Heading>
+            <VStack>
+              <Text lineHeight="20px" fontWeight="600">
+                Orlando Int'l Airport (ORL) is predominantly served by Southwest
+                and Delta, although you'll be able to find flights from all
+                major airlines. Alternatively, Orlando-Sanford (SFB) Int'l
+                Airport offers flights mostly from Allegiant.
+              </Text>
+              <Text lineHeight="20px" fontWeight="600">
+                The drive from either airport to Winter Park is roughly 30
+                minutes. Taxi and rideshare services (Uber, Lyft) are available
+                at both airports
+              </Text>
+            </VStack>
+            <Box
+              //
+              pt="8px"
+              w="100%"
+            >
+              <HStack>
+                <Button
+                  w="100%"
+                  bg="white"
+                  fontSize="lg"
+                  transition=".25s ease-in-out"
+                  border="1px solid"
+                  borderColor="transparent"
+                  _hover={{
+                    borderColor: "neutral.200",
+                    bg: "neutral.50",
+                  }}
+                  _active={{ bg: "neutral.200" }}
+                >
+                  Rent a Car
+                </Button>
+                <Button
+                  w="100%"
+                  bg="white"
+                  fontSize="lg"
+                  transition=".25s ease-in-out"
+                  border="1px solid"
+                  borderColor="transparent"
+                  _hover={{
+                    borderColor: "neutral.200",
+                    bg: "neutral.50",
+                  }}
+                  _active={{ bg: "neutral.200" }}
+                >
+                  Get Directions
+                </Button>
+              </HStack>
+            </Box>
+          </VStack>
+        </Paper>
+      </Flex>
+    </React.Fragment>
   );
 };
 
