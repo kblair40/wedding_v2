@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 import Paper from "components/containers/Paper";
+import OverlayCard from "components/containers/OverlayCard";
 import alfond from "assets/images/alfond1.jpeg";
 import hgi_lobby from "assets/images/hgi_lobby.jpeg";
 
@@ -36,111 +37,16 @@ const Accommodations = () => {
       </Text>
 
       <Flex
+        mt="16px"
         justify="space-between"
         // px="16px"
         mb="32px"
       >
-        <Paper
-          w="100%"
-          mt="16px"
-          h="200px"
-          // h="400px"
-          p={0}
-          position="relative"
-          overflow="hidden"
-        >
-          <Flex
-            alignItems="center"
-            direction="column"
-            justifyContent="center"
-            bgImage={hgi_lobby}
-            bgSize="cover"
-            bgPosition="center center"
-            h="100%"
-            zIndex={1}
-          >
-            <Box
-              cursor="pointer"
-              position="absolute"
-              boxSize="100%"
-              bg="neutral.black"
-              opacity=".5"
-              zIndex={2}
-              transition=".25s ease-in-out"
-              _hover={{
-                opacity: 0,
-              }}
-            />
-            <Text
-              textAlign="center"
-              color="neutral.white"
-              fontWeight="700"
-              fontSize="4xl"
-              zIndex={2}
-            >
-              Garden Inn
-            </Text>
-          </Flex>
-        </Paper>
-        <Paper
-          w="100%"
-          mt="16px"
-          h="200px"
-          mx="16px"
-          p={0}
-          position="relative"
-          overflow="hidden"
-        >
-          <Flex
-            alignItems="center"
-            direction="column"
-            justifyContent="center"
-            bgImage={alfond}
-            bgSize="cover"
-            bgPosition="center center"
-            h="100%"
-            zIndex={1}
-          >
-            <Box
-              cursor="pointer"
-              position="absolute"
-              boxSize="100%"
-              bg="neutral.black"
-              opacity=".5"
-              zIndex={2}
-              transition=".25s ease-in-out"
-              _hover={{
-                opacity: 0,
-              }}
-            />
-            <Text
-              textAlign="center"
-              color="neutral.white"
-              fontWeight="700"
-              fontSize="4xl"
-              zIndex={2}
-            >
-              The Alfond
-            </Text>
-            {/* <Image
-              position="absolute"
-              src={alfond}
-              // borderRadius="4px"
-            /> */}
-          </Flex>
-        </Paper>
-        <Paper
-          w="100%"
-          mt="16px"
-          h="200px"
-          // h="400px"
-        >
-          <Flex justify="center">
-            <Text fontSize="lg" fontWeight="700">
-              Other Hotel
-            </Text>
-          </Flex>
-        </Paper>
+        <OverlayCard imageURL={hgi_lobby}>Garden Inn</OverlayCard>
+        <OverlayCard ml="16px" imageURL={alfond}>
+          The Alfond Inn
+        </OverlayCard>
+        {/* <OverlayCard imageURL={alfond}>The Alfond Inn</OverlayCard> */}
       </Flex>
     </Flex>
   );
