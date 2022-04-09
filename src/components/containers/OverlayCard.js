@@ -3,7 +3,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 
 import Paper from "components/containers/Paper";
 
-const OverlayCard = ({ imageURL, children, ...rest }) => {
+const OverlayCard = ({ imageURL, children, label, ...rest }) => {
   return (
     <Paper
       w="100%"
@@ -22,6 +22,16 @@ const OverlayCard = ({ imageURL, children, ...rest }) => {
         bgSize="cover"
         bgPosition="center center"
         h="100%"
+        sx={{
+          ".label": {
+            bg: "rgba(0, 0, 0, 0)",
+          },
+        }}
+        _hover={{
+          ".label": {
+            bg: "rgba(0, 0, 0, 0.75)",
+          },
+        }}
       >
         <Box
           cursor="pointer"
@@ -36,6 +46,12 @@ const OverlayCard = ({ imageURL, children, ...rest }) => {
           }}
         />
         <Text
+          className="label"
+          lineHeight="36px"
+          transition=".25s"
+          px="8px"
+          borderRadius="4px"
+          bg="rgba(0, 0, 0, 0)"
           pointerEvents="none"
           textAlign="center"
           color="neutral.white"
@@ -43,9 +59,8 @@ const OverlayCard = ({ imageURL, children, ...rest }) => {
           fontSize="4xl"
           zIndex={1}
         >
-          {children}
+          {label}
         </Text>
-        {/* </Box> */}
       </Flex>
     </Paper>
   );
