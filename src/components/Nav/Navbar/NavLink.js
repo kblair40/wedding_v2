@@ -15,12 +15,13 @@ const NavLink = ({ to, children }) => {
       }}
     >
       <Flex
-        borderRadius="4px"
-        py="8px"
+        borderRadius="full"
+        py="4px"
         alignItems="center"
         px="12px"
         _hover={{ bg: "neutral.100" }}
         _focus={{ bg: "neutral.50" }}
+        _active={{ bg: "neutral.200" }}
         transition=".2s ease-in-out"
       >
         <Text whiteSpace="nowrap">{children}</Text>
