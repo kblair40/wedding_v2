@@ -5,7 +5,7 @@ const Paper = ({ children, ...rest }) => {
   return (
     <Box
       m={0}
-      shadow="md"
+      shadow="sm"
       borderRadius="8px"
       p="16px"
       bg="neutral.100"
