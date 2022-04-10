@@ -23,6 +23,8 @@ import shan_nine from "assets/galleryImages/shannon/shan_nine.jpg";
 import shan_ten from "assets/galleryImages/shannon/shan_ten.jpg";
 import shan_eleven from "assets/galleryImages/shannon/shan_eleven.jpg";
 
+import GalleryImage from "./GalleryImage";
+
 const GalleryImages = () => {
   return (
     <Box
@@ -99,12 +101,12 @@ const GalleryImages = () => {
   );
 };
 
-const GalleryImage = ({ src }) => {
-  return (
-    <Box borderRadius="2px" overflow="hidden">
-      <Image src={src} maxWidth="100%" />
-    </Box>
-  );
-};
+// const GalleryImage = ({ src }) => {
+//   return (
+//     <Box borderRadius="2px" overflow="hidden">
+//       <Image src={src} maxWidth="100%" />
+//     </Box>
+//   );
+// };
 
 export default GalleryImages;
