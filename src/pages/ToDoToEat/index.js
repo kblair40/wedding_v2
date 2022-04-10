@@ -33,7 +33,8 @@ const ToDoToEat = () => {
             lg: "900px",
           }}
           // maxW={MAX_WIDTHS()}
-          justify="center"
+          align="center"
+          direction="column"
           w="100%"
           // border="1px solid red"
         >
@@ -54,6 +55,9 @@ const ToDoToEat = () => {
               <ToDoToEatCard heading="Play" />
             </Box>
           </Stack>
+          <Box mt="16px" w="100%">
+            <ToDoToEatCard heading="For the Kiddos" />
+          </Box>
         </Flex>
       </Flex>
     </PageContainer>
