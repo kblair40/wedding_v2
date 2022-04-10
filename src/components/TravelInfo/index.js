@@ -8,8 +8,8 @@ import {
   Text,
   Button,
   Box,
+  Link,
 } from "@chakra-ui/react";
-
 import { FaPlane, FaPlaneDeparture } from "react-icons/fa";
 import { AiOutlineCar } from "react-icons/ai";
 
@@ -65,34 +65,26 @@ const TravelInfo = () => {
               pt="8px"
               w="100%"
             >
-              <Button
-                w="100%"
-                bg="white"
-                fontSize="lg"
-                transition=".25s ease-in-out"
-                border="1px solid"
-                borderColor="transparent"
-                _hover={{
-                  borderColor: "neutral.200",
-                  bg: "neutral.50",
-                }}
-                _active={{ bg: "neutral.200" }}
-              >
-                Search Flights
-              </Button>
+              <Link isExternal href="https://www.google.com/flights">
+                <Button
+                  w="100%"
+                  bg="white"
+                  fontSize="lg"
+                  transition=".25s ease-in-out"
+                  border="1px solid"
+                  borderColor="transparent"
+                  _hover={{
+                    borderColor: "neutral.200",
+                    bg: "neutral.50",
+                  }}
+                  _active={{ bg: "neutral.200" }}
+                >
+                  Search Flights
+                </Button>
+              </Link>
             </Box>
           </VStack>
         </Paper>
-
-        {/* <Text
-          mx={{ base: 0, md: "8px" }}
-          my={{ base: "8px", md: 0 }}
-          fontSize="2xl"
-          fontWeight="600"
-          whiteSpace="nowrap"
-        >
-          And / Or
-        </Text> */}
 
         <Paper {...paperStyles} ml="1rem">
           <VStack alignItems="center" spacing="1rem">
