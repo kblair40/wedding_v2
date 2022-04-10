@@ -24,12 +24,12 @@ const paperStyles = {
 const TravelInfo = () => {
   return (
     <React.Fragment>
-      <Heading mt="32px" textAlign="center" fontSize="4xl">
+      <Heading textAlign="center" fontSize="4xl">
         By Plane or By Car
       </Heading>
 
       <Flex
-        mt="8px"
+        mt="20px"
         direction={{ base: "column", md: "row" }}
         alignItems="center"
         justifyContent="center"

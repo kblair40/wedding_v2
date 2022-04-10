@@ -22,7 +22,7 @@ const Accommodations = () => {
       <Heading fontSize="4xl" textAlign="center">
         ACCOMMODATIONS
       </Heading>
-      <Text mt="8px">
+      <Text mt="16px">
         Voluptate adipisicing quis velit consequat non do consectetur est ipsum
         laboris. Adipisicing tempor culpa cillum cillum eu commodo nulla officia
         do aute. Nulla laborum sunt fugiat consectetur nulla est Lorem.

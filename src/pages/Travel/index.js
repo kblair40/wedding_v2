@@ -13,14 +13,15 @@ const Travel = () => {
         // maxW={{}}
         // border="1px solid black"
         maxW={MAX_WIDTHS()}
+        mt="36px"
         w="100%"
         pb="32px"
       >
         <TravelInfo />
-        <Box mt="32px">
+        <Box mt="36px">
           <Accommodations />
         </Box>
-        <Box mt="32px">
+        <Box mt="36px">
           <Map />
         </Box>
       </Box>
