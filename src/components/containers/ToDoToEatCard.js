@@ -16,6 +16,7 @@ import { GiSunglasses } from "react-icons/gi";
 import { MdOutlineBeachAccess } from "react-icons/md";
 import { FaRegSun } from "react-icons/fa";
 import Activity from "components/Activity";
+import { ACTIVITIES } from "utils/constants";
 
 const icons = {
   Eat: MdOutlineFastfood,
@@ -51,9 +52,24 @@ const ToDoToEatCard = ({ heading }) => {
           {heading}
         </Heading>
         <VStack mt="24px" w="100%" spacing="16px">
-          <Activity />
-          <Activity />
-          <Activity />
+          {heading === "Eat" &&
+            ACTIVITIES.eat.map((act) => {
+              return (
+                <Activity
+                  url={act.url}
+                  label={act.name}
+                  priceLevel={act.priceLevel}
+                />
+              );
+            })}
+
+          {heading !== "Eat" && (
+            <React.Fragment>
+              <Activity url="https://hillstonerestaurant.com/locations/winterpark/" />
+              <Activity />
+              <Activity />
+            </React.Fragment>
+          )}
         </VStack>
       </Flex>
     </Paper>

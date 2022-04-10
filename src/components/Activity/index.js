@@ -9,10 +9,13 @@ import {
   Text,
   Icon,
   IconButton,
+  Link,
 } from "@chakra-ui/react";
 import { BsArrowRight } from "react-icons/bs";
 
-const Activity = ({ label, url }) => {
+// import { ExternalLink } from "components/Links";
+
+const Activity = ({ label, url, priceLevel }) => {
   return (
     <VStack
       w="100%"
@@ -25,13 +28,22 @@ const Activity = ({ label, url }) => {
         justify="space-between"
         // border="1px solid #ccc"
       >
-        <Heading fontWeight="500">Name</Heading>
-        <IconButton
-          bg="transparent"
-          _hover={{ bg: "transparent" }}
-          _active={{ bg: "transparent" }}
-          icon={<Icon as={BsArrowRight} boxSize="24px" />}
-        />
+        <HStack align="end">
+          <Heading fontWeight="600" fontSize="xl" d="inline">
+            {label || "Name"}
+            <Text fontWeight="600" ml="4px" d="inline">
+              {"$".repeat(priceLevel)}
+            </Text>
+          </Heading>
+        </HStack>
+        <Link href={url} isExternal>
+          <IconButton
+            bg="transparent"
+            _hover={{ bg: "transparent" }}
+            _active={{ bg: "transparent" }}
+            icon={<Icon as={BsArrowRight} boxSize="24px" />}
+          />
+        </Link>
       </HStack>
       <Text lineHeight="20px" textAlign="left" alignSelf="start">
         Culpa mollit Lorem pariatur minim velit non. Veniam irure laborum est ut
