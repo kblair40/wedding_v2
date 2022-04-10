@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { BsArrowRight } from "react-icons/bs";
 
-const Activity = () => {
+const Activity = ({ label, url }) => {
   return (
     <VStack
       w="100%"
