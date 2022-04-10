@@ -17,7 +17,7 @@ import ToDoToEatCard from "components/containers/ToDoToEatCard";
 
 const ToDoToEat = () => {
   return (
-    <PageContainer center>
+    <PageContainer center px={{ base: 0, md: "24px" }}>
       <Flex
         // border="1px solid green"
         justify="center"
@@ -26,7 +26,13 @@ const ToDoToEat = () => {
         pb="32px"
       >
         <Flex
-          maxW={MAX_WIDTHS()}
+          maxW={{
+            // base: "420px",
+            // sm: "480px",
+            md: "720px",
+            lg: "900px",
+          }}
+          // maxW={MAX_WIDTHS()}
           justify="center"
           w="100%"
           // border="1px solid red"
@@ -34,17 +40,17 @@ const ToDoToEat = () => {
           <Stack
             // border="1px solid red"
             spacing={{ base: "16px" }}
-            direction={{ base: "row" }}
+            direction={{ base: "column", md: "row" }}
             justifyContent="center"
             w="100%"
           >
-            <Box w="50%">
+            <Box>
               <ToDoToEatCard heading="Eat" />
             </Box>
-            <Box w="50%">
+            <Box>
               <ToDoToEatCard heading="Drink" />
             </Box>
-            <Box w="50%">
+            <Box>
               <ToDoToEatCard heading="Play" />
             </Box>
           </Stack>

@@ -27,7 +27,12 @@ const icons = {
 
 const ToDoToEatCard = ({ heading }) => {
   return (
-    <Paper px="20px">
+    <Paper
+      // px="20px"
+      px={{ base: "20px" }}
+      w="100%"
+      // border="1px solid #dddd"
+    >
       <Flex
         // border="1px solid #ccc"
         justify="center"
@@ -45,7 +50,7 @@ const ToDoToEatCard = ({ heading }) => {
         >
           {heading}
         </Heading>
-        <VStack mt="24px">
+        <VStack mt="24px" w="100%" spacing="16px">
           <Activity />
           <Activity />
           <Activity />
