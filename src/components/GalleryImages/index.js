@@ -26,6 +26,12 @@ import shan_eleven from "assets/galleryImages/shannon/shan_eleven.jpg";
 import GalleryImage from "./GalleryImage";
 
 const GalleryImages = () => {
+  const colBreakpoints = {
+    default: 2,
+    768: 2,
+    1280: 3,
+  };
+
   return (
     <Box
       sx={{
@@ -45,7 +51,7 @@ const GalleryImages = () => {
       }}
     >
       <Masonry
-        breakpointCols={3}
+        breakpointCols={colBreakpoints}
         className="masonry-grid"
         columnClassName="masonry-grid_column"
       >
