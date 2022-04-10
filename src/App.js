@@ -13,6 +13,7 @@ import WeddingPartyPage from "pages/WeddingPartyPage";
 import Registry from "pages/Registry";
 import RSVP from "pages/RSVP";
 import Nav from "components/Nav";
+import Gallery from "pages/Gallery";
 
 import "./App.css";
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/registry" element={<Registry />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/rsvp" element={<RSVP />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
       </UserProvider>
     </Box>
