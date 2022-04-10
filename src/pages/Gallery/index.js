@@ -6,7 +6,7 @@ import GalleryImages from "components/GalleryImages";
 
 const Gallery = () => {
   return (
-    <PageContainer center>
+    <PageContainer center px={{ base: "16px", md: "24px" }}>
       <GalleryImages />
     </PageContainer>
   );
