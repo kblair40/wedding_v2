@@ -34,6 +34,7 @@ const GalleryImages = () => {
 
   return (
     <Box
+      mt="32px"
       sx={{
         ".masonry-grid": {
           display: "flex",

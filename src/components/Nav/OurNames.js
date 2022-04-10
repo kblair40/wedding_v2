@@ -17,7 +17,7 @@ const OurNames = () => {
   });
 
   return (
-    <Box display={{ base: "none", md: "block" }}>
+    <Box w="100%" display={{ base: "none", md: "block" }}>
       <Center py={{ base: "none", md: "8px" }}>
         <Flex
           direction={{ base: "row", md: "column" }}
@@ -26,9 +26,11 @@ const OurNames = () => {
           // border="1px solid red"
           w="100%"
           maxW="600px"
+          mt="8px"
         >
           <Heading
             // letterSpacing="1.5px"
+            lineHeight="40px"
             letterSpacing="3px"
             fontSize={headingSize}
           >
@@ -45,6 +47,7 @@ const OurNames = () => {
           </Heading>
           <Heading
             // letterSpacing="1.5px"
+            lineHeight="40px"
             letterSpacing="3px"
             fontSize={headingSize}
           >
