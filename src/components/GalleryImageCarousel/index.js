@@ -3,27 +3,22 @@ import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 
-// Slider settings
-const settings = {
-  dots: true,
-  arrows: false,
-  fade: true,
-  infinite: true,
-  autoplay: true,
-  speed: 500,
-  autoplaySpeed: 5000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
-
-export const GalleryImageCarousel = ({ imagesArray }) => {
+export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
   // reference variable to change the state of custom buttons
   const [slider, setSlider] = useState(null);
 
-  // These are the breakpoints which changes the position of the
-  // buttons as the screen size changes
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
+
+  // Slider settings
+  const settings = {
+    dots: true,
+    arrows: false,
+    fade: true,
+    infinite: true,
+    speed: 500,
+    initialSlide: startingSlideIdx,
+  };
 
   const arrowBtnStyles = {
     borderRadius: "full",
@@ -36,10 +31,14 @@ export const GalleryImageCarousel = ({ imagesArray }) => {
   return (
     <Box
       position={"relative"}
-      height={"600px"}
+      // height={"600px"}
+      height="86vh"
       width={"full"}
       overflow={"hidden"}
-      // mb="16px"
+      // borderRadius="8px"
+      // border="1px solid green"
+      pt="12px"
+      // py="24px"
     >
       <IconButton
         aria-label="left-arrow"
@@ -58,10 +57,11 @@ export const GalleryImageCarousel = ({ imagesArray }) => {
       >
         <BiRightArrowAlt fontSize="24px" />
       </IconButton>
-      {/* Slider */}
+
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {imagesArray.map((url, index) => (
           <Box
+            borderRadius="8px"
             key={index}
             height={"6xl"}
             position="relative"

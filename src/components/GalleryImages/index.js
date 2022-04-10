@@ -4,7 +4,7 @@ import Masonry from "react-masonry-css";
 
 import GalleryImage from "./GalleryImage";
 
-const GalleryImages = ({ imagesArray }) => {
+const GalleryImages = ({ imagesArray, onClick }) => {
   const colBreakpoints = {
     default: 2,
     768: 2,
@@ -35,8 +35,8 @@ const GalleryImages = ({ imagesArray }) => {
         className="masonry-grid"
         columnClassName="masonry-grid_column"
       >
-        {imagesArray.map((img) => (
-          <GalleryImage src={img} />
+        {imagesArray.map((img, i) => (
+          <GalleryImage src={img} onClick={() => onClick(i)} />
         ))}
       </Masonry>
     </Box>

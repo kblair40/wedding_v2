@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Box, Image, Collapse, Text } from "@chakra-ui/react";
 
-const GalleryImage = ({ src }) => {
+const GalleryImage = ({ src, onClick }) => {
   const [descOpen, setDescOpen] = useState(false);
   return (
     <Box
+      onClick={onClick}
       cursor="pointer"
       onMouseOver={() => setDescOpen(true)}
       onMouseOut={() => setDescOpen(false)}

@@ -1,5 +1,12 @@
-import React from "react";
-import { Box } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {
+  Box,
+  Flex,
+  Modal,
+  ModalContent,
+  ModalCloseButton,
+  Text,
+} from "@chakra-ui/react";
 
 import PageContainer from "components/containers/PageContainer";
 import GalleryImages from "components/GalleryImages";
@@ -27,27 +34,36 @@ import shan_ten from "assets/galleryImages/shannon/shan_ten.jpg";
 import shan_eleven from "assets/galleryImages/shannon/shan_eleven.jpg";
 
 const Gallery = () => {
+  const [showCarousel, setShowCarousel] = useState(false);
+  const [startingSlideIdx, setStartingSlideIdx] = useState();
+
   const imagesArray = [
     one,
-    two,
-    three,
-    four,
-    six,
-    seven,
-    eight,
-    nine,
-    shan_one,
-    shan_two,
-    shan_three,
-    shan_four,
     shan_five,
-    shan_six,
-    shan_seven,
+    two,
     shan_eight,
+    shan_one,
+    three,
+    shan_two,
+    four,
     shan_nine,
+    shan_three,
+    shan_seven,
+    eight,
+    shan_six,
+    six,
     shan_ten,
+    shan_four,
+    seven,
     shan_eleven,
+    nine,
   ];
+
+  const openCarousel = (imgIdx) => {
+    console.log("IMG IDX:", imgIdx);
+    setStartingSlideIdx(imgIdx);
+    setShowCarousel(true);
+  };
 
   return (
     <PageContainer center px={{ base: "16px", md: "24px" }}>
@@ -63,8 +79,42 @@ const Gallery = () => {
         type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
-      <GalleryImages imagesArray={imagesArray} />
-      <GalleryImageCarousel imagesArray={imagesArray} />
+      <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />
+      {showCarousel && (
+        <Modal
+          isOpen={showCarousel}
+          onClose={() => setShowCarousel(false)}
+          size="full"
+        >
+          <ModalContent bg="rgba(0, 0, 0, .7)" px="8px" overflow="hidden">
+            <ModalCloseButton
+              right="8px"
+              zIndex={1}
+              // color="neutral.black"
+              bg="neutral.black"
+              transition=".3s ease-in-out"
+              // _hover={{ bg: "white" }}
+              color="neutral.white"
+            />
+            {/* <Text fontSize="sm" color="white" fontWeight="700">
+              CLOSE
+            </Text> */}
+            <Flex alignItems="center" h="100vh">
+              <GalleryImageCarousel
+                imagesArray={imagesArray}
+                startingSlideIdx={startingSlideIdx}
+              />
+            </Flex>
+          </ModalContent>
+        </Modal>
+      )}
+      {/* {showCarousel && (
+        <Flex w="100%" alignItems="center" position="relative">
+        <Box position="fixed" top={0} left={0} bottom={0} right={0}>
+          <GalleryImageCarousel imagesArray={imagesArray} />
+        </Box>
+        </Flex>
+      )} */}
     </PageContainer>
   );
 };
