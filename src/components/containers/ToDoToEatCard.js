@@ -11,7 +11,19 @@ import {
 } from "@chakra-ui/react";
 import Paper from "components/containers/Paper";
 import { MdOutlineFastfood } from "react-icons/md";
+import { IoBeerOutline } from "react-icons/io5";
+import { GiSunglasses } from "react-icons/gi";
+import { MdOutlineBeachAccess } from "react-icons/md";
+import { FaRegSun } from "react-icons/fa";
 import Activity from "components/Activity";
+
+const icons = {
+  Eat: MdOutlineFastfood,
+  Drink: IoBeerOutline,
+  // Play: GiSunglasses,
+  // Play: FaRegSun,
+  Play: MdOutlineBeachAccess,
+};
 
 const ToDoToEatCard = ({ heading }) => {
   return (
@@ -23,7 +35,7 @@ const ToDoToEatCard = ({ heading }) => {
         py="32px"
         direction="column"
       >
-        <Icon as={MdOutlineFastfood} boxSize="40px" />
+        <Icon as={icons[heading]} boxSize="40px" />
         <Heading
           textAlign="left"
           alignSelf="start"

@@ -16,7 +16,7 @@ const Activity = () => {
   return (
     <VStack w="100%">
       <HStack w="100%" align="center" justify="space-between">
-        <Heading>Name</Heading>
+        <Heading fontWeight="500">Name</Heading>
         <IconButton
           bg="transparent"
           _hover={{ bg: "transparent" }}
