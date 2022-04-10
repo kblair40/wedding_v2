@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Flex,
-  Modal,
-  ModalContent,
-  ModalCloseButton,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, Modal, ModalContent, ModalCloseButton } from "@chakra-ui/react";
 
 import PageContainer from "components/containers/PageContainer";
 import GalleryImages from "components/GalleryImages";
@@ -79,7 +72,9 @@ const Gallery = () => {
         type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
+
       <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />
+
       {showCarousel && (
         <Modal
           isOpen={showCarousel}
@@ -90,15 +85,10 @@ const Gallery = () => {
             <ModalCloseButton
               right="8px"
               zIndex={1}
-              // color="neutral.black"
               bg="neutral.black"
               transition=".3s ease-in-out"
-              // _hover={{ bg: "white" }}
               color="neutral.white"
             />
-            {/* <Text fontSize="sm" color="white" fontWeight="700">
-              CLOSE
-            </Text> */}
             <Flex alignItems="center" h="100vh">
               <GalleryImageCarousel
                 imagesArray={imagesArray}
@@ -108,13 +98,6 @@ const Gallery = () => {
           </ModalContent>
         </Modal>
       )}
-      {/* {showCarousel && (
-        <Flex w="100%" alignItems="center" position="relative">
-        <Box position="fixed" top={0} left={0} bottom={0} right={0}>
-          <GalleryImageCarousel imagesArray={imagesArray} />
-        </Box>
-        </Flex>
-      )} */}
     </PageContainer>
   );
 };

@@ -19,7 +19,6 @@ import "./App.css";
 
 function App() {
   return (
-    // <Box border="2px solid orange" maxW="100vw">
     <Box position="relative" sx={{ overflow: "hidden !important" }}>
       <Nav />
       <UserProvider>

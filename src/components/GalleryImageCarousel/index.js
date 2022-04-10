@@ -12,7 +12,6 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
 
   // Slider settings
   const settings = {
-    dots: true,
     arrows: false,
     fade: true,
     infinite: true,
@@ -31,14 +30,10 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
   return (
     <Box
       position={"relative"}
-      // height={"600px"}
       height="86vh"
       width={"full"}
       overflow={"hidden"}
-      // borderRadius="8px"
-      // border="1px solid green"
       pt="12px"
-      // py="24px"
     >
       <IconButton
         aria-label="left-arrow"
