@@ -14,7 +14,7 @@ const PageContainer = ({
     direction: "column",
     w: "100%",
     // justifyContent: "center",
-    border: "1px solid black",
+    // border: "1px solid black",
     justifyContent: center ? "center" : undefined,
     ...rest,
   };
