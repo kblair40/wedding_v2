@@ -12,25 +12,15 @@ Add dropdown for requesting directions.
 
 const Map = () => {
   return (
-    <Box
-      sx={{
-        ".hotelIcon": {
-          "path &": {
-            fill: "white",
-            stroke: "white",
-          },
-          // border: "1px solid white",
-          // bg: "white",
-        },
-      }}
-    >
+    <Box>
       <MapContainer
-        bounds={[
-          [28, -82],
-          [29, -81],
+        maxBounds={[
+          [28.6, -81.4],
+          [28.61, -81.3],
         ]}
         center={[28.603193529978682, -81.35028822469964]}
         zoom={10}
+        minZoom={10}
         style={{ height: "400px" }}
       >
         <MapContents />
