@@ -83,7 +83,7 @@ export const getAllInvitees = async () => {
   const inviteesRef = collection(db, `invitees`);
 
   const allDocs = await getDocs(inviteesRef);
-  console.log("\n\nALL DOCS:", allDocs);
+  // console.log("\n\nALL DOCS:", allDocs);
 
   const res = [];
   allDocs.forEach((doc) => {
@@ -94,7 +94,7 @@ export const getAllInvitees = async () => {
     let mergedDoc = { id, ...data };
     res.push(mergedDoc);
   });
-  console.log("RES:", res);
+  // console.log("RES:", res);
   return res;
 };
 
