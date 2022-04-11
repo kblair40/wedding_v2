@@ -5,6 +5,7 @@ import { FaPlane, FaPlaneDeparture } from "react-icons/fa";
 import airplane_marker from "assets/icons/airplane_marker.svg";
 import hotel_marker from "assets/icons/hotel_marker3.png";
 import venue_marker from "assets/icons/venue_marker.png";
+import mickey from "assets/icons/mickey.svg";
 // import hotel_marker from "assets/icons/hotel_marker2.svg";
 import L from "leaflet";
 
@@ -21,6 +22,11 @@ const Markers = () => {
   });
   const venueIcon = L.icon({
     iconUrl: venue_marker,
+    iconSize: [36, 36],
+    popupAnchor: [0, 0],
+  });
+  const mickeyIcon = L.icon({
+    iconUrl: mickey,
     iconSize: [36, 36],
     popupAnchor: [0, 0],
   });
@@ -66,6 +72,14 @@ const Markers = () => {
       >
         <Popup>
           <Text>Orlando Sanford Int'l Airport</Text>
+        </Popup>
+      </Marker>
+      <Marker
+        icon={mickeyIcon}
+        position={[28.377959747351433, -81.56906630160574]}
+      >
+        <Popup>
+          <Text>Disney World</Text>
         </Popup>
       </Marker>
     </React.Fragment>
