@@ -14,6 +14,7 @@ const OverlayCard = ({ imageURL, children, label, ...rest }) => {
       {...rest}
     >
       <Flex
+        className="wrapper"
         zIndex={5}
         alignItems="center"
         direction="column"
@@ -29,7 +30,12 @@ const OverlayCard = ({ imageURL, children, label, ...rest }) => {
         }}
         _hover={{
           ".label": {
-            bg: "rgba(0, 0, 0, 0.75)",
+            bg: "rgba(0, 0, 0, 0.35)",
+            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+            backdropFilter: "blur('6px')",
+            "-webkit-backdrop-filter": "blur('6px')",
+            borderRadius: "10px",
+            // border: "1px solid rgba(255, 255, 255, 0.18)",
           },
         }}
       >
@@ -51,7 +57,6 @@ const OverlayCard = ({ imageURL, children, label, ...rest }) => {
           transition=".25s"
           px="8px"
           borderRadius="4px"
-          bg="rgba(0, 0, 0, 0)"
           pointerEvents="none"
           textAlign="center"
           color="neutral.white"
