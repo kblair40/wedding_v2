@@ -66,7 +66,7 @@ const FetchedInviteList = () => {
 
   const row = (guest) => {
     return (
-      <Tr>
+      <Tr key={guest.id}>
         <Td>{guest.first_name}</Td>
         <Td>{guest.last_name}</Td>
         <Td>{guest.replied}</Td>

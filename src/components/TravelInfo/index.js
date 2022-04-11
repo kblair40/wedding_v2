@@ -18,7 +18,8 @@ import Paper from "components/containers/Paper";
 
 const paperStyles = {
   flex: 1,
-  w: { base: "300px", sm: "350px", md: "300px", lg: "350px" },
+  w: "100%",
+  maxW: { base: "350px", sm: "375px", md: "300px", lg: "350px" },
 };
 
 const TravelInfo = () => {
@@ -33,7 +34,7 @@ const TravelInfo = () => {
         direction={{ base: "column", md: "row" }}
         alignItems="center"
         justifyContent="center"
-        // border="1px solid black"
+        px="16px"
       >
         <Paper {...paperStyles}>
           <VStack alignItems="center" spacing="1rem">
@@ -86,7 +87,11 @@ const TravelInfo = () => {
           </VStack>
         </Paper>
 
-        <Paper {...paperStyles} ml="1rem">
+        <Paper
+          {...paperStyles}
+          ml={{ base: "0", md: "1rem" }}
+          mt={{ base: "1rem", md: 0 }}
+        >
           <VStack alignItems="center" spacing="1rem">
             <Icon as={AiOutlineCar} boxSize="48px" color="neutral.black" />
             <Heading fontSize="4xl">By Car</Heading>

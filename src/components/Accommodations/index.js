@@ -18,7 +18,7 @@ import hgi_lobby from "assets/images/hgi_lobby.jpeg";
 
 const Accommodations = () => {
   return (
-    <Flex w="100%" direction="column">
+    <Flex w="100%" direction="column" px="16px">
       <Heading fontSize="4xl" textAlign="center">
         ACCOMMODATIONS
       </Heading>
@@ -36,7 +36,6 @@ const Accommodations = () => {
       <Flex mt="16px" justify="space-between" mb="32px">
         <OverlayCard imageURL={hgi_lobby} label="Hilton Garden Inn" />
         <OverlayCard ml="16px" imageURL={alfond} label="The Alfond Inn" />
-        {/* <OverlayCard imageURL={alfond}>The Alfond Inn</OverlayCard> */}
       </Flex>
     </Flex>
   );

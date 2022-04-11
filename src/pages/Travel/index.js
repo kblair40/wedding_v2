@@ -9,19 +9,12 @@ import Map from "components/Map";
 const Travel = () => {
   return (
     <Flex justify="center">
-      <Box
-        // maxW={{}}
-        // border="1px solid black"
-        maxW={MAX_WIDTHS()}
-        mt="36px"
-        w="100%"
-        pb="32px"
-      >
+      <Box maxW={MAX_WIDTHS()} mt="36px" w="100%" pb="16px">
         <TravelInfo />
         <Box mt="36px">
           <Accommodations />
         </Box>
-        <Box mt="36px">
+        <Box mt="20px" px="16px">
           <Map />
         </Box>
       </Box>
