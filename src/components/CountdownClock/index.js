@@ -14,6 +14,7 @@ const CountdownClock = () => {
     minutes: undefined,
   });
 
+  // const WEDDING_DATE = "2022-04-13";
   const WEDDING_DATE = "2023-01-21";
 
   useEffect(() => {
@@ -25,14 +26,21 @@ const CountdownClock = () => {
   }, []);
 
   const calcTime = () => {
-    const diffMS = Date.parse(WEDDING_DATE) - Date.parse(new Date());
+    const weddingDate = new Date(WEDDING_DATE);
+    const offsetMS = weddingDate.getTimezoneOffset() * 60 * 1000;
+
+    const diffMS = new Date(WEDDING_DATE) - new Date() + offsetMS;
 
     const minutes = Math.floor((diffMS / 1000 / 60) % 60);
     const hours = Math.floor((diffMS / (1000 * 60 * 60)) % 24);
     const days = Math.floor(diffMS / (1000 * 60 * 60 * 24));
 
-    console.log("TIME DIFF:", { days, hours, minutes });
-    setTimeDiff({ days, hours, minutes });
+    // console.log("TIME DIFF:", { days, hours, minutes });
+    setTimeDiff({
+      days,
+      hours,
+      minutes,
+    });
   };
 
   const countdownFontSize = useBreakpointValue({
