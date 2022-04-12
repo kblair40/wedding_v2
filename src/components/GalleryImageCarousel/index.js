@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  IconButton,
+  useBreakpointValue,
+  Image,
+  Flex,
+} from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 
@@ -17,6 +23,8 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
     infinite: true,
     speed: 500,
     initialSlide: startingSlideIdx,
+    centerMode: true,
+    centerPadding: "16px",
   };
 
   const arrowBtnStyles = {
@@ -55,16 +63,17 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
 
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {imagesArray.map((url, index) => (
-          <Box
-            borderRadius="8px"
-            key={index}
-            height={"6xl"}
-            position="relative"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            backgroundSize="cover"
-            backgroundImage={`url(${url})`}
-          />
+          <Flex justifyContent="center" w="100%" alignItems="center">
+            <Image
+              mx="auto"
+              src={url}
+              key={index}
+              // h="80vh"
+              maxH="80vh"
+              maxW="100%"
+              borderRadius="4px"
+            />
+          </Flex>
         ))}
       </Slider>
     </Box>

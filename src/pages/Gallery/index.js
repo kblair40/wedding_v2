@@ -77,6 +77,7 @@ const Gallery = () => {
 
       {showCarousel && (
         <Modal
+          isCentered
           isOpen={showCarousel}
           onClose={() => setShowCarousel(false)}
           size="full"
