@@ -2,7 +2,6 @@ import React from "react";
 import { Box, useBreakpointValue, Flex } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
-import { MAX_WIDTHS } from "utils/constants";
 import OurNames from "./OurNames";
 import Navbar from "./Navbar";
 
@@ -17,11 +16,7 @@ const OurNamesPlusNav = () => {
   });
 
   return (
-    <Flex
-      direction="column"
-      alignItems="center"
-      // border="1px solid black"
-    >
+    <Flex direction="column" alignItems="center">
       <Flex
         justify="center"
         w="100%"
@@ -33,7 +28,6 @@ const OurNamesPlusNav = () => {
       </Flex>
 
       <Box
-        // border="1px solid black"
         transition=".5s ease-in-out"
         zIndex={1}
         bg="white"
@@ -48,11 +42,8 @@ const OurNamesPlusNav = () => {
         <Flex
           minHeight="50px"
           mt="8px"
-          // border="1px solid orange"
-          // w="100%"
-          className="nav-container"
+          className="fade-in-immediate"
           justify="center"
-          //
         >
           <Navbar />
         </Flex>

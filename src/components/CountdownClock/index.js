@@ -50,11 +50,9 @@ const CountdownClock = () => {
 
   return (
     <Box
-      // mt="32px"
-      // borderTop="1px solid #f0f0f0"
       shadow="md"
-      bg="white"
-      // bg="neutral.white"
+      // bg="white"
+      bg="neutral.white"
       py="8px"
       position="fixed"
       bottom={0}

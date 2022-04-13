@@ -29,7 +29,7 @@ const OurNames = () => {
           w="100%"
           maxW="600px"
           mt="8px"
-          className="our-names"
+          className="fade-in-immediate"
         >
           <Heading
             // letterSpacing="1.5px"
