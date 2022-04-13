@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
-
+import "animate.css";
 // import "focus-visible/dist/focus-visible";
 
 import UserProvider from "store/UserContext";
