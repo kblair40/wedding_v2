@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, useBreakpointValue, Flex } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
@@ -7,25 +7,14 @@ import OurNames from "./OurNames";
 import Navbar from "./Navbar";
 
 const OurNamesPlusNav = () => {
-  const {
-    ref,
-    inView,
-    // entry
-  } = useInView({
+  const { ref, inView } = useInView({
     threshold: 0,
   });
-
-  useEffect(() => {
-    // console.log("\n\nIN VIEW:", inView);
-    // console.log("ENTRY:", entry, "\n\n");
-  }, [inView]);
 
   const showShadow = useBreakpointValue({
     base: true,
     md: !inView,
   });
-
-  console.log("MAX WIDTHS:", MAX_WIDTHS());
 
   return (
     <Flex
@@ -57,9 +46,11 @@ const OurNamesPlusNav = () => {
         w="100%"
       >
         <Flex
+          minHeight="50px"
           mt="8px"
           // border="1px solid orange"
           // w="100%"
+          className="nav-container"
           justify="center"
           //
         >

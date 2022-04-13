@@ -5,10 +5,13 @@ import color_hor_img from "assets/images/dock_kiss.jpg";
 import CountdownClock from "components/CountdownClock";
 import PageContainer from "components/containers/PageContainer";
 
+import "./index.css";
+
 const Home = () => {
   return (
     <PageContainer px={0} center>
       <Box
+        className="bg-image-main"
         zIndex={-1}
         position="relative"
         bgImage={color_hor_img}
@@ -20,7 +23,10 @@ const Home = () => {
         bgRepeat="no-repeat"
       />
       <Box h="1000px" />
-      <CountdownClock />
+
+      <Box className="timer">
+        <CountdownClock />
+      </Box>
     </PageContainer>
   );
 };

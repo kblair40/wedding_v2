@@ -8,7 +8,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-import "./index.css";
+// import "./index.css";
 
 const OurNames = () => {
   const headingSize = useBreakpointValue({ base: "lg", sm: "2xl", md: "6xl" });
@@ -29,7 +29,7 @@ const OurNames = () => {
           w="100%"
           maxW="600px"
           mt="8px"
-          className="names"
+          className="our-names"
         >
           <Heading
             // letterSpacing="1.5px"

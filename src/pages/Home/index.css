@@ -1,0 +1,26 @@
+.our-names {
+  animation: fadeIn;
+  animation-delay: 0.1s;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+}
+
+.nav-container {
+  animation: fadeIn;
+  animation-delay: 0.2s;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+}
+.bg-image-main {
+  animation: fadeIn;
+  animation-delay: 0.4s;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+}
+.timer {
+  opacity: 0.95;
+  animation: fadeIn;
+  animation-delay: 0.6s;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+}
