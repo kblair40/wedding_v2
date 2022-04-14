@@ -35,7 +35,6 @@ const OverlayCard = ({ imageURL, children, label, ...rest }) => {
             backdropFilter: "blur('6px')",
             "-webkit-backdrop-filter": "blur('6px')",
             borderRadius: "10px",
-            // border: "1px solid rgba(255, 255, 255, 0.18)",
           },
         }}
       >
@@ -60,8 +59,8 @@ const OverlayCard = ({ imageURL, children, label, ...rest }) => {
           pointerEvents="none"
           textAlign="center"
           color="neutral.white"
-          fontWeight="700"
-          fontSize="4xl"
+          fontWeight="600"
+          fontSize="xl"
           zIndex={1}
         >
           {label}
