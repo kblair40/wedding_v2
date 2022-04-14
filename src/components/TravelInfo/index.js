@@ -45,23 +45,13 @@ const TravelInfo = () => {
               By Plane
             </Heading>
             <VStack>
-              <Text
-                lineHeight="20px"
-                // fontWeight="600"
-                // fontSize="15px"
-                //
-              >
+              <Text lineHeight="20px">
                 Orlando Int'l Airport (ORL) is predominantly served by Southwest
                 and Delta, although you'll be able to find flights from all
                 major airlines. Alternatively, Orlando-Sanford (SFB) Int'l
                 Airport offers flights mostly from Allegiant.
               </Text>
-              <Text
-                lineHeight="20px"
-                // fontWeight="600"
-                // fontSize="15px"
-                //
-              >
+              <Text lineHeight="20px">
                 The drive from either airport to Winter Park is roughly 30
                 minutes. Taxi and rideshare services (Uber, Lyft) are available
                 at both airports

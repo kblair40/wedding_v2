@@ -49,7 +49,7 @@ const theme = extendTheme({
     },
     Text: {
       sizes: {
-        "2xs": { fontSize: "9px" },
+        "2xs": { fontSize: "10px" },
         xs: { fontSize: "12px" },
         sm: { fontSize: "14px" },
         md: { fontSize: "16px" },
