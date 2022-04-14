@@ -77,6 +77,7 @@ const TravelInfo = () => {
                   border="1px solid"
                   borderColor="neutral.black"
                   variant="outline"
+                  fontWeight="500"
                   _hover={{
                     bg: "neutral.black",
                     color: "neutral.white",
@@ -130,6 +131,7 @@ const TravelInfo = () => {
                 transition=".25s ease-in-out"
                 border="1px solid"
                 borderColor="neutral.black"
+                fontWeight="500"
                 variant="outline"
                 _hover={{
                   bg: "neutral.black",

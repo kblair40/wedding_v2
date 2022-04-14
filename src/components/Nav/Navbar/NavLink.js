@@ -14,31 +14,12 @@ const NavLink = ({ to, children }) => {
         textDecoration: "none",
       }}
     >
-      <Box
-        className="link-wrapper"
-        // borderBottom="1px solid #000"
-        // _after={{
-        //   content: "",
-        //   borderBottom: "3px solid #000",
-        //   width: "10px",
-        //   display: "block",
-        // }}
-      >
+      <Box className="link-wrapper">
         <Flex
-          // border="1px solid green"
-          // className="link-wrapper"
           borderRadius="4px"
           py="4px"
           alignItems="center"
           px="12px"
-          _hover={{
-            ".nav-text": {
-              // color: "white",
-            },
-          }}
-          // _hover={{ bg: "neutral.100" }}
-          // _focus={{ bg: "neutral.50" }}
-          // _active={{ bg: "neutral.200" }}
           transition=".2s ease-in-out"
         >
           <Text className="nav-text" whiteSpace="nowrap">

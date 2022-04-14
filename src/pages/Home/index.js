@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <PageContainer px={0} center>
       <Box
-        className="bg-image-main"
+        className="fade-in-immediate"
         zIndex={-1}
         position="relative"
         bgImage={color_hor_img}
@@ -24,7 +24,7 @@ const Home = () => {
       />
       <Box h="1000px" />
 
-      <Box className="timer">
+      <Box className="fade-in-immediate">
         <CountdownClock />
       </Box>
     </PageContainer>
