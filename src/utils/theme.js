@@ -61,7 +61,7 @@ const theme = extendTheme({
       },
       baseStyle: {
         color: "#2d2d2d",
-        fontWeight: "500",
+        fontWeight: "400",
       },
     },
     Heading: {
@@ -91,7 +91,8 @@ const theme = extendTheme({
     // heading: "EB Garamond",
     heading: "Cormorant Garamond",
     // body: "Josefin Slab",
-    body: "Cormorant Garamond",
+    // body: "Cormorant Garamond",
+    body: "Poppins",
     mono: "Josefin Slab",
   },
 });

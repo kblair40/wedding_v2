@@ -20,6 +20,8 @@ const paperStyles = {
   flex: 1,
   w: "100%",
   maxW: { base: "350px", sm: "375px", md: "300px", lg: "350px" },
+  bg: "white",
+  shadow: "none",
 };
 
 const TravelInfo = () => {
@@ -39,11 +41,14 @@ const TravelInfo = () => {
         <Paper {...paperStyles}>
           <VStack alignItems="center" spacing="1rem">
             <Icon as={FaPlaneDeparture} boxSize="48px" color="neutral.black" />
-            <Heading fontSize="4xl">By Plane</Heading>
+            <Heading fontSize="4xl" fontWeight="500">
+              By Plane
+            </Heading>
             <VStack>
               <Text
                 lineHeight="20px"
-                fontWeight="600"
+                // fontWeight="600"
+                fontSize="sm"
                 //
               >
                 Orlando Int'l Airport (ORL) is predominantly served by Southwest
@@ -53,7 +58,8 @@ const TravelInfo = () => {
               </Text>
               <Text
                 lineHeight="20px"
-                fontWeight="600"
+                // fontWeight="600"
+                fontSize="sm"
                 //
               >
                 The drive from either airport to Winter Park is roughly 30
@@ -66,19 +72,26 @@ const TravelInfo = () => {
               pt="8px"
               w="100%"
             >
-              <Link isExternal href="https://www.google.com/flights">
+              <Link
+                isExternal
+                href="https://www.google.com/flights"
+                textDecoration="none"
+                _hover={{
+                  textDecoration: "none",
+                }}
+              >
                 <Button
                   w="100%"
                   bg="white"
-                  fontSize="lg"
                   transition=".25s ease-in-out"
                   border="1px solid"
-                  borderColor="transparent"
+                  borderColor="neutral.black"
+                  variant="outline"
                   _hover={{
-                    borderColor: "neutral.200",
-                    bg: "neutral.50",
+                    bg: "neutral.black",
+                    color: "neutral.white",
                   }}
-                  _active={{ bg: "neutral.200" }}
+                  _active={{ bg: "text.secondary" }}
                 >
                   Search Flights
                 </Button>
@@ -94,15 +107,17 @@ const TravelInfo = () => {
         >
           <VStack alignItems="center" spacing="1rem">
             <Icon as={AiOutlineCar} boxSize="48px" color="neutral.black" />
-            <Heading fontSize="4xl">By Car</Heading>
+            <Heading fontSize="4xl" fontWeight="500">
+              By Car
+            </Heading>
             <VStack>
-              <Text lineHeight="20px" fontWeight="600">
+              <Text lineHeight="20px" fontSize="sm">
                 Orlando Int'l Airport (ORL) is predominantly served by Southwest
                 and Delta, although you'll be able to find flights from all
                 major airlines. Alternatively, Orlando-Sanford (SFB) Int'l
                 Airport offers flights mostly from Allegiant.
               </Text>
-              <Text lineHeight="20px" fontWeight="600">
+              <Text lineHeight="20px" fontSize="sm">
                 The drive from either airport to Winter Park is roughly 30
                 minutes. Taxi and rideshare services (Uber, Lyft) are available
                 at both airports
@@ -113,38 +128,21 @@ const TravelInfo = () => {
               pt="8px"
               w="100%"
             >
-              <HStack>
-                <Button
-                  w="100%"
-                  bg="white"
-                  fontSize="lg"
-                  transition=".25s ease-in-out"
-                  border="1px solid"
-                  borderColor="transparent"
-                  _hover={{
-                    borderColor: "neutral.200",
-                    bg: "neutral.50",
-                  }}
-                  _active={{ bg: "neutral.200" }}
-                >
-                  Rent a Car
-                </Button>
-                <Button
-                  w="100%"
-                  bg="white"
-                  fontSize="lg"
-                  transition=".25s ease-in-out"
-                  border="1px solid"
-                  borderColor="transparent"
-                  _hover={{
-                    borderColor: "neutral.200",
-                    bg: "neutral.50",
-                  }}
-                  _active={{ bg: "neutral.200" }}
-                >
-                  Get Directions
-                </Button>
-              </HStack>
+              <Button
+                w="100%"
+                bg="white"
+                transition=".25s ease-in-out"
+                border="1px solid"
+                borderColor="neutral.black"
+                variant="outline"
+                _hover={{
+                  bg: "neutral.black",
+                  color: "neutral.white",
+                }}
+                _active={{ bg: "text.secondary" }}
+              >
+                Get Directions
+              </Button>
             </Box>
           </VStack>
         </Paper>
