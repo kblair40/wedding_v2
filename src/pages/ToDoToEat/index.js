@@ -14,51 +14,23 @@ import { addGuest } from "api/api";
 import { MAX_WIDTHS } from "utils/constants";
 import PageContainer from "components/containers/PageContainer";
 import ToDoToEatCard from "components/containers/ToDoToEatCard";
+import Activities from "components/Activities";
 
 const ToDoToEat = () => {
   return (
     <PageContainer center px={{ base: 0, md: "24px" }}>
       <Flex
-        // border="1px solid green"
-        justify="center"
-        mt="36px"
+        maxW={{
+          md: "720px",
+          lg: "900px",
+        }}
+        align="center"
+        direction="column"
         w="100%"
-        pb="32px"
+        // border="1px solid red"
+        pt="24px"
       >
-        <Flex
-          maxW={{
-            // base: "420px",
-            // sm: "480px",
-            md: "720px",
-            lg: "900px",
-          }}
-          // maxW={MAX_WIDTHS()}
-          align="center"
-          direction="column"
-          w="100%"
-          // border="1px solid red"
-        >
-          <Stack
-            // border="1px solid red"
-            spacing={{ base: "16px" }}
-            direction={{ base: "column", md: "row" }}
-            justifyContent="center"
-            w="100%"
-          >
-            <Box>
-              <ToDoToEatCard heading="Eat" />
-            </Box>
-            <Box>
-              <ToDoToEatCard heading="Drink" />
-            </Box>
-            <Box>
-              <ToDoToEatCard heading="Play" />
-            </Box>
-          </Stack>
-          <Box mt="16px" w="100%">
-            <ToDoToEatCard heading="For the Kiddos" />
-          </Box>
-        </Flex>
+        <Activities />
       </Flex>
     </PageContainer>
   );
@@ -66,19 +38,49 @@ const ToDoToEat = () => {
 
 export default ToDoToEat;
 
-// const addNewGuest = () => {
-//   addGuest({
-//     firstName: "fakefn2",
-//     lastName: "fakeln2",
-//     email: "email1@email.com",
-//     phoneNumber: "123.456.4321",
-//     side: "groom",
-//     entree: "beef",
-//   });
-// };
-
-{
-  /* <Button onClick={addNewGuest} size="sm">
-  Add Guest
-</Button> */
-}
+// return (
+//   <PageContainer center px={{ base: 0, md: "24px" }}>
+//     <Flex
+//       // border="1px solid green"
+//       justify="center"
+//       mt="36px"
+//       w="100%"
+//       pb="32px"
+//     >
+//       <Flex
+//         maxW={{
+//           // base: "420px",
+//           // sm: "480px",
+//           md: "720px",
+//           lg: "900px",
+//         }}
+//         // maxW={MAX_WIDTHS()}
+//         align="center"
+//         direction="column"
+//         w="100%"
+//         // border="1px solid red"
+//       >
+//         <Stack
+//           // border="1px solid red"
+//           spacing={{ base: "16px" }}
+//           direction={{ base: "column", md: "row" }}
+//           justifyContent="center"
+//           w="100%"
+//         >
+//           <Box>
+//             <ToDoToEatCard heading="Eat" />
+//           </Box>
+//           <Box>
+//             <ToDoToEatCard heading="Drink" />
+//           </Box>
+//           <Box>
+//             <ToDoToEatCard heading="Play" />
+//           </Box>
+//         </Stack>
+//         <Box mt="16px" w="100%">
+//           <ToDoToEatCard heading="For the Kiddos" />
+//         </Box>
+//       </Flex>
+//     </Flex>
+//   </PageContainer>
+// );
