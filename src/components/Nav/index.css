@@ -1,0 +1,17 @@
+.link-wrapper::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #2d2d2d;
+  transition: width 0.2s;
+  /*  */
+  position: relative;
+  bottom: 4px;
+  margin: 2px auto 0;
+}
+
+.link-wrapper:hover::after {
+  width: 80%;
+  transition: width 0.3s;
+}

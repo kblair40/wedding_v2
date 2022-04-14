@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 import OurNames from "./OurNames";
 import Navbar from "./Navbar";
+import "./index.css";
 
 const OurNamesPlusNav = () => {
   const { ref, inView } = useInView({
