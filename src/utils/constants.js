@@ -58,7 +58,33 @@ export const ACTIVITIES = {
       priceLevel: 2,
     },
   ],
-  breakfast: [{}],
+  breakfast: [
+    {
+      name: "Keke's Breakfast Cafe",
+      url: "https://www.kekes.com",
+      priceLevel: 2,
+    },
+    {
+      name: "Se7en Bites",
+      url: "http://www.se7enbites.com",
+      priceLevel: 2,
+    },
+    {
+      name: "Another Broken Egg Cafe",
+      url: "http://www.anotherbrokenegg.com",
+      priceLevel: 2,
+    },
+    {
+      name: "First Watch",
+      url: "http://www.firstwatch.com",
+      priceLevel: 2,
+    },
+    {
+      name: "Briarpatch Restaurant",
+      url: "http://www.thebriarpatchrestaurant.com/",
+      priceLevel: 2,
+    },
+  ],
   coffeeTea: [
     {
       name: "KOS Coffee & Bodega",
