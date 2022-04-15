@@ -21,12 +21,9 @@ const Navbar = () => {
 
   return (
     <Box
-      maxH="50px"
       // border="1px solid #ccc"
       position="relative"
       w="100%"
-      // maxW={{ base: "480px", md: "768px" }}
-      // maxW={MAX_WIDTHS()}
     >
       <Flex py="8px" justify="center" align="center" w="100%" h="50px">
         <Box display={{ base: "flex", md: "none" }} w="100%" h="50px">
@@ -39,7 +36,7 @@ const Navbar = () => {
           >
             <IconButton
               position="absolute"
-              left={{ base: "4px" }}
+              left={{ base: "8px" }}
               top="4px"
               _hover={{ bg: "transparent" }}
               _active={{ bg: "transparent" }}
@@ -75,7 +72,7 @@ const Navbar = () => {
         </Flex>
       </Flex>
 
-      <Box bg="white">
+      <Box bg="white" shadow="sm">
         <Collapse in={isOpen} animateOpacity>
           <MobileNav />
         </Collapse>
@@ -88,13 +85,7 @@ export default Navbar;
 
 const MobileNav = () => {
   return (
-    <Stack
-      display={{ md: "none" }}
-      spacing="2px"
-      w="100%"
-      p="16px"
-      // border="1px solid #000"
-    >
+    <Stack display={{ md: "none" }} spacing="4px" w="100%" p="16px">
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -106,44 +97,36 @@ const MobileNavItem = ({ label, href }) => {
   const { onToggle } = useDisclosure();
 
   return (
-    <Stack
-      w="100%"
-      // bg="white"
-      onClick={onToggle}
-      justifyContent="center"
-      h="100%"
+    <Flex
       // border="1px solid #ccc"
-      // mb="4px"
-      // px="8px"
-      // position="relative"
-      // top="40px"
+      borderRadius="full"
+      as={Link}
+      href={href ?? "#"}
+      alignItems="center"
+      justifyContent="center"
+      transition=".3s ease-in-out"
+      _hover={{
+        textDecoration: "none",
+      }}
     >
-      <Flex
-        // mb="4px"
+      <Text
+        borderRadius="full"
+        // fontWeight={500}
+        fontSize="lg"
+        color="text.primary"
+        textAlign="center"
         // border="1px solid #ccc"
-        borderRadius="4px"
+        lineHeight="100%"
         py="8px"
-        as={Link}
-        href={href ?? "#"}
-        alignItems="center"
-        justifyContent="center"
-        transition=".25s ease-in-out"
+        w="100%"
         _hover={{
           textDecoration: "none",
-          bg: "neutral.100",
+          bg: "neutral.50",
         }}
       >
-        <Text
-          // fontFamily="Cormorant Garamond"
-          fontWeight={600}
-          fontSize="lg"
-          color="text.primary"
-          textAlign="center"
-        >
-          {label}
-        </Text>
-      </Flex>
-    </Stack>
+        {label}
+      </Text>
+    </Flex>
   );
 };
 
