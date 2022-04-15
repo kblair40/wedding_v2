@@ -54,7 +54,9 @@ const theme = extendTheme({
         sm: { fontSize: "14px" },
         md: { fontSize: "16px" },
         lg: { fontSize: "22px" },
-        xl: { fontSize: "25px" },
+        xl: { fontSize: "24px" },
+        "2xl": { fontSize: "26px" },
+        "3xl": { fontSize: "28px" },
       },
       defaultProps: {
         size: "md",
