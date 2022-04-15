@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Link } from "@chakra-ui/react";
+import { Box, Link, Text } from "@chakra-ui/react";
 
 const ActivityItem = ({ activity: { name, url, priceLevel } }) => {
   return (
@@ -13,7 +13,16 @@ const ActivityItem = ({ activity: { name, url, priceLevel } }) => {
           textDecoration: "none",
         }}
       >
-        {`${name}  ${"$".repeat(priceLevel)}`}
+        {name}
+        <Text
+          ml="6px"
+          d="inline"
+          fontSize="sm"
+          color="text.tertiary"
+          fontStyle="italic"
+        >
+          {"$".repeat(priceLevel)}
+        </Text>
       </Link>
     </Box>
   );
