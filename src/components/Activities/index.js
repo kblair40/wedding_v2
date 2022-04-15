@@ -1,6 +1,7 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 
+import { ACTIVITIES } from "utils/constants";
 import ActivityList from "./ActivityList";
 import ActivityItem from "./ActivityItem";
 
@@ -16,7 +17,17 @@ const Activities = () => {
       }}
       //
     >
-      <ActivityList label="coffee/tea">
+      <ActivityList label="coffee/tea" activities={ACTIVITIES.coffeeTea} />
+      <ActivityList
+        label="breakfast/brunch"
+        activities={ACTIVITIES.coffeeTea}
+      />
+      <ActivityList label="lunch/dinner" activities={ACTIVITIES.lunchDinner} />
+      {/* <ActivityItem name="Coffee Shop Name" />
+        <ActivityItem name="Donut Shop Name" />
+        <ActivityItem name="Cafe Winter Park" />
+      </ActivityList> */}
+      {/* <ActivityList label="coffee/tea">
         <ActivityItem name="Coffee Shop Name" />
         <ActivityItem name="Donut Shop Name" />
         <ActivityItem name="Cafe Winter Park" />
@@ -25,12 +36,7 @@ const Activities = () => {
         <ActivityItem name="Coffee Shop Name" />
         <ActivityItem name="Donut Shop Name" />
         <ActivityItem name="Cafe Winter Park" />
-      </ActivityList>
-      <ActivityList label="coffee/tea">
-        <ActivityItem name="Coffee Shop Name" />
-        <ActivityItem name="Donut Shop Name" />
-        <ActivityItem name="Cafe Winter Park" />
-      </ActivityList>
+      </ActivityList> */}
     </Flex>
   );
 };

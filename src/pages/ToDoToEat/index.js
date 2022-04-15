@@ -19,25 +19,8 @@ import Activities from "components/Activities";
 const ToDoToEat = () => {
   return (
     <PageContainer center>
-      <Flex
-        alignItems="center"
-        direction="column"
-        // justifyContent="center"
-        w="100%"
-        // border="1px solid red"
-        pt="24px"
-      >
-        {/* <Flex
-        justify="center"
-        border="1px solid green"
-        w="100%"
-        maxW={{
-          md: "720px",
-          lg: "900px",
-        }}
-      > */}
+      <Flex alignItems="center" direction="column" w="100%" pt="24px">
         <Activities />
-        {/* </Flex> */}
       </Flex>
     </PageContainer>
   );

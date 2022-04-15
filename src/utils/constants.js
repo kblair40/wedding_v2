@@ -41,7 +41,7 @@ export const MAX_WIDTHS = () => ({
 });
 
 export const ACTIVITIES = {
-  eat: [
+  lunchDinner: [
     {
       name: "Hillstone",
       url: "https://hillstonerestaurant.com/locations/winterpark/",
@@ -55,6 +55,29 @@ export const ACTIVITIES = {
     {
       name: "The Ravenous Pig",
       url: "https://www.bosphorousrestaurant.com/",
+      priceLevel: 2,
+    },
+  ],
+  breakfast: [{}],
+  coffeeTea: [
+    {
+      name: "KOS Coffee & Bodega",
+      url: "https://choosekos.com/",
+      priceLevel: 2,
+    },
+    {
+      name: "New General",
+      url: "https://www.newgeneral.us/",
+      priceLevel: 2,
+    },
+    {
+      name: "Foxtail Coffee",
+      url: "https://www.foxtailcoffee.com/",
+      priceLevel: 1,
+    },
+    {
+      name: "Barnie's Coffee & Tea Co.",
+      url: "https://www.barniescoffee.com/",
       priceLevel: 2,
     },
   ],

@@ -1,11 +1,16 @@
 import React from "react";
 import { Box, Heading, Text, Flex } from "@chakra-ui/react";
 
-const ActivityList = ({ label, children }) => {
+import ActivityItem from "./ActivityItem";
+
+const ActivityList = ({ label, activities }) => {
   return (
-    <Box
-    // border="1px solid black"
-    // p="12px 8px"
+    <Flex
+      flexDirection="column"
+      alignItems="flex-start"
+      // w="min-content"
+      // border="1px solid black"
+      // p="12px 8px"
     >
       <Heading
         fontWeight="700"
@@ -15,8 +20,14 @@ const ActivityList = ({ label, children }) => {
       >
         {label}
       </Heading>
-      {children}
-    </Box>
+      {activities.map((act) => {
+        return <ActivityItem activity={act} />;
+      })}
+      {/* <ActivityItem name="Coffee Shop Name" />
+      <ActivityItem name="Coffee Shop Name" />
+      <ActivityItem name="Coffee Shop Name" /> */}
+      {/* {children} */}
+    </Flex>
   );
 };
 
