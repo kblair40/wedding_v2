@@ -45,6 +45,18 @@ const Activities = () => {
         <GridItem>
           <ActivityList label="parks" activities={ACTIVITIES.parks} />
         </GridItem>
+        <GridItem>
+          <ActivityList label="drinks" activities={ACTIVITIES.drinks} />
+        </GridItem>
+        <GridItem>
+          <ActivityList label="sweets" activities={ACTIVITIES.sweets} />
+        </GridItem>
+        {/* <GridItem>
+          <ActivityList
+            label="off the beaten path"
+            activities={ACTIVITIES.sweets}
+          />
+        </GridItem> */}
       </Grid>
     </Flex>
   );

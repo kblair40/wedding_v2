@@ -60,13 +60,8 @@ export const ACTIVITIES = {
   ],
   breakfast: [
     {
-      name: "Keke's Breakfast Cafe",
-      url: "https://www.kekes.com",
-      priceLevel: 2,
-    },
-    {
-      name: "Se7en Bites",
-      url: "http://www.se7enbites.com",
+      name: "Briarpatch Restaurant",
+      url: "http://www.thebriarpatchrestaurant.com/",
       priceLevel: 2,
     },
     {
@@ -75,13 +70,18 @@ export const ACTIVITIES = {
       priceLevel: 2,
     },
     {
-      name: "First Watch",
-      url: "http://www.firstwatch.com",
+      name: "The Glass Knife",
+      url: "http://theglassknife.com",
       priceLevel: 2,
     },
     {
-      name: "Briarpatch Restaurant",
-      url: "http://www.thebriarpatchrestaurant.com/",
+      name: "Se7en Bites",
+      url: "http://www.se7enbites.com",
+      priceLevel: 2,
+    },
+    {
+      name: "First Watch",
+      url: "http://www.firstwatch.com",
       priceLevel: 2,
     },
   ],
@@ -127,6 +127,55 @@ export const ACTIVITIES = {
       name: "Dinky Dock",
       url: "https://cityofwinterpark.org/departments/parks-recreation/parks-playgrounds/parks/dinky-dock-park/",
       priceLevel: 0,
+    },
+  ],
+  drinks: [
+    {
+      name: "Ivanhoe Park Brewing Co.",
+      url: "https://ivanhoeparkbrewing.com",
+      priceLevel: 2,
+    },
+    {
+      name: "The Gnarly Barley",
+      url: "https://www.thegnarlybarley.com",
+      priceLevel: 2,
+    },
+    {
+      name: "Tactical Brewing",
+      url: "http://www.tacticalbeer.com",
+      priceLevel: 2,
+    },
+    {
+      name: "Redlight Redlight",
+      url: "http://redlightredlightbeerparlour.com",
+      priceLevel: 2,
+    },
+  ],
+  sweets: [
+    {
+      name: "Gideon's Bakehouse",
+      url: "http://www.gideonsbakehouse.com",
+      priceLevel: 2,
+    },
+    {
+      name: "Ice & Bites Cafe",
+      url: "https://icenbitesorlando.wixsite.com/iceandbites",
+      priceLevel: 2,
+    },
+    {
+      name: "Sugar Dough Bakehouse",
+      url: "https://www.sugardoughbakehouse.com/",
+      priceLevel: 2,
+    },
+    {
+      name: "P is for Pie Bake Shop",
+      url: "http://crazyforpies.com/",
+      priceLevel: 2,
+    },
+    {
+      name: "Ice & Bites Cafe",
+      url: "https://icenbitesorlando.wixsite.com/iceandbites",
+      priceLevel: 2,
     },
   ],
 };
