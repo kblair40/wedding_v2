@@ -14,18 +14,21 @@ const PageContainer = ({
     direction: "column",
     w: "100%",
     justifyContent: center ? "center" : undefined,
+    border: showBorder ? "1px solid orange" : "none",
     ...rest,
   };
 
   const boxStyles = {
     w: "100%",
-    maxW: !responsive ? "100%" : { base: "480px", md: "500px", xl: "1280px" },
+    // maxW: !responsive ? "100%" : { base: "480px", md: "500px", xl: "1280px" },
     border: showBorder ? "1px solid #ccc" : "none",
   };
 
   return (
     <Flex {...flexStyles}>
-      <Box {...boxStyles}>{children}</Box>
+      {/* <Box {...boxStyles}> */}
+      {children}
+      {/* </Box> */}
     </Flex>
   );
 };
