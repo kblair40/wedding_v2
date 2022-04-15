@@ -22,6 +22,9 @@ const ToDoToEat = () => {
       <Flex alignItems="center" direction="column" w="100%" pt="24px">
         <Activities />
       </Flex>
+      {/* <Flex alignItems="center" direction="column" w="100%" mt="48px">
+        <Activities />
+      </Flex> */}
     </PageContainer>
   );
 };

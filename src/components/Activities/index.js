@@ -1,19 +1,33 @@
 import React from "react";
-import { Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, Text, Heading, Divider } from "@chakra-ui/react";
 
 import { ACTIVITIES } from "utils/constants";
 import ActivityList from "./ActivityList";
 
 const Activities = () => {
   return (
+    // <React.Fragment>
     <Flex
+      // border="1px solid #bbb"
       w="100%"
+      flexDirection="column"
+      // alignItems="center"
+      alignItems={{ base: "center", sm: "space-between" }}
       justifyContent="center"
       maxW={{
         md: "720px",
         lg: "900px",
       }}
     >
+      <Text
+        mb="24px"
+        fontWeight="400"
+        alignSelf={{ base: "center", sm: "flex-start" }}
+        fontSize="3xl"
+        // borderBottom="1px solid #333"
+      >
+        LOCAL TO WINTER PARK
+      </Text>
       <Grid
         // border="1px solid red"
         columnGap={{ base: "8px", sm: "24px", md: "40px" }}
@@ -58,7 +72,18 @@ const Activities = () => {
           />
         </GridItem> */}
       </Grid>
+      <Divider my="24px" borderColor="neutral.black" opacity={0.3} />
+      <Text
+        mb="24px"
+        fontWeight="400"
+        alignSelf={{ base: "center", sm: "flex-start" }}
+        fontSize="3xl"
+        // borderBottom="1px solid #333"
+      >
+        OFF THE BEATEN PATH
+      </Text>
     </Flex>
+    // {/* </React.Fragment> */}
   );
 };
 
