@@ -26,26 +26,20 @@ const Navbar = () => {
       position="relative"
       w="100%"
       // maxW={{ base: "480px", md: "768px" }}
-      maxW={MAX_WIDTHS()}
+      // maxW={MAX_WIDTHS()}
     >
-      <Flex
-        py="8px"
-        // border="1px solid blue"
-        justify="center"
-        align="center"
-        w="100%"
-        h="50px"
-      >
+      <Flex py="8px" justify="center" align="center" w="100%" h="50px">
         <Box display={{ base: "flex", md: "none" }} w="100%" h="50px">
           <Flex
             w="100%"
             alignItems="center"
             justifyContent="center"
             position="relative"
+            // border="1px solid #ccc"
           >
             <IconButton
               position="absolute"
-              left={{ base: 0, md: "4px" }}
+              left={{ base: "4px" }}
               top="4px"
               _hover={{ bg: "transparent" }}
               _active={{ bg: "transparent" }}
