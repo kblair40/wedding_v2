@@ -11,11 +11,11 @@ import {
 // import "./index.css";
 
 const OurNames = () => {
-  const headingSize = useBreakpointValue({ base: "lg", sm: "2xl", md: "6xl" });
+  const headingSize = useBreakpointValue({ base: "lg", sm: "2xl", md: "5xl" });
   const subHeadingSize = useBreakpointValue({
     base: "sm",
     sm: "lg",
-    md: "3xl",
+    md: "4xl",
   });
 
   return (
@@ -36,13 +36,14 @@ const OurNames = () => {
             lineHeight="40px"
             letterSpacing="3px"
             fontSize={headingSize}
+            fontWeight="500"
           >
             KEVIN
           </Heading>
           <Heading
             mx="6px"
-            // fontSize={subHeadingSize}
-            fontSize="4xl"
+            fontSize={subHeadingSize}
+            // fontSize="4xl"
             letterSpacing="3px"
             fontFamily="Great Vibes"
           >
@@ -53,6 +54,7 @@ const OurNames = () => {
             lineHeight="40px"
             letterSpacing="3px"
             fontSize={headingSize}
+            fontWeight="500"
           >
             SHANNON
           </Heading>

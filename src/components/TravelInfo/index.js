@@ -19,16 +19,17 @@ import Paper from "components/containers/Paper";
 const paperStyles = {
   flex: 1,
   w: "100%",
-  maxW: { base: "350px", sm: "375px", md: "300px", lg: "350px" },
+  maxW: { base: "350px", sm: "375px", md: "350px", lg: "350px" },
   bg: "white",
   shadow: "none",
+  // border: "1px solid #ccc",
 };
 
 const TravelInfo = () => {
   return (
     <React.Fragment>
-      <Heading textAlign="center" fontSize="4xl">
-        By Plane or By Car
+      <Heading textAlign="center" fontSize="4xl" fontWeight="500">
+        By Plane / By Car
       </Heading>
 
       <Flex
@@ -41,17 +42,17 @@ const TravelInfo = () => {
         <Paper {...paperStyles}>
           <VStack alignItems="center" spacing="1rem">
             <Icon as={FaPlaneDeparture} boxSize="48px" color="neutral.black" />
-            <Heading fontSize="4xl" fontWeight="500">
+            <Heading fontSize="3xl" fontWeight="400">
               By Plane
             </Heading>
             <VStack>
-              <Text lineHeight="20px">
+              <Text lineHeight="20px" textAlign="center">
                 Orlando Int'l Airport (ORL) is predominantly served by Southwest
                 and Delta, although you'll be able to find flights from all
                 major airlines. Alternatively, Orlando-Sanford (SFB) Int'l
                 Airport offers flights mostly from Allegiant.
               </Text>
-              <Text lineHeight="20px">
+              <Text lineHeight="20px" textAlign="center">
                 The drive from either airport to Winter Park is roughly 30
                 minutes. Taxi and rideshare services (Uber, Lyft) are available
                 at both airports
@@ -98,12 +99,13 @@ const TravelInfo = () => {
         >
           <VStack alignItems="center" spacing="1rem">
             <Icon as={AiOutlineCar} boxSize="48px" color="neutral.black" />
-            <Heading fontSize="4xl" fontWeight="500">
+            <Heading fontSize="3xl" fontWeight="400">
               By Car
             </Heading>
             <VStack>
               <Text
                 lineHeight="20px"
+                textAlign="center"
                 // fontSize="sm"
               >
                 Orlando Int'l Airport (ORL) is predominantly served by Southwest
@@ -113,6 +115,7 @@ const TravelInfo = () => {
               </Text>
               <Text
                 lineHeight="20px"
+                textAlign="center"
                 // fontSize="sm"
               >
                 The drive from either airport to Winter Park is roughly 30

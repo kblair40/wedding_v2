@@ -154,12 +154,12 @@ const MobileNavItem = ({ label, href }) => {
 };
 
 const OurNamesHorizontal = () => {
-  const headingSize = useBreakpointValue({ base: "lg", sm: "3xl", md: "6xl" });
-  const subHeadingSize = useBreakpointValue({
-    base: "sm",
-    sm: "lg",
-    md: "3xl",
-  });
+  const headingSize = useBreakpointValue({ base: "lg", sm: "3xl" });
+  const style = {
+    fontSize: headingSize,
+    letterSpacing: "2px",
+    fontWeight: "500",
+  };
   return (
     <Flex
       w="100%"
@@ -167,16 +167,12 @@ const OurNamesHorizontal = () => {
       alignItems="start"
       // border="1px solid red"
     >
-      <Heading size={headingSize} letterSpacing="1.5px">
-        Shannon
-      </Heading>
+      <Heading {...style}>Shannon</Heading>
       {/* <Heading size={subHeadingSize} mx="6px"> */}
-      <Heading size={headingSize} mx="8px">
+      <Heading {...style} mx="8px">
         &
       </Heading>
-      <Heading size={headingSize} letterSpacing="1.5px">
-        Kevin
-      </Heading>
+      <Heading {...style}>Kevin</Heading>
     </Flex>
   );
 };
