@@ -1,10 +1,9 @@
 import React from "react";
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 const PageContainer = ({
   children,
   center,
-  responsive,
   showBorder,
   px = "24px",
   ...rest
@@ -18,19 +17,7 @@ const PageContainer = ({
     ...rest,
   };
 
-  const boxStyles = {
-    w: "100%",
-    // maxW: !responsive ? "100%" : { base: "480px", md: "500px", xl: "1280px" },
-    border: showBorder ? "1px solid #ccc" : "none",
-  };
-
-  return (
-    <Flex {...flexStyles}>
-      {/* <Box {...boxStyles}> */}
-      {children}
-      {/* </Box> */}
-    </Flex>
-  );
+  return <Flex {...flexStyles}>{children}</Flex>;
 };
 
 export default PageContainer;

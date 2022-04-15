@@ -107,4 +107,26 @@ export const ACTIVITIES = {
       priceLevel: 2,
     },
   ],
+  parks: [
+    {
+      name: "Kraft Azalea Garden",
+      url: "https://cityofwinterpark.org/departments/parks-recreation/parks-playgrounds/parks/kraft-azalea-garden/",
+      priceLevel: 0,
+    },
+    {
+      name: "Central Park",
+      url: "https://cityofwinterpark.org/departments/parks-recreation/parks-playgrounds/parks/central-park/",
+      priceLevel: 0,
+    },
+    {
+      name: "Phelps Park",
+      url: "https://cityofwinterpark.org/departments/parks-recreation/parks-playgrounds/parks/central-park/",
+      priceLevel: 0,
+    },
+    {
+      name: "Dinky Dock",
+      url: "https://cityofwinterpark.org/departments/parks-recreation/parks-playgrounds/parks/dinky-dock-park/",
+      priceLevel: 0,
+    },
+  ],
 };

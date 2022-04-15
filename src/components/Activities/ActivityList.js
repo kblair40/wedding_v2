@@ -5,13 +5,7 @@ import ActivityItem from "./ActivityItem";
 
 const ActivityList = ({ label, activities }) => {
   return (
-    <Flex
-      flexDirection="column"
-      alignItems="flex-start"
-      // w="min-content"
-      // border="1px solid black"
-      // p="12px 8px"
-    >
+    <Flex flexDirection="column" alignItems="flex-start">
       <Heading
         fontWeight="700"
         mb="16px"
@@ -23,10 +17,6 @@ const ActivityList = ({ label, activities }) => {
       {activities.map((act) => {
         return <ActivityItem activity={act} />;
       })}
-      {/* <ActivityItem name="Coffee Shop Name" />
-      <ActivityItem name="Coffee Shop Name" />
-      <ActivityItem name="Coffee Shop Name" /> */}
-      {/* {children} */}
     </Flex>
   );
 };
