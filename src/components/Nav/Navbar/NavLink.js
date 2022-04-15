@@ -9,7 +9,6 @@ const NavLink = ({ to, children }) => {
       to={to}
       _focus={{ outline: "none" }}
       fontWeight="500"
-      color="text.primary"
       _hover={{
         textDecoration: "none",
       }}
@@ -22,11 +21,7 @@ const NavLink = ({ to, children }) => {
           px="12px"
           transition=".2s ease-in-out"
         >
-          <Text
-            // className="nav-text"
-            fontWeight="300"
-            whiteSpace="nowrap"
-          >
+          <Text color="text.primary" fontWeight="400" whiteSpace="nowrap">
             {children}
           </Text>
         </Flex>
