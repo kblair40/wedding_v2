@@ -22,7 +22,11 @@ const NavLink = ({ to, children }) => {
           px="12px"
           transition=".2s ease-in-out"
         >
-          <Text className="nav-text" whiteSpace="nowrap">
+          <Text
+            // className="nav-text"
+            fontWeight="300"
+            whiteSpace="nowrap"
+          >
             {children}
           </Text>
         </Flex>
