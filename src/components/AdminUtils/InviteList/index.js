@@ -90,7 +90,7 @@ const InviteList = ({ data }) => {
         age_range: row[7],
         special_requests: row[8],
         plus_one: row[9],
-        response: row[10],
+        attending: row[10],
         email: row[11],
         phone_number: row[12],
         side: row[13],

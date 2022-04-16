@@ -23,7 +23,7 @@ export const addGuest = async ({
   age_range,
   special_requests,
   plus_one,
-  response,
+  attending,
   email,
   phone_number,
   side,
@@ -41,7 +41,7 @@ export const addGuest = async ({
     age_range,
     special_requests,
     plus_one,
-    response,
+    attending,
     email,
     phone_number,
     side,
@@ -63,7 +63,7 @@ export const addGuest = async ({
       age_range,
       special_requests,
       plus_one,
-      response,
+      attending,
       email,
       phone_number,
       side,
@@ -98,8 +98,20 @@ export const getAllInvitees = async () => {
   return res;
 };
 
-export const patchGuest = (id) => {
-  console.log("\n\n\n\nID RCVD:", id, "\n\n\n\n\n");
+export const patchGuest = async (id, data) => {
+  // console.log("\n\n\n\nPATCH GUEST DATA", { id, data });
+
+  let guestRef = doc(db, "invitees", id);
+
+  let patchData = {
+    dinner_selection: data.dinner_selection,
+    attending: data.attending,
+  };
+
+  let patchRes = await updateDoc(guestRef, patchData);
+  // console.log("\nPATCH RES:", patchRes);
+
+  // console.log("\n\n\n\n");
 };
 
 export const getGuestByName = async (fn, ln) => {

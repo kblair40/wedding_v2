@@ -55,8 +55,8 @@ const RSVPForm = ({
     let multipleRespondants = respondants.length > 1;
     setMultipleRespondants(multipleRespondants);
     const blankFormData = {
-      isAttending: undefined,
-      mealChoice: "",
+      attending: undefined,
+      dinner_selection: "",
       mealNotes: "",
     };
 
@@ -75,7 +75,7 @@ const RSVPForm = ({
   const handleChangeAttendance = (val, name) => {
     setFormData({
       ...formData,
-      [name]: { ...formData[name], isAttending: val },
+      [name]: { ...formData[name], attending: val },
     });
 
     if (val === "yes") {
@@ -204,9 +204,9 @@ const RSVPForm = ({
                         <RadioGroup
                           h="100%"
                           onChange={(val) =>
-                            handleChangeMeal(val, name, "mealChoice")
+                            handleChangeMeal(val, name, "dinner_selection")
                           }
-                          isDisabled={formData[name]["isAttending"] === "no"}
+                          isDisabled={formData[name]["attending"] === "no"}
                         >
                           <Box>
                             <Text>{name}</Text>

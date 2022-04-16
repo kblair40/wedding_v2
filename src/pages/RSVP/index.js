@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Center, Flex } from "@chakra-ui/react";
 import { Transition } from "react-transition-group";
 
+import { patchGuest } from "api/api";
 import RSVPForm from "components/RSVPSteps/RSVPForm";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
 import SelectGuests from "components/RSVPSteps/SelectGuests";
@@ -30,8 +31,29 @@ const RSVP = () => {
     }, 500); // timeoutDuration = 500
   };
 
-  const handleSubmitRSVPForm = (data, respondingGuests) => {
-    console.log("\n\nDATA:", data, "\n\n", { respondingGuests }, "\n\n");
+  const handleSubmitRSVPForm = async (data, respondingGuests) => {
+    // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
+    let names = Object.keys(data).filter((name) => name !== "anythingElse");
+    // names = names.filter((name) => name !== "anythingElse");
+    // console.log("NAMES:", names);
+
+    let formattedData = [];
+    for (let name of names) {
+      let [fn, ln] = name.split(" ");
+
+      let guest = respondingGuests.find((g) => {
+        // console.log("\nGUEST:", g);
+        return g.first_name === fn && g.last_name === ln;
+      });
+      // console.log("FOUND GUEST:", guest);
+
+      const guestData = data[name];
+      // console.log("\n\n\n");
+      // console.log({ guestData });
+      // console.log("\n\n\n");
+      const res = await patchGuest(guest.id, guestData);
+      console.log("RES:", res);
+    }
   };
 
   const defaultStyle = {
