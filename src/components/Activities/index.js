@@ -15,7 +15,7 @@ const colBreakpoints = {
 const Activities = () => {
   return (
     <Box
-      mt="32px"
+      // mt="16px"
       sx={{
         ".masonry-grid": {
           display: "flex",
@@ -48,7 +48,9 @@ const Activities = () => {
           alignSelf={{
             base: "center",
           }}
-          fontSize="2xl"
+          whiteSpace="nowrap"
+          fontSize={{ base: "21px", sm: "24px" }}
+          // fontSize={{ base: "xl", sm: "2xl" }}
         >
           LOCAL (IN / NEAR WINTER PARK)
         </Text>
@@ -81,7 +83,8 @@ const Activities = () => {
           mb="24px"
           fontWeight="400"
           alignSelf={{ base: "center" }}
-          fontSize="2xl"
+          // fontSize="2xl"
+          fontSize={{ base: "21px", sm: "24px" }}
         >
           OFF THE BEATEN PATH
         </Text>
