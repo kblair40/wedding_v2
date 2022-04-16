@@ -139,16 +139,20 @@ const RSVPForm = ({
               ...fadeInStyles[state],
             }}
           >
-            <Text color="text.secondary">
-              Replying for {`${respondingGuestNames.join(", ")}`}
-            </Text>
-            <Divider my="16px" />
+            {respondingGuests && respondingGuests.length > 1 && (
+              <React.Fragment>
+                <Text color="text.secondary">
+                  Replying for {`${respondingGuestNames.join(", ")}`}
+                </Text>
+                <Divider my="16px" />
+              </React.Fragment>
+            )}
 
             <Box overflowY="hidden" flex={1}>
               <FormControl>
                 {!multipleRespondants ? (
                   <React.Fragment>
-                    <FormLabel fontWeight="600">Can you make it?</FormLabel>
+                    <FormLabel fontWeight="500">Can you make it?</FormLabel>
 
                     <RadioGroup>
                       <HStack spacing="16px" flexWrap="wrap">
@@ -159,7 +163,7 @@ const RSVPForm = ({
                   </React.Fragment>
                 ) : (
                   <React.Fragment>
-                    <FormLabel fontWeight="600">
+                    <FormLabel fontWeight="500">
                       Please let us know who can and cannot make it
                     </FormLabel>
                     {respondingGuestNames.map((name, i) => {
@@ -186,21 +190,42 @@ const RSVPForm = ({
               <Divider my="16px" />
 
               {!multipleRespondants ? (
-                <FormControl>
-                  <FormLabel fontWeight="600">
-                    Please select a dinner entree
-                  </FormLabel>
+                <HStack alignItems="flex-end">
+                  <FormControl w="50%">
+                    <FormLabel fontWeight="500" whiteSpace="nowrap">
+                      Please select a dinner entree
+                    </FormLabel>
 
-                  <RadioGroup>
-                    <HStack spacing="16px" flexWrap="wrap">
-                      <Radio value="chicken">Chicken</Radio>
-                      <Radio value="beef">Beef</Radio>
-                    </HStack>
-                  </RadioGroup>
-                </FormControl>
+                    <RadioGroup>
+                      <HStack spacing="16px" flexWrap="wrap">
+                        <Radio value="chicken">Chicken</Radio>
+                        <Radio value="beef">Beef</Radio>
+                      </HStack>
+                    </RadioGroup>
+                  </FormControl>
+
+                  <Input
+                    position="relative"
+                    top="2px"
+                    focusBorderColor="text.tertiary"
+                    w="50%"
+                    placeholder="Special requests?"
+                    _placeholder={{ color: "text.tertiary" }}
+                    size="sm"
+                    fontSize="md"
+                    onChange={(e) =>
+                      handleChangeMeal(
+                        e.target.value,
+                        `${guest.first_name} ${guest.last_name}`,
+                        "dinner_selection_notes"
+                      )
+                    }
+                  />
+                  {/* </Box> */}
+                </HStack>
               ) : (
                 <FormControl>
-                  <FormLabel fontWeight="600">
+                  <FormLabel fontWeight="500">
                     Please select a dinner entree for each guest
                   </FormLabel>
 
@@ -252,7 +277,10 @@ const RSVPForm = ({
               <Divider my="12px" />
               <FormControl>
                 <FormLabel>Anything else we should know? (optional)</FormLabel>
-                <Textarea ref={anythingElseRef} />
+                <Textarea
+                  focusBorderColor="text.tertiary"
+                  ref={anythingElseRef}
+                />
               </FormControl>
             </Box>
             <HStack pt="16px" pb="8px" justifyContent="flex-end">

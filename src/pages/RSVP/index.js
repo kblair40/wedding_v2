@@ -21,10 +21,14 @@ const RSVP = () => {
     setGuest(guest);
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
+    } else {
+      getCheckedGuests([]);
+      // setStep(3);
     }
   };
 
   const getCheckedGuests = (guestIndexes) => {
+    console.log("\n\nINDEXES:", guestIndexes);
     setCheckedGuests(guestIndexes);
     setTimeout(() => {
       setStep(3);
@@ -34,22 +38,16 @@ const RSVP = () => {
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
     console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
     let names = Object.keys(data).filter((name) => name !== "anythingElse");
-    // names = names.filter((name) => name !== "anythingElse");
     // console.log("NAMES:", names);
 
     for (let name of names) {
       let [fn, ln] = name.split(" ");
 
       let guest = respondingGuests.find((g) => {
-        // console.log("\nGUEST:", g);
         return g.first_name === fn && g.last_name === ln;
       });
-      // console.log("FOUND GUEST:", guest);
 
       const guestData = data[name];
-      // console.log("\n\n\n");
-      // console.log({ guestData });
-      // console.log("\n\n\n");
       const res = await patchGuest(guest.id, {
         ...guestData,
         special_requests: data.special_requests,
@@ -94,7 +92,7 @@ const RSVP = () => {
           //
           >
             <Transition
-              in={!relatedGuests}
+              in={!guest}
               timeout={500}
               onExited={() => setStep(2)}
               unmountOnExit
@@ -111,15 +109,17 @@ const RSVP = () => {
               )}
             </Transition>
 
-            <Center>
-              <SelectGuests
-                checkedGuests={checkedGuests}
-                getCheckedGuests={getCheckedGuests}
-                step={step}
-                guest={guest}
-                relatedGuests={relatedGuests}
-              />
-            </Center>
+            {relatedGuests && (
+              <Center>
+                <SelectGuests
+                  checkedGuests={checkedGuests}
+                  getCheckedGuests={getCheckedGuests}
+                  step={step}
+                  guest={guest}
+                  relatedGuests={relatedGuests}
+                />
+              </Center>
+            )}
 
             <RSVPForm
               step={step}
