@@ -1,89 +1,92 @@
 import React from "react";
-import { Flex, Grid, GridItem, Text, Heading, Divider } from "@chakra-ui/react";
+import { Flex, Text, Heading, Divider, Box } from "@chakra-ui/react";
+import Masonry from "react-masonry-css";
 
 import { ACTIVITIES } from "utils/constants";
 import ActivityList from "./ActivityList";
 
+const colBreakpoints = {
+  // default: 1,
+  560: 1,
+  768: 2,
+  1280: 3,
+};
+
 const Activities = () => {
   return (
-    // <React.Fragment>
-    <Flex
-      // border="1px solid #bbb"
-      w="100%"
-      flexDirection="column"
-      // alignItems="center"
-      alignItems={{ base: "center", sm: "space-between" }}
-      justifyContent="center"
-      maxW={{
-        md: "720px",
-        lg: "900px",
+    <Box
+      mt="32px"
+      sx={{
+        ".masonry-grid": {
+          display: "flex",
+          marginLeft: "-1.5rem" /* gutter size offset */,
+          width: "auto",
+        },
+        ".masonry-grid_column": {
+          paddingLeft: "1.5rem",
+          backgroundClip: "padding-box",
+        },
+        ".masonry-grid_column > div": {
+          // background: "gold.main",
+          marginBottom: "1rem",
+        },
       }}
     >
-      <Text
-        mb="24px"
-        fontWeight="400"
-        alignSelf={{ base: "center", sm: "flex-start" }}
-        fontSize="3xl"
-        // borderBottom="1px solid #333"
-      >
-        LOCAL TO WINTER PARK
-      </Text>
-      <Grid
-        // border="1px solid red"
-        columnGap={{ base: "8px", sm: "24px", md: "40px" }}
-        rowGap="16px"
-        templateColumns={{
-          base: "repeat(1, 1fr)",
-          sm: "repeat(2, 1fr)",
-          lg: "repeat(3, 1fr)",
+      <Flex
+        w="100%"
+        flexDirection="column"
+        alignItems={{ base: "center", sm: "space-between" }}
+        justifyContent="center"
+        maxW={{
+          md: "720px",
+          lg: "900px",
         }}
       >
-        <GridItem>
+        <Text
+          mb="24px"
+          fontWeight="400"
+          alignSelf={{
+            base: "center",
+          }}
+          fontSize="2xl"
+        >
+          LOCAL (IN / NEAR WINTER PARK)
+        </Text>
+        <Masonry
+          breakpointCols={colBreakpoints}
+          className="masonry-grid"
+          columnClassName="masonry-grid_column"
+        >
           <ActivityList label="coffee/tea" activities={ACTIVITIES.coffeeTea} />
-        </GridItem>
 
-        <GridItem>
           <ActivityList
             label="breakfast/brunch"
             activities={ACTIVITIES.breakfast}
           />
-        </GridItem>
 
-        <GridItem>
           <ActivityList
             label="lunch/dinner"
             activities={ACTIVITIES.lunchDinner}
           />
-        </GridItem>
 
-        <GridItem>
           <ActivityList label="parks" activities={ACTIVITIES.parks} />
-        </GridItem>
-        <GridItem>
           <ActivityList label="drinks" activities={ACTIVITIES.drinks} />
-        </GridItem>
-        <GridItem>
           <ActivityList label="sweets" activities={ACTIVITIES.sweets} />
-        </GridItem>
-        {/* <GridItem>
-          <ActivityList
-            label="off the beaten path"
-            activities={ACTIVITIES.sweets}
-          />
-        </GridItem> */}
-      </Grid>
-      <Divider my="24px" borderColor="neutral.black" opacity={0.3} />
-      <Text
-        mb="24px"
-        fontWeight="400"
-        alignSelf={{ base: "center", sm: "flex-start" }}
-        fontSize="3xl"
-        // borderBottom="1px solid #333"
-      >
-        OFF THE BEATEN PATH
-      </Text>
-    </Flex>
-    // {/* </React.Fragment> */}
+
+          {/*  */}
+        </Masonry>
+        {/*  */}
+        <Divider my="24px" borderColor="neutral.black" opacity={0.3} />
+        <Text
+          mb="24px"
+          fontWeight="400"
+          alignSelf={{ base: "center" }}
+          fontSize="2xl"
+        >
+          OFF THE BEATEN PATH
+        </Text>
+      </Flex>
+    </Box>
   );
 };
 
