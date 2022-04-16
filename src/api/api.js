@@ -20,6 +20,7 @@ export const addGuest = async ({
   att_exp,
   replied,
   dinner_selection,
+  dinner_selection_notes,
   age_range,
   special_requests,
   plus_one,
@@ -38,6 +39,7 @@ export const addGuest = async ({
     att_exp,
     replied,
     dinner_selection,
+    dinner_selection_notes,
     age_range,
     special_requests,
     plus_one,
@@ -60,6 +62,7 @@ export const addGuest = async ({
       att_exp,
       replied,
       dinner_selection,
+      dinner_selection_notes,
       age_range,
       special_requests,
       plus_one,
@@ -99,12 +102,14 @@ export const getAllInvitees = async () => {
 };
 
 export const patchGuest = async (id, data) => {
-  // console.log("\n\n\n\nPATCH GUEST DATA", { id, data });
+  console.log("\n\n\n\nPATCH GUEST DATA", { id, data });
   let guestRef = doc(db, "invitees", id);
 
   let patchData = {
     dinner_selection: data.dinner_selection,
+    dinner_selection_notes: data.dinner_selection_notes,
     attending: data.attending,
+    special_requests: data.special_requests,
   };
 
   try {

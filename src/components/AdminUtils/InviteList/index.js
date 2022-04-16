@@ -87,6 +87,7 @@ const InviteList = ({ data }) => {
         significant_other: row[4],
         other_family: row[5],
         dinner_selection: row[6],
+        dinner_selection_notes: row[14],
         age_range: row[7],
         special_requests: row[8],
         plus_one: row[9],

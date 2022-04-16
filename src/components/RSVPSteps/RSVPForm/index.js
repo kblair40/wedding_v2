@@ -57,7 +57,7 @@ const RSVPForm = ({
     const blankFormData = {
       attending: undefined,
       dinner_selection: "",
-      mealNotes: "",
+      dinner_selection_notes: "",
     };
 
     if (multipleRespondants) {
@@ -226,7 +226,7 @@ const RSVPForm = ({
                               handleChangeMeal(
                                 e.target.value,
                                 name,
-                                "mealNotes"
+                                "dinner_selection_notes"
                               )
                             }
                           />
@@ -248,7 +248,7 @@ const RSVPForm = ({
                   handleSubmit(
                     {
                       ...formData,
-                      anythingElse: anythingElseRef.current.value,
+                      special_requests: anythingElseRef.current.value,
                     },
                     respondingGuests
                   );

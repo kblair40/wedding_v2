@@ -32,7 +32,7 @@ const RSVP = () => {
   };
 
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
-    // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
+    console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
     let names = Object.keys(data).filter((name) => name !== "anythingElse");
     // names = names.filter((name) => name !== "anythingElse");
     // console.log("NAMES:", names);
@@ -51,7 +51,10 @@ const RSVP = () => {
       // console.log("\n\n\n");
       // console.log({ guestData });
       // console.log("\n\n\n");
-      const res = await patchGuest(guest.id, guestData);
+      const res = await patchGuest(guest.id, {
+        ...guestData,
+        special_requests: data.special_requests,
+      });
       console.log("RES:", res);
     }
   };
