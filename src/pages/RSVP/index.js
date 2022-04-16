@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Box, Heading, Center, Button } from "@chakra-ui/react";
+import { Box, Heading, Center, Button, Flex } from "@chakra-ui/react";
 import { Transition } from "react-transition-group";
 
 import RSVPForm from "components/RSVPForm";
 import GuestSearch from "./GuestSearch";
 import SelectGuests from "components/SelectGuests";
 import PageContainer from "components/containers/PageContainer";
+import InviteCard from "components/containers/InviteCard";
 
 // import { getGuestByName, getRelatedGuests } from "api/api";
 
@@ -47,47 +48,67 @@ const RSVP = () => {
 
   return (
     <PageContainer center pt="16px">
-      <Transition
-        in={!relatedGuests}
-        timeout={500}
-        onExited={() => setStep(2)}
-        unmountOnExit
+      <Flex
+        w="100%"
+        justifyContent="center"
+        // border="1px solid #000"
       >
-        {(state) => (
-          <Box
-            style={{
-              ...defaultStyle,
-              ...fadeOutStyles[state],
-            }}
+        <Box
+          // border="1px solid #ccc"
+          minW="340px"
+          maxW={{
+            base: "420px",
+            sm: "524px", // allows full placeholder text to show
+            md: "720px",
+            lg: "900px",
+          }}
+        >
+          <InviteCard
+          // showBorder
+          //
           >
-            <GuestSearch getSearchResults={getSearchResults} />
-          </Box>
-        )}
-      </Transition>
+            <Transition
+              in={!relatedGuests}
+              timeout={500}
+              onExited={() => setStep(2)}
+              unmountOnExit
+            >
+              {(state) => (
+                <Box
+                  style={{
+                    ...defaultStyle,
+                    ...fadeOutStyles[state],
+                  }}
+                >
+                  <GuestSearch getSearchResults={getSearchResults} />
+                </Box>
+              )}
+            </Transition>
 
-      <Center>
-        <SelectGuests
-          checkedGuests={checkedGuests}
-          // nextStep={() => {
-          //   console.log("setting to step 3");
-          //   setStep(3);
-          // }}
-          getCheckedGuests={getCheckedGuests}
-          step={step}
-          guest={guest}
-          relatedGuests={relatedGuests}
-        />
-      </Center>
+            <Center>
+              <SelectGuests
+                checkedGuests={checkedGuests}
+                // nextStep={() => {
+                //   console.log("setting to step 3");
+                //   setStep(3);
+                // }}
+                getCheckedGuests={getCheckedGuests}
+                step={step}
+                guest={guest}
+                relatedGuests={relatedGuests}
+              />
+            </Center>
 
-      <RSVPForm
-        step={step}
-        guest={guest}
-        relatedGuests={relatedGuests}
-        checkedGuests={checkedGuests}
-        handleSubmit={handleSubmitRSVPForm}
-      />
+            <RSVPForm
+              step={step}
+              guest={guest}
+              relatedGuests={relatedGuests}
+              checkedGuests={checkedGuests}
+              handleSubmit={handleSubmitRSVPForm}
+            />
+          </InviteCard>
 
-      {/* <Button
+          {/* <Button
         position="fixed"
         top="1rem"
         left="1rem"
@@ -95,6 +116,8 @@ const RSVP = () => {
       >
         Toggle fade
       </Button> */}
+        </Box>
+      </Flex>
     </PageContainer>
   );
 };

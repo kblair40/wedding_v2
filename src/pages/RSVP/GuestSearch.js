@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button, Text, VStack, HStack } from "@chakra-ui/react";
+import {
+  Input,
+  Button,
+  Text,
+  VStack,
+  HStack,
+  Flex,
+  Heading,
+} from "@chakra-ui/react";
 
 import { getGuestByName, getRelatedGuests } from "api/api";
 import { toTitleCase } from "utils/helpers";
+import InviteCard from "components/containers/InviteCard";
 
 const GuestSearch = ({ getSearchResults }) => {
   const [inputVal, setInputVal] = useState("");
@@ -11,10 +20,6 @@ const GuestSearch = ({ getSearchResults }) => {
   const [loading, setLoading] = useState(false);
   const [guest, setGuest] = useState();
   const [relatedGuests, setRelatedGuests] = useState();
-
-  // useEffect(() => {
-  //   setNotFoundError(notFound);
-  // }, [notFound]);
 
   const validateInput = async (e) => {
     e.preventDefault();
@@ -91,39 +96,37 @@ const GuestSearch = ({ getSearchResults }) => {
 
   return (
     <form onSubmit={validateInput} style={{ width: "100%" }}>
-      <VStack
-      // border="1px solid red"
+      <Text
+        fontSize="15px"
+        fontWeight="300"
+        //
       >
-        <VStack spacing="4px">
-          <Text>
-            Please enter the first and last name of one member of your party
-            below.
-          </Text>
-          <Text>
-            If you're responding for you and a guest (or your family),
-          </Text>
-          <Text>
-            you'll be able to RSVP for your entire group on the next page.
-          </Text>
-        </VStack>
-
-        <HStack w="100%" maxW="480px" mt="16px">
-          <Input
-            onChange={handleChange}
-            w="100%"
-            placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
-          />
-          <Button onClick={validateInput} isLoading={loading}>
-            Find Me
-          </Button>
-        </HStack>
-        {errorMsg && <Text color="red.400">{errorMsg}</Text>}
-        {notFoundError && (
-          <Text color="red.400">
-            Sorry, but we were not able to find a guest with the provided name.
-          </Text>
-        )}
-      </VStack>
+        Please enter the first and last name of one member of your party below.
+      </Text>
+      <Text
+        mt="4px"
+        fontSize="15px"
+        fontWeight="300"
+        //
+      >
+        If you're responding for you and a guest (or your family), you'll be
+        able to RSVP for your entire group on the next page.
+      </Text>
+      <HStack w="100%" mt="32px" spacing={{ base: "8px", sm: "16px" }}>
+        <Input
+          onChange={handleChange}
+          w="100%"
+          placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
+        />
+        <Button
+          color="neutral.black"
+          fontWeight="500"
+          onClick={validateInput}
+          isLoading={loading}
+        >
+          Find Me
+        </Button>
+      </HStack>
     </form>
   );
 };
