@@ -30,8 +30,8 @@ const RSVP = () => {
     }, 500); // timeoutDuration = 500
   };
 
-  const handleSubmitRSVPForm = (data) => {
-    console.log("DATA:", data);
+  const handleSubmitRSVPForm = (data, respondingGuests) => {
+    console.log("\n\nDATA:", data, "\n\n", { respondingGuests }, "\n\n");
   };
 
   const defaultStyle = {

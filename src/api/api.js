@@ -102,6 +102,36 @@ export const patchGuest = (id) => {
   console.log("\n\n\n\nID RCVD:", id, "\n\n\n\n\n");
 };
 
+export const getGuestByName = async (fn, ln) => {
+  const inviteesRef = collection(db, `invitees`);
+
+  try {
+    const q = query(
+      inviteesRef,
+      where("first_name", "==", fn),
+      where("last_name", "==", ln)
+    );
+
+    const invitees = await getDocs(q);
+    const inviteeDocs = invitees.docs;
+    console.log("INVITEE DOCS:", inviteeDocs);
+
+    if (inviteeDocs.length) {
+      inviteeDocs.forEach((doc) => console.log("NAME DOC:", doc.data()));
+
+      console.log(
+        "GET GUEST RETURNING:",
+        inviteeDocs[0].data(),
+        inviteeDocs[0].id
+      );
+      const id = inviteeDocs[0].id;
+      return { ...inviteeDocs[0].data(), id };
+    }
+  } catch (err) {
+    console.log("QUERY FAILED!");
+  }
+};
+
 export const getRelatedGuests = async (names) => {
   if (!names.length) return;
   else console.log("NAMES RECEIVED:", names);
@@ -130,7 +160,7 @@ export const getRelatedGuests = async (names) => {
 
       let id = doc.docs[0].id;
       let data = doc.docs[0].data();
-      console.log("\n\n\n\n", { id, data });
+      // console.log("\n\n\n\n", { id, data });
       let mergedDoc = { id, ...data };
       res.push(mergedDoc);
     });
@@ -146,31 +176,6 @@ export const getGuest = async (passcode) => {
   try {
     const invitees = await getDocs(q);
     const inviteeDocs = invitees.docs;
-
-    if (inviteeDocs.length) {
-      inviteeDocs.forEach((doc) => console.log("DOC:", doc.data()));
-
-      console.log("GET GUEST RETURNING:", inviteeDocs[0].data());
-      return inviteeDocs[0].data();
-    }
-  } catch (err) {
-    console.log("QUERY FAILED!");
-  }
-};
-
-export const getGuestByName = async (fn, ln) => {
-  const inviteesRef = collection(db, `invitees`);
-
-  try {
-    const q = query(
-      inviteesRef,
-      where("first_name", "==", fn),
-      where("last_name", "==", ln)
-    );
-
-    const invitees = await getDocs(q);
-    const inviteeDocs = invitees.docs;
-    console.log("INVITEE DOCS:", inviteeDocs);
 
     if (inviteeDocs.length) {
       inviteeDocs.forEach((doc) => console.log("DOC:", doc.data()));

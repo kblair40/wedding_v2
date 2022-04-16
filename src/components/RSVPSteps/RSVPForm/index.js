@@ -38,28 +38,35 @@ const RSVPForm = ({
   useEffect(() => {
     if (!guest) return;
 
-    let rgs = [guest];
+    let respondants = [guest];
     if (checkedGuests && checkedGuests.length) {
       for (let idx of checkedGuests) {
-        rgs.push(relatedGuests[idx]);
+        respondants.push(relatedGuests[idx]);
       }
     }
-    console.log("RESPONDING GUESTS:", rgs);
-    setRespondingGuests(rgs);
-    let guestNames = rgs.map((rg) => formatName(rg.first_name, rg.last_name));
+    console.log("RESPONDING GUESTS:", respondants);
+    setRespondingGuests(respondants);
+
+    let guestNames = respondants.map((respondant) =>
+      formatName(respondant.first_name, respondant.last_name)
+    );
+
     setRespondingGuestNames(guestNames);
-    let multipleRespondants = rgs.length > 1;
+    let multipleRespondants = respondants.length > 1;
     setMultipleRespondants(multipleRespondants);
     const blankFormData = {
       isAttending: undefined,
       mealChoice: "",
       mealNotes: "",
     };
+
     if (multipleRespondants) {
       let blankDataObjects = {};
+
       for (let name of guestNames) {
         blankDataObjects[name] = blankFormData;
       }
+
       console.log("\n\nBLANK OBJECTS:", blankDataObjects);
       setFormData(blankDataObjects);
     }
@@ -88,6 +95,10 @@ const RSVPForm = ({
       [name]: { ...formData[name], [field]: val },
     });
   };
+
+  // const handleSubmit = () => {
+  //   console.log('\n\nFORM DATA:', formData, '\n\n');
+  // }
 
   const defaultStyle = {
     transition: `opacity 500ms ease-in-out`,
@@ -234,7 +245,13 @@ const RSVPForm = ({
             <HStack pt="16px" pb="8px" justifyContent="flex-end">
               <Button
                 onClick={() => {
-                  handleSubmit(formData, anythingElseRef.current.value);
+                  handleSubmit(
+                    {
+                      ...formData,
+                      anythingElse: anythingElseRef.current.value,
+                    },
+                    respondingGuests
+                  );
                 }}
               >
                 Submit
