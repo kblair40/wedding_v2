@@ -100,7 +100,6 @@ export const getAllInvitees = async () => {
 
 export const patchGuest = async (id, data) => {
   // console.log("\n\n\n\nPATCH GUEST DATA", { id, data });
-
   let guestRef = doc(db, "invitees", id);
 
   let patchData = {
@@ -108,8 +107,12 @@ export const patchGuest = async (id, data) => {
     attending: data.attending,
   };
 
-  let patchRes = await updateDoc(guestRef, patchData);
-  // console.log("\nPATCH RES:", patchRes);
+  try {
+    let patchRes = await updateDoc(guestRef, patchData);
+    console.log("\nPATCH RES:", patchRes);
+  } catch (err) {
+    console.log("FAILED PATCHING GUEST:", err);
+  }
 
   // console.log("\n\n\n\n");
 };
