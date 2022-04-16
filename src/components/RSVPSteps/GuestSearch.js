@@ -58,13 +58,14 @@ const GuestSearch = ({ getSearchResults }) => {
         console.log("\nFAMILY:", family);
         relatedGuests = [...relatedGuests, ...family];
         console.log("\nALL RELATED GUESTS:", relatedGuests);
-        if (relatedGuests.length) {
-          let response = await getRelatedGuests(relatedGuests);
-          console.log("\nGET RELATED GUESTS RESPONSE:", response);
-          if (response) {
-            // setRelatedGuests(response);
-            getSearchResults(guest, response); // pass back to parent (RSVP page);
-          }
+      }
+
+      if (relatedGuests.length) {
+        let response = await getRelatedGuests(relatedGuests);
+        console.log("\nGET RELATED GUESTS RESPONSE:", response);
+        if (response) {
+          // setRelatedGuests(response);
+          getSearchResults(guest, response); // pass back to parent (RSVP page);
         }
       }
     } else {

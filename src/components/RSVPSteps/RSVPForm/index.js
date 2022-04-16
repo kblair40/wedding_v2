@@ -13,6 +13,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { Transition } from "react-transition-group";
+import { useNavigate } from "react-router-dom";
 
 import RSVPSuccessModal from "components/RSVPSteps/RSVPSuccessModal";
 
@@ -31,6 +32,8 @@ const RSVPForm = ({
   const [formData, setFormData] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   // const [showNextButton, setShowNextButton] = useState(false);
+
+  const navigate = useNavigate("/");
 
   const anythingElseRef = useRef();
 
@@ -72,10 +75,13 @@ const RSVPForm = ({
 
       console.log("\n\nBLANK OBJECTS:", blankDataObjects);
       setFormData(blankDataObjects);
+    } else {
+      setFormData({ [guestNames[0]]: blankFormData });
     }
   }, [relatedGuests, checkedGuests]);
 
   const handleChangeAttendance = (val, name) => {
+    console.log("CHANGE ATTENDANCE:", { val, name });
     setFormData({
       ...formData,
       [name]: { ...formData[name], attending: val },
@@ -111,6 +117,11 @@ const RSVPForm = ({
     if (res) {
       setModalIsOpen(true);
     }
+  };
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+    navigate("/");
   };
 
   const defaultStyle = {
@@ -154,7 +165,11 @@ const RSVPForm = ({
                   <React.Fragment>
                     <FormLabel fontWeight="500">Can you make it?</FormLabel>
 
-                    <RadioGroup>
+                    <RadioGroup
+                      onChange={(val) =>
+                        handleChangeAttendance(val, respondingGuestNames[0])
+                      }
+                    >
                       <HStack spacing="16px" flexWrap="wrap">
                         <Radio value="yes">I'll be there!</Radio>
                         <Radio value="no">Regretfully decline</Radio>
@@ -196,7 +211,15 @@ const RSVPForm = ({
                       Please select a dinner entree
                     </FormLabel>
 
-                    <RadioGroup>
+                    <RadioGroup
+                      onChange={(val) =>
+                        handleChangeMeal(
+                          val,
+                          respondingGuestNames[0],
+                          "dinner_selection"
+                        )
+                      }
+                    >
                       <HStack spacing="16px" flexWrap="wrap">
                         <Radio value="chicken">Chicken</Radio>
                         <Radio value="beef">Beef</Radio>
@@ -304,7 +327,7 @@ const RSVPForm = ({
       </Transition>
       <RSVPSuccessModal
         isOpen={modalIsOpen}
-        onClose={() => setModalIsOpen(false)}
+        onClose={handleCloseModal}
         respondingGuestNames={respondingGuestNames}
       />
     </Box>

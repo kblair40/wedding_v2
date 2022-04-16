@@ -18,6 +18,7 @@ const RSVP = () => {
   const [checkedGuests, setCheckedGuests] = useState();
 
   const getSearchResults = (guest, relatedGuests) => {
+    console.log("SEARCH RESULTES:", { guest, relatedGuests });
     setGuest(guest);
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
@@ -38,7 +39,6 @@ const RSVP = () => {
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
     console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
     let names = Object.keys(data).filter((name) => name !== "anythingElse");
-    // console.log("NAMES:", names);
 
     for (let name of names) {
       let [fn, ln] = name.split(" ");
@@ -46,6 +46,11 @@ const RSVP = () => {
       let guest = respondingGuests.find((g) => {
         return g.first_name === fn && g.last_name === ln;
       });
+
+      if (!guest) {
+        console.log("\n\n\n\nINVALID GUEST:", guest, "\n\n\n");
+        continue;
+      }
 
       const guestData = data[name];
       const res = await patchGuest(guest.id, {
