@@ -66,11 +66,11 @@ const SelectGuests = ({
               }}
             >
               <FormControl>
-                <FormLabel>
+                <FormLabel fontWeight="400">
                   Who would you like to respond for? (check all that apply)
                 </FormLabel>
                 {guest && (
-                  <Checkbox pb="8px" isChecked={true}>
+                  <Checkbox pb="8px" isChecked={true} fontWeight="400">
                     {`${guest.first_name} ${guest.last_name}`}
                   </Checkbox>
                 )}
@@ -81,6 +81,7 @@ const SelectGuests = ({
                       const name = `${guest.first_name} ${guest.last_name}`;
                       return (
                         <Checkbox
+                          fontWeight={checkedGuests.includes(i) ? "400" : "300"}
                           key={i}
                           value={i}
                           onChange={() => handleChangeRespondingGuests(i)}
@@ -104,10 +105,10 @@ const SelectGuests = ({
                 onClick={() => {
                   handleSubmit();
                   setShowNextButton(false);
-                  // nextStep();
                 }}
+                color="neutral.black"
+                fontWeight="500"
               >
-                {/* <Button rightIcon={<ArrowForwardIcon />} onClick={handleSubmit}> */}
                 Next
               </Button>
             </HStack>
