@@ -37,7 +37,6 @@ const RSVP = () => {
     // names = names.filter((name) => name !== "anythingElse");
     // console.log("NAMES:", names);
 
-    let formattedData = [];
     for (let name of names) {
       let [fn, ln] = name.split(" ");
 
@@ -57,6 +56,8 @@ const RSVP = () => {
       });
       console.log("RES:", res);
     }
+    return true;
+    // return false;
   };
 
   const defaultStyle = {

@@ -14,6 +14,8 @@ import {
 } from "@chakra-ui/react";
 import { Transition } from "react-transition-group";
 
+import RSVPSuccessModal from "components/RSVPSteps/RSVPSuccessModal";
+
 const RSVPForm = ({
   guest,
   relatedGuests,
@@ -27,6 +29,7 @@ const RSVPForm = ({
   const [multipleRespondants, setMultipleRespondants] = useState(null);
   const [attendingNames, setAttendingNames] = useState([]);
   const [formData, setFormData] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   // const [showNextButton, setShowNextButton] = useState(false);
 
   const anythingElseRef = useRef();
@@ -96,9 +99,19 @@ const RSVPForm = ({
     });
   };
 
-  // const handleSubmit = () => {
-  //   console.log('\n\nFORM DATA:', formData, '\n\n');
-  // }
+  const sendFormData = async () => {
+    let res = await handleSubmit(
+      {
+        ...formData,
+        special_requests: anythingElseRef.current.value,
+      },
+      respondingGuests
+    );
+
+    if (res) {
+      setModalIsOpen(true);
+    }
+  };
 
   const defaultStyle = {
     transition: `opacity 500ms ease-in-out`,
@@ -244,15 +257,16 @@ const RSVPForm = ({
             </Box>
             <HStack pt="16px" pb="8px" justifyContent="flex-end">
               <Button
-                onClick={() => {
-                  handleSubmit(
-                    {
-                      ...formData,
-                      special_requests: anythingElseRef.current.value,
-                    },
-                    respondingGuests
-                  );
-                }}
+                onClick={sendFormData}
+                // onClick={() => {
+                //   handleSubmit(
+                //     {
+                //       ...formData,
+                //       special_requests: anythingElseRef.current.value,
+                //     },
+                //     respondingGuests
+                //   );
+                // }}
               >
                 Submit
               </Button>
@@ -260,6 +274,11 @@ const RSVPForm = ({
           </Box>
         )}
       </Transition>
+      <RSVPSuccessModal
+        isOpen={modalIsOpen}
+        onClose={() => setModalIsOpen(false)}
+        respondingGuestNames={respondingGuestNames}
+      />
     </Box>
   );
 };

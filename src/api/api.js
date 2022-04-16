@@ -113,7 +113,8 @@ export const patchGuest = async (id, data) => {
   };
 
   try {
-    let patchRes = await updateDoc(guestRef, patchData);
+    // let patchRes = await updateDoc(guestRef, patchData);
+    let patchRes = await setDoc(guestRef, patchData, { merge: true });
     console.log("\nPATCH RES:", patchRes);
   } catch (err) {
     console.log("FAILED PATCHING GUEST:", err);
