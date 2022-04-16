@@ -4,8 +4,8 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { Transition, TransitionGroup } from "react-transition-group";
 
 import useUserContext from "hooks/useUserContext";
-import CodeInputForm from "components/Auth/CodeInputForm";
-import SelectGuestsForm from "components/Auth/SelectGuestsForm";
+// import CodeInputForm from "components/Auth/CodeInputForm";
+// import SelectGuestsForm from "components/RSVPSteps/SelectGuests/SelectGuestsForm";
 import SlideWrapper from "components/Auth/SlideWrapper";
 import RSVPForm from "components/Auth/RSVPForm";
 import { patchGuest } from "api/api";
@@ -72,14 +72,14 @@ const Auth = ({ getGuest }) => {
     <React.Fragment>
       <TransitionGroup commponent={null}>
         <Transition in={step === "code_input"} timeout={300}>
-          <SlideWrapper
+          {/* <SlideWrapper
             style={transitionStyle[step === "code_input" ? "enter" : "exit"]}
           >
             <CodeInputForm
               getGuest={getGuest}
               handleFinishCodeInput={handleFinishCodeInput}
             />
-          </SlideWrapper>
+          </SlideWrapper> */}
         </Transition>
 
         <Transition in={step === "select_guests"} timeout={300}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Text, Flex } from "@chakra-ui/react";
+import { Heading, Flex } from "@chakra-ui/react";
 
 import ActivityItem from "./ActivityItem";
 

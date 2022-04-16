@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Box, Heading, Center, Button, Flex } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, Center, Flex } from "@chakra-ui/react";
 import { Transition } from "react-transition-group";
 
-import RSVPForm from "components/RSVPForm";
-import GuestSearch from "./GuestSearch";
-import SelectGuests from "components/SelectGuests";
+import RSVPForm from "components/RSVPSteps/RSVPForm";
+import GuestSearch from "components/RSVPSteps/GuestSearch";
+import SelectGuests from "components/RSVPSteps/SelectGuests";
 import PageContainer from "components/containers/PageContainer";
 import InviteCard from "components/containers/InviteCard";
 
@@ -88,10 +88,6 @@ const RSVP = () => {
             <Center>
               <SelectGuests
                 checkedGuests={checkedGuests}
-                // nextStep={() => {
-                //   console.log("setting to step 3");
-                //   setStep(3);
-                // }}
                 getCheckedGuests={getCheckedGuests}
                 step={step}
                 guest={guest}
@@ -107,15 +103,6 @@ const RSVP = () => {
               handleSubmit={handleSubmitRSVPForm}
             />
           </InviteCard>
-
-          {/* <Button
-        position="fixed"
-        top="1rem"
-        left="1rem"
-        onClick={() => setFadeOut(!fadeOut)}
-      >
-        Toggle fade
-      </Button> */}
         </Box>
       </Flex>
     </PageContainer>

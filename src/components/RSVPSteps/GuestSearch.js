@@ -1,25 +1,16 @@
-import React, { useState, useEffect } from "react";
-import {
-  Input,
-  Button,
-  Text,
-  VStack,
-  HStack,
-  Flex,
-  Heading,
-} from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Input, Button, Text, HStack } from "@chakra-ui/react";
 
 import { getGuestByName, getRelatedGuests } from "api/api";
 import { toTitleCase } from "utils/helpers";
-import InviteCard from "components/containers/InviteCard";
 
 const GuestSearch = ({ getSearchResults }) => {
   const [inputVal, setInputVal] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [notFoundError, setNotFoundError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [guest, setGuest] = useState();
-  const [relatedGuests, setRelatedGuests] = useState();
+  // const [guest, setGuest] = useState();
+  // const [relatedGuests, setRelatedGuests] = useState();
 
   const validateInput = async (e) => {
     e.preventDefault();
@@ -56,7 +47,7 @@ const GuestSearch = ({ getSearchResults }) => {
       setLoading(false);
       return;
     } else {
-      setGuest(guest);
+      // setGuest(guest);
     }
 
     if (guest.significant_other || guest.other_family) {
@@ -71,7 +62,7 @@ const GuestSearch = ({ getSearchResults }) => {
           let response = await getRelatedGuests(relatedGuests);
           console.log("\nGET RELATED GUESTS RESPONSE:", response);
           if (response) {
-            setRelatedGuests(response);
+            // setRelatedGuests(response);
             getSearchResults(guest, response); // pass back to parent (RSVP page);
           }
         }

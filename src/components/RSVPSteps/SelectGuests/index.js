@@ -17,7 +17,6 @@ const SelectGuests = ({
   step,
   getCheckedGuests,
   checkedGuests: parentCheckedGuests,
-  // nextStep,
 }) => {
   const [checkedGuests, setCheckedGuests] = useState([]);
   const [showNextButton, setShowNextButton] = useState(false);
