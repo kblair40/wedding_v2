@@ -114,9 +114,14 @@ const GuestSearch = ({ getSearchResults }) => {
       </Text>
       <HStack w="100%" mt="32px" spacing={{ base: "8px", sm: "16px" }}>
         <Input
+          pl="4px"
+          variant="flushed"
           onChange={handleChange}
           w="100%"
           placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
+          borderColor="text.tertiary"
+          focusBorderColor="text.primary"
+          _placeholder={{ color: "text.muted" }}
         />
         <Button
           color="neutral.black"

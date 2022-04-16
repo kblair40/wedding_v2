@@ -33,7 +33,7 @@ const RSVPForm = ({
   const [multipleRespondants, setMultipleRespondants] = useState(null);
   const [attendingNames, setAttendingNames] = useState([]);
   const [formData, setFormData] = useState(null);
-  const [showNextButton, setShowNextButton] = useState(false);
+  // const [showNextButton, setShowNextButton] = useState(false);
 
   const anythingElseRef = useRef();
 

@@ -9,12 +9,13 @@ const theme = extendTheme({
       50: "#FAFAFA",
       100: "#F7F5F0",
       200: "#F0F0F0",
+      300: "#EEEEEE",
     },
     text: {
-      primary: "#2D2D2D",
-      secondary: "#343A40",
-      // secondary: "rgba(0, 0, 0, 0.92)",
-      tertiary: "#6C757D",
+      primary: "rgba(45, 45, 45, 1)",
+      secondary: "rgba(45, 45, 45, .73)",
+      tertiary: "rgba(45, 45, 45, .51)",
+      muted: "rgba(45, 45, 45, .38)",
     },
     creme: {
       main: "#DEBFB8",
@@ -46,6 +47,23 @@ const theme = extendTheme({
       defaultProps: {
         colorScheme: "darkScheme",
       },
+    },
+    Input: {
+      baseStyle: {
+        // borderColor: "#2d2d2d",
+        // focusBorderColor: "#2d2d2d",
+        // borderRadius: 0,
+      },
+      defaultProps: {
+        // borderColor: "#2d2d2d",
+        // focusBorderColor: "#2d2d2d",
+        // borderRadius: 0,
+      },
+      // defaultProps: {
+      //   _focus: {
+      //     borderColor: "#2d2d2d",
+      //   },
+      // },
     },
     Text: {
       sizes: {

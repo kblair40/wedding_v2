@@ -11,7 +11,7 @@ const InviteCard = ({ children, showBorder, ...rest }) => {
     >
       <Heading
         textAlign="center"
-        fontSize={{ base: "5xl" }}
+        fontSize={{ base: "4xl" }}
         fontWeight="500"
         mb="16px"
       >
