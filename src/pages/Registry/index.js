@@ -3,8 +3,8 @@ import React, { useState } from "react";
 // import { Elements } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
 
-import RegistryItem from "components/RegistryItem";
-import RegistryItemModal from "components/RegistryItemModal";
+// import RegistryItem from "components/RegistryItem";
+// import RegistryItemModal from "components/RegistryItemModal";
 import PageContainer from "components/containers/PageContainer";
 
 // const stripePromise = loadStripe(
