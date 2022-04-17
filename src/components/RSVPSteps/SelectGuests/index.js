@@ -11,7 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { Transition } from "react-transition-group";
+import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
 
 const SelectGuests = ({
   guest,
@@ -23,6 +23,7 @@ const SelectGuests = ({
   const [checkedGuests, setCheckedGuests] = useState([]);
   const [showNextButton, setShowNextButton] = useState(false);
   const [display, setDisplay] = useState();
+  const [showHelp, setShowHelp] = useState(false);
 
   const handleChangeRespondingGuests = (val) => {
     console.log("VALUE:", val);
@@ -74,19 +75,12 @@ const SelectGuests = ({
                   ml="8px"
                   cursor="pointer"
                   _hover={{ p: { textDecoration: "underline" } }}
+                  onClick={() => setShowHelp(true)}
                 >
                   <Text fontSize="sm" fontWeight="500" as={"p"}>
                     Email us instead
                   </Text>
                 </Box>
-                {/* <Button
-                  ml="8px"
-                  size="sm"
-                  variant="ghost"
-                  border="1px solid green"
-                >
-                  Email us instead
-                </Button> */}
               </Flex>
             )}
 
@@ -129,6 +123,7 @@ const SelectGuests = ({
           </Button>
         </HStack>
       </React.Fragment>
+      <RSVPHelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />
     </Box>
   );
 };

@@ -3,3 +3,5 @@
 2. Home page background image should occupy 100vh - height of header - height of CountdownTimer
 3. Add validation prior to calling handleSubmit for rsvp form.
 4. Add ability to go back steps in RSVP process
+5. RSVP help modal should have email template in Collapse container (or with animate.css somehow)
+      template should show when user clicks 'See a template'
