@@ -7,6 +7,8 @@ import {
   FormLabel,
   Checkbox,
   Button,
+  Flex,
+  Text,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { Transition } from "react-transition-group";
@@ -35,85 +37,98 @@ const SelectGuests = ({
     getCheckedGuests(checkedGuests);
   };
 
-  const defaultStyle = {
-    transition: `opacity 500ms ease-in-out`,
-    opacity: 0,
-  };
-
-  const fadeInStyles = {
-    entering: { opacity: 1 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0 },
-  };
-
   return (
     <Box maxW="580px" display={display}>
-      <Transition
-        in={step === 2 && !parentCheckedGuests}
-        timeout={500}
-        onEnter={() => setShowNextButton(true)}
-        onExited={() => setDisplay("none")}
-        unmountOnExit
-      >
-        {(state) => (
-          <React.Fragment>
-            <Box
-              style={{
-                ...defaultStyle,
-                ...fadeInStyles[state],
-              }}
-            >
-              <FormControl>
-                <FormLabel fontWeight="400">
-                  Who would you like to respond for? (check all that apply)
-                </FormLabel>
-                {guest && (
-                  <Checkbox pb="8px" isChecked={true} fontWeight="400">
-                    {`${guest.first_name} ${guest.last_name}`}
-                  </Checkbox>
-                )}
-
-                {guest && relatedGuests && (
-                  <VStack alignItems="flex-start">
-                    {[...relatedGuests].map((guest, i) => {
-                      const name = `${guest.first_name} ${guest.last_name}`;
-                      return (
-                        <Checkbox
-                          fontWeight={checkedGuests.includes(i) ? "400" : "300"}
-                          key={i}
-                          value={i}
-                          onChange={() => handleChangeRespondingGuests(i)}
-                        >
-                          {name}
-                        </Checkbox>
-                      );
-                    })}
-                  </VStack>
-                )}
-              </FormControl>
-            </Box>
-            <HStack
-              pt="16px"
-              justifyContent="flex-end"
-              opacity={showNextButton ? 1 : 0}
-              transition="1s"
-            >
-              <Button
-                rightIcon={<ArrowForwardIcon />}
-                onClick={() => {
-                  handleSubmit();
-                  setShowNextButton(false);
-                }}
-                color="neutral.black"
-                fontWeight="500"
+      <React.Fragment>
+        <Box>
+          <FormControl>
+            <FormLabel fontWeight="400">
+              Who would you like to respond for? (check all that apply)
+            </FormLabel>
+            {guest && (
+              <Flex
+                alignItems="flex-end"
+                // border="1px solid blue"
+                //
+                mb="8px"
               >
-                Next
-              </Button>
-            </HStack>
-          </React.Fragment>
-        )}
-      </Transition>
+                <Checkbox
+                  // pb="8px"
+                  isChecked={true}
+                  fontWeight="400"
+                  // border="1px solid orange"
+                  // alignItems="center"
+                >
+                  {`${guest.first_name} ${guest.last_name}`}
+                </Checkbox>
+                <Text
+                  ml="16px"
+                  // lineHeight="100%"
+                  fontSize="sm"
+                  fontStyle="italic"
+                  // border="1px solid red"
+                >
+                  Not you?
+                </Text>
+                <Box
+                  ml="8px"
+                  cursor="pointer"
+                  _hover={{ p: { textDecoration: "underline" } }}
+                >
+                  <Text fontSize="sm" fontWeight="500" as={"p"}>
+                    Email us instead
+                  </Text>
+                </Box>
+                {/* <Button
+                  ml="8px"
+                  size="sm"
+                  variant="ghost"
+                  border="1px solid green"
+                >
+                  Email us instead
+                </Button> */}
+              </Flex>
+            )}
+
+            {guest && relatedGuests && (
+              <VStack alignItems="flex-start">
+                {[...relatedGuests].map((guest, i) => {
+                  const name = `${guest.first_name} ${guest.last_name}`;
+                  return (
+                    <Checkbox
+                      fontWeight={checkedGuests.includes(i) ? "400" : "300"}
+                      key={i}
+                      value={i}
+                      onChange={() => handleChangeRespondingGuests(i)}
+                    >
+                      {name}
+                    </Checkbox>
+                  );
+                })}
+              </VStack>
+            )}
+          </FormControl>
+        </Box>
+
+        <HStack
+          pt="16px"
+          justifyContent="flex-end"
+          opacity={showNextButton ? 1 : 0}
+          transition="1s"
+        >
+          <Button
+            rightIcon={<ArrowForwardIcon />}
+            onClick={() => {
+              handleSubmit();
+              setShowNextButton(false);
+            }}
+            color="neutral.black"
+            fontWeight="500"
+          >
+            Next
+          </Button>
+        </HStack>
+      </React.Fragment>
     </Box>
   );
 };
