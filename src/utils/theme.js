@@ -48,6 +48,12 @@ const theme = extendTheme({
         colorScheme: "darkScheme",
       },
     },
+    Button: {
+      baseStyle: {
+        fontWeight: 500,
+        color: "neutral.black",
+      },
+    },
     Input: {
       baseStyle: {
         // borderColor: "#2d2d2d",

@@ -115,12 +115,7 @@ const GuestSearch = ({ getSearchResults }) => {
           focusBorderColor="text.primary"
           _placeholder={{ color: "text.muted" }}
         />
-        <Button
-          color="neutral.black"
-          fontWeight="500"
-          onClick={validateInput}
-          isLoading={loading}
-        >
+        <Button onClick={validateInput} isLoading={loading}>
           Find Me
         </Button>
       </HStack>
