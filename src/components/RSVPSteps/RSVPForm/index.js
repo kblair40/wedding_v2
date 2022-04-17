@@ -24,7 +24,7 @@ const RSVPForm = ({
   handleSubmit,
   step,
 }) => {
-  console.log("\n\n\nSTEP:", step, "\n\n\n");
+  // console.log("\n\n\nSTEP:", step, "\n\n\n");
   const [respondingGuests, setRespondingGuests] = useState([]);
   const [respondingGuestNames, setRespondingGuestNames] = useState([]);
   const [multipleRespondants, setMultipleRespondants] = useState(null);
@@ -138,193 +138,177 @@ const RSVPForm = ({
 
   return (
     <Box maxW="580px">
-      <Transition in={step === 3} timeout={500}>
-        {(state) => (
-          <Box
-            mb="16px"
-            px="16px"
-            py="16px"
-            maxH="100%"
-            style={{
-              ...defaultStyle,
-              ...fadeInStyles[state],
-            }}
-          >
-            {respondingGuests && respondingGuests.length > 1 && (
+      <Box mb="16px" px="16px" py="16px" maxH="100%">
+        {respondingGuests && respondingGuests.length > 1 && (
+          <React.Fragment>
+            <Text color="text.secondary">
+              Replying for {`${respondingGuestNames.join(", ")}`}
+            </Text>
+            <Divider my="16px" />
+          </React.Fragment>
+        )}
+
+        <Box overflowY="hidden" flex={1}>
+          <FormControl>
+            {!multipleRespondants ? (
               <React.Fragment>
-                <Text color="text.secondary">
-                  Replying for {`${respondingGuestNames.join(", ")}`}
-                </Text>
-                <Divider my="16px" />
+                <FormLabel fontWeight="500">Can you make it?</FormLabel>
+
+                <RadioGroup
+                  onChange={(val) =>
+                    handleChangeAttendance(val, respondingGuestNames[0])
+                  }
+                >
+                  <HStack spacing="16px" flexWrap="wrap">
+                    <Radio value="yes">I'll be there!</Radio>
+                    <Radio value="no">Regretfully decline</Radio>
+                  </HStack>
+                </RadioGroup>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <FormLabel fontWeight="500">
+                  Please let us know who can and cannot make it
+                </FormLabel>
+                {respondingGuestNames.map((name, i) => {
+                  return (
+                    <RadioGroup
+                      key={i}
+                      mb="16px"
+                      onChange={(val) => handleChangeAttendance(val, name)}
+                    >
+                      <Box>
+                        <Text>{name}</Text>
+                        <HStack spacing="16px">
+                          <Radio value="yes">I'll be there!</Radio>
+                          <Radio value="no">Regretfully decline</Radio>
+                        </HStack>
+                      </Box>
+                    </RadioGroup>
+                  );
+                })}
               </React.Fragment>
             )}
+          </FormControl>
 
-            <Box overflowY="hidden" flex={1}>
-              <FormControl>
-                {!multipleRespondants ? (
-                  <React.Fragment>
-                    <FormLabel fontWeight="500">Can you make it?</FormLabel>
+          <Divider my="16px" />
 
-                    <RadioGroup
-                      onChange={(val) =>
-                        handleChangeAttendance(val, respondingGuestNames[0])
-                      }
-                    >
-                      <HStack spacing="16px" flexWrap="wrap">
-                        <Radio value="yes">I'll be there!</Radio>
-                        <Radio value="no">Regretfully decline</Radio>
-                      </HStack>
-                    </RadioGroup>
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment>
-                    <FormLabel fontWeight="500">
-                      Please let us know who can and cannot make it
-                    </FormLabel>
-                    {respondingGuestNames.map((name, i) => {
-                      return (
-                        <RadioGroup
-                          key={i}
-                          mb="16px"
-                          onChange={(val) => handleChangeAttendance(val, name)}
-                        >
-                          <Box>
-                            <Text>{name}</Text>
-                            <HStack spacing="16px">
-                              <Radio value="yes">I'll be there!</Radio>
-                              <Radio value="no">Regretfully decline</Radio>
-                            </HStack>
-                          </Box>
-                        </RadioGroup>
-                      );
-                    })}
-                  </React.Fragment>
-                )}
+          {!multipleRespondants ? (
+            <HStack alignItems="flex-end">
+              <FormControl w="50%">
+                <FormLabel fontWeight="500" whiteSpace="nowrap">
+                  Please select a dinner entree
+                </FormLabel>
+
+                <RadioGroup
+                  onChange={(val) =>
+                    handleChangeMeal(
+                      val,
+                      respondingGuestNames[0],
+                      "dinner_selection"
+                    )
+                  }
+                >
+                  <HStack spacing="16px" flexWrap="wrap">
+                    <Radio value="chicken">Chicken</Radio>
+                    <Radio value="beef">Beef</Radio>
+                  </HStack>
+                </RadioGroup>
               </FormControl>
 
-              <Divider my="16px" />
-
-              {!multipleRespondants ? (
-                <HStack alignItems="flex-end">
-                  <FormControl w="50%">
-                    <FormLabel fontWeight="500" whiteSpace="nowrap">
-                      Please select a dinner entree
-                    </FormLabel>
-
-                    <RadioGroup
-                      onChange={(val) =>
-                        handleChangeMeal(
-                          val,
-                          respondingGuestNames[0],
-                          "dinner_selection"
-                        )
-                      }
-                    >
-                      <HStack spacing="16px" flexWrap="wrap">
-                        <Radio value="chicken">Chicken</Radio>
-                        <Radio value="beef">Beef</Radio>
-                      </HStack>
-                    </RadioGroup>
-                  </FormControl>
-
-                  <Input
-                    position="relative"
-                    top="2px"
-                    focusBorderColor="text.tertiary"
-                    w="50%"
-                    placeholder="Special requests?"
-                    _placeholder={{ color: "text.tertiary" }}
-                    size="sm"
-                    fontSize="md"
-                    onChange={(e) =>
-                      handleChangeMeal(
-                        e.target.value,
-                        `${guest.first_name} ${guest.last_name}`,
-                        "dinner_selection_notes"
-                      )
-                    }
-                  />
-                  {/* </Box> */}
-                </HStack>
-              ) : (
-                <FormControl>
-                  <FormLabel fontWeight="500">
-                    Please select a dinner entree for each guest
-                  </FormLabel>
-
-                  {respondingGuestNames.map((name, i) => {
-                    return (
-                      <HStack
-                        key={i}
-                        justifyContent="flex-start"
-                        spacing="24px"
-                        mb="16px"
-                        alignItems="flex-start"
-                        h="100%"
-                      >
-                        <RadioGroup
-                          h="100%"
-                          onChange={(val) =>
-                            handleChangeMeal(val, name, "dinner_selection")
-                          }
-                          isDisabled={formData[name]["attending"] === "no"}
-                        >
-                          <Box>
-                            <Text>{name}</Text>
-                            <HStack>
-                              <Radio value="chicken">Chicken</Radio>
-                              <Radio value="beef">Beef</Radio>
-                            </HStack>
-                          </Box>
-                        </RadioGroup>
-
-                        <Box flex={1}>
-                          <Text>Special requests? (optional)</Text>
-                          <Input
-                            size="sm"
-                            fontSize="md"
-                            onChange={(e) =>
-                              handleChangeMeal(
-                                e.target.value,
-                                name,
-                                "dinner_selection_notes"
-                              )
-                            }
-                          />
-                        </Box>
-                      </HStack>
-                    );
-                  })}
-                </FormControl>
-              )}
-              <Divider my="12px" />
-              <FormControl>
-                <FormLabel>Anything else we should know? (optional)</FormLabel>
-                <Textarea
-                  focusBorderColor="text.tertiary"
-                  ref={anythingElseRef}
-                />
-              </FormControl>
-            </Box>
-            <HStack pt="16px" pb="8px" justifyContent="flex-end">
-              <Button
-                onClick={sendFormData}
-                // onClick={() => {
-                //   handleSubmit(
-                //     {
-                //       ...formData,
-                //       special_requests: anythingElseRef.current.value,
-                //     },
-                //     respondingGuests
-                //   );
-                // }}
-              >
-                Submit
-              </Button>
+              <Input
+                position="relative"
+                top="2px"
+                focusBorderColor="text.tertiary"
+                w="50%"
+                placeholder="Special requests?"
+                _placeholder={{ color: "text.tertiary" }}
+                size="sm"
+                fontSize="md"
+                onChange={(e) =>
+                  handleChangeMeal(
+                    e.target.value,
+                    `${guest.first_name} ${guest.last_name}`,
+                    "dinner_selection_notes"
+                  )
+                }
+              />
+              {/* </Box> */}
             </HStack>
-          </Box>
-        )}
-      </Transition>
+          ) : (
+            <FormControl>
+              <FormLabel fontWeight="500">
+                Please select a dinner entree for each guest
+              </FormLabel>
+
+              {respondingGuestNames.map((name, i) => {
+                return (
+                  <HStack
+                    key={i}
+                    justifyContent="flex-start"
+                    spacing="24px"
+                    mb="16px"
+                    alignItems="flex-start"
+                    h="100%"
+                  >
+                    <RadioGroup
+                      h="100%"
+                      onChange={(val) =>
+                        handleChangeMeal(val, name, "dinner_selection")
+                      }
+                      isDisabled={formData[name]["attending"] === "no"}
+                    >
+                      <Box>
+                        <Text>{name}</Text>
+                        <HStack>
+                          <Radio value="chicken">Chicken</Radio>
+                          <Radio value="beef">Beef</Radio>
+                        </HStack>
+                      </Box>
+                    </RadioGroup>
+
+                    <Box flex={1}>
+                      <Text>Special requests? (optional)</Text>
+                      <Input
+                        size="sm"
+                        fontSize="md"
+                        onChange={(e) =>
+                          handleChangeMeal(
+                            e.target.value,
+                            name,
+                            "dinner_selection_notes"
+                          )
+                        }
+                      />
+                    </Box>
+                  </HStack>
+                );
+              })}
+            </FormControl>
+          )}
+          <Divider my="12px" />
+          <FormControl>
+            <FormLabel>Anything else we should know? (optional)</FormLabel>
+            <Textarea focusBorderColor="text.tertiary" ref={anythingElseRef} />
+          </FormControl>
+        </Box>
+        <HStack pt="16px" pb="8px" justifyContent="flex-end">
+          <Button
+            onClick={sendFormData}
+            // onClick={() => {
+            //   handleSubmit(
+            //     {
+            //       ...formData,
+            //       special_requests: anythingElseRef.current.value,
+            //     },
+            //     respondingGuests
+            //   );
+            // }}
+          >
+            Submit
+          </Button>
+        </HStack>
+      </Box>
       <RSVPSuccessModal
         isOpen={modalIsOpen}
         onClose={handleCloseModal}
@@ -335,3 +319,200 @@ const RSVPForm = ({
 };
 
 export default RSVPForm;
+
+// return (
+//   <Box maxW="580px">
+//     <Transition in={step === 3} timeout={500}>
+//       {(state) => (
+//         <Box
+//           mb="16px"
+//           px="16px"
+//           py="16px"
+//           maxH="100%"
+//           style={{
+//             ...defaultStyle,
+//             ...fadeInStyles[state],
+//           }}
+//         >
+//           {respondingGuests && respondingGuests.length > 1 && (
+//             <React.Fragment>
+//               <Text color="text.secondary">
+//                 Replying for {`${respondingGuestNames.join(", ")}`}
+//               </Text>
+//               <Divider my="16px" />
+//             </React.Fragment>
+//           )}
+
+//           <Box overflowY="hidden" flex={1}>
+//             <FormControl>
+//               {!multipleRespondants ? (
+//                 <React.Fragment>
+//                   <FormLabel fontWeight="500">Can you make it?</FormLabel>
+
+//                   <RadioGroup
+//                     onChange={(val) =>
+//                       handleChangeAttendance(val, respondingGuestNames[0])
+//                     }
+//                   >
+//                     <HStack spacing="16px" flexWrap="wrap">
+//                       <Radio value="yes">I'll be there!</Radio>
+//                       <Radio value="no">Regretfully decline</Radio>
+//                     </HStack>
+//                   </RadioGroup>
+//                 </React.Fragment>
+//               ) : (
+//                 <React.Fragment>
+//                   <FormLabel fontWeight="500">
+//                     Please let us know who can and cannot make it
+//                   </FormLabel>
+//                   {respondingGuestNames.map((name, i) => {
+//                     return (
+//                       <RadioGroup
+//                         key={i}
+//                         mb="16px"
+//                         onChange={(val) => handleChangeAttendance(val, name)}
+//                       >
+//                         <Box>
+//                           <Text>{name}</Text>
+//                           <HStack spacing="16px">
+//                             <Radio value="yes">I'll be there!</Radio>
+//                             <Radio value="no">Regretfully decline</Radio>
+//                           </HStack>
+//                         </Box>
+//                       </RadioGroup>
+//                     );
+//                   })}
+//                 </React.Fragment>
+//               )}
+//             </FormControl>
+
+//             <Divider my="16px" />
+
+//             {!multipleRespondants ? (
+//               <HStack alignItems="flex-end">
+//                 <FormControl w="50%">
+//                   <FormLabel fontWeight="500" whiteSpace="nowrap">
+//                     Please select a dinner entree
+//                   </FormLabel>
+
+//                   <RadioGroup
+//                     onChange={(val) =>
+//                       handleChangeMeal(
+//                         val,
+//                         respondingGuestNames[0],
+//                         "dinner_selection"
+//                       )
+//                     }
+//                   >
+//                     <HStack spacing="16px" flexWrap="wrap">
+//                       <Radio value="chicken">Chicken</Radio>
+//                       <Radio value="beef">Beef</Radio>
+//                     </HStack>
+//                   </RadioGroup>
+//                 </FormControl>
+
+//                 <Input
+//                   position="relative"
+//                   top="2px"
+//                   focusBorderColor="text.tertiary"
+//                   w="50%"
+//                   placeholder="Special requests?"
+//                   _placeholder={{ color: "text.tertiary" }}
+//                   size="sm"
+//                   fontSize="md"
+//                   onChange={(e) =>
+//                     handleChangeMeal(
+//                       e.target.value,
+//                       `${guest.first_name} ${guest.last_name}`,
+//                       "dinner_selection_notes"
+//                     )
+//                   }
+//                 />
+//                 {/* </Box> */}
+//               </HStack>
+//             ) : (
+//               <FormControl>
+//                 <FormLabel fontWeight="500">
+//                   Please select a dinner entree for each guest
+//                 </FormLabel>
+
+//                 {respondingGuestNames.map((name, i) => {
+//                   return (
+//                     <HStack
+//                       key={i}
+//                       justifyContent="flex-start"
+//                       spacing="24px"
+//                       mb="16px"
+//                       alignItems="flex-start"
+//                       h="100%"
+//                     >
+//                       <RadioGroup
+//                         h="100%"
+//                         onChange={(val) =>
+//                           handleChangeMeal(val, name, "dinner_selection")
+//                         }
+//                         isDisabled={formData[name]["attending"] === "no"}
+//                       >
+//                         <Box>
+//                           <Text>{name}</Text>
+//                           <HStack>
+//                             <Radio value="chicken">Chicken</Radio>
+//                             <Radio value="beef">Beef</Radio>
+//                           </HStack>
+//                         </Box>
+//                       </RadioGroup>
+
+//                       <Box flex={1}>
+//                         <Text>Special requests? (optional)</Text>
+//                         <Input
+//                           size="sm"
+//                           fontSize="md"
+//                           onChange={(e) =>
+//                             handleChangeMeal(
+//                               e.target.value,
+//                               name,
+//                               "dinner_selection_notes"
+//                             )
+//                           }
+//                         />
+//                       </Box>
+//                     </HStack>
+//                   );
+//                 })}
+//               </FormControl>
+//             )}
+//             <Divider my="12px" />
+//             <FormControl>
+//               <FormLabel>Anything else we should know? (optional)</FormLabel>
+//               <Textarea
+//                 focusBorderColor="text.tertiary"
+//                 ref={anythingElseRef}
+//               />
+//             </FormControl>
+//           </Box>
+//           <HStack pt="16px" pb="8px" justifyContent="flex-end">
+//             <Button
+//               onClick={sendFormData}
+//               // onClick={() => {
+//               //   handleSubmit(
+//               //     {
+//               //       ...formData,
+//               //       special_requests: anythingElseRef.current.value,
+//               //     },
+//               //     respondingGuests
+//               //   );
+//               // }}
+//             >
+//               Submit
+//             </Button>
+//           </HStack>
+//         </Box>
+//       )}
+//     </Transition>
+//     <RSVPSuccessModal
+//       isOpen={modalIsOpen}
+//       onClose={handleCloseModal}
+//       respondingGuestNames={respondingGuestNames}
+//     />
+//   </Box>
+// );
