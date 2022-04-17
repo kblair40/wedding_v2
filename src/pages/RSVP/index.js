@@ -7,6 +7,8 @@ import GuestSearch from "components/RSVPSteps/GuestSearch";
 import SelectGuests from "components/RSVPSteps/SelectGuests";
 import PageContainer from "components/containers/PageContainer";
 import InviteCard from "components/containers/InviteCard";
+import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
+
 import "./index.css";
 
 const RSVP = () => {
@@ -17,6 +19,7 @@ const RSVP = () => {
   const [step1Class, setStep1Class] = useState("fade-in-half-second");
   const [step2Class, setStep2Class] = useState("hidden");
   const [step3Class, setStep3Class] = useState("hidden");
+  const [showHelp, setShowHelp] = useState(false);
 
   const getSearchResults = (guest, relatedGuests) => {
     console.log("SEARCH RESULTES:", { guest, relatedGuests });
@@ -106,50 +109,57 @@ const RSVP = () => {
 
   return (
     <PageContainer center pt="16px">
-      <Flex
-        w="100%"
-        justifyContent="center"
-        // border="1px solid #000"
-      >
-        <Box
-          // border="1px solid #ccc"
-          minW="340px"
-          maxW={{
-            base: "420px",
-            sm: "524px", // allows full placeholder text to show
-            md: "720px",
-            lg: "900px",
-          }}
+      <Box>
+        <Flex
+          w="100%"
+          justifyContent="center"
+          // border="1px solid #000"
         >
-          <InviteCard>
-            <Box className={step1Class}>
-              <GuestSearch getSearchResults={getSearchResults} />
-            </Box>
+          <Box
+            // border="1px solid #ccc"
+            minW="340px"
+            maxW={{
+              base: "420px",
+              sm: "524px", // allows full placeholder text to show
+              md: "720px",
+              lg: "900px",
+            }}
+          >
+            <InviteCard>
+              <Box className={step1Class}>
+                <GuestSearch getSearchResults={getSearchResults} />
+              </Box>
 
-            <Box className={step2Class}>
-              <Center>
-                <SelectGuests
-                  checkedGuests={checkedGuests}
-                  getCheckedGuests={getCheckedGuests}
+              <Box className={step2Class}>
+                <Center>
+                  <SelectGuests
+                    checkedGuests={checkedGuests}
+                    getCheckedGuests={getCheckedGuests}
+                    step={step}
+                    guest={guest}
+                    relatedGuests={relatedGuests}
+                    showHelpModal={() => setShowHelp(true)}
+                  />
+                </Center>
+              </Box>
+
+              <Box className={step3Class}>
+                <RSVPForm
                   step={step}
                   guest={guest}
                   relatedGuests={relatedGuests}
+                  checkedGuests={checkedGuests}
+                  handleSubmit={handleSubmitRSVPForm}
                 />
-              </Center>
-            </Box>
+              </Box>
+            </InviteCard>
+          </Box>
+        </Flex>
 
-            <Box className={step3Class}>
-              <RSVPForm
-                step={step}
-                guest={guest}
-                relatedGuests={relatedGuests}
-                checkedGuests={checkedGuests}
-                handleSubmit={handleSubmitRSVPForm}
-              />
-            </Box>
-          </InviteCard>
-        </Box>
-      </Flex>
+        {showHelp && (
+          <RSVPHelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />
+        )}
+      </Box>
     </PageContainer>
   );
 };

@@ -3,34 +3,30 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
-  Button,
-  UnorderedList,
-  ListItem,
+  ModalHeader,
+  useDisclosure,
   Text,
 } from "@chakra-ui/react";
+import emailjs from "@emailjs/browser";
 
 import CustomRSVPForm from "components/RSVPSteps/RSVPHelpModal/CustomRSVPForm";
 
 const RSVPHelpModal = ({ isOpen, onClose }) => {
+  // const { isOpen } = useDisclosure({ isOpen: true });
+  const handleSubmit = async (data, addAnother = false) => {
+    console.log("DATA:", data);
+    const res = await emailjs.send("service_ujghu3o", "template_lxrzaso", data);
+    console.log("RES:", res);
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
       <ModalContent>
         <ModalHeader fontWeight="500">Sorry about that!</ModalHeader>
-        <CustomRSVPForm />
-        {/* <ModalBody>
-          <Text mb="16px">Please fill this out instead...</Text>
-        </ModalBody>
 
-        <ModalFooter>
-          <Button variant="ghost" mr="16px">
-            See a template
-          </Button>
-          <Button onClick={onClose}>Close</Button>
-        </ModalFooter> */}
+        <CustomRSVPForm onSubmit={handleSubmit} />
       </ModalContent>
     </Modal>
   );

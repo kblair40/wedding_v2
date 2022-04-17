@@ -16,7 +16,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const CustomRSVPForm = () => {
+const CustomRSVPForm = ({ onSubmit }) => {
   const [dinnerSelection, setDinnerSelection] = useState("");
   const [attending, setAttending] = useState("");
   const [missingFields, setMissingFields] = useState([]);
@@ -35,11 +35,6 @@ const CustomRSVPForm = () => {
   };
 
   const handleSubmit = (addAnother = false) => {
-    // if (attending === "") {
-    //   setMissingFields(["attending"]);
-    //   return;
-    // }
-
     let formData = {
       first_name: firstName.current.value,
       last_name: lastName.current.value,
@@ -48,7 +43,6 @@ const CustomRSVPForm = () => {
       dinner_selection: dinnerSelection,
       attending: attending,
     };
-
     console.log("FORM DATA:", formData);
 
     const requiredFields = ["first_name", "last_name", "attending"];
@@ -62,6 +56,8 @@ const CustomRSVPForm = () => {
     if (validateForm(formData, requiredFields)) {
       console.log("\n", { valid: true });
     }
+
+    onSubmit(formData);
   };
 
   const validateForm = (data, fields) => {
