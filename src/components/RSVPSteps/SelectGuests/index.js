@@ -21,7 +21,7 @@ const SelectGuests = ({
   checkedGuests: parentCheckedGuests,
 }) => {
   const [checkedGuests, setCheckedGuests] = useState([]);
-  const [showNextButton, setShowNextButton] = useState(false);
+  const [showNextButton, setShowNextButton] = useState(true);
   const [display, setDisplay] = useState();
   const [showHelp, setShowHelp] = useState(false);
 
@@ -63,7 +63,7 @@ const SelectGuests = ({
                   {`${guest.first_name} ${guest.last_name}`}
                 </Checkbox>
                 <Text
-                  ml="16px"
+                  ml="8px"
                   // lineHeight="100%"
                   fontSize="sm"
                   fontStyle="italic"
@@ -72,7 +72,7 @@ const SelectGuests = ({
                   Not you?
                 </Text>
                 <Box
-                  ml="8px"
+                  ml="6px"
                   cursor="pointer"
                   _hover={{ p: { textDecoration: "underline" } }}
                   onClick={() => setShowHelp(true)}

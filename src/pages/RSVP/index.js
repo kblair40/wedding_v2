@@ -14,7 +14,7 @@ const RSVP = () => {
   const [relatedGuests, setRelatedGuests] = useState();
   const [step, setStep] = useState(1);
   const [checkedGuests, setCheckedGuests] = useState();
-  const [step1Class, setStep1Class] = useState("");
+  const [step1Class, setStep1Class] = useState("fade-in-half-second");
   const [step2Class, setStep2Class] = useState("hidden");
   const [step3Class, setStep3Class] = useState("hidden");
 
