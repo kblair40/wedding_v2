@@ -13,6 +13,7 @@ import WeddingPartyPage from "pages/WeddingPartyPage";
 import Registry from "pages/Registry";
 import RSVP from "pages/RSVP";
 import Nav from "components/Nav";
+import ScrollToTop from "components/containers/ScrollToTop";
 import Gallery from "pages/Gallery";
 
 import "./App.css";
@@ -22,16 +23,18 @@ function App() {
     <Box position="relative" sx={{ overflow: "hidden !important" }}>
       <Nav />
       <UserProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/thingstodo" element={<ToDoToEat />} />
-          <Route path="/travel" element={<Travel />} />
-          <Route path="/weddingparty" element={<WeddingPartyPage />} />
-          <Route path="/registry" element={<Registry />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/rsvp" element={<RSVP />} />
-          <Route path="/gallery" element={<Gallery />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/thingstodo" element={<ToDoToEat />} />
+            <Route path="/travel" element={<Travel />} />
+            <Route path="/weddingparty" element={<WeddingPartyPage />} />
+            <Route path="/registry" element={<Registry />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/rsvp" element={<RSVP />} />
+            <Route path="/gallery" element={<Gallery />} />
+          </Routes>
+        </ScrollToTop>
       </UserProvider>
     </Box>
   );
