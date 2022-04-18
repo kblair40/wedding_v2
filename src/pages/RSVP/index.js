@@ -112,7 +112,7 @@ const RSVP = () => {
 
   const closeHelpModal = () => {
     setShowHelp(false);
-    navigate("/");
+    navigate(0);
   };
 
   return (
