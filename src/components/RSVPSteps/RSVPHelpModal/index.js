@@ -3,20 +3,23 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalBody,
   ModalHeader,
-  useDisclosure,
-  Text,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 
 import CustomRSVPForm from "components/RSVPSteps/RSVPHelpModal/CustomRSVPForm";
 
 const RSVPHelpModal = ({ isOpen, onClose }) => {
-  // const { isOpen } = useDisclosure({ isOpen: true });
+  const key = "W69ff_xL68cgt7IZI";
+
   const handleSubmit = async (data, addAnother = false) => {
     console.log("DATA:", data);
-    const res = await emailjs.send("service_ujghu3o", "template_lxrzaso", data);
+    const res = await emailjs.send(
+      "service_ujghu3o",
+      "template_lxrzaso",
+      data,
+      key
+    );
     console.log("RES:", res);
   };
 
