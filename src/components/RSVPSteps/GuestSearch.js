@@ -17,10 +17,12 @@ const GuestSearch = ({ getSearchResults }) => {
 
     let nameArray = inputVal.trim().split(" ");
     if (nameArray.length < 2) {
+      console.log("error1");
       setErrorMsg("First and last names are both required");
       return;
     } else if (nameArray.length > 2) {
       setErrorMsg("Please only enter your first and last name");
+      console.log("error2");
       return;
     }
 
@@ -33,6 +35,7 @@ const GuestSearch = ({ getSearchResults }) => {
   };
 
   const handleSubmitSearch = async (fn, ln) => {
+    console.log("Submitted:", { first_name: fn, last_name: ln });
     setLoading(true);
     let guest;
     try {
@@ -117,6 +120,20 @@ const GuestSearch = ({ getSearchResults }) => {
         />
         <Button onClick={validateInput} isLoading={loading}>
           Find Me
+        </Button>
+      </HStack>
+
+      <HStack
+        alignItems="flex-end"
+        spacing="16px"
+        // border="1px solid #ccc"
+        mt="2px"
+      >
+        <Text color="red.500" fontSize="sm" mt="4px">
+          {errorMsg ? `${errorMsg}` : ""}
+        </Text>
+        <Button variant="link" size="sm" display={errorMsg ? "block" : "none"}>
+          Need help?
         </Button>
       </HStack>
     </form>
