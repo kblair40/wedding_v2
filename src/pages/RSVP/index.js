@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Center, Flex } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 import { patchGuest } from "api/api";
 import RSVPForm from "components/RSVPSteps/RSVPForm";
@@ -20,6 +21,8 @@ const RSVP = () => {
   const [step2Class, setStep2Class] = useState("hidden");
   const [step3Class, setStep3Class] = useState("hidden");
   const [showHelp, setShowHelp] = useState(false);
+
+  let navigate = useNavigate();
 
   const getSearchResults = (guest, relatedGuests) => {
     console.log("SEARCH RESULTES:", { guest, relatedGuests });
@@ -107,6 +110,11 @@ const RSVP = () => {
     return true;
   };
 
+  const closeHelpModal = () => {
+    setShowHelp(false);
+    navigate("/");
+  };
+
   return (
     <PageContainer center pt="16px">
       <Box>
@@ -157,7 +165,7 @@ const RSVP = () => {
         </Flex>
 
         {showHelp && (
-          <RSVPHelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />
+          <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />
         )}
       </Box>
     </PageContainer>

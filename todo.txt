@@ -5,3 +5,4 @@
 4. Add ability to go back steps in RSVP process
 5. RSVP help modal should have email template in Collapse container (or with animate.css somehow)
       template should show when user clicks 'See a template'
+6. Allow RSVPHelpModal opening from 'Search' step if no guests are found

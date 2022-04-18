@@ -67,6 +67,7 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
 
     if (addAnother) {
       setSendingAndAdding(false);
+      // reset form values and do not close modal
       firstName.current.value = "";
       lastName.current.value = "";
       dinnerSelectionNotes.current.value = "";
