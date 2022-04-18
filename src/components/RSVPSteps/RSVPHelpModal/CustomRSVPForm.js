@@ -1,13 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   Box,
   Text,
   FormControl,
   FormLabel,
   HStack,
-  VStack,
-  Flex,
-  Heading,
   Input,
   Radio,
   RadioGroup,
@@ -16,10 +13,12 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const CustomRSVPForm = ({ onSubmit }) => {
+const CustomRSVPForm = ({ onSubmit, onClose }) => {
   const [dinnerSelection, setDinnerSelection] = useState("");
   const [attending, setAttending] = useState("");
   const [missingFields, setMissingFields] = useState([]);
+  const [sending, setSending] = useState(false);
+  const [sendingAndAdding, setSendingAndAdding] = useState(false);
 
   const firstName = useRef();
   const lastName = useRef();
@@ -34,7 +33,12 @@ const CustomRSVPForm = ({ onSubmit }) => {
     size: "sm",
   };
 
-  const handleSubmit = (addAnother = false) => {
+  const handleSubmit = async (addAnother = false) => {
+    if (addAnother) {
+      setSendingAndAdding(true);
+    } else {
+      setSending(true);
+    }
     let formData = {
       first_name: firstName.current.value,
       last_name: lastName.current.value,
@@ -57,7 +61,15 @@ const CustomRSVPForm = ({ onSubmit }) => {
       console.log("\n", { valid: true });
     }
 
-    onSubmit(formData);
+    await onSubmit(formData);
+
+    if (addAnother) {
+      setSendingAndAdding(false);
+    } else {
+      setSending(false);
+    }
+
+    onClose();
   };
 
   const validateForm = (data, fields) => {
@@ -187,17 +199,20 @@ const CustomRSVPForm = ({ onSubmit }) => {
       </ModalBody>
 
       <ModalFooter>
-        <Button
-          variant="ghost"
-          mr="16px"
-          // onClick={onClose}
-        >
+        <Button variant="ghost" mr="16px" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="ghost" mr="16px" onClick={() => handleSubmit(true)}>
+        <Button
+          isLoading={sendingAndAdding}
+          variant="ghost"
+          mr="16px"
+          onClick={() => handleSubmit(true)}
+        >
           Send and Add Another
         </Button>
-        <Button onClick={() => handleSubmit(false)}>Send</Button>
+        <Button isLoading={sending} onClick={() => handleSubmit(false)}>
+          Send
+        </Button>
       </ModalFooter>
     </React.Fragment>
   );

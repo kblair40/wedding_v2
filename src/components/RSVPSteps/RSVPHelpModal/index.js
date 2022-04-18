@@ -4,23 +4,45 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
+  useToast,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 
+import { toTitleCase } from "utils/helpers";
 import CustomRSVPForm from "components/RSVPSteps/RSVPHelpModal/CustomRSVPForm";
 
 const RSVPHelpModal = ({ isOpen, onClose }) => {
   const key = "W69ff_xL68cgt7IZI";
 
+  const toast = useToast();
+
   const handleSubmit = async (data, addAnother = false) => {
     console.log("DATA:", data);
-    const res = await emailjs.send(
-      "service_ujghu3o",
-      "template_lxrzaso",
-      data,
-      key
-    );
-    console.log("RES:", res);
+    try {
+      const res = await emailjs.send(
+        "service_ujghu3o",
+        "template_lxrzaso",
+        data,
+        key
+      );
+      console.log("RES:", res);
+      let message;
+      if (data.attending === "yes") {
+        message = "We'll see you there!";
+      } else {
+        message = "Sorry you can't make it";
+      }
+
+      toast({
+        title: `Thanks, ${toTitleCase(data.first_name)}`,
+        description: message,
+        status: "success",
+        duration: 7000,
+        isClosable: true,
+      });
+    } catch (err) {
+      console.log("FAILED SENDING EMAIL");
+    }
   };
 
   return (
@@ -29,7 +51,7 @@ const RSVPHelpModal = ({ isOpen, onClose }) => {
       <ModalContent>
         <ModalHeader fontWeight="500">Sorry about that!</ModalHeader>
 
-        <CustomRSVPForm onSubmit={handleSubmit} />
+        <CustomRSVPForm onSubmit={handleSubmit} onClose={onClose} />
       </ModalContent>
     </Modal>
   );
