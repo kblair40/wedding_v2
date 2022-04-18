@@ -34,11 +34,6 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
   };
 
   const handleSubmit = async (addAnother = false) => {
-    if (addAnother) {
-      setSendingAndAdding(true);
-    } else {
-      setSending(true);
-    }
     let formData = {
       first_name: firstName.current.value,
       last_name: lastName.current.value,
@@ -57,19 +52,31 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
       requiredFields.push("dinner_selection");
     }
 
-    if (validateForm(formData, requiredFields)) {
+    if (!validateForm(formData, requiredFields)) {
       console.log("\n", { valid: true });
+      return;
+    }
+
+    if (addAnother) {
+      setSendingAndAdding(true);
+    } else {
+      setSending(true);
     }
 
     await onSubmit(formData);
 
     if (addAnother) {
       setSendingAndAdding(false);
+      firstName.current.value = "";
+      lastName.current.value = "";
+      dinnerSelectionNotes.current.value = "";
+      email.current.value = "";
+      setDinnerSelection("");
+      setAttending("");
     } else {
       setSending(false);
+      onClose();
     }
-
-    onClose();
   };
 
   const validateForm = (data, fields) => {
@@ -142,6 +149,7 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
                 clearErrors();
                 setAttending(val);
               }}
+              value={attending}
             >
               <HStack spacing="16px">
                 <Radio value="yes">Yes!</Radio>
@@ -165,6 +173,7 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
                 clearErrors();
                 setDinnerSelection(val);
               }}
+              value={dinnerSelection}
             >
               <HStack spacing="24px">
                 <HStack spacing="16px">
