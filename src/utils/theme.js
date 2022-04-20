@@ -1,4 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
+// https://colordesigner.io/
 
 const theme = extendTheme({
   colors: {
@@ -63,12 +64,6 @@ const theme = extendTheme({
       tertiary: "rgba(52, 65, 72, .51)",
       muted: "rgba(52, 65, 72 .38)",
     },
-    // creme: {
-    //   main: "#DEBFB8",
-    // },
-    // gold: {
-    //   main: "#DCCAAA",
-    // },
     // colorScheme for use with Radio and Checkbox components
     darkScheme: {
       50: "#999",
@@ -113,10 +108,10 @@ const theme = extendTheme({
         "3xl": { fontSize: "28px" },
       },
       defaultProps: {
-        size: "md",
+        fontSize: "md",
       },
       baseStyle: {
-        color: "#2d2d2d",
+        color: "neutral.black",
         fontWeight: "400",
       },
     },
@@ -137,7 +132,7 @@ const theme = extendTheme({
         size: "md",
       },
       baseStyle: {
-        color: "#2d2d2d",
+        color: "neutral.black",
         fontWeight: "300",
       },
     },
