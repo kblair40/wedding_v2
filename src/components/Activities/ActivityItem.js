@@ -8,7 +8,7 @@ const ActivityItem = ({ activity: { name, url, priceLevel } }) => {
       my="4px"
       _hover={{
         ".activity-link": {
-          bg: "neutral.100",
+          bg: "primary.500",
         },
       }}
     >

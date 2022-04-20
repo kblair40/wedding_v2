@@ -42,7 +42,7 @@ const Activities = () => {
           lg: "900px",
         }}
       >
-        <Text
+        {/* <Text
           mb="24px"
           fontWeight="400"
           alignSelf={{
@@ -50,10 +50,9 @@ const Activities = () => {
           }}
           whiteSpace="nowrap"
           fontSize={{ base: "21px", sm: "24px" }}
-          // fontSize={{ base: "xl", sm: "2xl" }}
         >
           LOCAL (IN / NEAR WINTER PARK)
-        </Text>
+        </Text> */}
         <Masonry
           breakpointCols={colBreakpoints}
           className="masonry-grid"
@@ -78,8 +77,8 @@ const Activities = () => {
           {/*  */}
         </Masonry>
         {/*  */}
-        <Divider my="24px" borderColor="neutral.black" opacity={0.3} />
-        <Text
+        {/* <Divider my="24px" borderColor="neutral.black" opacity={0.3} /> */}
+        {/* <Text
           mb="24px"
           fontWeight="400"
           alignSelf={{ base: "center" }}
@@ -87,7 +86,7 @@ const Activities = () => {
           fontSize={{ base: "21px", sm: "24px" }}
         >
           OFF THE BEATEN PATH
-        </Text>
+        </Text> */}
       </Flex>
     </Box>
   );

@@ -38,7 +38,7 @@ const TravelInfo = () => {
     <Box minW="350px">
       {/* <AnimatedCheckbox /> */}
 
-      <Heading textAlign="center" fontSize="5xl" fontWeight="500">
+      <Heading textAlign="center" fontSize="4xl" fontWeight="700">
         by plane / by car
       </Heading>
 
@@ -52,7 +52,7 @@ const TravelInfo = () => {
         <Paper {...paperStyles}>
           <VStack alignItems="center" spacing="1rem">
             <Icon as={FaPlaneDeparture} boxSize="48px" color="neutral.black" />
-            <Heading fontSize="4xl" fontWeight="500">
+            <Heading fontSize="3xl" fontWeight="600">
               by plane
             </Heading>
             <VStack>
@@ -109,7 +109,7 @@ const TravelInfo = () => {
         >
           <VStack alignItems="center" spacing="1rem">
             <Icon as={AiOutlineCar} boxSize="48px" color="neutral.black" />
-            <Heading fontSize="4xl" fontWeight="500">
+            <Heading fontSize="3xl" fontWeight="600">
               by car
             </Heading>
             <VStack>
