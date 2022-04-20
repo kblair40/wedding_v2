@@ -13,6 +13,7 @@ import {
 import { FaPlane, FaPlaneDeparture } from "react-icons/fa";
 import { AiOutlineCar } from "react-icons/ai";
 
+import AnimatedCheckbox from "components/Animated/AnimatedCheckbox";
 // import { MAX_WIDTHS } from "utils/constants";
 import Paper from "components/containers/Paper";
 
@@ -28,6 +29,8 @@ const paperStyles = {
 const TravelInfo = () => {
   return (
     <React.Fragment>
+      {/* <AnimatedCheckbox /> */}
+
       <Heading textAlign="center" fontSize="4xl" fontWeight="500">
         By Plane / By Car
       </Heading>

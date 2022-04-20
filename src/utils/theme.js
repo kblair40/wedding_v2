@@ -54,23 +54,7 @@ const theme = extendTheme({
         color: "neutral.black",
       },
     },
-    Input: {
-      baseStyle: {
-        // borderColor: "#2d2d2d",
-        // focusBorderColor: "#2d2d2d",
-        // borderRadius: 0,
-      },
-      defaultProps: {
-        // borderColor: "#2d2d2d",
-        // focusBorderColor: "#2d2d2d",
-        // borderRadius: 0,
-      },
-      // defaultProps: {
-      //   _focus: {
-      //     borderColor: "#2d2d2d",
-      //   },
-      // },
-    },
+    // Input: {},
     Text: {
       sizes: {
         "2xs": { fontSize: "10px" },
@@ -113,12 +97,8 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    // heading: "Josefin Sans",
-    // heading: "EB Garamond",
     heading: "Cormorant Garamond",
-    // body: "Josefin Slab",
-    // body: "Cormorant Garamond",
-    body: "Poppins",
+    body: "Open Sans",
     mono: "Josefin Slab",
   },
 });

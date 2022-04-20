@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Input, Button, Text, HStack } from "@chakra-ui/react";
+import { Input, Button, Text, HStack, Flex } from "@chakra-ui/react";
 
 import { getGuestByName, getRelatedGuests } from "api/api";
 import { toTitleCase } from "utils/helpers";
 
-const GuestSearch = ({ getSearchResults }) => {
+const GuestSearch = ({ getSearchResults, showHelp }) => {
   const [inputVal, setInputVal] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [notFoundError, setNotFoundError] = useState(false);
@@ -93,7 +93,6 @@ const GuestSearch = ({ getSearchResults }) => {
     <form onSubmit={validateInput} style={{ width: "100%" }}>
       <Text
         fontSize="15px"
-        fontWeight="300"
         //
       >
         Please enter the first and last name of one member of your party below.
@@ -101,7 +100,6 @@ const GuestSearch = ({ getSearchResults }) => {
       <Text
         mt="4px"
         fontSize="15px"
-        fontWeight="300"
         //
       >
         If you're responding for you and a guest (or your family), you'll be
@@ -132,10 +130,32 @@ const GuestSearch = ({ getSearchResults }) => {
         <Text color="red.500" fontSize="sm" mt="4px">
           {errorMsg ? `${errorMsg}` : ""}
         </Text>
-        <Button variant="link" size="sm" display={errorMsg ? "block" : "none"}>
+        <Button
+          variant="link"
+          size="sm"
+          color="text.primary"
+          fontWeight="500"
+          display={errorMsg ? "block" : "none"}
+        >
           Need help?
         </Button>
       </HStack>
+
+      {notFoundError && (
+        <Text mt="8px" fontSize="15px">
+          Sorry, we couldn't find anyone with the entered name. If you're sure
+          you entered your first and last name correctly, please RSVP by filling
+          out our form
+          <Button
+            ml="4px"
+            variant="link"
+            color="text.primary"
+            onClick={showHelp}
+          >
+            HERE
+          </Button>
+        </Text>
+      )}
     </form>
   );
 };

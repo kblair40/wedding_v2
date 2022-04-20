@@ -123,9 +123,14 @@ const RSVPForm = ({
     navigate("/");
   };
 
-
   return (
-    <Box maxW="580px" border="1px solid #eee" borderRadius="4px" shadow="xl" p="8px">
+    <Box
+      maxW="580px"
+      border="1px solid #eee"
+      borderRadius="4px"
+      shadow="xl"
+      p="8px"
+    >
       <Box mb="16px" px="16px" py="16px" maxH="100%">
         {respondingGuests && respondingGuests.length > 1 && (
           <React.Fragment>

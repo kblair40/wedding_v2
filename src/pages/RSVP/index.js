@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Box, Center, Flex } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -21,8 +21,11 @@ const RSVP = () => {
   const [step2Class, setStep2Class] = useState("hidden");
   const [step3Class, setStep3Class] = useState("hidden");
   const [showHelp, setShowHelp] = useState(false);
+  // const [helpOpenedBy, setHelpOpenedBy] = useState("");
 
   let navigate = useNavigate();
+
+  const helpOpenedBy = useRef("");
 
   const getSearchResults = (guest, relatedGuests) => {
     console.log("SEARCH RESULTES:", { guest, relatedGuests });
@@ -112,7 +115,12 @@ const RSVP = () => {
 
   const closeHelpModal = () => {
     setShowHelp(false);
-    navigate(0);
+
+    if (helpOpenedBy.current !== "GuestSearch") {
+      navigate(0);
+    }
+
+    helpOpenedBy.current = "";
   };
 
   return (
@@ -135,7 +143,13 @@ const RSVP = () => {
           >
             <InviteCard>
               <Box className={step1Class}>
-                <GuestSearch getSearchResults={getSearchResults} />
+                <GuestSearch
+                  getSearchResults={getSearchResults}
+                  showHelp={() => {
+                    helpOpenedBy.current = "GuestSearch";
+                    setShowHelp(true);
+                  }}
+                />
               </Box>
 
               <Box className={step2Class}>
