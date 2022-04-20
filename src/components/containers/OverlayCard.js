@@ -59,8 +59,8 @@ const OverlayCard = ({ imageURL, children, label, ...rest }) => {
           pointerEvents="none"
           textAlign="center"
           color="neutral.white"
-          fontWeight="600"
-          fontSize="xl"
+          fontWeight="700"
+          fontSize={{ base: "xl", md: "2xl" }}
           zIndex={1}
         >
           {label}

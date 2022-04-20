@@ -26,13 +26,20 @@ const paperStyles = {
   // border: "1px solid #ccc",
 };
 
+const textStyles = {
+  fontWeight: "400",
+  lineHeight: "20px",
+  textAlign: "center",
+  fontSize: "15px",
+};
+
 const TravelInfo = () => {
   return (
-    <React.Fragment>
+    <Box minW="350px">
       {/* <AnimatedCheckbox /> */}
 
-      <Heading textAlign="center" fontSize="4xl" fontWeight="500">
-        By Plane / By Car
+      <Heading textAlign="center" fontSize="5xl" fontWeight="500">
+        by plane / by car
       </Heading>
 
       <Flex
@@ -45,17 +52,17 @@ const TravelInfo = () => {
         <Paper {...paperStyles}>
           <VStack alignItems="center" spacing="1rem">
             <Icon as={FaPlaneDeparture} boxSize="48px" color="neutral.black" />
-            <Heading fontSize="3xl" fontWeight="400">
-              By Plane
+            <Heading fontSize="4xl" fontWeight="500">
+              by plane
             </Heading>
             <VStack>
-              <Text lineHeight="20px" textAlign="center">
+              <Text {...textStyles}>
                 Orlando Int'l Airport (ORL) is predominantly served by Southwest
                 and Delta, although you'll be able to find flights from all
                 major airlines. Alternatively, Orlando-Sanford (SFB) Int'l
                 Airport offers flights mostly from Allegiant.
               </Text>
-              <Text lineHeight="20px" textAlign="center">
+              <Text {...textStyles}>
                 The drive from either airport to Winter Park is roughly 30
                 minutes. Taxi and rideshare services (Uber, Lyft) are available
                 at both airports
@@ -81,7 +88,7 @@ const TravelInfo = () => {
                   border="1px solid"
                   borderColor="neutral.black"
                   variant="outline"
-                  fontWeight="500"
+                  fontWeight="600"
                   _hover={{
                     bg: "neutral.black",
                     color: "neutral.white",
@@ -102,25 +109,17 @@ const TravelInfo = () => {
         >
           <VStack alignItems="center" spacing="1rem">
             <Icon as={AiOutlineCar} boxSize="48px" color="neutral.black" />
-            <Heading fontSize="3xl" fontWeight="400">
-              By Car
+            <Heading fontSize="4xl" fontWeight="500">
+              by car
             </Heading>
             <VStack>
-              <Text
-                lineHeight="20px"
-                textAlign="center"
-                // fontSize="sm"
-              >
+              <Text {...textStyles}>
                 Orlando Int'l Airport (ORL) is predominantly served by Southwest
                 and Delta, although you'll be able to find flights from all
                 major airlines. Alternatively, Orlando-Sanford (SFB) Int'l
                 Airport offers flights mostly from Allegiant.
               </Text>
-              <Text
-                lineHeight="20px"
-                textAlign="center"
-                // fontSize="sm"
-              >
+              <Text {...textStyles}>
                 The drive from either airport to Winter Park is roughly 30
                 minutes. Taxi and rideshare services (Uber, Lyft) are available
                 at both airports
@@ -137,7 +136,7 @@ const TravelInfo = () => {
                 transition=".25s ease-in-out"
                 border="1px solid"
                 borderColor="neutral.black"
-                fontWeight="500"
+                fontWeight="600"
                 variant="outline"
                 _hover={{
                   bg: "neutral.black",
@@ -151,7 +150,7 @@ const TravelInfo = () => {
           </VStack>
         </Paper>
       </Flex>
-    </React.Fragment>
+    </Box>
   );
 };
 

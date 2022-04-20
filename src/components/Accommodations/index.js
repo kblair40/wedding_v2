@@ -18,10 +18,11 @@ import hgi_lobby from "assets/images/hgi_lobby.jpeg";
 
 const Accommodations = () => {
   return (
-    <Flex w="100%" direction="column" px="16px">
-      <Heading fontSize="4xl" fontWeight="500" textAlign="center">
-        ACCOMMODATIONS
+    <Flex w="100%" direction="column" px="16px" minW="350px">
+      <Heading textAlign="center" fontSize="5xl" fontWeight="500">
+        accommodations
       </Heading>
+
       <Text mt="16px">
         Voluptate adipisicing quis velit consequat non do consectetur est ipsum
         laboris. Adipisicing tempor culpa cillum cillum eu commodo nulla officia

@@ -34,7 +34,7 @@ const OurNames = () => {
             lineHeight="40px"
             letterSpacing="3px"
             fontSize={headingSize}
-            fontWeight="500"
+            fontWeight="600"
           >
             KEVIN
           </Heading>
@@ -52,7 +52,7 @@ const OurNames = () => {
             lineHeight="40px"
             letterSpacing="3px"
             fontSize={headingSize}
-            fontWeight="500"
+            fontWeight="600"
           >
             SHANNON
           </Heading>
