@@ -12,7 +12,6 @@ import {
   Button,
   Textarea,
 } from "@chakra-ui/react";
-import { Transition } from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 
 import RSVPSuccessModal from "components/RSVPSteps/RSVPSuccessModal";
@@ -124,20 +123,9 @@ const RSVPForm = ({
     navigate("/");
   };
 
-  const defaultStyle = {
-    transition: `opacity 500ms ease-in-out`,
-    opacity: 0,
-  };
-
-  const fadeInStyles = {
-    entering: { opacity: 1 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0 },
-  };
 
   return (
-    <Box maxW="580px">
+    <Box maxW="580px" border="1px solid #eee" borderRadius="4px" shadow="xl" p="8px">
       <Box mb="16px" px="16px" py="16px" maxH="100%">
         {respondingGuests && respondingGuests.length > 1 && (
           <React.Fragment>
