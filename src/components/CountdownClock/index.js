@@ -71,7 +71,7 @@ const CountdownClock = () => {
       bottom={0}
       // left={0}
       // right={0}
-      borderRadius="20px 5px 0 0"
+      borderRadius="5px 5px 0 0"
     >
       <HStack w="100%" justifyContent="center" spacing="16px" flexWrap="wrap">
         <Heading {...fontStyles}>
