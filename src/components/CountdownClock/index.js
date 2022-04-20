@@ -51,22 +51,14 @@ const CountdownClock = () => {
   return (
     <Box
       shadow="md"
-      // bg="white"
-      bg="neutral.white"
+      bg="white"
       py="8px"
       position="fixed"
       bottom={0}
       left={0}
       right={0}
-      // border="1px solid red"
     >
-      <HStack
-        w="100%"
-        justifyContent="center"
-        spacing="16px"
-        flexWrap="wrap"
-        // border="1px solid #bbb"
-      >
+      <HStack w="100%" justifyContent="center" spacing="16px" flexWrap="wrap">
         <Heading fontSize={countdownFontSize} whiteSpace="nowrap">
           {timeDiff.days ? timeDiff.days : "00"} Days
         </Heading>

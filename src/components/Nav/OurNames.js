@@ -25,14 +25,12 @@ const OurNames = () => {
           direction={{ base: "row", md: "column" }}
           justifyContent="center"
           alignItems="center"
-          // border="1px solid red"
           w="100%"
           maxW="600px"
           mt="8px"
           className="fade-in-immediate"
         >
           <Heading
-            // letterSpacing="1.5px"
             lineHeight="40px"
             letterSpacing="3px"
             fontSize={headingSize}
