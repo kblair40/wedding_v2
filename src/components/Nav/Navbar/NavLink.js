@@ -13,7 +13,7 @@ const NavLink = ({ to, children }) => {
         textDecoration: "none",
       }}
     >
-      <Box className="link-wrapper">
+      <Box className="link-wrapper" borderRadius="4px">
         <Flex
           borderRadius="4px"
           py="4px"

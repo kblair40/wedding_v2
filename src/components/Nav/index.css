@@ -4,9 +4,7 @@
   width: 0;
   height: 2px;
   background: #344148;
-  /* background: #6c757d; */
-  transition: width 0.2s;
-  /*  */
+  transition: 0.2s;
   position: relative;
   bottom: 4px;
   margin: 2px auto 0;
@@ -14,5 +12,5 @@
 
 .link-wrapper:hover::after {
   width: 55%;
-  transition: width 0.1s;
+  transition: width 0.2s;
 }

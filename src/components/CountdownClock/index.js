@@ -43,37 +43,53 @@ const CountdownClock = () => {
     });
   };
 
-  const countdownFontSize = useBreakpointValue({
-    base: "2xl",
-    sm: "4xl",
-  });
+  // const countdownFontSize = useBreakpointValue({
+  //   base: "2xl",
+  //   sm: "4xl",
+  // });
+
+  const fontStyles = {
+    fontSize: useBreakpointValue({
+      base: "2xl",
+      sm: "3xl",
+    }),
+    whiteSpace: "nowrap",
+    fontWeight: "500",
+    color: "#fff",
+    // color: "text.primary",
+  };
 
   return (
     <Box
       shadow="md"
-      bg="white"
+      // bg="white"
+      // bg="primary.700"
+      w="100%"
+      bg="neutral.600"
       py="8px"
       position="fixed"
       bottom={0}
-      left={0}
-      right={0}
+      // left={0}
+      // right={0}
+      borderRadius="20px 5px 0 0"
     >
       <HStack w="100%" justifyContent="center" spacing="16px" flexWrap="wrap">
-        <Heading fontSize={countdownFontSize} whiteSpace="nowrap">
-          {timeDiff.days ? timeDiff.days : "00"} Days
+        <Heading {...fontStyles}>
+          {timeDiff.days ? timeDiff.days : "00"} days
         </Heading>
-        <Heading fontSize={countdownFontSize} whiteSpace="nowrap">
-          {timeDiff.hours ? timeDiff.hours : "00"} Hours
+        <Heading {...fontStyles}>
+          {timeDiff.hours ? timeDiff.hours : "00"} hours
         </Heading>
-        <Heading fontSize={countdownFontSize} whiteSpace="nowrap">
-          {timeDiff.minutes ? timeDiff.minutes : "00"} Minutes
+        <Heading {...fontStyles}>
+          {timeDiff.minutes ? timeDiff.minutes : "00"} minutes
         </Heading>
       </HStack>
+
       <Text
-        mt="8px"
-        fontSize="42px"
+        fontSize="36px"
         fontFamily="Great Vibes"
         textAlign="center"
+        color="white"
       >
         until we celebrate!
       </Text>

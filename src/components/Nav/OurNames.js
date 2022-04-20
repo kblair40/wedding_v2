@@ -60,7 +60,8 @@ const OurNames = () => {
       </Center>
 
       <HStack justifyContent="center" display={{ base: "none", md: "flex" }}>
-        <Box h="4px" bg="black" w="100%" maxW="736px" />
+        {/* <Box h="4px" bg="neutral.black" w="100%" maxW="340px" /> */}
+        <Box h="4px" bg="neutral.black" w="100%" maxW="736px" />
       </HStack>
     </Box>
   );
