@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Flex, Modal, ModalContent, ModalCloseButton } from "@chakra-ui/react";
+import {
+  Flex,
+  Modal,
+  ModalContent,
+  ModalCloseButton,
+  Box,
+} from "@chakra-ui/react";
 
 import PageContainer from "components/containers/PageContainer";
 import GalleryImages from "components/GalleryImages";
@@ -73,32 +79,34 @@ const Gallery = () => {
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
 
-      <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />
+      <Box className="fade-in-immediate">
+        <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />
 
-      {showCarousel && (
-        <Modal
-          isCentered
-          isOpen={showCarousel}
-          onClose={() => setShowCarousel(false)}
-          size="full"
-        >
-          <ModalContent bg="rgba(0, 0, 0, .7)" px="8px" overflow="hidden">
-            <ModalCloseButton
-              right="8px"
-              zIndex={1}
-              bg="neutral.black"
-              transition=".3s ease-in-out"
-              color="neutral.white"
-            />
-            <Flex alignItems="center" h="100vh">
-              <GalleryImageCarousel
-                imagesArray={imagesArray}
-                startingSlideIdx={startingSlideIdx}
+        {showCarousel && (
+          <Modal
+            isCentered
+            isOpen={showCarousel}
+            onClose={() => setShowCarousel(false)}
+            size="full"
+          >
+            <ModalContent bg="rgba(0, 0, 0, .7)" px="8px" overflow="hidden">
+              <ModalCloseButton
+                right="8px"
+                zIndex={1}
+                bg="neutral.black"
+                transition=".3s ease-in-out"
+                color="neutral.white"
               />
-            </Flex>
-          </ModalContent>
-        </Modal>
-      )}
+              <Flex alignItems="center" h="100vh">
+                <GalleryImageCarousel
+                  imagesArray={imagesArray}
+                  startingSlideIdx={startingSlideIdx}
+                />
+              </Flex>
+            </ModalContent>
+          </Modal>
+        )}
+      </Box>
     </PageContainer>
   );
 };

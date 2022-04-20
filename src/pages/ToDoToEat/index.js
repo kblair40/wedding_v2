@@ -19,7 +19,13 @@ import Activities from "components/Activities";
 const ToDoToEat = () => {
   return (
     <PageContainer center>
-      <Flex alignItems="center" direction="column" w="100%" pt="24px">
+      <Flex
+        className="fade-in-immediate"
+        alignItems="center"
+        direction="column"
+        w="100%"
+        pt="24px"
+      >
         <Activities />
       </Flex>
       {/* <Flex alignItems="center" direction="column" w="100%" mt="48px">

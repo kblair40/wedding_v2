@@ -8,7 +8,7 @@ import Map from "components/Map";
 
 const Travel = () => {
   return (
-    <Flex justify="center">
+    <Flex justify="center" className="fade-in-immediate">
       <Box maxW={MAX_WIDTHS()} mt="36px" w="100%" pb="16px">
         <TravelInfo />
         <Box mt="36px">
