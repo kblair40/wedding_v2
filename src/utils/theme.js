@@ -98,21 +98,22 @@ const theme = extendTheme({
     // Input: {},
     Text: {
       sizes: {
-        "2xs": { fontSize: "10px" },
-        xs: { fontSize: "12px" },
+        "2xs": { fontSize: "12px" },
+        xs: { fontSize: "13px" },
         sm: { fontSize: "14px" },
-        md: { fontSize: "16px" },
-        lg: { fontSize: "22px" },
-        xl: { fontSize: "24px" },
-        "2xl": { fontSize: "26px" },
-        "3xl": { fontSize: "28px" },
+        md: { fontSize: "15px" },
+        lg: { fontSize: "17px" },
+        xl: { fontSize: "19px" },
+        "2xl": { fontSize: "22px" },
+        "3xl": { fontSize: "26px" },
       },
       defaultProps: {
-        fontSize: "md",
+        size: "md",
       },
       baseStyle: {
         color: "neutral.black",
         fontWeight: "400",
+        fontSize: "md",
       },
     },
     Heading: {

@@ -91,17 +91,10 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
 
   return (
     <form onSubmit={validateInput} style={{ width: "100%" }}>
-      <Text
-        fontSize="15px"
-        //
-      >
+      <Text>
         Please enter the first and last name of one member of your party below.
       </Text>
-      <Text
-        mt="4px"
-        fontSize="15px"
-        //
-      >
+      <Text mt="4px">
         If you're responding for you and a guest (or your family), you'll be
         able to RSVP for your entire group on the next page.
       </Text>
@@ -142,7 +135,7 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
       </HStack>
 
       {notFoundError && (
-        <Text mt="8px" fontSize="15px">
+        <Text mt="8px">
           Sorry, we couldn't find anyone with the entered name. If you're sure
           you entered your first and last name correctly, please RSVP by filling
           out our form

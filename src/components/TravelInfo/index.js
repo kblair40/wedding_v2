@@ -30,7 +30,6 @@ const textStyles = {
   fontWeight: "400",
   lineHeight: "20px",
   textAlign: "center",
-  fontSize: "15px",
 };
 
 const TravelInfo = () => {
