@@ -11,6 +11,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { FaPlane, FaPlaneDeparture } from "react-icons/fa";
+import { IoAirplaneOutline } from "react-icons/io5";
 import { AiOutlineCar } from "react-icons/ai";
 
 import AnimatedCheckbox from "components/Animated/AnimatedCheckbox";
@@ -37,9 +38,9 @@ const TravelInfo = () => {
     <Box minW="350px">
       {/* <AnimatedCheckbox /> */}
 
-      <Heading textAlign="center" fontSize="4xl" fontWeight="700">
+      {/* <Heading textAlign="center" fontSize="4xl" fontWeight="700">
         by plane / by car
-      </Heading>
+      </Heading> */}
 
       <Flex
         mt="20px"
@@ -50,7 +51,12 @@ const TravelInfo = () => {
       >
         <Paper {...paperStyles}>
           <VStack alignItems="center" spacing="1rem">
-            <Icon as={FaPlaneDeparture} boxSize="48px" color="neutral.black" />
+            <Icon
+              as={IoAirplaneOutline}
+              boxSize="48px"
+              color="neutral.black"
+              transform="rotate(-90deg)"
+            />
             <Heading fontSize="3xl" fontWeight="600">
               by plane
             </Heading>

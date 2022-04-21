@@ -7,6 +7,7 @@ import PageContainer from "components/containers/PageContainer";
 import OurNames from "components/OurNames";
 
 import Travel from "pages/Travel";
+import WhenAndWhere from "pages/WhenAndWhere";
 
 import "./index.css";
 
@@ -23,8 +24,6 @@ const Home = () => {
         bgPosition={{ base: "center 70%", md: "center 60%" }}
         bgAttachment="fixed"
         bgRepeat="no-repeat"
-        // border="1px solid green"
-        // backdropFilter=""
         filter="grayscale(.2) "
       />
 
@@ -36,6 +35,14 @@ const Home = () => {
         // border="1px solid red"
       >
         <OurNames />
+      </Box>
+
+      <Box>
+        <WhenAndWhere />
+      </Box>
+
+      <Box>
+        <Travel />
       </Box>
 
       <Box>

@@ -19,7 +19,7 @@ import hgi_lobby from "assets/images/hgi_lobby.jpeg";
 const Accommodations = () => {
   return (
     <Flex w="100%" direction="column" px="16px" minW="350px">
-      <Heading textAlign="center" fontSize="4xl" fontWeight="700">
+      <Heading textAlign="center" fontSize="4xl" fontWeight="600">
         accommodations
       </Heading>
 
@@ -28,10 +28,7 @@ const Accommodations = () => {
         laboris. Adipisicing tempor culpa cillum cillum eu commodo nulla officia
         do aute. Nulla laborum sunt fugiat consectetur nulla est Lorem.
         Excepteur ipsum dolore velit incididunt commodo sint pariatur ex
-        proident tempor anim. Commodo incididunt Lorem ea et enim proident Lorem
-        et. Dolore officia duis elit adipisicing labore elit ullamco consectetur
-        nisi labore nulla. Est est anim deserunt laboris veniam qui est sit do
-        eiusmod pariatur.
+        proident tempo.
       </Text>
 
       <Flex mt="16px" justify="space-between" mb="32px">
