@@ -4,6 +4,9 @@ import { Box } from "@chakra-ui/react";
 import color_hor_img from "assets/images/dock_kiss.jpg";
 import CountdownClock from "components/CountdownClock";
 import PageContainer from "components/containers/PageContainer";
+import OurNames from "components/OurNames";
+
+import Travel from "pages/Travel";
 
 import "./index.css";
 
@@ -16,17 +19,30 @@ const Home = () => {
         position="relative"
         bgImage={color_hor_img}
         w="100vw"
-        // h={{ base: "50vh", sm: "60vh", lg: "67vh" }}
-        h={{ base: "90vh", sm: "90vh", lg: "67vh" }}
+        h={{ base: "calc(100vh - 58px)" }}
         bgPosition={{ base: "center 70%", md: "center 60%" }}
         bgAttachment="fixed"
         bgRepeat="no-repeat"
+        // border="1px solid green"
       />
-      <Box h="1000px" />
 
-      <Box className="fade-in-immediate">
-        <CountdownClock />
+      <Box
+        position="absolute"
+        top="160px"
+        left="0"
+        boxSize="100%"
+        // border="1px solid red"
+      >
+        <OurNames />
       </Box>
+
+      <Box>
+        <Travel />
+      </Box>
+
+      {/* <Box className="fade-in-immediate">
+        <CountdownClock />
+      </Box> */}
     </PageContainer>
   );
 };

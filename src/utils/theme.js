@@ -91,7 +91,7 @@ const theme = extendTheme({
     },
     Button: {
       baseStyle: {
-        fontWeight: 500,
+        fontWeight: 400,
         color: "neutral.black",
       },
     },
@@ -101,11 +101,11 @@ const theme = extendTheme({
         "2xs": { fontSize: "12px" },
         xs: { fontSize: "13px" },
         sm: { fontSize: "14px" },
-        md: { fontSize: "16px" },
-        lg: { fontSize: "18px" },
-        xl: { fontSize: "20px" },
-        "2xl": { fontSize: "22px" },
-        "3xl": { fontSize: "24px" },
+        md: { fontSize: "15px" },
+        lg: { fontSize: "17px" },
+        xl: { fontSize: "19px" },
+        "2xl": { fontSize: "21px" },
+        "3xl": { fontSize: "23px" },
         "4xl": { fontSize: "26px" },
       },
       defaultProps: {

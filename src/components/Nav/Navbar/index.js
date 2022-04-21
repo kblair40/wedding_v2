@@ -20,11 +20,7 @@ const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box
-      // border="1px solid #ccc"
-      position="relative"
-      w="100%"
-    >
+    <Box position="relative" w="100%">
       <Flex py="8px" justify="center" align="center" w="100%" h="50px">
         <Box display={{ base: "flex", md: "none" }} w="100%" h="50px">
           <Flex

@@ -26,6 +26,7 @@ const NavLink = ({ to, children }) => {
             whiteSpace="nowrap"
             // fontSize="lg"
             textTransform="uppercase"
+            letterSpacing="1px"
           >
             {children}
           </Text>
