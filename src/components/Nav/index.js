@@ -17,28 +17,18 @@ const OurNamesPlusNav = () => {
   });
 
   return (
-    <Flex direction="column" alignItems="center">
-      <Box
-        transition=".5s ease-in-out"
-        zIndex={1}
-        bg="white"
-        shadow={showShadow ? "sm" : "none"}
-        top="0"
-        sx={{
-          position: "-webkit-sticky",
-          position: "sticky",
-        }}
-        w="100%"
-      >
-        <Flex
-          minHeight="50px"
-          mt="8px"
-          className="fade-in-immediate"
-          justify="center"
-        >
-          <Navbar />
-        </Flex>
-      </Box>
+    <Flex
+      minHeight="50px"
+      // mt="8px"
+      className="fade-in-immediate"
+      justify="center"
+      position="fixed"
+      top="0"
+      w="100%"
+      bg="#fff"
+      zIndex={10}
+    >
+      <Navbar />
     </Flex>
   );
 };
