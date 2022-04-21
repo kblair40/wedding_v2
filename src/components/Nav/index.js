@@ -2,7 +2,7 @@ import React from "react";
 import { Box, useBreakpointValue, Flex } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
-import OurNames from "./OurNames";
+// import OurNames from "./OurNames";
 import Navbar from "./Navbar";
 import "./index.css";
 
@@ -18,16 +18,6 @@ const OurNamesPlusNav = () => {
 
   return (
     <Flex direction="column" alignItems="center">
-      <Flex
-        justify="center"
-        w="100%"
-        display={{ base: "none", md: "flex" }}
-        ref={ref}
-        zIndex={-1}
-      >
-        <OurNames />
-      </Flex>
-
       <Box
         transition=".5s ease-in-out"
         zIndex={1}

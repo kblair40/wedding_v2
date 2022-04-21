@@ -101,11 +101,12 @@ const theme = extendTheme({
         "2xs": { fontSize: "12px" },
         xs: { fontSize: "13px" },
         sm: { fontSize: "14px" },
-        md: { fontSize: "15px" },
-        lg: { fontSize: "17px" },
-        xl: { fontSize: "19px" },
+        md: { fontSize: "16px" },
+        lg: { fontSize: "18px" },
+        xl: { fontSize: "20px" },
         "2xl": { fontSize: "22px" },
-        "3xl": { fontSize: "26px" },
+        "3xl": { fontSize: "24px" },
+        "4xl": { fontSize: "26px" },
       },
       defaultProps: {
         size: "md",
@@ -140,7 +141,7 @@ const theme = extendTheme({
   },
   fonts: {
     heading: "Cormorant Garamond",
-    body: "Open Sans",
+    body: "Darker Grotesque",
     mono: "Josefin Slab",
   },
 });
