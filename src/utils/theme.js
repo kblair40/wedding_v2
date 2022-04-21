@@ -141,7 +141,7 @@ const theme = extendTheme({
   },
   fonts: {
     heading: "Cormorant Garamond",
-    body: "Darker Grotesque",
+    body: "Cabin",
     mono: "Josefin Slab",
   },
 });

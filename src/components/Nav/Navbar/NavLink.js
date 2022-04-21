@@ -8,7 +8,6 @@ const NavLink = ({ to, children }) => {
       as={RRLink}
       to={to}
       _focus={{ outline: "none" }}
-      fontWeight="500"
       _hover={{
         textDecoration: "none",
       }}
@@ -21,7 +20,13 @@ const NavLink = ({ to, children }) => {
           px="12px"
           transition=".2s ease-in-out"
         >
-          <Text color="text.primary" fontWeight="500" whiteSpace="nowrap">
+          <Text
+            color="text.primary"
+            fontWeight="400"
+            whiteSpace="nowrap"
+            // fontSize="lg"
+            textTransform="uppercase"
+          >
             {children}
           </Text>
         </Flex>
