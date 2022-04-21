@@ -24,6 +24,8 @@ const Home = () => {
         bgAttachment="fixed"
         bgRepeat="no-repeat"
         // border="1px solid green"
+        // backdropFilter=""
+        filter="grayscale(.2) "
       />
 
       <Box
