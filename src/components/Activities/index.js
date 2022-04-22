@@ -12,7 +12,7 @@ import { ACTIVITIES } from "utils/constants";
 import ActivityList from "./ActivityList";
 
 const colBreakpoints = {
-  // default: 1,
+  default: 3,
   500: 1,
   767: 2,
   1280: 3,
