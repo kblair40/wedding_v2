@@ -16,7 +16,7 @@ const WhenAndWhere = () => {
   return (
     <Flex
       bg="neutral.100"
-      border="1px solid #ccc"
+      // border="1px solid #ccc"
       py="32px"
       direction={{ base: "column", sm: "row" }}
       w="100%"

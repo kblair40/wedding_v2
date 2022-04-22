@@ -27,6 +27,8 @@ const OurNamesPlusNav = () => {
       w="100%"
       bg="#fff"
       zIndex={10}
+      shadow="sm"
+      // borderBottom="1px solid red"
     >
       <Navbar />
     </Flex>

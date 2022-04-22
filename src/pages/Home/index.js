@@ -23,25 +23,29 @@ const Home = () => {
         position="relative"
         bgImage={color_hor_img}
         w="100vw"
-        h={{ base: "calc(100vh - 58px)" }}
+        // h={{ base: "calc(100vh - 50px)" }}
+        h={{ base: "100vh" }}
         bgPosition={{ base: "center 70%", md: "center 60%" }}
         bgAttachment="fixed"
         bgRepeat="no-repeat"
-        filter="grayscale(.2) "
+        filter="grayscale(.6) "
+        // border="1px solid red"
       />
 
       <Box
-        // position="absolute"
-        // top="160px"
-        // left="0"
-        // boxSize="100%"
+        position="absolute"
+        top="96px"
+        left="0"
+        boxSize="100%"
         zIndex={-1}
         // border="1px solid red"
       >
-        {/* <OurNames /> */}
+        <OurNames />
       </Box>
 
-      <Box>
+      <Box
+      // border="1px solid black"
+      >
         <WhenAndWhere />
       </Box>
 
