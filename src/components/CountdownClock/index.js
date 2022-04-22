@@ -3,16 +3,25 @@ import {
   Box,
   HStack,
   Text,
+  Flex,
   Heading,
   useBreakpointValue,
+  Button,
+  Icon,
 } from "@chakra-ui/react";
+import { MdOutlineChevronLeft } from "react-icons/md";
+
+import "./index.css";
 
 const CountdownClock = () => {
   const [timeDiff, setTimeDiff] = useState({
     days: undefined,
     hours: undefined,
     minutes: undefined,
+    seconds: undefined,
   });
+  // const [display, setDisplay] = useState("block");
+  const [containerClass, setContainerClass] = useState("");
 
   // const WEDDING_DATE = "2022-04-13";
   const WEDDING_DATE = "2023-01-21";
@@ -22,7 +31,7 @@ const CountdownClock = () => {
     setInterval(() => {
       // call calcTime onMount and every 30 seconds after mount
       calcTime();
-    }, 30000);
+    }, 1000);
   }, []);
 
   const calcTime = () => {
@@ -32,67 +41,102 @@ const CountdownClock = () => {
     const diffMS = new Date(WEDDING_DATE) - new Date() + offsetMS;
 
     const minutes = Math.floor((diffMS / 1000 / 60) % 60);
+    const seconds = Math.floor((diffMS % (1000 * 60)) / 1000);
     const hours = Math.floor((diffMS / (1000 * 60 * 60)) % 24);
     const days = Math.floor(diffMS / (1000 * 60 * 60 * 24));
+    // console.log("SECONDS:", seconds);
 
     // console.log("TIME DIFF:", { days, hours, minutes });
     setTimeDiff({
       days,
       hours,
       minutes,
+      seconds,
     });
   };
 
-  // const countdownFontSize = useBreakpointValue({
-  //   base: "2xl",
-  //   sm: "4xl",
-  // });
-
   const fontStyles = {
     fontSize: useBreakpointValue({
-      base: "2xl",
-      sm: "3xl",
+      base: "md",
     }),
     whiteSpace: "nowrap",
+    fontWeight: "400",
+    color: "neutral.black",
+    lineHeight: "20px",
+  };
+
+  const labelStyles = {
+    fontSize: "xs",
     fontWeight: "500",
-    color: "#fff",
-    // color: "text.primary",
+    textTransform: "uppercase",
+    // color: "#fff",
+    color: "neutral.black",
+    letterSpacing: ".5px",
   };
 
   return (
     <Box
+      zIndex={100}
+      px="8px"
       shadow="md"
-      // bg="white"
-      // bg="primary.700"
-      w="100%"
-      bg="neutral.600"
+      bg="neutral.50"
       py="8px"
       position="fixed"
-      bottom={0}
-      // left={0}
-      // right={0}
-      borderRadius="5px 5px 0 0"
+      left={0}
+      top="30%"
+      borderRadius="0 2px 2px 0"
+      className={containerClass}
     >
-      <HStack w="100%" justifyContent="center" spacing="16px" flexWrap="wrap">
-        <Heading {...fontStyles}>
-          {timeDiff.days ? timeDiff.days : "00"} days
-        </Heading>
-        <Heading {...fontStyles}>
-          {timeDiff.hours ? timeDiff.hours : "00"} hours
-        </Heading>
-        <Heading {...fontStyles}>
-          {timeDiff.minutes ? timeDiff.minutes : "00"} minutes
-        </Heading>
-      </HStack>
+      <Flex direction="column" pt="8px">
+        <Flex direction="column" alignItems="center" mb="8px">
+          <Text {...fontStyles}>{timeDiff.days ? timeDiff.days : "00"}</Text>
+          <Text {...labelStyles}>Days</Text>
+        </Flex>
 
-      <Text
+        <Flex direction="column" alignItems="center" mb="8px">
+          <Text {...fontStyles}>{timeDiff.hours ? timeDiff.hours : "00"}</Text>
+          <Text {...labelStyles}>Hours</Text>
+        </Flex>
+
+        <Flex direction="column" alignItems="center" mb="8px">
+          <Text {...fontStyles}>
+            {timeDiff.minutes ? timeDiff.minutes : "00"}
+          </Text>
+          <Text {...labelStyles}>Minutes</Text>
+        </Flex>
+
+        <Flex direction="column" alignItems="center" mb="8px">
+          <Text {...fontStyles}>
+            {timeDiff.seconds ? timeDiff.seconds : "00"}
+          </Text>
+          <Text {...labelStyles}>Seconds</Text>
+        </Flex>
+
+        <Button
+          // onClick={() => setDisplay("none")}
+          onClick={() => setContainerClass("slide-out")}
+          variant="link"
+          size="sm"
+          color="neutral.black"
+          fontWeight="500"
+          py="4px"
+          _hover={{ textDecoration: "none" }}
+          leftIcon={
+            <MdOutlineChevronLeft style={{ width: "16px", height: "16px" }} />
+          }
+        >
+          Hide
+        </Button>
+      </Flex>
+
+      {/* <Text
         fontSize="36px"
         fontFamily="Great Vibes"
         textAlign="center"
         color="white"
       >
         until we celebrate!
-      </Text>
+      </Text> */}
     </Box>
   );
 };

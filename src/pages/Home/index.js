@@ -55,11 +55,9 @@ const Home = () => {
         <ArrowDown />
       </Box>
 
-      <Box
-      // border="1px solid black"
-      >
+      {/* <Box>
         <WhenAndWhere />
-      </Box>
+      </Box> */}
 
       <Box>
         <Travel />
@@ -98,11 +96,6 @@ const ArrowDown = () => (
       SCROLL FOR MORE
     </Text>
     <Icon
-      // as={MdArrowRightAlt}
-      // transform="rotate(90deg)"
-
-      // as={HiOutlineArrowNarrowDown}
-
       as={BsArrowDownLeft}
       transform="rotate(-45deg)"
       h="100px"

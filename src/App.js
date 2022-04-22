@@ -16,12 +16,15 @@ import Nav from "components/Nav";
 import ScrollToTop from "components/containers/ScrollToTop";
 import Gallery from "pages/Gallery";
 
+import CountdownClock from "components/CountdownClock";
+
 import "./App.css";
 
 function App() {
   return (
     <Box position="relative" sx={{ overflow: "hidden !important" }}>
       <Nav />
+      <CountdownClock />
       <UserProvider>
         <ScrollToTop>
           <Routes>

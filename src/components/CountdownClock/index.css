@@ -1,0 +1,6 @@
+.slide-out {
+  animation: slideOutLeft;
+  /* animation-delay: 0.2s; */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
