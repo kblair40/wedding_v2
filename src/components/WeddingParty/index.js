@@ -18,53 +18,66 @@ import five from "assets/galleryImages/shannon/shan_five.jpg";
 import four from "assets/galleryImages/shannon/shan_four.jpg";
 import three from "assets/galleryImages/shannon/shan_three.jpg";
 import two from "assets/galleryImages/shannon/shan_two.jpg";
+import ringBearers from "assets/images/wedding_party/augustfrederick.jpg";
 
 const WeddingParty = () => {
   return (
-    <Flex
-      direction={{ base: "column", sm: "row" }}
-      mt="16px"
-      alignItems="center"
-    >
-      <ColumnContainer>
-        <Flex justifyContent={{ base: "center" }}>
-          <Partier name="kevin blair" role="GROOM" imgURL={kevin} />
-        </Flex>
-
-        <Flex direction={{ base: "column", lg: "row" }}>
-          <Partier name="caleb magnuson" role="BEST MAN" imgURL={five} />
-          <Partier name="trevor weidner" role="GROOMSMAN" imgURL={four} />
-        </Flex>
-
-        <Flex direction={{ base: "column", lg: "row" }}>
-          <Partier name="andrew payne" role="GROOMSMAN" imgURL={three} />
-          <Partier name="ted keller" role="GROOMSMAN" imgURL={two} />
-        </Flex>
-      </ColumnContainer>
-
-      <Divider
-        borderColor="neutral.400"
+    <>
+      <Flex
+        direction={{ base: "column", sm: "row" }}
         mt="16px"
-        mb="32px"
-        display={{ sm: "none" }}
-      />
+        alignItems="center"
+      >
+        <ColumnContainer>
+          <Flex justifyContent={{ base: "center" }}>
+            <Partier name="kevin blair" role="GROOM" imgURL={kevin} />
+          </Flex>
 
-      <ColumnContainer>
-        <Flex justifyContent={{ base: "center" }}>
-          <Partier name="shannon dunne" role="BRIDE" imgURL={shannon} />
-        </Flex>
+          <Flex direction={{ base: "column", lg: "row" }}>
+            <Partier name="caleb magnuson" role="BEST MAN" imgURL={five} />
+            <Partier name="trevor weidner" role="GROOMSMAN" imgURL={four} />
+          </Flex>
 
-        <Flex direction={{ base: "column", lg: "row" }}>
-          <Partier name="erin dunne" role="MAID OF HONOR" imgURL={two} />
-          <Partier name="kelly dunne" role="MAID OF HONOR" imgURL={three} />
-        </Flex>
+          <Flex direction={{ base: "column", lg: "row" }}>
+            <Partier name="andrew payne" role="GROOMSMAN" imgURL={three} />
+            <Partier name="ted keller" role="GROOMSMAN" imgURL={two} />
+          </Flex>
+        </ColumnContainer>
 
-        <Flex direction={{ base: "column", lg: "row" }}>
-          <Partier name="karissa leith" role="BRIDESMAID" imgURL={four} />
-          <Partier name="cassidy blair" role="BRIDESMAID" imgURL={five} />
-        </Flex>
-      </ColumnContainer>
-    </Flex>
+        <Divider
+          borderColor="neutral.400"
+          mt="16px"
+          mb="32px"
+          display={{ sm: "none" }}
+        />
+
+        <ColumnContainer>
+          <Flex justifyContent={{ base: "center" }}>
+            <Partier name="shannon dunne" role="BRIDE" imgURL={shannon} />
+          </Flex>
+
+          <Flex direction={{ base: "column", lg: "row" }}>
+            <Partier name="erin dunne" role="MAID OF HONOR" imgURL={two} />
+            <Partier name="kelly dunne" role="MATRON OF HONOR" imgURL={three} />
+          </Flex>
+
+          <Flex direction={{ base: "column", lg: "row" }}>
+            <Partier name="karissa leith" role="BRIDESMAID" imgURL={four} />
+            <Partier name="cassidy blair" role="BRIDESMAID" imgURL={five} />
+          </Flex>
+        </ColumnContainer>
+      </Flex>
+
+      <Flex position="relative" right="32px">
+        <Partier
+          name="august & frederick gerber"
+          role="RING BEARERS"
+          imgURL={ringBearers}
+        />
+
+        <Partier name="sarlota reichle" role="FLOWER GIRL" imgURL={three} />
+      </Flex>
+    </>
   );
 };
 
