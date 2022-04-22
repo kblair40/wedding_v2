@@ -40,7 +40,7 @@ const Gallery = () => {
     one,
     shan_five,
     two,
-    shan_eight,
+    // shan_eight,
     shan_one,
     three,
     shan_two,
