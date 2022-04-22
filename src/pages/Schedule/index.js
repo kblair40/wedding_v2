@@ -10,6 +10,8 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 
+import ScheduleItems from "components/ScheduleItems";
+
 const Schedule = () => {
   const tabStyles = {
     color: "neutral.900",
@@ -67,6 +69,7 @@ const Schedule = () => {
         <TabPanels>
           <TabPanel {...panelStyles}>
             <Text>Friday Stuff</Text>
+            <ScheduleItems />
           </TabPanel>
           <TabPanel {...panelStyles}>
             <Text>Saturday Stuff</Text>
