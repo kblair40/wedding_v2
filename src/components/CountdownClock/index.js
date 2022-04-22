@@ -100,9 +100,7 @@ export default CountdownClock;
 
 const Unit = ({ value, unit }) => {
   const fontStyles = {
-    fontSize: useBreakpointValue({
-      base: "md",
-    }),
+    fontSize: "md",
     whiteSpace: "nowrap",
     fontWeight: "400",
     color: "neutral.black",
