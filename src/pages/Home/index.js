@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Icon, Flex, Text } from "@chakra-ui/react";
 import { MdArrowRightAlt } from "react-icons/md";
+import { HiOutlineArrowNarrowDown } from "react-icons/hi";
+import { BsArrowDownLeft } from "react-icons/bs";
 
 import color_hor_img from "assets/images/dock_kiss.jpg";
 import CountdownClock from "components/CountdownClock";
@@ -96,11 +98,16 @@ const ArrowDown = () => (
       SCROLL FOR MORE
     </Text>
     <Icon
-      as={MdArrowRightAlt}
-      transform="rotate(90deg)"
+      // as={MdArrowRightAlt}
+      // transform="rotate(90deg)"
+
+      // as={HiOutlineArrowNarrowDown}
+
+      as={BsArrowDownLeft}
+      transform="rotate(-45deg)"
       h="100px"
       color="#fff"
-      w="90px"
+      w="60px"
     />
   </Flex>
 );
