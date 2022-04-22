@@ -55,25 +55,6 @@ const CountdownClock = () => {
     });
   };
 
-  const fontStyles = {
-    fontSize: useBreakpointValue({
-      base: "md",
-    }),
-    whiteSpace: "nowrap",
-    fontWeight: "400",
-    color: "neutral.black",
-    lineHeight: "20px",
-  };
-
-  const labelStyles = {
-    fontSize: "xs",
-    fontWeight: "500",
-    textTransform: "uppercase",
-    // color: "#fff",
-    color: "neutral.black",
-    letterSpacing: ".5px",
-  };
-
   return (
     <Box
       zIndex={100}
@@ -88,32 +69,15 @@ const CountdownClock = () => {
       className={containerClass}
     >
       <Flex direction="column" pt="8px">
-        <Flex direction="column" alignItems="center" mb="8px">
-          <Text {...fontStyles}>{timeDiff.days ? timeDiff.days : "00"}</Text>
-          <Text {...labelStyles}>Days</Text>
-        </Flex>
+        <Unit unit={"Days"} value={timeDiff.days} />
 
-        <Flex direction="column" alignItems="center" mb="8px">
-          <Text {...fontStyles}>{timeDiff.hours ? timeDiff.hours : "00"}</Text>
-          <Text {...labelStyles}>Hours</Text>
-        </Flex>
+        <Unit unit={"Hours"} value={timeDiff.hours} />
 
-        <Flex direction="column" alignItems="center" mb="8px">
-          <Text {...fontStyles}>
-            {timeDiff.minutes ? timeDiff.minutes : "00"}
-          </Text>
-          <Text {...labelStyles}>Minutes</Text>
-        </Flex>
+        <Unit unit={"Minutes"} value={timeDiff.minutes} />
 
-        <Flex direction="column" alignItems="center" mb="8px">
-          <Text {...fontStyles}>
-            {timeDiff.seconds ? timeDiff.seconds : "00"}
-          </Text>
-          <Text {...labelStyles}>Seconds</Text>
-        </Flex>
+        <Unit unit={"Seconds"} value={timeDiff.seconds} />
 
         <Button
-          // onClick={() => setDisplay("none")}
           onClick={() => setContainerClass("slide-out")}
           variant="link"
           size="sm"
@@ -128,17 +92,35 @@ const CountdownClock = () => {
           Hide
         </Button>
       </Flex>
-
-      {/* <Text
-        fontSize="36px"
-        fontFamily="Great Vibes"
-        textAlign="center"
-        color="white"
-      >
-        until we celebrate!
-      </Text> */}
     </Box>
   );
 };
 
 export default CountdownClock;
+
+const Unit = ({ value, unit }) => {
+  const fontStyles = {
+    fontSize: useBreakpointValue({
+      base: "md",
+    }),
+    whiteSpace: "nowrap",
+    fontWeight: "400",
+    color: "neutral.black",
+    lineHeight: "20px",
+  };
+
+  const labelStyles = {
+    fontSize: "xs",
+    fontWeight: "500",
+    textTransform: "uppercase",
+    color: "neutral.black",
+    letterSpacing: ".5px",
+  };
+
+  return (
+    <Flex direction="column" alignItems="center" mb="8px">
+      <Text {...fontStyles}>{value ? value : "00"}</Text>
+      <Text {...labelStyles}>{unit}</Text>
+    </Flex>
+  );
+};
