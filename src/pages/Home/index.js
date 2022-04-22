@@ -10,6 +10,7 @@ import Travel from "pages/Travel";
 import WhenAndWhere from "pages/WhenAndWhere";
 import Schedule from "pages/Schedule";
 import ToDoToEat from "pages/ToDoToEat";
+import WeddingPartyPage from "pages/WeddingPartyPage";
 
 import "./index.css";
 
@@ -54,6 +55,10 @@ const Home = () => {
 
       <Box>
         <ToDoToEat />
+      </Box>
+
+      <Box>
+        <WeddingPartyPage />
       </Box>
 
       {/* <Box className="fade-in-immediate">
