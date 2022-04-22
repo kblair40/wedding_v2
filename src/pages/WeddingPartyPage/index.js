@@ -14,6 +14,7 @@ const WeddingPartyPage = () => {
       direction="column"
       w="100%"
       pt="24px"
+      pb="32px"
     >
       <Text
         fontSize={{ base: "3xl", sm: "48px" }}

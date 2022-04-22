@@ -27,24 +27,42 @@ const WeddingParty = () => {
       alignItems="center"
     >
       <ColumnContainer>
-        <Partier name="kevin blair" role="GROOM" imgURL={kevin} />
-        <Partier name="caleb magnuson" role="BEST MAN" imgURL={five} />
-        <Partier name="trevor weidner" role="GROOMSMAN" imgURL={four} />
-        <Partier name="andrew payne" role="GROOMSMAN" imgURL={three} />
-        <Partier name="ted keller" role="GROOMSMAN" imgURL={two} />
+        <Flex justifyContent={{ base: "center" }}>
+          <Partier name="kevin blair" role="GROOM" imgURL={kevin} />
+        </Flex>
+
+        <Flex direction={{ base: "column", lg: "row" }}>
+          <Partier name="caleb magnuson" role="BEST MAN" imgURL={five} />
+          <Partier name="trevor weidner" role="GROOMSMAN" imgURL={four} />
+        </Flex>
+
+        <Flex direction={{ base: "column", lg: "row" }}>
+          <Partier name="andrew payne" role="GROOMSMAN" imgURL={three} />
+          <Partier name="ted keller" role="GROOMSMAN" imgURL={two} />
+        </Flex>
       </ColumnContainer>
+
       <Divider
         borderColor="neutral.400"
         mt="16px"
         mb="32px"
         display={{ sm: "none" }}
       />
+
       <ColumnContainer>
-        <Partier name="shannon dunne" role="BRIDE" imgURL={shannon} />
-        <Partier name="erin dunne" role="MAID OF HONOR" imgURL={two} />
-        <Partier name="kelly dunne" role="MAID OF HONOR" imgURL={three} />
-        <Partier name="karissa leith" role="BRIDESMAID" imgURL={four} />
-        <Partier name="cassidy blair" role="BRIDESMAID" imgURL={five} />
+        <Flex justifyContent={{ base: "center" }}>
+          <Partier name="shannon dunne" role="BRIDE" imgURL={shannon} />
+        </Flex>
+
+        <Flex direction={{ base: "column", lg: "row" }}>
+          <Partier name="erin dunne" role="MAID OF HONOR" imgURL={two} />
+          <Partier name="kelly dunne" role="MAID OF HONOR" imgURL={three} />
+        </Flex>
+
+        <Flex direction={{ base: "column", lg: "row" }}>
+          <Partier name="karissa leith" role="BRIDESMAID" imgURL={four} />
+          <Partier name="cassidy blair" role="BRIDESMAID" imgURL={five} />
+        </Flex>
       </ColumnContainer>
     </Flex>
   );
@@ -54,8 +72,13 @@ export default WeddingParty;
 
 const Partier = ({ name, role, imgURL }) => {
   return (
-    <Flex direction="column" alignItems="center">
-      <Avatar boxSize={{ base: "250px", sm: "200px" }} mb="16px" src={imgURL} />
+    <Flex
+      mb={{ base: "24px" }}
+      direction="column"
+      alignItems="center"
+      px={{ base: 0, lg: "16px" }}
+    >
+      <Avatar boxSize={{ base: "250px", sm: "200px" }} mb="8px" src={imgURL} />
       <Heading
         fontWeight="700"
         fontSize="3xl"
@@ -78,6 +101,7 @@ const ColumnContainer = ({ children, mt }) => {
   return (
     <Box
       w={{ base: "100%", sm: "50%" }}
+      px="24px"
       // mt={mt}
       // border="1px solid green"
       //
@@ -85,14 +109,9 @@ const ColumnContainer = ({ children, mt }) => {
       {/* <Heading textAlign="center" fontWeight="500" mb="24px" fontSize="3xl">
         {side}
       </Heading> */}
-      <VStack
-        px="24px"
-        spacing="32px"
-        // border="1px solid red"
-        //
-      >
-        {children}
-      </VStack>
+      {/* <VStack px="24px" spacing="32px" spacing={0} border="1px solid red"> */}
+      {children}
+      {/* </VStack> */}
     </Box>
   );
 };
