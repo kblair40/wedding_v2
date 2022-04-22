@@ -10,19 +10,41 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const ScheduleItem = () => {
+const ScheduleItem = ({
+  heading,
+  time,
+  who,
+  dressCode,
+  locationName,
+  locationMapLink,
+}) => {
+  const textStyles = {
+    fontSize: "lg",
+    fontWeight: "500",
+  };
+
   return (
     <Flex direction="column">
-      <Flex justifyContent="space-between" w="100%">
-        <Heading>rehearsal</Heading>
-        <Text>12pm - 2pm</Text>
+      <Flex justifyContent="space-between" w="100%" mb="12px">
+        <Heading size="3xl" fontWeight="700">
+          {heading}
+        </Heading>
+        <Text {...textStyles}>{time}</Text>
       </Flex>
-      <Flex justifyContent="space-between" w="100%">
+      <Flex justifyContent="space-between" w="100%" alignItems="flex-start">
         <Flex direction="column">
-          <Text>Wedding Party</Text>
-          <Text>Dress: Casual</Text>
+          <Text {...textStyles}>{who}</Text>
+          <Text {...textStyles}>Dress: {dressCode}</Text>
         </Flex>
-        <Button variant="link">Casa Feliz</Button>
+        <Button
+          color="neutral.black"
+          variant="link"
+          fontSize="lg"
+          textDecoration="underline"
+          fontWeight="500"
+        >
+          {locationName}
+        </Button>
       </Flex>
     </Flex>
   );

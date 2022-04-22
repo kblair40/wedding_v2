@@ -14,7 +14,14 @@ import ScheduleItem from "./ScheduleItem";
 const ScheduleItems = () => {
   return (
     <Box>
-      <ScheduleItem />
+      <ScheduleItem
+        heading="rehearsal"
+        time="12pm - 2pm"
+        who="Wedding Party"
+        locationName="Casa Feliz"
+        dressCode="Casual"
+        locationMapLink=""
+      />
     </Box>
   );
 };
