@@ -8,6 +8,7 @@ import OurNames from "components/OurNames";
 
 import Travel from "pages/Travel";
 import WhenAndWhere from "pages/WhenAndWhere";
+import Schedule from "pages/Schedule";
 
 import "./index.css";
 
@@ -28,10 +29,11 @@ const Home = () => {
       />
 
       <Box
-        position="absolute"
-        top="160px"
-        left="0"
-        boxSize="100%"
+        // position="absolute"
+        // top="160px"
+        // left="0"
+        // boxSize="100%"
+        zIndex={-1}
         // border="1px solid red"
       >
         <OurNames />
@@ -46,7 +48,7 @@ const Home = () => {
       </Box>
 
       <Box>
-        <Travel />
+        <Schedule />
       </Box>
 
       {/* <Box className="fade-in-immediate">
