@@ -51,7 +51,7 @@ const Schedule = () => {
       >
         SCHEDULE
       </Text>
-      <Box h="3px" w="50px" bg="neutral.800" mb="16px" />
+      <Box h="3px" w="60px" bg="neutral.800" mb="24px" />
 
       <Tabs w="100%" d="flex" flexDirection="column" alignItems="center">
         <TabList

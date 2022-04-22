@@ -25,7 +25,7 @@ const WhenAndWhere = () => {
     >
       <Flex alignItems="center" justifyContent="center" flexDirection="column">
         <Text {...headerStyles}>WHEN</Text>
-        <Box h="3px" w="50px" bg="neutral.800" mb="16px" />
+        <Box h="3px" w="60px" bg="neutral.800" mb="16px" />
         <Text {...detailStyles}>
           Saturday
           <br />
@@ -40,7 +40,7 @@ const WhenAndWhere = () => {
         // border="1px solid #ccc"
       >
         <Text {...headerStyles}>WHERE</Text>
-        <Box h="3px" w="50px" bg="neutral.800" mb="16px" />
+        <Box h="3px" w="60px" bg="neutral.800" mb="16px" />
         <Text {...detailStyles}>
           Casa Feliz
           <br />

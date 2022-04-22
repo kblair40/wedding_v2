@@ -1,5 +1,11 @@
 import React from "react";
-import { Flex, Text, Heading, Divider, Box } from "@chakra-ui/react";
+import {
+  Flex,
+  useBreakpointValue,
+  Heading,
+  Divider,
+  Box,
+} from "@chakra-ui/react";
 import Masonry from "react-masonry-css";
 
 import { ACTIVITIES } from "utils/constants";
@@ -7,32 +13,41 @@ import ActivityList from "./ActivityList";
 
 const colBreakpoints = {
   // default: 1,
-  560: 1,
-  768: 2,
+  500: 1,
+  767: 2,
   1280: 3,
 };
 
 const Activities = () => {
+  const pl = useBreakpointValue({
+    base: "0",
+    sm: "2.5rem",
+    md: "3rem",
+  });
+
   return (
     <Box
-      // mt="16px"
       sx={{
         ".masonry-grid": {
           display: "flex",
-          marginLeft: "-1.5rem" /* gutter size offset */,
+          marginLeft: `-${pl}` /* gutter size offset */,
           width: "auto",
+          // border: "1px solid #333",
         },
         ".masonry-grid_column": {
-          paddingLeft: "1.5rem",
-          backgroundClip: "padding-box",
+          width: "100%",
+          paddingLeft: pl,
+          // border: "1px solid orange",
+          // backgroundClip: "padding-box",
         },
         ".masonry-grid_column > div": {
           // background: "gold.main",
-          marginBottom: "1rem",
+          marginBottom: "2rem",
         },
       }}
     >
       <Flex
+        // border="1px solid black"
         w="100%"
         flexDirection="column"
         alignItems={{ base: "center", sm: "space-between" }}

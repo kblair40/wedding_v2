@@ -9,6 +9,7 @@ import OurNames from "components/OurNames";
 import Travel from "pages/Travel";
 import WhenAndWhere from "pages/WhenAndWhere";
 import Schedule from "pages/Schedule";
+import ToDoToEat from "pages/ToDoToEat";
 
 import "./index.css";
 
@@ -36,7 +37,7 @@ const Home = () => {
         zIndex={-1}
         // border="1px solid red"
       >
-        <OurNames />
+        {/* <OurNames /> */}
       </Box>
 
       <Box>
@@ -49,6 +50,10 @@ const Home = () => {
 
       <Box>
         <Schedule />
+      </Box>
+
+      <Box>
+        <ToDoToEat />
       </Box>
 
       {/* <Box className="fade-in-immediate">
