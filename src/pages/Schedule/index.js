@@ -69,10 +69,11 @@ const Schedule = () => {
         <TabPanels>
           <TabPanel {...panelStyles}>
             {/* <Text>Friday Stuff</Text> */}
-            <ScheduleItems />
+            <ScheduleItems day="friday" />
           </TabPanel>
           <TabPanel {...panelStyles}>
-            <Text>Saturday Stuff</Text>
+            {/* <Text>Saturday Stuff</Text> */}
+            <ScheduleItems day="saturday" />
           </TabPanel>
         </TabPanels>
       </Tabs>

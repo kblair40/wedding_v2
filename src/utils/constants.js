@@ -179,3 +179,61 @@ export const ACTIVITIES = {
     },
   ],
 };
+
+{
+  /* <ScheduleItem
+  heading="rehearsal"
+  time="12pm - 2pm"
+  who="Wedding Party"
+  locationName="Casa Feliz"
+  dressCode="Casual"
+  locationMapLink=""
+/> */
+}
+
+export const scheduleItems = {
+  friday: [
+    {
+      heading: "rehearsal",
+      time: "10:30am - 12pm",
+      who: "Wedding Party",
+      locationName: "Casa Feliz",
+      dressCode: "Casual",
+      locationMapLink: "",
+    },
+    {
+      heading: "rehearsal brunch",
+      time: "12pm - 2pm",
+      who: "Wedding Party and Family",
+      locationName: "Brunch Place",
+      dressCode: "Casual",
+      locationMapLink: "",
+    },
+  ],
+  saturday: [
+    {
+      heading: "rehearsal",
+      time: "10:30am - 12pm",
+      who: "Wedding Party",
+      locationName: "Casa Feliz",
+      dressCode: "Casual",
+      locationMapLink: "",
+    },
+    {
+      heading: "rehearsal brunch",
+      time: "12pm - 2pm",
+      who: "Wedding Party and Family",
+      locationName: "Brunch Place",
+      dressCode: "Casual",
+      locationMapLink: "",
+    },
+    {
+      heading: "Ceremony",
+      time: "4pm - 4:45pm",
+      who: "Wedding Party and Family",
+      locationName: "Casa Feliz",
+      dressCode: "Casual",
+      locationMapLink: "",
+    },
+  ],
+};

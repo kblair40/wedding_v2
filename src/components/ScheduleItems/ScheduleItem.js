@@ -24,7 +24,7 @@ const ScheduleItem = ({
   };
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" mb="40px">
       <Flex justifyContent="space-between" w="100%" mb="12px">
         <Heading size="3xl" fontWeight="700">
           {heading}
