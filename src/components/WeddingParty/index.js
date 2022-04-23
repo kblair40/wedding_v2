@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Box,
-  VStack,
-  Text,
-  Heading,
-  Image,
-  AspectRatio,
-  Flex,
-  Avatar,
-  Divider,
-} from "@chakra-ui/react";
+import { Box, Text, Heading, Flex, Avatar, Divider } from "@chakra-ui/react";
 
 import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
 import shannon from "assets/galleryImages/shannon/shan_six.jpg";
@@ -26,21 +16,35 @@ const WeddingParty = () => {
       <Flex
         direction={{ base: "column", sm: "row" }}
         mt="16px"
-        alignItems="center"
+        justifyContent="center"
       >
         <ColumnContainer>
           <Flex justifyContent={{ base: "center" }}>
             <Partier name="kevin blair" role="GROOM" imgURL={kevin} />
           </Flex>
 
-          <Flex direction={{ base: "column", lg: "row" }}>
+          <Flex
+            direction={{ base: "column", lg: "row" }}
+            justifyContent="center"
+          >
             <Partier name="caleb magnuson" role="BEST MAN" imgURL={five} />
             <Partier name="trevor weidner" role="GROOMSMAN" imgURL={four} />
           </Flex>
 
-          <Flex direction={{ base: "column", lg: "row" }}>
+          <Flex
+            direction={{ base: "column", lg: "row" }}
+            justifyContent="center"
+            TimeUnit
+          >
             <Partier name="andrew payne" role="GROOMSMAN" imgURL={three} />
             <Partier name="ted keller" role="GROOMSMAN" imgURL={two} />
+          </Flex>
+          <Flex justifyContent={{ base: "center" }}>
+            <Partier
+              name="august & frederick gerber"
+              role="RING BEARERS"
+              imgURL={ringBearers}
+            />
           </Flex>
         </ColumnContainer>
 
@@ -52,30 +56,33 @@ const WeddingParty = () => {
         />
 
         <ColumnContainer>
-          <Flex justifyContent={{ base: "center" }}>
+          <Flex justifyContent={{ base: "center" }} TimeUnit>
             <Partier name="shannon dunne" role="BRIDE" imgURL={shannon} />
           </Flex>
 
-          <Flex direction={{ base: "column", lg: "row" }}>
+          <Flex
+            direction={{ base: "column", lg: "row" }}
+            justifyContent="center"
+            TimeUnit
+          >
             <Partier name="erin dunne" role="MAID OF HONOR" imgURL={two} />
             <Partier name="kelly dunne" role="MATRON OF HONOR" imgURL={three} />
           </Flex>
 
-          <Flex direction={{ base: "column", lg: "row" }}>
+          <Flex
+            direction={{ base: "column", lg: "row" }}
+            wrap="wrap"
+            justifyContent="center"
+            TimeUnit
+          >
             <Partier name="karissa leith" role="BRIDESMAID" imgURL={four} />
             <Partier name="cassidy blair" role="BRIDESMAID" imgURL={five} />
           </Flex>
+
+          <Flex justifyContent={{ base: "center" }}>
+            <Partier name="sarlota reichle" role="FLOWER GIRL" imgURL={three} />
+          </Flex>
         </ColumnContainer>
-      </Flex>
-
-      <Flex position="relative" right="32px">
-        <Partier
-          name="august & frederick gerber"
-          role="RING BEARERS"
-          imgURL={ringBearers}
-        />
-
-        <Partier name="sarlota reichle" role="FLOWER GIRL" imgURL={three} />
       </Flex>
     </>
   );
@@ -83,9 +90,10 @@ const WeddingParty = () => {
 
 export default WeddingParty;
 
-const Partier = ({ name, role, imgURL }) => {
+const Partier = ({ name, role, imgURL, mr = 0 }) => {
   return (
     <Flex
+      mr={mr}
       mb={{ base: "24px" }}
       direction="column"
       alignItems="center"
@@ -95,36 +103,21 @@ const Partier = ({ name, role, imgURL }) => {
       <Heading
         fontWeight="700"
         fontSize="3xl"
-        // border="1px solid black"
-        // lineHeight="30px"
+        textAlign="center"
+        lineHeight="28px"
+        mb="4px"
       >
         {name}
       </Heading>
-      <Text
-        letterSpacing="1.5px"
-        // border="1px solid black"
-      >
-        {role}
-      </Text>
+      <Text letterSpacing="1.5px">{role}</Text>
     </Flex>
   );
 };
 
-const ColumnContainer = ({ children, mt }) => {
+const ColumnContainer = ({ children }) => {
   return (
-    <Box
-      w={{ base: "100%", sm: "50%" }}
-      px="24px"
-      // mt={mt}
-      // border="1px solid green"
-      //
-    >
-      {/* <Heading textAlign="center" fontWeight="500" mb="24px" fontSize="3xl">
-        {side}
-      </Heading> */}
-      {/* <VStack px="24px" spacing="32px" spacing={0} border="1px solid red"> */}
+    <Box w={{ base: "100%", sm: "50%" }} px="24px">
       {children}
-      {/* </VStack> */}
     </Box>
   );
 };
