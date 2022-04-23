@@ -6,3 +6,6 @@
 5. RSVP help modal should have email template in Collapse container (or with animate.css somehow)
       template should show when user clicks 'See a template'
 6. Allow RSVPHelpModal opening from 'Search' step if no guests are found
+
+7. Start with useInView stuff (intersection-observer)
+    - highlight location depending on what is in view

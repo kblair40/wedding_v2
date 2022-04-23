@@ -47,6 +47,11 @@ const CountdownClock = ({ onHide }) => {
     });
   };
 
+  const textStyles = {
+    fontFamily: "Great Vibes",
+    // border: "1px solid #ccc",
+    fontSize: "lg",
+  };
   return (
     <Box>
       <Flex direction="column" pt="8px">
@@ -58,13 +63,34 @@ const CountdownClock = ({ onHide }) => {
 
         <TimeUnit unit={"Seconds"} value={timeDiff.seconds} />
 
+        <Flex
+          flexDirection="column"
+          alignItems="center"
+          mt=".5rem"
+          mb="1rem"
+          // border="1px solid #333"
+          display="none"
+        >
+          <Text {...textStyles}>Until</Text>
+          <Text {...textStyles}>We</Text>
+          <Text {...textStyles}>Celebrate </Text>
+        </Flex>
+
         <Button
+          // border="1px solid #aaa"
           onClick={onHide}
           variant="link"
           size="sm"
           color="neutral.black"
           fontWeight="500"
-          py="4px"
+          mt="8px"
+          pb="4px"
+          sx={{
+            ".chakra-button__icon": {
+              // color: "#f00",
+              marginInlineEnd: "0.25rem",
+            },
+          }}
           _hover={{ textDecoration: "none" }}
           leftIcon={
             <MdOutlineChevronLeft style={{ width: "16px", height: "16px" }} />

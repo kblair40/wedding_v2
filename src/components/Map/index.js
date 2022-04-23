@@ -21,7 +21,7 @@ const Map = () => {
         center={[28.603193529978682, -81.35028822469964]}
         zoom={10}
         minZoom={10}
-        style={{ height: "400px" }}
+        style={{ height: "400px", zIndex: 1 }}
       >
         <MapContents />
       </MapContainer>

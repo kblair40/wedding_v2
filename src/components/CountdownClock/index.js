@@ -64,12 +64,6 @@ const CountdownClock = () => {
     setShowClock(true);
   };
 
-  const baseStyles = {
-    bg: "neutral.50",
-    shadow: "md",
-    zIndex: 100,
-  };
-
   return (
     <Box className="vertical-center">
       <React.Fragment>
@@ -80,7 +74,10 @@ const CountdownClock = () => {
           transition="opacity .3s"
           p="8px"
           borderRadius="0 2px 2px 0"
-          {...baseStyles}
+          // bg="neutral.50"
+          shadow="md"
+          bg="white"
+          zIndex={10}
         >
           <ClockBody onHide={onHideClock} />
         </Box>
@@ -91,14 +88,18 @@ const CountdownClock = () => {
           borderRadius="full"
           left="4px"
           transition="opacity 1s"
+          shadow="sm"
           opacity={ready ? 1 : 0} // prevents initial flicker
-          {...baseStyles}
         >
           <IconButton
             onClick={onShowClock}
+            bg="white"
             icon={<MdOutlineChevronRight size={24} />}
             size="xs"
             borderRadius="full"
+            transition=".2s"
+            _hover={{ bg: "neutral.50" }}
+            zIndex={10}
           />
         </Box>
       </React.Fragment>
