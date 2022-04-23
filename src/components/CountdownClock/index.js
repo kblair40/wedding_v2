@@ -69,19 +69,17 @@ const CountdownClock = () => {
   };
 
   const baseStyles = {
-    position: "fixed",
     bg: "neutral.50",
     shadow: "md",
     zIndex: 100,
   };
 
   return (
-    <Box>
+    <Box className="vertical-center">
       <Box
         ref={containerRef}
         display={{ base: "none", sm: "block" }}
         left={0}
-        top="30%"
         p="8px"
         borderRadius="0 2px 2px 0"
         {...baseStyles}
@@ -89,17 +87,16 @@ const CountdownClock = () => {
         <ClockBody onHide={handleHideClock} onShow={handleShowClock} />
       </Box>
       <Box
-        className="hidden"
+        className="hidden vertical-center"
         ref={showButtonRef}
         borderRadius="full"
         left="4px"
-        top="40%"
         {...baseStyles}
       >
         <IconButton
           onClick={handleShowClock}
-          icon={<MdOutlineChevronRight />}
-          size="sm"
+          icon={<MdOutlineChevronRight size={24} />}
+          size="xs"
           borderRadius="full"
         />
       </Box>

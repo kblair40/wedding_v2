@@ -13,3 +13,9 @@
 .hidden {
   display: none;
 }
+
+.vertical-center {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
