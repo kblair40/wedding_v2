@@ -33,7 +33,7 @@ const OverlayCard = ({ imageURL, children, label, ...rest }) => {
             bg: "rgba(0, 0, 0, 0.35)",
             boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
             backdropFilter: "blur('6px')",
-            "-webkit-backdrop-filter": "blur('6px')",
+            webkitBackdropFilter: "blur('6px')",
             borderRadius: "10px",
           },
         }}

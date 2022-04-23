@@ -56,11 +56,10 @@ const Schedule = () => {
       <Tabs w="100%" d="flex" flexDirection="column" alignItems="center">
         <TabList
           w="375px"
-          BorderBottom="3px solid"
+          borderBottom="3px solid"
           borderColor="neutral.100"
           display="flex"
           justifyContent="space-between"
-          // border="none"
         >
           <Tab {...tabStyles}>FRIDAY</Tab>
           <Tab {...tabStyles}>SATURDAY</Tab>
