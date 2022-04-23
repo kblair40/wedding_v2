@@ -9,8 +9,8 @@ const ActivityList = ({ label, activities }) => {
       <Heading fontWeight="700" mb="16px" fontSize="3xl">
         {label}
       </Heading>
-      {activities.map((act) => {
-        return <ActivityItem activity={act} />;
+      {activities.map((act, i) => {
+        return <ActivityItem activity={act} key={i} />;
       })}
     </Flex>
   );
