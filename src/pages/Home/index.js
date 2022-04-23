@@ -11,9 +11,9 @@ import OurNames from "components/OurNames";
 
 import Travel from "pages/Travel";
 import WhenAndWhere from "pages/WhenAndWhere";
-import Schedule from "pages/Schedule";
+// import Schedule from "pages/Schedule";
 import ToDoToEat from "pages/ToDoToEat";
-import WeddingPartyPage from "pages/WeddingPartyPage";
+// import WeddingPartyPage from "pages/WeddingPartyPage";
 
 import "./index.css";
 
@@ -63,17 +63,17 @@ const Home = () => {
         <Travel />
       </Box>
 
-      <Box>
+      {/* <Box>
         <Schedule />
-      </Box>
+      </Box> */}
 
       <Box>
         <ToDoToEat />
       </Box>
 
-      <Box>
+      {/* <Box>
         <WeddingPartyPage />
-      </Box>
+      </Box> */}
 
       {/* <Box className="fade-in-immediate">
         <CountdownClock />

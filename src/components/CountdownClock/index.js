@@ -74,7 +74,6 @@ const CountdownClock = () => {
           transition="opacity .3s"
           p="8px"
           borderRadius="0 2px 2px 0"
-          // bg="neutral.50"
           shadow="md"
           bg="white"
           zIndex={10}
