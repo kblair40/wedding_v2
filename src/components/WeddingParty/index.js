@@ -34,7 +34,6 @@ const WeddingParty = () => {
           <Flex
             direction={{ base: "column", lg: "row" }}
             justifyContent="center"
-            TimeUnit
           >
             <Partier name="andrew payne" role="GROOMSMAN" imgURL={three} />
             <Partier name="ted keller" role="GROOMSMAN" imgURL={two} />
@@ -56,14 +55,13 @@ const WeddingParty = () => {
         />
 
         <ColumnContainer>
-          <Flex justifyContent={{ base: "center" }} TimeUnit>
+          <Flex justifyContent={{ base: "center" }}>
             <Partier name="shannon dunne" role="BRIDE" imgURL={shannon} />
           </Flex>
 
           <Flex
             direction={{ base: "column", lg: "row" }}
             justifyContent="center"
-            TimeUnit
           >
             <Partier name="erin dunne" role="MAID OF HONOR" imgURL={two} />
             <Partier name="kelly dunne" role="MATRON OF HONOR" imgURL={three} />
@@ -73,7 +71,6 @@ const WeddingParty = () => {
             direction={{ base: "column", lg: "row" }}
             wrap="wrap"
             justifyContent="center"
-            TimeUnit
           >
             <Partier name="karissa leith" role="BRIDESMAID" imgURL={four} />
             <Partier name="cassidy blair" role="BRIDESMAID" imgURL={five} />
