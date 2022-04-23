@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Box, Text, Flex, Button, Icon, IconButton } from "@chakra-ui/react";
 import { MdOutlineChevronLeft } from "react-icons/md";
 
-import "./index.css";
+// import "./index.css";
 
 const WEDDING_DATE = "2023-01-21";
 
@@ -74,17 +74,8 @@ const CountdownClock = ({ onShow, onHide }) => {
 
   return (
     <Box
-      ref={ref}
-      zIndex={100}
-      px="8px"
-      shadow="md"
-      bg="neutral.50"
-      py="8px"
-      position="fixed"
-      left={0}
-      top="30%"
-      borderRadius="0 2px 2px 0"
-      className={containerClass}
+    // ref={ref}
+    // className={containerClass}
     >
       <Flex direction="column" pt="8px">
         <TimeUnit unit={"Days"} value={timeDiff.days} />
@@ -96,7 +87,8 @@ const CountdownClock = ({ onShow, onHide }) => {
         <TimeUnit unit={"Seconds"} value={timeDiff.seconds} />
 
         <Button
-          onClick={() => setContainerClass("slide-out")}
+          // onClick={() => setContainerClass("slide-out")}
+          onClick={onHide}
           variant="link"
           size="sm"
           color="neutral.black"

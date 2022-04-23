@@ -1,6 +1,15 @@
 .slide-out {
   animation: slideOutLeft;
-  /* animation-delay: 0.2s; */
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
+}
+
+.slide-in {
+  animation: slideInLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.hidden {
+  display: none;
 }
