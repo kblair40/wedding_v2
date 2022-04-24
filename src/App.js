@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 import "animate.css";
@@ -14,14 +14,20 @@ import CountdownClock from "components/CountdownClock";
 import "./App.css";
 
 function App() {
+  const [section, setSection] = useState("top");
+
+  const handleChangeSection = (newSection) => {
+    setSection(newSection);
+  };
+
   return (
     <Box position="relative" sx={{ overflow: "hidden !important" }}>
-      <Nav />
+      <Nav handleChangeSection={handleChangeSection} />
       <CountdownClock />
       <UserProvider>
         <ScrollToTop>
           <Routes>
-            <Route path="/" element={<Main />} />
+            <Route path="/" element={<Main section={section} />} />
             <Route path="/admin" element={<Admin />} />
             {/* <Route path="/rsvp" element={<RSVP />} /> */}
           </Routes>

@@ -2,30 +2,37 @@ export const NAV_ITEMS = [
   {
     label: "Home",
     href: "/",
+    section: "top",
   },
   {
     label: "Travel",
     href: "/travel",
+    section: "travel",
   },
   {
     label: "To Do/To Eat",
     href: "/thingstodo",
+    section: "activities",
   },
   {
     label: "Registry",
     href: "/registry",
+    section: "registry",
   },
   {
     label: "Wedding Party",
     href: "/weddingparty",
+    section: "weddingParty",
   },
   {
     label: "Gallery",
     href: "/gallery",
+    section: "gallery",
   },
   {
     label: "RSVP",
     href: "/rsvp",
+    section: "rsvp",
   },
   // {
   //   label: "Admin Stuff",
