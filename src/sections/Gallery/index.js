@@ -5,6 +5,7 @@ import {
   ModalContent,
   ModalCloseButton,
   Box,
+  Text,
 } from "@chakra-ui/react";
 
 import PageContainer from "components/containers/PageContainer";
@@ -64,9 +65,11 @@ const Gallery = () => {
     setShowCarousel(true);
   };
 
+  {
+    /* css for react-slick (GalleryImageCarousel) */
+  }
   return (
-    <PageContainer center px={{ base: "16px", md: "24px" }}>
-      {/* css for react-slick (GalleryImageCarousel) */}
+    <React.Fragment>
       <link
         rel="stylesheet"
         type="text/css"
@@ -79,35 +82,57 @@ const Gallery = () => {
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
 
-      <Box className="fade-in-immediate">
-        <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />
-
-        {showCarousel && (
-          <Modal
-            isCentered
-            isOpen={showCarousel}
-            onClose={() => setShowCarousel(false)}
-            size="full"
+      <Flex
+        direction="column"
+        alignItems="center"
+        bg="white"
+        pt="24px"
+        pb="32px"
+      >
+        <Flex direction="column" alignItems="center">
+          <Text
+            fontSize={{ base: "3xl", sm: "48px" }}
+            textAlign="center"
+            fontWeight="500"
+            w="100%"
+            mt="32px"
+            letterSpacing="2px"
           >
-            <ModalContent bg="rgba(0, 0, 0, .7)" px="8px" overflow="hidden">
-              <ModalCloseButton
-                right="8px"
-                zIndex={1}
-                bg="neutral.black"
-                transition=".3s ease-in-out"
-                color="neutral.white"
-              />
-              <Flex alignItems="center" h="100vh">
-                <GalleryImageCarousel
-                  imagesArray={imagesArray}
-                  startingSlideIdx={startingSlideIdx}
+            GALLERY
+          </Text>
+          <Box h="3px" w="50px" bg="neutral.800" mb="24px" />
+        </Flex>
+
+        <Box className="fade-in-immediate">
+          <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />
+
+          {showCarousel && (
+            <Modal
+              isCentered
+              isOpen={showCarousel}
+              onClose={() => setShowCarousel(false)}
+              size="full"
+            >
+              <ModalContent bg="rgba(0, 0, 0, .7)" px="8px" overflow="hidden">
+                <ModalCloseButton
+                  right="8px"
+                  zIndex={1}
+                  bg="neutral.black"
+                  transition=".3s ease-in-out"
+                  color="neutral.white"
                 />
-              </Flex>
-            </ModalContent>
-          </Modal>
-        )}
-      </Box>
-    </PageContainer>
+                <Flex alignItems="center" h="100vh">
+                  <GalleryImageCarousel
+                    imagesArray={imagesArray}
+                    startingSlideIdx={startingSlideIdx}
+                  />
+                </Flex>
+              </ModalContent>
+            </Modal>
+          )}
+        </Box>
+      </Flex>
+    </React.Fragment>
   );
 };
 
