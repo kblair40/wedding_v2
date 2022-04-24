@@ -143,7 +143,7 @@ const WeddingParty = () => {
           <Partier
             gridArea="andras"
             name="andras reichle"
-            role="HEAD OF SECURITY"
+            role="HEAD USHER"
             imgURL={andras}
             flex={1}
           />
