@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
+import { useInView } from "react-intersection-observer";
 
-const WhenAndWhere = () => {
+const WhenAndWhere = ({ setInView }) => {
+  const options = { threshold: 1 };
+  const [travelRef, travelInView] = useInView(options);
+
+  useEffect(() => {
+    console.log("travelInView:", travelInView);
+    if (travelInView) {
+      setInView("travel");
+    }
+  }, [travelInView]);
+
   const headerStyles = {
     fontSize: "40px",
     fontWeight: "600",
@@ -13,8 +24,10 @@ const WhenAndWhere = () => {
     fontWeight: "500",
     textAlign: "center",
   };
+
   return (
     <Flex
+      ref={travelRef}
       bg="neutral.100"
       // border="1px solid #ccc"
       py="32px"

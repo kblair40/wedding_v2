@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { Box } from "@chakra-ui/react";
-import { useInView } from "react-intersection-observer";
 
 import MainBackground from "components/MainBackground";
 import Travel from "sections/Travel";
@@ -8,11 +7,8 @@ import Activities from "sections/Activities";
 import Schedule from "sections/Schedule";
 import WeddingParty from "sections/WeddingParty";
 import Gallery from "sections/Gallery";
-import WhenAndWhere from "sections/WhenAndWhere";
 
-const Main = ({ section }) => {
-  const options = { threshold: 0 };
-
+const Main = ({ section, handleChangeSectionInView }) => {
   // const [topRef, topInView] = useInView(options);
   // const [travelRef, travelInView] = useInView(options);
   // const [scheduleRef, scheduleInView] = useInView(options);
@@ -44,39 +40,33 @@ const Main = ({ section }) => {
     }
   }, [section]);
 
-  // useEffect(() => {
-  //   if (weddingPartyRef.current) {
-  //     console.log("valid");
-  //     weddingPartyRef.current.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // }, [weddingPartyRef.current]);
-
   return (
     <Box>
       <Box ref={topRef}>
-        <MainBackground />
+        <MainBackground setInView={() => handleChangeSectionInView("top")} />
       </Box>
 
       <Box ref={travelRef}>
-        <WhenAndWhere />
-
-        <Travel />
+        <Travel setInView={() => handleChangeSectionInView("travel")} />
       </Box>
 
-      <Box ref={scheduleRef}>
-        <Schedule />
-      </Box>
+      {/* <Box ref={scheduleRef}>
+        <Schedule setInView={() => handleChangeSectionInView("schedule")} />
+      </Box> */}
 
       <Box ref={activitiesRef}>
-        <Activities />
+        {/* <Schedule /> */}
+        <Activities setInView={() => handleChangeSectionInView("activities")} />
       </Box>
 
       <Box ref={weddingPartyRef}>
-        <WeddingParty />
+        <WeddingParty
+          setInView={() => handleChangeSectionInView("weddingParty")}
+        />
       </Box>
 
       <Box ref={galleryRef}>
-        <Gallery />
+        <Gallery setInView={() => handleChangeSectionInView("gallery")} />
       </Box>
     </Box>
   );

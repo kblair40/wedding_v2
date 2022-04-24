@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Icon, Flex, Text } from "@chakra-ui/react";
 import { BsArrowDownLeft } from "react-icons/bs";
+import { useInView } from "react-intersection-observer";
 
 import color_hor_img from "assets/images/dock_kiss.jpg";
-// import mainImg from "assets/images/opt/main_opt.jpg";
-// import mainImg2 from "assets/images/opt/main_opt.png";
 import OurNames from "components/OurNames";
 
-const MainBackground = () => {
+const MainBackground = ({ setInView }) => {
+  const options = { threshold: 1 };
+  const [inViewRef, inView] = useInView(options);
+
+  useEffect(() => {
+    console.log("HOME IN VIEW:", inView);
+    if (inView) {
+      setInView("top");
+    }
+  }, [inView]);
+
   return (
     <Box
+      ref={inViewRef}
       position="relative"
       // border="1px solid green"
       display="flex"

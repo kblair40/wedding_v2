@@ -24,6 +24,10 @@ function App() {
     setSectionInView(newSection);
   };
 
+  const handleChangeSectionInView = (newSection) => {
+    setSectionInView(newSection);
+  };
+
   return (
     <Box position="relative" sx={{ overflow: "hidden !important" }}>
       <Nav
@@ -34,7 +38,15 @@ function App() {
       <UserProvider>
         <ScrollToTop>
           <Routes>
-            <Route path="/" element={<Main section={section} />} />
+            <Route
+              path="/"
+              element={
+                <Main
+                  section={section}
+                  handleChangeSectionInView={handleChangeSectionInView}
+                />
+              }
+            />
             <Route path="/admin" element={<Admin />} />
             {/* <Route path="/rsvp" element={<RSVP />} /> */}
           </Routes>
