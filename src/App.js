@@ -14,15 +14,22 @@ import CountdownClock from "components/CountdownClock";
 import "./App.css";
 
 function App() {
+  // will actually change section
   const [section, setSection] = useState("top");
+  // uses 'inview' and updates so nav makes necessary visual changes
+  const [sectionInView, setSectionInView] = useState("top");
 
   const handleChangeSection = (newSection) => {
     setSection(newSection);
+    setSectionInView(newSection);
   };
 
   return (
     <Box position="relative" sx={{ overflow: "hidden !important" }}>
-      <Nav handleChangeSection={handleChangeSection} />
+      <Nav
+        handleChangeSection={handleChangeSection}
+        sectionInView={sectionInView}
+      />
       <CountdownClock />
       <UserProvider>
         <ScrollToTop>

@@ -16,7 +16,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import "./index.css";
 import { NAV_ITEMS } from "utils/constants";
 
-const Nav = ({ handleChangeSection }) => {
+const Nav = ({ handleChangeSection, sectionInView }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -78,8 +78,20 @@ const Nav = ({ handleChangeSection }) => {
                   key={navItem.label}
                   onClick={() => handleChangeSection(navItem.section)}
                   cursor="pointer"
+                  className={
+                    sectionInView === navItem.section
+                      ? "link-active"
+                      : undefined
+                  }
                 >
-                  <Box className="link-wrapper" borderRadius="4px">
+                  <Box
+                    className={
+                      sectionInView !== navItem.section
+                        ? "link-wrapper"
+                        : undefined
+                    }
+                    borderRadius="4px"
+                  >
                     <Flex
                       borderRadius="4px"
                       py="4px"
