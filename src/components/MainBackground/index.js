@@ -3,6 +3,8 @@ import { Box, Icon, Flex, Text } from "@chakra-ui/react";
 import { BsArrowDownLeft } from "react-icons/bs";
 
 import color_hor_img from "assets/images/dock_kiss.jpg";
+// import mainImg from "assets/images/opt/main_opt.jpg";
+// import mainImg2 from "assets/images/opt/main_opt.png";
 import OurNames from "components/OurNames";
 
 const MainBackground = () => {
@@ -18,6 +20,7 @@ const MainBackground = () => {
         zIndex={-1}
         position="relative"
         bgImage={color_hor_img}
+        // bgImage={mainImg2}
         w="100vw"
         // h={{ base: "calc(100vh - 50px)" }}
         h={{ base: "100vh" }}
