@@ -50,8 +50,8 @@ const Main = ({ section, handleChangeSectionInView }) => {
         <MainBackground setInView={() => handleChangeSectionInView("top")} />
       </Box>
 
-      <Box ref={rsvpRef}>
-        <RSVP />
+      <Box ref={rsvpRef} className="scroll-margin">
+        <RSVP setInView={() => handleChangeSectionInView("rsvp")} />
       </Box>
 
       <Box

@@ -5,6 +5,11 @@ export const NAV_ITEMS = [
     section: "top",
   },
   {
+    label: "RSVP",
+    href: "/rsvp",
+    section: "rsvp",
+  },
+  {
     label: "Travel",
     href: "/travel",
     section: "travel",
@@ -29,11 +34,7 @@ export const NAV_ITEMS = [
     href: "/registry",
     section: "registry",
   },
-  {
-    label: "RSVP",
-    href: "/rsvp",
-    section: "rsvp",
-  },
+
   // {
   //   label: "Admin Stuff",
   //   href: "/admin",

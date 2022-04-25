@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
 
 import { patchGuest } from "api/api";
 import RSVPForm from "components/RSVPSteps/RSVPForm";
@@ -12,7 +13,7 @@ import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
 
 import "./index.css";
 
-const RSVP = () => {
+const RSVP = ({ setInView }) => {
   const [guest, setGuest] = useState();
   const [relatedGuests, setRelatedGuests] = useState();
   const [step, setStep] = useState(1);
@@ -25,6 +26,15 @@ const RSVP = () => {
   let navigate = useNavigate();
 
   const helpOpenedBy = useRef("");
+
+  const [inViewRef, inView] = useInView({ threshold: 0 });
+
+  useEffect(() => {
+    console.log("inView:", inView);
+    if (inView) {
+      setInView("rsvp");
+    }
+  }, [inView]);
 
   const getSearchResults = (guest, relatedGuests) => {
     console.log("SEARCH RESULTES:", { guest, relatedGuests });
@@ -144,7 +154,7 @@ const RSVP = () => {
           >
             RSVP
           </Text>
-          <Box h="3px" w="60px" bg="neutral.800" />
+          <Box h="3px" w="60px" bg="neutral.800" ref={inViewRef} />
         </Flex>
 
         <Flex
