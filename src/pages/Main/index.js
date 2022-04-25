@@ -46,7 +46,11 @@ const Main = ({ section, handleChangeSectionInView }) => {
         <MainBackground setInView={() => handleChangeSectionInView("top")} />
       </Box>
 
-      <Box ref={travelRef}>
+      <Box
+        ref={travelRef}
+        // pt="-24px"
+        // bg="neutral.100"
+      >
         <Travel setInView={() => handleChangeSectionInView("travel")} />
       </Box>
 

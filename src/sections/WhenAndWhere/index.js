@@ -27,10 +27,10 @@ const WhenAndWhere = ({ setInView }) => {
 
   return (
     <Flex
-      ref={travelRef}
+      // ref={travelRef}
       bg="neutral.100"
       // border="1px solid #ccc"
-      py="32px"
+      // py="32px"
       direction={{ base: "column", sm: "row" }}
       w="100%"
       justifyContent="center"
