@@ -8,6 +8,8 @@ import Schedule from "sections/Schedule";
 import WeddingParty from "sections/WeddingParty";
 import Gallery from "sections/Gallery";
 
+import "./index.css";
+
 const Main = ({ section, handleChangeSectionInView }) => {
   // const [topRef, topInView] = useInView(options);
   // const [travelRef, travelInView] = useInView(options);
@@ -47,6 +49,7 @@ const Main = ({ section, handleChangeSectionInView }) => {
       </Box>
 
       <Box
+        className="scroll-margin"
         ref={travelRef}
         pb="24px"
         // mb="24px"
@@ -55,6 +58,7 @@ const Main = ({ section, handleChangeSectionInView }) => {
       </Box>
 
       <Box
+        className="scroll-margin"
         ref={activitiesRef}
         pb="24px"
         // mb="24px"
@@ -64,6 +68,7 @@ const Main = ({ section, handleChangeSectionInView }) => {
       </Box>
 
       <Box
+        className="scroll-margin"
         ref={weddingPartyRef}
         border="1px solid #ccc"
         // pb="24px"
@@ -74,7 +79,7 @@ const Main = ({ section, handleChangeSectionInView }) => {
         />
       </Box>
 
-      <Box ref={galleryRef}>
+      <Box ref={galleryRef} className="scroll-margin">
         <Gallery setInView={() => handleChangeSectionInView("gallery")} />
       </Box>
     </Box>
