@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { Flex, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Box, useBreakpointValue } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import Schedule from "sections/Schedule";
 import ActivitiesContainer from "./ActivitiesContainer";
 
 const Activities = ({ setInView }) => {
-  const [inViewRef, inView] = useInView({ threshold: 0.5 });
+  const [inViewRef, inView] = useInView({ threshold: 0.01 });
 
   useEffect(() => {
     console.log("ACTIVITIES IN VIEW:", inView);
@@ -22,14 +22,9 @@ const Activities = ({ setInView }) => {
   });
 
   return (
-    <Flex
-      ref={inViewRef}
-      alignItems="center"
-      direction="column"
-      w="100%"
-      pt="24px"
-    >
+    <Flex alignItems="center" direction="column" w="100%" pt="24px">
       <Schedule />
+      <Box ref={inViewRef} />
       <ActivitiesContainer />
     </Flex>
   );

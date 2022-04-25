@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Text,
@@ -8,6 +8,7 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/react";
+import { useInView } from "react-intersection-observer";
 
 import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
 import shannon from "assets/galleryImages/shannon/shan_six.jpg";
@@ -21,7 +22,16 @@ import sarlota from "assets/images/wedding_party/sarlota.jpg";
 import andras from "assets/images/wedding_party/andras.jpg";
 import cameron from "assets/images/wedding_party/cameron.jpg";
 
-const WeddingParty = () => {
+const WeddingParty = ({ setInView }) => {
+  const [inViewRef, inView] = useInView({ threshold: 0.01 });
+
+  useEffect(() => {
+    console.log("WEDDING PARTY IN VIEW:", inView);
+    if (inView) {
+      setInView("weddingParty");
+    }
+  }, [inView]);
+
   return (
     <Flex
       direction="column"
@@ -41,7 +51,7 @@ const WeddingParty = () => {
         >
           WEDDING PARTY
         </Text>
-        <Box h="3px" w="50px" bg="neutral.800" mb="24px" />
+        <Box h="3px" w="50px" bg="neutral.800" mb="24px" ref={inViewRef} />
       </Flex>
 
       <Grid
@@ -89,6 +99,7 @@ const WeddingParty = () => {
         <GridItem gridArea="caleb">
           <Partier name="caleb magnuson" role="BEST MAN" imgURL={five} />
         </GridItem>
+
         <GridItem gridArea="trevor">
           <Partier name="trevor weidner" role="GROOMSMAN" imgURL={four} />
         </GridItem>

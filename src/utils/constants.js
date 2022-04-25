@@ -15,11 +15,6 @@ export const NAV_ITEMS = [
     section: "activities",
   },
   {
-    label: "Registry",
-    href: "/registry",
-    section: "registry",
-  },
-  {
     label: "Wedding Party",
     href: "/weddingparty",
     section: "weddingParty",
@@ -28,6 +23,11 @@ export const NAV_ITEMS = [
     label: "Gallery",
     href: "/gallery",
     section: "gallery",
+  },
+  {
+    label: "Registry",
+    href: "/registry",
+    section: "registry",
   },
   {
     label: "RSVP",

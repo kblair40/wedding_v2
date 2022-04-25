@@ -8,7 +8,8 @@ import Accommodations from "components/Accommodations";
 import Map from "components/Map";
 
 const Travel = ({ setInView }) => {
-  const options = { threshold: 0.25 };
+  // const options = { threshold: 0.25 };
+  const options = { threshold: 0.01 };
   const [travelRef, travelInView] = useInView(options);
 
   useEffect(() => {
@@ -30,7 +31,11 @@ const Travel = ({ setInView }) => {
     textAlign: "center",
   };
   return (
-    <Flex alignItems="center" direction="column" ref={travelRef}>
+    <Flex
+      alignItems="center"
+      direction="column"
+      // ref={travelRef}
+    >
       <Flex
         bg="neutral.100"
         // border="1px solid #ccc"
@@ -85,6 +90,9 @@ const Travel = ({ setInView }) => {
 
       <Box maxW={MAX_WIDTHS()} mt="36px" w="100%" pb="16px">
         <TravelInfo />
+
+        <Box ref={travelRef} />
+
         <Box mt="36px">
           <Accommodations />
         </Box>

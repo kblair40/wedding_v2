@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Flex,
   Modal,
@@ -7,6 +7,7 @@ import {
   Box,
   Text,
 } from "@chakra-ui/react";
+import { useInView } from "react-intersection-observer";
 
 import PageContainer from "components/containers/PageContainer";
 import GalleryImages from "components/GalleryImages";
@@ -33,9 +34,18 @@ import shan_nine from "assets/galleryImages/shannon/shan_nine.jpg";
 import shan_ten from "assets/galleryImages/shannon/shan_ten.jpg";
 import shan_eleven from "assets/galleryImages/shannon/shan_eleven.jpg";
 
-const Gallery = () => {
+const Gallery = ({ setInView }) => {
   const [showCarousel, setShowCarousel] = useState(false);
   const [startingSlideIdx, setStartingSlideIdx] = useState();
+
+  const [inViewRef, inView] = useInView({ threshold: 0.01 });
+
+  useEffect(() => {
+    console.log("GALLERY IN VIEW:", inView);
+    if (inView) {
+      setInView("gallery");
+    }
+  }, [inView]);
 
   const imagesArray = [
     one,
@@ -100,7 +110,7 @@ const Gallery = () => {
           >
             GALLERY
           </Text>
-          <Box h="3px" w="50px" bg="neutral.800" mb="24px" />
+          <Box h="3px" w="50px" bg="neutral.800" mb="24px" ref={inViewRef} />
         </Flex>
 
         <Box className="fade-in-immediate">
