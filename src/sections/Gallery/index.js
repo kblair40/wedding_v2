@@ -96,8 +96,8 @@ const Gallery = ({ setInView }) => {
         direction="column"
         alignItems="center"
         bg="white"
-        pt="24px"
-        pb="32px"
+        pt="32px"
+        mb="24px"
       >
         <Flex direction="column" alignItems="center">
           <Text
@@ -105,7 +105,7 @@ const Gallery = ({ setInView }) => {
             textAlign="center"
             fontWeight="500"
             w="100%"
-            mt="32px"
+            // mt="32px"
             letterSpacing="2px"
           >
             GALLERY

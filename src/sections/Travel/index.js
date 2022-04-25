@@ -26,7 +26,7 @@ const Travel = ({ setInView }) => {
       alignItems="center"
       direction="column"
       w="100%"
-      pt="24px"
+      // pt="24px"
       bg="neutral.100"
     >
       <WhenAndWhere />

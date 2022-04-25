@@ -37,8 +37,8 @@ const WeddingParty = ({ setInView }) => {
       direction="column"
       alignItems="center"
       bg="neutral.100"
-      pt="24px"
-      pb="32px"
+      pt="32px"
+      pb="24px"
     >
       <Flex direction="column" alignItems="center">
         <Text
@@ -46,7 +46,7 @@ const WeddingParty = ({ setInView }) => {
           textAlign="center"
           fontWeight="500"
           w="100%"
-          mt="32px"
+          // mt="32px"
           letterSpacing="2px"
         >
           WEDDING PARTY

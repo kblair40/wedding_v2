@@ -15,14 +15,8 @@ const Activities = ({ setInView }) => {
     }
   }, [inView]);
 
-  const pl = useBreakpointValue({
-    base: "0",
-    sm: "2.5rem",
-    md: "3rem",
-  });
-
   return (
-    <Flex alignItems="center" direction="column" w="100%" pt="24px">
+    <Flex alignItems="center" direction="column" w="100%">
       <Schedule />
       <Box ref={inViewRef} />
       <ActivitiesContainer />

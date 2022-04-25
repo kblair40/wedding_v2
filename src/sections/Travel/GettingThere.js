@@ -11,10 +11,10 @@ const GettingThere = () => {
     <Flex
       alignItems="center"
       direction="column"
-      border="2px solid #000"
+      // border="2px solid #000"
       w="100%"
       bg="white"
-      mt="24px"
+      pt="32px"
     >
       <Flex direction="column" alignItems="center">
         <Text
@@ -22,7 +22,7 @@ const GettingThere = () => {
           textAlign="center"
           fontWeight="500"
           w="100%"
-          mt="24px"
+          // mt="24px"
           letterSpacing="2px"
         >
           GETTING THERE
@@ -35,6 +35,7 @@ const GettingThere = () => {
           <Box mt="36px">
             <Accommodations />
           </Box>
+
           <Box mt="20px" px="16px">
             <Map />
           </Box>

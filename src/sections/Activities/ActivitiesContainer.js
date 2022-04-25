@@ -25,14 +25,14 @@ const ActivitiesContainer = () => {
       alignItems="center"
       direction="column"
       w="100%"
-      pt="24px"
+      pt="32px"
     >
       <Text
         fontSize={{ base: "3xl", sm: "48px" }}
         textAlign="center"
         fontWeight="500"
         w="100%"
-        mt="32px"
+        // mt="32px"
         letterSpacing="2px"
       >
         ACTIVITIES
@@ -60,16 +60,13 @@ const ActivitiesContainer = () => {
           ".masonry-grid_column": {
             width: "100%",
             paddingLeft: pl,
-            // backgroundClip: "padding-box",
           },
           ".masonry-grid_column > div": {
-            // background: "gold.main",
             marginBottom: "2rem",
           },
         }}
       >
         <Flex
-          // border="1px solid black"
           w="100%"
           flexDirection="column"
           alignItems={{ base: "center", sm: "space-between" }}

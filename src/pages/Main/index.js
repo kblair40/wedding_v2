@@ -48,22 +48,27 @@ const Main = ({ section, handleChangeSectionInView }) => {
 
       <Box
         ref={travelRef}
-        // pt="-24px"
-        // bg="neutral.100"
+        pb="24px"
+        // mb="24px"
       >
         <Travel setInView={() => handleChangeSectionInView("travel")} />
       </Box>
 
-      {/* <Box ref={scheduleRef}>
-        <Schedule setInView={() => handleChangeSectionInView("schedule")} />
-      </Box> */}
-
-      <Box ref={activitiesRef}>
-        {/* <Schedule /> */}
+      <Box
+        ref={activitiesRef}
+        pb="24px"
+        // mb="24px"
+        //
+      >
         <Activities setInView={() => handleChangeSectionInView("activities")} />
       </Box>
 
-      <Box ref={weddingPartyRef}>
+      <Box
+        ref={weddingPartyRef}
+        border="1px solid #ccc"
+        // pb="24px"
+        //
+      >
         <WeddingParty
           setInView={() => handleChangeSectionInView("weddingParty")}
         />

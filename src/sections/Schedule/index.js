@@ -26,7 +26,6 @@ const Schedule = () => {
   };
 
   const panelStyles = {
-    // border: "1px solid #ccc",
     pt: "24px",
   };
 
@@ -34,7 +33,7 @@ const Schedule = () => {
     <Flex
       bg="neutral.100"
       border="1px solid #ccc"
-      p="32px"
+      pt="32px"
       w="100%"
       justifyContent="center"
       alignItems="center"
@@ -44,9 +43,7 @@ const Schedule = () => {
         fontSize={{ base: "3xl", sm: "48px" }}
         textAlign="center"
         fontWeight="500"
-        // border="1px solid green"
         w="100%"
-        mt="32px"
         letterSpacing="2px"
       >
         SCHEDULE
