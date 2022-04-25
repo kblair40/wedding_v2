@@ -91,10 +91,10 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
 
   return (
     <form onSubmit={validateInput} style={{ width: "100%" }}>
-      <Text>
+      <Text fontSize="md" fontWeight="500">
         Please enter the first and last name of one member of your party below.
       </Text>
-      <Text mt="4px">
+      <Text mt="4px" fontSize="md" fontWeight="500">
         If you're responding for you and a guest (or your family), you'll be
         able to RSVP for your entire group on the next page.
       </Text>
@@ -107,7 +107,7 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
           placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
           borderColor="text.tertiary"
           focusBorderColor="text.primary"
-          _placeholder={{ color: "text.muted" }}
+          _placeholder={{ color: "text.tertiary" }}
         />
         <Button onClick={validateInput} isLoading={loading}>
           Find Me

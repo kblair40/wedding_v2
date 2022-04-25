@@ -4,7 +4,7 @@ import { Box } from "@chakra-ui/react";
 import MainBackground from "components/MainBackground";
 import Travel from "sections/Travel";
 import Activities from "sections/Activities";
-import Schedule from "sections/Schedule";
+import RSVP from "sections/RSVP";
 import WeddingParty from "sections/WeddingParty";
 import Gallery from "sections/Gallery";
 
@@ -24,9 +24,11 @@ const Main = ({ section, handleChangeSectionInView }) => {
   const activitiesRef = useRef();
   const weddingPartyRef = useRef();
   const galleryRef = useRef();
+  const rsvpRef = useRef();
 
   const refSectionMap = {
     top: topRef,
+    rsvp: rsvpRef,
     travel: travelRef,
     schedule: scheduleRef,
     activities: activitiesRef,
@@ -46,6 +48,10 @@ const Main = ({ section, handleChangeSectionInView }) => {
     <Box>
       <Box ref={topRef}>
         <MainBackground setInView={() => handleChangeSectionInView("top")} />
+      </Box>
+
+      <Box ref={rsvpRef}>
+        <RSVP />
       </Box>
 
       <Box

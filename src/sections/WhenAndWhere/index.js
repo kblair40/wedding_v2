@@ -50,7 +50,7 @@ const WhenAndWhere = ({ setInView }) => {
         mt={{ base: "24px", sm: 0 }}
         alignItems="center"
         flexDirection="column"
-        ml={{ base: 0, sm: "48px" }}
+        ml={{ base: 0, sm: "4rem", md: "8rem" }}
         // border="1px solid #ccc"
       >
         <Text {...headerStyles}>WHERE</Text>
