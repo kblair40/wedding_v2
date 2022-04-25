@@ -143,7 +143,7 @@ const RSVP = ({ setInView }) => {
         pt="32px"
         mb="24px"
       >
-        <Flex direction="column" alignItems="center">
+        <Flex direction="column" alignItems="center" mb="1.5rem">
           <Text
             fontSize={{ base: "3xl", sm: "48px" }}
             textAlign="center"
