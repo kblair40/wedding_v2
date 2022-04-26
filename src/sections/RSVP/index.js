@@ -27,10 +27,10 @@ const RSVP = ({ setInView }) => {
 
   const helpOpenedBy = useRef("");
 
-  const [inViewRef, inView] = useInView({ threshold: 0 });
+  const [inViewRef, inView] = useInView({ threshold: 0.01 });
 
   useEffect(() => {
-    console.log("inView:", inView);
+    console.log("RSVP inView:", inView);
     if (inView) {
       setInView("rsvp");
     }
@@ -133,91 +133,88 @@ const RSVP = ({ setInView }) => {
   };
 
   return (
-    <Box>
-      <Flex
-        alignItems="center"
-        direction="column"
-        // border="2px solid #000"
-        w="100%"
-        bg="white"
-        pt="32px"
-        mb="24px"
-      >
-        <Flex direction="column" alignItems="center" mb="1.5rem">
-          <Text
-            fontSize={{ base: "3xl", sm: "48px" }}
-            textAlign="center"
-            fontWeight="500"
-            w="100%"
-            // mt="24px"
-            letterSpacing="2px"
-          >
-            RSVP
-          </Text>
-          <Box h="3px" w="60px" bg="neutral.800" ref={inViewRef} />
-        </Flex>
-
-        <Flex
+    <Flex
+      alignItems="center"
+      direction="column"
+      // border="2px solid #000"
+      w="100%"
+      bg="neutral.100"
+      // bg="white"
+      py="32px"
+      // mb="24px"
+    >
+      <Flex direction="column" alignItems="center" mb="1.5rem">
+        <Text
+          fontSize={{ base: "3xl", sm: "48px" }}
+          textAlign="center"
+          fontWeight="500"
           w="100%"
-          justifyContent="center"
-          // border="1px solid #000"
+          // mt="24px"
+          letterSpacing="2px"
         >
-          <Box
-            // border="1px solid #ccc"
-            minW="340px"
-            maxW={{
-              base: "420px",
-              sm: "524px", // allows full placeholder text to show
-              md: "720px",
-              lg: "900px",
-            }}
-          >
-            <InviteCard>
-              <Box
-                className={step1Class}
-                // border="1px solid red"
-                mt="1.5rem"
-              >
-                <GuestSearch
-                  getSearchResults={getSearchResults}
-                  showHelp={() => {
-                    helpOpenedBy.current = "GuestSearch";
-                    setShowHelp(true);
-                  }}
-                />
-              </Box>
+          RSVP
+        </Text>
+        <Box h="3px" w="60px" bg="neutral.800" ref={inViewRef} />
+      </Flex>
 
-              <Box className={step2Class}>
-                <Center>
-                  <SelectGuests
-                    checkedGuests={checkedGuests}
-                    getCheckedGuests={getCheckedGuests}
-                    step={step}
-                    guest={guest}
-                    relatedGuests={relatedGuests}
-                    showHelpModal={() => setShowHelp(true)}
-                  />
-                </Center>
-              </Box>
+      <Flex
+        w="100%"
+        justifyContent="center"
+        // border="1px solid #000"
+      >
+        <Box
+          // border="1px solid #ccc"
+          minW="340px"
+          maxW={{
+            base: "420px",
+            sm: "524px", // allows full placeholder text to show
+            md: "720px",
+            lg: "900px",
+          }}
+        >
+          <InviteCard>
+            <Box
+              className={step1Class}
+              // border="1px solid red"
+              mt="1.5rem"
+            >
+              <GuestSearch
+                getSearchResults={getSearchResults}
+                showHelp={() => {
+                  helpOpenedBy.current = "GuestSearch";
+                  setShowHelp(true);
+                }}
+              />
+            </Box>
 
-              <Box className={step3Class}>
-                <RSVPForm
+            <Box className={step2Class}>
+              <Center>
+                <SelectGuests
+                  checkedGuests={checkedGuests}
+                  getCheckedGuests={getCheckedGuests}
                   step={step}
                   guest={guest}
                   relatedGuests={relatedGuests}
-                  checkedGuests={checkedGuests}
-                  handleSubmit={handleSubmitRSVPForm}
+                  showHelpModal={() => setShowHelp(true)}
                 />
-              </Box>
-            </InviteCard>
-          </Box>
-        </Flex>
+              </Center>
+            </Box>
 
-        {showHelp && (
-          <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />
-        )}
+            <Box className={step3Class}>
+              <RSVPForm
+                step={step}
+                guest={guest}
+                relatedGuests={relatedGuests}
+                checkedGuests={checkedGuests}
+                handleSubmit={handleSubmitRSVPForm}
+              />
+            </Box>
+          </InviteCard>
+        </Box>
       </Flex>
-    </Box>
+
+      {showHelp && <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />}
+    </Flex>
   );
 };
 

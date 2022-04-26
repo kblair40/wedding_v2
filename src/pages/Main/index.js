@@ -7,6 +7,7 @@ import Activities from "sections/Activities";
 import RSVP from "sections/RSVP";
 import WeddingParty from "sections/WeddingParty";
 import Gallery from "sections/Gallery";
+import WhenAndWhere from "sections/WhenAndWhere";
 
 import "./index.css";
 
@@ -49,6 +50,8 @@ const Main = ({ section, handleChangeSectionInView }) => {
       <Box ref={topRef}>
         <MainBackground setInView={() => handleChangeSectionInView("top")} />
       </Box>
+
+      <WhenAndWhere />
 
       <Box ref={rsvpRef} className="scroll-margin">
         <RSVP setInView={() => handleChangeSectionInView("rsvp")} />
