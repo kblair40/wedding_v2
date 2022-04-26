@@ -90,7 +90,13 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
   };
 
   return (
-    <form onSubmit={validateInput} style={{ width: "100%" }}>
+    <form
+      onSubmit={validateInput}
+      style={{
+        width: "100%",
+        // border: "1px solid red"
+      }}
+    >
       <Text fontSize="md" fontWeight="500">
         Please enter the first and last name of one member of your party below.
       </Text>
@@ -107,7 +113,7 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
           placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
           borderColor="text.tertiary"
           focusBorderColor="text.primary"
-          _placeholder={{ color: "text.tertiary" }}
+          _placeholder={{ color: "text.secondary", fontStyle: "italic" }}
         />
         <Button onClick={validateInput} isLoading={loading}>
           Find Me

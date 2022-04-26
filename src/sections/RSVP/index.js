@@ -7,8 +7,6 @@ import { patchGuest } from "api/api";
 import RSVPForm from "components/RSVPSteps/RSVPForm";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
 import SelectGuests from "components/RSVPSteps/SelectGuests";
-import PageContainer from "components/containers/PageContainer";
-import InviteCard from "components/containers/InviteCard";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
 
 import "./index.css";
@@ -134,22 +132,21 @@ const RSVP = ({ setInView }) => {
 
   return (
     <Flex
+      h="330px"
       alignItems="center"
       direction="column"
-      // border="2px solid #000"
+      // border="1px solid #00f"
       w="100%"
       bg="neutral.100"
-      // bg="white"
       py="32px"
-      // mb="24px"
+      overflowY="auto"
     >
-      <Flex direction="column" alignItems="center" mb="1.5rem">
+      <Flex direction="column" alignItems="center" mb="2rem">
         <Text
           fontSize={{ base: "3xl", sm: "48px" }}
           textAlign="center"
           fontWeight="500"
           w="100%"
-          // mt="24px"
           letterSpacing="2px"
         >
           RSVP
@@ -160,10 +157,12 @@ const RSVP = ({ setInView }) => {
       <Flex
         w="100%"
         justifyContent="center"
-        // border="1px solid #000"
+        // border="1px solid #0f0"
+        // minH="148px"
+        //
       >
         <Box
-          // border="1px solid #ccc"
+          // border="1px solid #000"
           minW="340px"
           maxW={{
             base: "420px",
@@ -172,44 +171,42 @@ const RSVP = ({ setInView }) => {
             lg: "900px",
           }}
         >
-          <InviteCard>
-            <Box
-              className={step1Class}
-              // border="1px solid red"
-              mt="1.5rem"
-            >
-              <GuestSearch
-                getSearchResults={getSearchResults}
-                showHelp={() => {
-                  helpOpenedBy.current = "GuestSearch";
-                  setShowHelp(true);
-                }}
-              />
-            </Box>
+          <Box
+            className={step1Class}
+            // border="1px solid red"
+            // mt="1rem"
+          >
+            <GuestSearch
+              getSearchResults={getSearchResults}
+              showHelp={() => {
+                helpOpenedBy.current = "GuestSearch";
+                setShowHelp(true);
+              }}
+            />
+          </Box>
 
-            <Box className={step2Class}>
-              <Center>
-                <SelectGuests
-                  checkedGuests={checkedGuests}
-                  getCheckedGuests={getCheckedGuests}
-                  step={step}
-                  guest={guest}
-                  relatedGuests={relatedGuests}
-                  showHelpModal={() => setShowHelp(true)}
-                />
-              </Center>
-            </Box>
-
-            <Box className={step3Class}>
-              <RSVPForm
+          <Box className={step2Class}>
+            <Center>
+              <SelectGuests
+                checkedGuests={checkedGuests}
+                getCheckedGuests={getCheckedGuests}
                 step={step}
                 guest={guest}
                 relatedGuests={relatedGuests}
-                checkedGuests={checkedGuests}
-                handleSubmit={handleSubmitRSVPForm}
+                showHelpModal={() => setShowHelp(true)}
               />
-            </Box>
-          </InviteCard>
+            </Center>
+          </Box>
+
+          <Box className={step3Class}>
+            <RSVPForm
+              step={step}
+              guest={guest}
+              relatedGuests={relatedGuests}
+              checkedGuests={checkedGuests}
+              handleSubmit={handleSubmitRSVPForm}
+            />
+          </Box>
         </Box>
       </Flex>
 
