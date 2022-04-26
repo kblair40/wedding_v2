@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Box, Center, Flex, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Text, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
@@ -26,6 +26,17 @@ const RSVP = ({ setInView }) => {
   const helpOpenedBy = useRef("");
 
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
+
+  const startOver = () => {
+    setGuest();
+    setRelatedGuests();
+    setStep(1);
+    setCheckedGuests();
+    setStep2Class("hidden");
+    setStep3Class("hidden");
+    setShowHelp(false);
+    setStep1Class("fade-in-half-second");
+  };
 
   useEffect(() => {
     console.log("RSVP inView:", inView);
@@ -140,7 +151,18 @@ const RSVP = ({ setInView }) => {
       bg="neutral.100"
       py="32px"
       overflowY="auto"
+      position="relative"
     >
+      {/* <Button
+        onClick={startOver}
+        position="absolute"
+        top="1rem"
+        left=".5rem"
+        size="xs"
+        zIndex={10000}
+      >
+        RESET
+      </Button> */}
       <Flex direction="column" alignItems="center" mb="2rem">
         <Text
           fontSize={{ base: "3xl", sm: "48px" }}
