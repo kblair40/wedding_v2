@@ -44,7 +44,7 @@ const MainBackground = ({ setInView }) => {
         rgba(0, 0, 0, 0.2))"
       />
 
-      <Box position="absolute" top="96px" left="0" boxSize="100%" zIndex={1}>
+      <Box position="absolute" top="80px" left="0" boxSize="100%" zIndex={1}>
         <OurNames />
       </Box>
 

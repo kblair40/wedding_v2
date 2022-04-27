@@ -10,6 +10,7 @@ import {
   Stack,
   Collapse,
   IconButton,
+  Button,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
@@ -21,19 +22,29 @@ const Nav = ({ handleChangeSection, sectionInView }) => {
 
   return (
     <Flex
-      minHeight="50px"
+      h="50px"
+      // minHeight="50px"
+      // maxHeight="54px"
       className="fade-in-immediate"
-      justify="center"
+      justifyContent="center"
       position="fixed"
       top="0"
       w="100%"
       bg="#fff"
+      bg={{ base: "rgba(0,0,0,0)", md: "#fff" }}
       zIndex={10}
       shadow="sm"
     >
       <Box position="relative" w="100%">
-        <Flex py="8px" justify="center" align="center" w="100%" h="50px">
-          <Box display={{ base: "flex", md: "none" }} w="100%" h="50px">
+        <Flex
+          py="8px"
+          justify="center"
+          align="center"
+          w="100%"
+          // border="1px solid blue"
+          h="100%"
+        >
+          <Box display={{ base: "flex", md: "none" }} w="100%" h="100%">
             <Flex
               w="100%"
               alignItems="center"
@@ -42,23 +53,24 @@ const Nav = ({ handleChangeSection, sectionInView }) => {
             >
               <IconButton
                 position="absolute"
+                my="auto"
                 left={{ base: "8px" }}
-                top="4px"
+                size="lg"
                 _hover={{ bg: "transparent" }}
                 _active={{ bg: "transparent" }}
                 position="absolute"
                 onClick={onToggle}
+                color="#fff"
                 icon={
                   isOpen ? (
                     <CloseIcon w={3} h={3} />
                   ) : (
-                    <HamburgerIcon w={5} h={5} />
+                    <HamburgerIcon w={8} h={8} />
                   )
                 }
                 variant={"ghost"}
                 aria-label={"Toggle Navigation"}
               />
-              <OurNamesHorizontal />
             </Flex>
           </Box>
 
@@ -174,20 +186,31 @@ const MobileNavItem = ({ label, href }) => {
 };
 
 const OurNamesHorizontal = () => {
-  const headingSize = useBreakpointValue({ base: "lg", sm: "3xl" });
+  const headingSize = useBreakpointValue({ base: "2xl", sm: "3xl" });
   const style = {
     fontSize: headingSize,
     letterSpacing: "2px",
-    fontWeight: "500",
+    fontWeight: "600",
   };
 
   return (
-    <Flex w="100%" justifyContent="center" alignItems="start">
-      <Heading {...style}>Shannon</Heading>
-      <Heading {...style} mx="8px">
-        &
-      </Heading>
-      <Heading {...style}>Kevin</Heading>
+    <Flex direction="column" alignItems="center">
+      <Flex w="100%" justifyContent="center" alignItems="start">
+        <Heading {...style}>Shannon</Heading>
+        <Heading {...style} mx="8px">
+          &
+        </Heading>
+        <Heading {...style}>Kevin</Heading>
+      </Flex>
+
+      <Flex w="100%" justifyContent="center">
+        <Text fontWeight="300" fontSize="sm" mr="8px">
+          01.21.23
+        </Text>
+        <Text fontWeight="300" fontSize="sm">
+          Winter Park, FL
+        </Text>
+      </Flex>
     </Flex>
   );
 };

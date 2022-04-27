@@ -1,28 +1,31 @@
 import React from "react";
-import { Box, Flex, Text, Heading } from "@chakra-ui/react";
+import { Box, Flex, Text, Heading, useBreakpointValue } from "@chakra-ui/react";
 
 const OurNames = () => {
   const headingStyles = {
     color: "#fff",
-    fontSize: "70px",
+    // fontSize: "74px",
+    fontSize: useBreakpointValue({ base: "54px", sm: "74px" }),
     fontWeight: "700",
   };
+
   const initialStyles = {
     color: "#fff",
     fontSize: "xl",
     fontWeight: "400",
     letterSpacing: "2px",
   };
+
   return (
     <Flex
+      // border="1px solid red"
       mx="auto"
       p="8px"
       w="min-content"
       flexDirection="column"
       alignItems="center"
-      display={{ base: "none", md: "flex" }}
+      // display={{ base: "none", md: "flex" }}
       borderRadius="2px"
-      bg="stone"
     >
       <Flex alignItems="center" justifyContent="center" w="100%">
         <Text {...initialStyles}>S</Text>
