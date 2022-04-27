@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Box, Icon, Flex, Text } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { BsChevronDown } from "react-icons/bs";
-import bg1 from "assets/images/bg1.jpg";
+import mainbg from "assets/images/mainbg.jpg";
 import OurNames from "components/OurNames";
 
 const MainBackground = ({ setInView }) => {
@@ -27,7 +27,7 @@ const MainBackground = ({ setInView }) => {
         className="fade-in-immediate"
         zIndex={-1}
         position="relative"
-        bgImage={bg1}
+        bgImage={mainbg}
         w="100vw"
         h={{ base: "100vh" }}
         bgPosition={{ base: "center 70%", md: "center 70%" }}
