@@ -5,8 +5,9 @@
 8. Mobile menu still sending to links
 9. Look into custom domains on netlify 
   - https://docs.netlify.com/domains-https/custom-domains/?_ga=2.32618046.1035679050.1651067155-1108596215.1650113601
-10. Arrow down in MainBackground needs to shift up to avoid bottom bar on safari and chrome mobile
-11. rsvp not quite responsive enough for mobile.
+10. rsvp not quite responsive enough for mobile.
   - Also test auth flow
+
+11. Arrow down in MainBackground needs to shift up to avoid bottom bar on safari and chrome mobile
 12. background-image (main) shrinks way too much when opened on mobile screen
-13. Hide countdown clock on base and sm screens
+13. Figure out location/style for reset button in RSVP section

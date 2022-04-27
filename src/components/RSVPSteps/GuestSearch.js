@@ -113,19 +113,18 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
           placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
           borderColor="text.tertiary"
           focusBorderColor="text.primary"
-          _placeholder={{ color: "text.secondary", fontStyle: "italic" }}
+          _placeholder={{
+            color: "text.secondary",
+            fontStyle: "italic",
+            fontSize: { base: "13px", sm: "md" },
+          }}
         />
         <Button onClick={validateInput} isLoading={loading}>
           Find Me
         </Button>
       </HStack>
 
-      <HStack
-        alignItems="flex-end"
-        spacing="16px"
-        // border="1px solid #ccc"
-        mt="2px"
-      >
+      <HStack alignItems="flex-end" spacing="16px" mt="2px">
         <Text color="red.500" fontSize="sm" mt="4px">
           {errorMsg ? `${errorMsg}` : ""}
         </Text>

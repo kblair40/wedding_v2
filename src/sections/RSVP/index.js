@@ -143,16 +143,18 @@ const RSVP = ({ setInView }) => {
 
   return (
     <Flex
-      h="330px"
+      maxH="400px"
       alignItems="center"
       direction="column"
       // border="1px solid #00f"
+      px="16px"
       w="100%"
       bg="neutral.100"
       py="32px"
       overflowY="auto"
       position="relative"
     >
+      {/* NEED TO FIGURE OUT WHERE IT'LL GO AND WHAT IT SHOULD LOOK LIKE */}
       {/* <Button
         onClick={startOver}
         position="absolute"
@@ -196,7 +198,6 @@ const RSVP = ({ setInView }) => {
           <Box
             className={step1Class}
             // border="1px solid red"
-            // mt="1rem"
           >
             <GuestSearch
               getSearchResults={getSearchResults}
