@@ -11,7 +11,12 @@ import WhenAndWhere from "sections/WhenAndWhere";
 
 import "./index.css";
 
-const Main = ({ section, handleChangeSectionInView }) => {
+const Main = ({
+  section,
+  handleChangeSectionInView,
+  handleLeaveTopSection,
+  handleEnterTopSection,
+}) => {
   // const [topRef, topInView] = useInView(options);
   // const [travelRef, travelInView] = useInView(options);
   // const [scheduleRef, scheduleInView] = useInView(options);
@@ -48,7 +53,11 @@ const Main = ({ section, handleChangeSectionInView }) => {
   return (
     <Box>
       <Box ref={topRef}>
-        <MainBackground setInView={() => handleChangeSectionInView("top")} />
+        <MainBackground
+          setInView={() => handleChangeSectionInView("top")}
+          handleLeaveTopSection={handleLeaveTopSection}
+          handleEnterTopSection={handleEnterTopSection}
+        />
       </Box>
 
       <WhenAndWhere />

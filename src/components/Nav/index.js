@@ -19,7 +19,7 @@ import { MdClose } from "react-icons/md";
 import "./index.css";
 import { NAV_ITEMS } from "utils/constants";
 
-const Nav = ({ handleChangeSection, sectionInView }) => {
+const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -53,7 +53,7 @@ const Nav = ({ handleChangeSection, sectionInView }) => {
                 _active={{ bg: "transparent" }}
                 position="absolute"
                 onClick={onToggle}
-                color="#fff"
+                color={topInView ? "#fff" : "#000"}
                 icon={
                   isOpen ? (
                     <CloseIcon w={3} h={3} />

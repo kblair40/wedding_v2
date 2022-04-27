@@ -18,6 +18,7 @@ function App() {
   const [section, setSection] = useState("top");
   // uses 'inview' and updates so nav makes necessary visual changes
   const [sectionInView, setSectionInView] = useState("top");
+  const [topInView, setTopInView] = useState(true);
 
   const handleChangeSection = (newSection) => {
     setSection(newSection);
@@ -26,11 +27,23 @@ function App() {
 
   const handleChangeSectionInView = (newSection) => {
     setSectionInView(newSection);
+    if (newSection === "top") {
+      setTopInView(true);
+    }
+  };
+
+  const handleLeaveTopSection = () => {
+    setTopInView(false);
+  };
+
+  const handleEnterTopSection = () => {
+    setTopInView(true);
   };
 
   return (
     <Box position="relative" sx={{ overflow: "hidden !important" }}>
       <Nav
+        topInView={topInView}
         handleChangeSection={handleChangeSection}
         sectionInView={sectionInView}
       />
@@ -44,6 +57,8 @@ function App() {
                 <Main
                   section={section}
                   handleChangeSectionInView={handleChangeSectionInView}
+                  handleLeaveTopSection={handleLeaveTopSection}
+                  handleEnterTopSection={handleEnterTopSection}
                 />
               }
             />
