@@ -5,7 +5,7 @@ const theme = extendTheme({
   colors: {
     primary: {
       main: "#6e8eb4", // current
-      50: "#FFFFFF",
+      50: "#e6ebf2",
       100: "#bfcddf",
       200: "#97adca",
       300: "#6e8eb4",

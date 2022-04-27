@@ -19,11 +19,13 @@ const Schedule = () => {
     // fontSize: "30px",
     fontSize: useBreakpointValue({ base: "26px", sm: "30px" }),
     borderBottom: "3px solid",
-    borderColor: "neutral.100",
+    // borderColor: "neutral.100",
+    // borderColor: "primary.100",
+    borderColor: "primary.50",
     p: 0,
     _selected: {
       color: "neutral.900",
-      borderColor: "secondary.600",
+      borderColor: "secondary.700",
     },
   };
 
@@ -33,8 +35,10 @@ const Schedule = () => {
 
   return (
     <Flex
-      bg="neutral.100"
-      border="1px solid #ccc"
+      // bg="neutral.100"
+      // bg="secondary.50"
+      bg="primary.50"
+      // border="1px solid #ccc"
       pt="32px"
       w="100%"
       justifyContent="center"
@@ -56,7 +60,7 @@ const Schedule = () => {
         <TabList
           w={{ base: "325px", sm: "375px" }}
           borderBottom="3px solid"
-          borderColor="neutral.100"
+          borderColor="primary.50"
           display="flex"
           justifyContent="space-between"
         >
