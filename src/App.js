@@ -47,7 +47,10 @@ function App() {
         handleChangeSection={handleChangeSection}
         sectionInView={sectionInView}
       />
-      <CountdownClock />
+      <Box display={{ base: "none", md: "block" }}>
+        <CountdownClock />
+      </Box>
+
       <UserProvider>
         <ScrollToTop>
           <Routes>
