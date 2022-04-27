@@ -118,6 +118,9 @@ const theme = extendTheme({
         fontWeight: "400",
         // fontSize: "md",
       },
+      defaultProps: {
+        size: "md",
+      },
     },
     Heading: {
       sizes: {

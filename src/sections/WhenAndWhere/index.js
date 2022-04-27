@@ -20,19 +20,15 @@ const WhenAndWhere = ({ setInView }) => {
   };
 
   const detailStyles = {
-    fontSize: "24px",
-    fontWeight: "500",
+    size: "xl",
+    fontWeight: "400",
     textAlign: "center",
   };
 
   return (
     <Flex
-      // mb="24px"
-      // border="1px solid #ccc"
       py="32px"
-      // ref={travelRef}
-      bg="white"
-      // bg="#f7f5f1"
+      bg="#fff"
       direction={{ base: "column", sm: "row" }}
       w="100%"
       justifyContent="center"
