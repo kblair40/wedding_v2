@@ -23,8 +23,6 @@ const Nav = ({ handleChangeSection, sectionInView }) => {
   return (
     <Flex
       h="50px"
-      // minHeight="50px"
-      // maxHeight="54px"
       className="fade-in-immediate"
       justifyContent="center"
       position="fixed"
@@ -33,17 +31,10 @@ const Nav = ({ handleChangeSection, sectionInView }) => {
       bg="#fff"
       bg={{ base: "rgba(0,0,0,0)", md: "#fff" }}
       zIndex={10}
-      shadow="sm"
+      shadow={{ md: "sm" }}
     >
       <Box position="relative" w="100%">
-        <Flex
-          py="8px"
-          justify="center"
-          align="center"
-          w="100%"
-          // border="1px solid blue"
-          h="100%"
-        >
+        <Flex py="8px" justify="center" align="center" w="100%" h="100%">
           <Box display={{ base: "flex", md: "none" }} w="100%" h="100%">
             <Flex
               w="100%"

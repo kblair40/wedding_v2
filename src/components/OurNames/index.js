@@ -4,8 +4,7 @@ import { Box, Flex, Text, Heading, useBreakpointValue } from "@chakra-ui/react";
 const OurNames = () => {
   const headingStyles = {
     color: "#fff",
-    // fontSize: "74px",
-    fontSize: useBreakpointValue({ base: "54px", sm: "74px" }),
+    fontSize: useBreakpointValue({ base: "48px", sm: "74px" }),
     fontWeight: "700",
   };
 
@@ -18,13 +17,11 @@ const OurNames = () => {
 
   return (
     <Flex
-      // border="1px solid red"
       mx="auto"
       p="8px"
       w="min-content"
       flexDirection="column"
       alignItems="center"
-      // display={{ base: "none", md: "flex" }}
       borderRadius="2px"
     >
       <Flex alignItems="center" justifyContent="center" w="100%">
@@ -41,11 +38,27 @@ const OurNames = () => {
         <Heading {...headingStyles}>kevin</Heading>
       </Flex>
 
-      <Flex alignItems="center" justifyContent="center" mt="0px">
-        <Text color="#fff" letterSpacing="2.5px" fontSize="lg">
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        mt="0px"
+        flexDirection={{ base: "column", md: "row" }}
+      >
+        <Text
+          color="#fff"
+          letterSpacing="2.5px"
+          fontWeight={{ base: "500", md: "400" }}
+          fontSize={{ base: "md", sm: "lg" }}
+        >
           JANUARY 21, 2023
         </Text>
-        <Text ml="1rem" color="#fff" letterSpacing="2.5px" fontSize="lg">
+        <Text
+          ml={{ md: "1rem" }}
+          color="#fff"
+          letterSpacing="2.5px"
+          fontWeight={{ base: "500", md: "400" }}
+          fontSize={{ base: "md", sm: "lg" }}
+        >
           WINTER PARK, FL
         </Text>
       </Flex>
