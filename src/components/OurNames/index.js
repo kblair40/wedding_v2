@@ -1,12 +1,9 @@
 import React from "react";
-import { Box, Flex, Text, Heading, Divider } from "@chakra-ui/react";
-
-// let textColor = "#e6d9b2";
+import { Box, Flex, Text, Heading } from "@chakra-ui/react";
 
 const OurNames = () => {
   const headingStyles = {
     color: "#fff",
-    // fontSize: "6xl",
     fontSize: "70px",
     fontWeight: "700",
   };
@@ -34,15 +31,7 @@ const OurNames = () => {
       </Flex>
 
       <Flex alignItems="center" justifyContent="center">
-        <Heading
-          {...headingStyles}
-          // outlineColor="#000"
-          // outlineOffset="2px"
-          // outline="2px solid #000"
-          // text
-        >
-          shannon
-        </Heading>
+        <Heading {...headingStyles}>shannon</Heading>
         <Heading {...headingStyles} mx="16px">
           &
         </Heading>
