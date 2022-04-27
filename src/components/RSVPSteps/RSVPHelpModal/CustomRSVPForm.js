@@ -29,7 +29,10 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
     borderColor: "text.tertiary",
     _focus: { borderColor: "text.secondary" },
     _hover: { borderColor: "text.secondary" },
-    _placeholder: { color: "text.tertiary" },
+    _placeholder: {
+      color: "text.tertiary",
+      fontSize: { base: "xs", sm: "md" },
+    },
     size: "sm",
   };
 

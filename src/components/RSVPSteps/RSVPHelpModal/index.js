@@ -46,9 +46,9 @@ const RSVPHelpModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl">
+    <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent w="100%" maxW={{ base: "359px", sm: "420px" }} mx="auto">
         <ModalHeader fontWeight="500">Sorry about that!</ModalHeader>
 
         <CustomRSVPForm onSubmit={handleSubmit} onClose={onClose} />
