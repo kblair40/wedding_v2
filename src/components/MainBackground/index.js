@@ -39,8 +39,14 @@ const MainBackground = ({ setInView }) => {
         bgAttachment="fixed"
         bgRepeat="no-repeat"
         backgroundSize="cover"
-        // filter="grayscale(.8)"
-        // border="1px solid red"
+      />
+
+      <Box
+        position="absolute"
+        h="100vh"
+        w="100vw"
+        bgImage="linear-gradient(rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.2))"
       />
 
       <Box
@@ -48,7 +54,7 @@ const MainBackground = ({ setInView }) => {
         top="96px"
         left="0"
         boxSize="100%"
-        zIndex={-1}
+        zIndex={1}
         // border="1px solid red"
       >
         <OurNames />

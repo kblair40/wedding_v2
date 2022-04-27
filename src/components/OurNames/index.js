@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Flex, Text, Heading, Divider } from "@chakra-ui/react";
 
+// let textColor = "#e6d9b2";
+
 const OurNames = () => {
   const headingStyles = {
     color: "#fff",
@@ -48,10 +50,10 @@ const OurNames = () => {
       </Flex>
 
       <Flex alignItems="center" justifyContent="center" mt="0px">
-        <Text color="white" letterSpacing="2.5px" fontSize="lg">
+        <Text color="#fff" letterSpacing="2.5px" fontSize="lg">
           JANUARY 21, 2023
         </Text>
-        <Text ml="1rem" color="white" letterSpacing="2.5px" fontSize="lg">
+        <Text ml="1rem" color="#fff" letterSpacing="2.5px" fontSize="lg">
           WINTER PARK, FL
         </Text>
       </Flex>
