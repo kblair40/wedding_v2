@@ -9,16 +9,20 @@ import {
   Tab,
   TabPanel,
   useBreakpointValue,
+  useTheme,
 } from "@chakra-ui/react";
 
 import ScheduleItems from "components/ScheduleItems";
 
 const Schedule = () => {
+  const theme = useTheme();
+  console.log("\n\n\n\n\n\n\n\nTHEME:", theme);
+
   const tabStyles = {
     color: "neutral.900",
-    fontSize: useBreakpointValue({ base: "26px", sm: "30px" }),
+    fontSize: useBreakpointValue({ base: "xl", sm: "2xl" }),
     borderBottom: "3px solid",
-    borderColor: "primary.50",
+    borderColor: "#f7f5f1",
     p: 0,
     _selected: {
       color: "neutral.900",
@@ -32,11 +36,7 @@ const Schedule = () => {
 
   return (
     <Flex
-      // bg="neutral.100"
-      // bg="secondary.50"
-      // bg="primary.50"
       bg="#f7f5f1"
-      // border="1px solid #ccc"
       pt="32px"
       w="100%"
       justifyContent="center"
@@ -58,7 +58,7 @@ const Schedule = () => {
         <TabList
           w={{ base: "325px", sm: "375px" }}
           borderBottom="3px solid"
-          borderColor="primary.50"
+          borderColor="#f7f5f1"
           display="flex"
           justifyContent="space-between"
         >

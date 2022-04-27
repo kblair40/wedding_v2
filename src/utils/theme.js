@@ -2,9 +2,27 @@ import { extendTheme } from "@chakra-ui/react";
 // https://colordesigner.io/
 
 const theme = extendTheme({
-  // fontSizes: {
-
-  // },
+  customProperties: {},
+  fontSizes: {
+    "2xst": "11.24px",
+    xst: "12.64px",
+    smt: "14.22px",
+    mdt: "16px",
+    lgt: "18px",
+    xlt: "20.25px",
+    "2xlt": "22.78px",
+    "3xlt": "25.63px",
+    "4xlt": "28.83px",
+    xsh: "16.86px",
+    smh: "18.96px",
+    mdh: "21.33px",
+    lgh: "24px",
+    xlh: "27px",
+    "2xlh": "30.38px",
+    "3xlh": "34.17px",
+    "4xlh": "38.44px",
+    "5xlh": "43.25px",
+  },
   colors: {
     primary: {
       main: "#6e8eb4", // current

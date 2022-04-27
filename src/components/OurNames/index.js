@@ -10,16 +10,16 @@ const OurNames = () => {
 
   const initialStyles = {
     color: "#fff",
-    size: "xl",
+    fontSize: "xlt",
     fontWeight: "400",
     letterSpacing: "2px",
   };
 
   const dateLocStyles = {
-    size: useBreakpointValue({ base: "md", sm: "lg", md: "xl" }),
+    fontSize: useBreakpointValue({ base: "mdt", sm: "lgt", md: "xlt" }),
     fontWeight: useBreakpointValue({ base: "500", sm: "400" }),
     color: "#fff",
-    letterSpacing: "2.5px",
+    letterSpacing: "2px",
   };
 
   return (

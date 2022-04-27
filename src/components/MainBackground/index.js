@@ -1,13 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Box,
-  Icon,
-  Flex,
-  Text,
-  Image,
-  useBreakpointValue,
-  useBreakpoint,
-} from "@chakra-ui/react";
+import { Box, Icon, Flex, Text, Image } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { BsChevronDown } from "react-icons/bs";
 
@@ -48,7 +40,6 @@ const MainBackground = ({
         position="relative"
         display="flex"
         justifyContent="center"
-        // everything below is new
         zIndex={10}
         h="100vh"
       >
@@ -86,12 +77,6 @@ const MainBackground = ({
 export default MainBackground;
 
 const ArrowDown = () => {
-  const scrollDownFontSize = useBreakpointValue({
-    base: "md",
-    sm: "lg",
-    md: "xl",
-  });
-
   return (
     <Flex
       direction="column"
@@ -102,7 +87,7 @@ const ArrowDown = () => {
       zIndex={10}
     >
       <Text
-        size={scrollDownFontSize}
+        fontSize={{ base: "mdt", sm: "lgt", md: "xlt" }}
         letterSpacing="2px"
         color="#fff"
         fontWeight="500"
