@@ -40,7 +40,7 @@ const MainBackground = ({ setInView }) => {
         position="absolute"
         h="100vh"
         w="100vw"
-        bgImage="linear-gradient(rgba(0, 0, 0, 0.5),
+        bgImage="linear-gradient(rgba(0, 0, 0, 0.45),
         rgba(0, 0, 0, 0.2))"
       />
 
