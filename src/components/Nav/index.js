@@ -32,7 +32,7 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
       w="100%"
       bg="#fff"
       bg={{ base: "rgba(0,0,0,0)", md: "#fff" }}
-      zIndex={10}
+      zIndex={1000}
       shadow={{ md: "sm" }}
     >
       <Box position="relative" w="100%">

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Icon, Flex, Text } from "@chakra-ui/react";
+import { Box, Icon, Flex, Text, Image } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { BsChevronDown } from "react-icons/bs";
 import mainbg from "assets/images/mainbg.jpg";
@@ -39,8 +39,18 @@ const MainBackground = ({
         position="relative"
         display="flex"
         justifyContent="center"
+        // everything below is new
+        zIndex={10}
+        h="100vh"
       >
-        <Box
+        <Image
+          src={mainbg}
+          boxSize="100%"
+          position="absolute"
+          objectFit="cover"
+        />
+
+        {/* <Box
           className="fade-in-immediate"
           zIndex={-1}
           position="relative"
@@ -51,7 +61,7 @@ const MainBackground = ({
           bgAttachment="fixed"
           bgRepeat="no-repeat"
           backgroundSize="cover"
-        />
+        /> */}
 
         <Box
           position="absolute"
