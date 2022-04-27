@@ -1,7 +1,16 @@
 import React, { useEffect } from "react";
-import { Box, Icon, Flex, Text, Image } from "@chakra-ui/react";
+import {
+  Box,
+  Icon,
+  Flex,
+  Text,
+  Image,
+  useBreakpointValue,
+  useBreakpoint,
+} from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { BsChevronDown } from "react-icons/bs";
+
 import mainbg from "assets/images/mainbg.jpg";
 import OurNames from "components/OurNames";
 
@@ -50,19 +59,6 @@ const MainBackground = ({
           objectFit="cover"
         />
 
-        {/* <Box
-          className="fade-in-immediate"
-          zIndex={-1}
-          position="relative"
-          bgImage={mainbg}
-          w="100vw"
-          h={{ base: "100vh" }}
-          bgPosition={{ base: "center 70%", md: "center 70%" }}
-          bgAttachment="fixed"
-          bgRepeat="no-repeat"
-          backgroundSize="cover"
-        /> */}
-
         <Box
           position="absolute"
           h="100vh"
@@ -89,27 +85,36 @@ const MainBackground = ({
 
 export default MainBackground;
 
-const ArrowDown = () => (
-  <Flex
-    direction="column"
-    alignItems="center"
-    position="absolute"
-    bottom={{ base: "74px", sm: "16px" }}
-    mx="auto"
-  >
-    <Text
-      fontSize={{ base: "md", sm: "lg", md: "xl" }}
-      letterSpacing="2.5px"
-      color="#fff"
-      fontWeight="500"
+const ArrowDown = () => {
+  const scrollDownFontSize = useBreakpointValue({
+    base: "md",
+    sm: "lg",
+    md: "xl",
+  });
+
+  return (
+    <Flex
+      direction="column"
+      alignItems="center"
+      position="absolute"
+      bottom={{ base: "74px", sm: "16px" }}
+      mx="auto"
+      zIndex={10}
     >
-      SCROLL FOR MORE
-    </Text>
-    <Icon
-      mt="8px"
-      as={BsChevronDown}
-      color="#fff"
-      boxSize={{ base: "40px", md: "50px", lg: "60px" }}
-    />
-  </Flex>
-);
+      <Text
+        size={scrollDownFontSize}
+        letterSpacing="2px"
+        color="#fff"
+        fontWeight="500"
+      >
+        SCROLL FOR MORE
+      </Text>
+      <Icon
+        mt="8px"
+        as={BsChevronDown}
+        color="#fff"
+        boxSize={{ base: "40px", md: "50px", lg: "60px" }}
+      />
+    </Flex>
+  );
+};

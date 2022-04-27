@@ -4,15 +4,22 @@ import { Box, Flex, Text, Heading, useBreakpointValue } from "@chakra-ui/react";
 const OurNames = () => {
   const headingStyles = {
     color: "#fff",
-    fontSize: useBreakpointValue({ base: "48px", sm: "74px" }),
+    fontSize: useBreakpointValue({ base: "48px", sm: "68px", md: "80px" }),
     fontWeight: "700",
   };
 
   const initialStyles = {
     color: "#fff",
-    fontSize: "xl",
+    size: "xl",
     fontWeight: "400",
     letterSpacing: "2px",
+  };
+
+  const dateLocStyles = {
+    size: useBreakpointValue({ base: "md", sm: "lg", md: "xl" }),
+    fontWeight: useBreakpointValue({ base: "500", sm: "400" }),
+    color: "#fff",
+    letterSpacing: "2.5px",
   };
 
   return (
@@ -45,19 +52,21 @@ const OurNames = () => {
         flexDirection={{ base: "column", md: "row" }}
       >
         <Text
-          color="#fff"
-          letterSpacing="2.5px"
-          fontWeight={{ base: "500", md: "400" }}
-          fontSize={{ base: "md", sm: "lg" }}
+          {...dateLocStyles}
+          // color="#fff"
+          // letterSpacing="2.5px"
+          // fontWeight={{ base: "500", md: "400" }}
+          // fontSize={{ base: "md", sm: "lg" }}
         >
           JANUARY 21, 2023
         </Text>
         <Text
           ml={{ md: "1rem" }}
-          color="#fff"
-          letterSpacing="2.5px"
-          fontWeight={{ base: "500", md: "400" }}
-          fontSize={{ base: "md", sm: "lg" }}
+          {...dateLocStyles}
+          // color="#fff"
+          // letterSpacing="2.5px"
+          // fontWeight={{ base: "500", md: "400" }}
+          // fontSize={{ base: "md", sm: "lg" }}
         >
           WINTER PARK, FL
         </Text>

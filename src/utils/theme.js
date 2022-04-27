@@ -2,6 +2,9 @@ import { extendTheme } from "@chakra-ui/react";
 // https://colordesigner.io/
 
 const theme = extendTheme({
+  // fontSizes: {
+
+  // },
   colors: {
     primary: {
       main: "#6e8eb4", // current
@@ -98,7 +101,6 @@ const theme = extendTheme({
         color: "neutral.black",
       },
     },
-    // Input: {},
     Text: {
       sizes: {
         "2xs": { fontSize: "11.24px" },
@@ -111,13 +113,10 @@ const theme = extendTheme({
         "3xl": { fontSize: "25.63px" },
         "4xl": { fontSize: "28.83px" },
       },
-      defaultProps: {
-        size: "md",
-      },
       baseStyle: {
         color: "neutral.black",
         fontWeight: "400",
-        fontSize: "md",
+        // fontSize: "md",
       },
     },
     Heading: {
