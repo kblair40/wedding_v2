@@ -33,10 +33,11 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
         // base: "auto",
         md: "100%",
       }}
-      bg={{ base: "rgba(0,0,0,0)", md: "#fff" }}
+      // bg="transparent"
+      bg={{ base: "rgba(0,0,0,0)", md: "rgba(255, 255, 255, .98)" }}
       // border="1px solid white"
       zIndex={1000}
-      shadow={{ md: "md" }}
+      shadow={{ md: "sm" }}
     >
       <Box position="relative" w="100%">
         <Flex py="8px" justify="center" align="center" w="100%" h="100%">
@@ -117,9 +118,9 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
                     >
                       <Text
                         color="text.primary"
-                        fontWeight="400"
+                        fontWeight="700"
                         whiteSpace="nowrap"
-                        size="sm"
+                        fontSize="smt"
                         textTransform="uppercase"
                         letterSpacing="1px"
                       >
@@ -127,8 +128,6 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
                       </Text>
                     </Flex>
                   </Box>
-                  {/* <NavLink to="#">{navItem.label}</NavLink> */}
-                  {/* <NavLink to={navItem.href}>{navItem.label}</NavLink> */}
                 </Box>
               ))}
             </Stack>

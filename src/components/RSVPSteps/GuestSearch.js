@@ -104,9 +104,9 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
         If you're responding for you and a guest (or your family), you'll be
         able to RSVP for your entire group on the next page.
       </Text>
-      <HStack w="100%" mt="32px" spacing={{ base: "8px", sm: "16px" }}>
+      <HStack w="100%" mt="32px" spacing={{ base: "16px", sm: "32px" }}>
         <Input
-          pl="4px"
+          pl="1rem"
           variant="flushed"
           onChange={handleChange}
           w="100%"
