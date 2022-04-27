@@ -4,6 +4,9 @@ import { BsArrowDownLeft } from "react-icons/bs";
 import { useInView } from "react-intersection-observer";
 
 import color_hor_img from "assets/images/dock_kiss.jpg";
+import bg1 from "assets/images/bg1.jpg";
+import bg2 from "assets/images/bg2.jpg";
+import bg3 from "assets/images/bg3.jpg";
 import OurNames from "components/OurNames";
 
 const MainBackground = ({ setInView }) => {
@@ -29,15 +32,14 @@ const MainBackground = ({ setInView }) => {
         className="fade-in-immediate"
         zIndex={-1}
         position="relative"
-        bgImage={color_hor_img}
-        // bgImage={mainImg2}
+        bgImage={bg1}
         w="100vw"
-        // h={{ base: "calc(100vh - 50px)" }}
         h={{ base: "100vh" }}
-        bgPosition={{ base: "center 70%", md: "center 60%" }}
+        bgPosition={{ base: "center 70%", md: "center 70%" }}
         bgAttachment="fixed"
         bgRepeat="no-repeat"
-        filter="grayscale(.6) "
+        backgroundSize="cover"
+        // filter="grayscale(.8)"
         // border="1px solid red"
       />
 

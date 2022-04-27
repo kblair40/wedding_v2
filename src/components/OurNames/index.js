@@ -16,9 +16,14 @@ const OurNames = () => {
   };
   return (
     <Flex
+      mx="auto"
+      p="8px"
+      w="min-content"
       flexDirection="column"
       alignItems="center"
       display={{ base: "none", md: "flex" }}
+      borderRadius="2px"
+      bg="stone"
     >
       <Flex alignItems="center" justifyContent="center" w="100%">
         <Text {...initialStyles}>S</Text>
@@ -27,7 +32,15 @@ const OurNames = () => {
       </Flex>
 
       <Flex alignItems="center" justifyContent="center">
-        <Heading {...headingStyles}>shannon</Heading>
+        <Heading
+          {...headingStyles}
+          // outlineColor="#000"
+          // outlineOffset="2px"
+          // outline="2px solid #000"
+          // text
+        >
+          shannon
+        </Heading>
         <Heading {...headingStyles} mx="16px">
           &
         </Heading>
