@@ -1,12 +1,8 @@
 import React, { useEffect } from "react";
 import { Box, Icon, Flex, Text } from "@chakra-ui/react";
-import { BsArrowDownLeft } from "react-icons/bs";
 import { useInView } from "react-intersection-observer";
-
-import color_hor_img from "assets/images/dock_kiss.jpg";
+import { BsChevronDown } from "react-icons/bs";
 import bg1 from "assets/images/bg1.jpg";
-import bg2 from "assets/images/bg2.jpg";
-import bg3 from "assets/images/bg3.jpg";
 import OurNames from "components/OurNames";
 
 const MainBackground = ({ setInView }) => {
@@ -24,7 +20,6 @@ const MainBackground = ({ setInView }) => {
     <Box
       ref={inViewRef}
       position="relative"
-      // border="1px solid green"
       display="flex"
       justifyContent="center"
     >
@@ -49,14 +44,7 @@ const MainBackground = ({ setInView }) => {
         rgba(0, 0, 0, 0.2))"
       />
 
-      <Box
-        position="absolute"
-        top="96px"
-        left="0"
-        boxSize="100%"
-        zIndex={1}
-        // border="1px solid red"
-      >
+      <Box position="absolute" top="96px" left="0" boxSize="100%" zIndex={1}>
         <OurNames />
       </Box>
 
@@ -78,12 +66,6 @@ const ArrowDown = () => (
     <Text fontSize="xl" letterSpacing="2.5px" color="#fff" fontWeight="500">
       SCROLL FOR MORE
     </Text>
-    <Icon
-      as={BsArrowDownLeft}
-      transform="rotate(-45deg)"
-      h="100px"
-      color="#fff"
-      w="60px"
-    />
+    <Icon as={BsChevronDown} color="#fff" boxSize="70px" />
   </Flex>
 );
