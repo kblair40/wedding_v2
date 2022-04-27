@@ -79,9 +79,12 @@ const RSVPSuccessModal = ({ isOpen, onClose, respondingGuestNames: names }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader fontWeight="500">{`${nameString} thank you for replying!`}</ModalHeader>
-        <ModalBody fontSize="15px">
+      <ModalContent w={{ base: "320px", sm: "440px" }}>
+        <ModalHeader
+          fontSize={{ base: "lg", sm: "xl" }}
+          fontWeight="500"
+        >{`${nameString} thank you for replying!`}</ModalHeader>
+        <ModalBody fontSize={{ base: "sm", sm: "15px" }}>
           You can change your responses at any time up until Sept 1st, 2022.
         </ModalBody>
 
