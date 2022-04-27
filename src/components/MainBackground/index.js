@@ -84,12 +84,22 @@ const ArrowDown = () => (
     direction="column"
     alignItems="center"
     position="absolute"
-    bottom="8px"
+    bottom="70px"
     mx="auto"
   >
-    <Text fontSize="xl" letterSpacing="2.5px" color="#fff" fontWeight="500">
+    <Text
+      fontSize={{ base: "lg", sm: "xl" }}
+      letterSpacing="2.5px"
+      color="#fff"
+      fontWeight="500"
+    >
       SCROLL FOR MORE
     </Text>
-    <Icon as={BsChevronDown} color="#fff" boxSize="70px" />
+    <Icon
+      mt="8px"
+      as={BsChevronDown}
+      color="#fff"
+      boxSize={{ base: "40px", sm: "60px" }}
+    />
   </Flex>
 );
