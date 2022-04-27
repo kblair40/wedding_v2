@@ -11,8 +11,10 @@ import {
   Collapse,
   IconButton,
   Button,
+  CloseButton,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { MdClose } from "react-icons/md";
 
 import "./index.css";
 import { NAV_ITEMS } from "utils/constants";
@@ -122,8 +124,26 @@ const Nav = ({ handleChangeSection, sectionInView }) => {
           </Flex>
         </Flex>
 
-        <Box bg="white" shadow="sm">
+        <Box
+          bg="rgba(255, 255, 255, 0.95)"
+          shadow="sm"
+          // border="1px solid red"
+          position="absolute"
+          top={0}
+          w="100vw"
+        >
           <Collapse in={isOpen} animateOpacity>
+            <IconButton
+              onClick={onToggle}
+              position="relative"
+              top="8px"
+              left="8px"
+              icon={<MdClose size="24" />}
+              bg="transparent"
+              _hover={{ bg: "transparent" }}
+              _active={{ bg: "transparent" }}
+            />
+
             <MobileNav />
           </Collapse>
         </Box>
@@ -136,7 +156,14 @@ export default Nav;
 
 const MobileNav = () => {
   return (
-    <Stack display={{ md: "none" }} spacing="4px" w="100%" p="16px">
+    <Stack
+      display={{ md: "none" }}
+      spacing="4px"
+      w="100%"
+      // p="16px"
+      p="0 16px 16px"
+      // border="1px solid red"
+    >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
