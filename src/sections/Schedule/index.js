@@ -25,7 +25,7 @@ const Schedule = () => {
     p: 0,
     _selected: {
       color: "neutral.900",
-      borderColor: "secondary.700",
+      borderColor: "secondary.200",
     },
   };
 
