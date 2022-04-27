@@ -36,7 +36,8 @@ const WeddingParty = ({ setInView }) => {
     <Flex
       direction="column"
       alignItems="center"
-      bg="neutral.100"
+      // bg="neutral.100"
+      bg="#f7f5f1"
       pt="32px"
       pb="24px"
     >

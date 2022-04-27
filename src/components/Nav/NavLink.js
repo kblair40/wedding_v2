@@ -12,7 +12,7 @@ const NavLink = ({ to, children }) => {
         textDecoration: "none",
       }}
     >
-      <Box className="link-wrapper" borderRadius="4px">
+      <Box className="link-wrapper" borderRadius="4px" border="2px solid red">
         <Flex
           borderRadius="4px"
           py="4px"
@@ -21,10 +21,11 @@ const NavLink = ({ to, children }) => {
           transition=".2s ease-in-out"
         >
           <Text
-            color="text.primary"
+            color="text.tertiary"
             fontWeight="400"
             whiteSpace="nowrap"
             // fontSize="lg"
+            fontSize="xl"
             textTransform="uppercase"
             letterSpacing="1px"
           >

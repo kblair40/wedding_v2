@@ -66,32 +66,15 @@ const Main = ({
         <RSVP setInView={() => handleChangeSectionInView("rsvp")} />
       </Box>
 
-      <Box
-        className="scroll-margin"
-        ref={travelRef}
-        pb="24px"
-        // mb="24px"
-      >
+      <Box className="scroll-margin" ref={travelRef} pb="24px">
         <Travel setInView={() => handleChangeSectionInView("travel")} />
       </Box>
 
-      <Box
-        className="scroll-margin"
-        ref={activitiesRef}
-        pb="24px"
-        // mb="24px"
-        //
-      >
+      <Box className="scroll-margin" ref={activitiesRef} pb="24px">
         <Activities setInView={() => handleChangeSectionInView("activities")} />
       </Box>
 
-      <Box
-        className="scroll-margin"
-        ref={weddingPartyRef}
-        border="1px solid #ccc"
-        // pb="24px"
-        //
-      >
+      <Box className="scroll-margin" ref={weddingPartyRef}>
         <WeddingParty
           setInView={() => handleChangeSectionInView("weddingParty")}
         />

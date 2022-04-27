@@ -34,7 +34,8 @@ const Schedule = () => {
     <Flex
       // bg="neutral.100"
       // bg="secondary.50"
-      bg="primary.50"
+      // bg="primary.50"
+      bg="#f7f5f1"
       // border="1px solid #ccc"
       pt="32px"
       w="100%"

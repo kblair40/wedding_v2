@@ -31,8 +31,8 @@ const WhenAndWhere = ({ setInView }) => {
       // border="1px solid #ccc"
       py="32px"
       // ref={travelRef}
-      // bg="white"
-      bg="#f7f5f1"
+      bg="white"
+      // bg="#f7f5f1"
       direction={{ base: "column", sm: "row" }}
       w="100%"
       justifyContent="center"

@@ -29,11 +29,12 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
       justifyContent="center"
       position="fixed"
       top="0"
-      w="100%"
-      // bg="#fff"
-      // bg={{ base: "rgba(0,0,0,0)", md: "#fff" }}
-      bg={{ base: "rgba(0,0,0,0)", md: "#f7f5f1" }}
-      border="1px solid white"
+      w={{
+        // base: "auto",
+        md: "100%",
+      }}
+      bg={{ base: "rgba(0,0,0,0)", md: "#fff" }}
+      // border="1px solid white"
       zIndex={1000}
       shadow={{ md: "md" }}
     >
@@ -118,7 +119,7 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
                         color="text.primary"
                         fontWeight="400"
                         whiteSpace="nowrap"
-                        // fontSize="lg"
+                        size="sm"
                         textTransform="uppercase"
                         letterSpacing="1px"
                       >
