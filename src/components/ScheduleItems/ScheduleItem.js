@@ -19,7 +19,7 @@ const ScheduleItem = ({
   locationMapLink,
 }) => {
   const textStyles = {
-    fontSize: "lg",
+    fontSize: "lgt",
     fontWeight: "500",
   };
 
@@ -38,7 +38,7 @@ const ScheduleItem = ({
         mb="12px"
         // border="1px solid red"
       >
-        <Heading size="3xl" fontWeight="700">
+        <Heading fontSize="2xlh" fontWeight="700">
           {heading}
         </Heading>
         <Text {...textStyles}>{time}</Text>

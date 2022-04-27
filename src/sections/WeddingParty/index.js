@@ -1,14 +1,8 @@
 import React, { useEffect } from "react";
-import {
-  Box,
-  Text,
-  Heading,
-  Flex,
-  Avatar,
-  Grid,
-  GridItem,
-} from "@chakra-ui/react";
+import { Text, Heading, Flex, Avatar, Grid, GridItem } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
+
+import SectionLabel from "components/SectionLabel";
 
 import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
 import shannon from "assets/galleryImages/shannon/shan_six.jpg";
@@ -33,27 +27,8 @@ const WeddingParty = ({ setInView }) => {
   }, [inView]);
 
   return (
-    <Flex
-      direction="column"
-      alignItems="center"
-      // bg="neutral.100"
-      bg="#f7f5f1"
-      pt="32px"
-      pb="24px"
-    >
-      <Flex direction="column" alignItems="center">
-        <Text
-          fontSize={{ base: "3xl", sm: "48px" }}
-          textAlign="center"
-          fontWeight="500"
-          w="100%"
-          // mt="32px"
-          letterSpacing="2px"
-        >
-          WEDDING PARTY
-        </Text>
-        <Box h="3px" w="50px" bg="neutral.800" mb="24px" ref={inViewRef} />
-      </Flex>
+    <Flex direction="column" alignItems="center" bg="#f7f5f1" pb="24px">
+      <SectionLabel label="wedding party" />
 
       <Grid
         rowGap={{ base: "1rem" }}
@@ -97,7 +72,7 @@ const WeddingParty = ({ setInView }) => {
           <Partier name="kevin blair" role="GROOM" imgURL={kevin} />
         </GridItem>
 
-        <GridItem gridArea="caleb">
+        <GridItem gridArea="caleb" ref={inViewRef}>
           <Partier name="caleb magnuson" role="BEST MAN" imgURL={five} />
         </GridItem>
 
@@ -177,7 +152,7 @@ const WeddingParty = ({ setInView }) => {
 
 export default WeddingParty;
 
-const Partier = ({ name, role, imgURL, flex, mr = 0 }) => {
+const Partier = ({ name, role, imgURL }) => {
   return (
     <Flex
       w={{ base: "280px", sm: "232px" }}

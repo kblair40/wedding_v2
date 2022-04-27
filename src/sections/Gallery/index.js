@@ -9,9 +9,9 @@ import {
 } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
-import PageContainer from "components/containers/PageContainer";
 import GalleryImages from "components/GalleryImages";
 import GalleryImageCarousel from "components/GalleryImageCarousel";
+import SectionLabel from "components/SectionLabel";
 
 import one from "assets/galleryImages/sydney/one.jpg";
 import two from "assets/galleryImages/sydney/two.jpg";
@@ -75,9 +75,8 @@ const Gallery = ({ setInView }) => {
     setShowCarousel(true);
   };
 
-  {
-    /* css for react-slick (GalleryImageCarousel) */
-  }
+  /* css for react-slick (GalleryImageCarousel) */
+
   return (
     <React.Fragment>
       <link
@@ -92,26 +91,9 @@ const Gallery = ({ setInView }) => {
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
 
-      <Flex
-        direction="column"
-        alignItems="center"
-        bg="white"
-        pt="32px"
-        mb="24px"
-      >
-        <Flex direction="column" alignItems="center">
-          <Text
-            fontSize={{ base: "3xl", sm: "48px" }}
-            textAlign="center"
-            fontWeight="500"
-            w="100%"
-            // mt="32px"
-            letterSpacing="2px"
-          >
-            GALLERY
-          </Text>
-          <Box h="3px" w="50px" bg="neutral.800" mb="24px" ref={inViewRef} />
-        </Flex>
+      <Flex direction="column" alignItems="center" bg="white" pb="24px">
+        <SectionLabel label="gallery" />
+        <Box ref={inViewRef} />
 
         <Box className="fade-in-immediate">
           <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />

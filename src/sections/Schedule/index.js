@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 import ScheduleItems from "components/ScheduleItems";
+import SectionLabel from "components/SectionLabel";
 
 const Schedule = () => {
   const theme = useTheme();
@@ -36,24 +37,8 @@ const Schedule = () => {
   };
 
   return (
-    <Flex
-      bg="#f7f5f1"
-      pt="32px"
-      w="100%"
-      justifyContent="center"
-      alignItems="center"
-      direction="column"
-    >
-      <Text
-        fontSize={{ base: "3xl", sm: "48px" }}
-        textAlign="center"
-        fontWeight="500"
-        w="100%"
-        letterSpacing="2px"
-      >
-        SCHEDULE
-      </Text>
-      <Box h="3px" w="60px" bg="neutral.800" mb="32px" />
+    <Box bg="#f7f5f1" w="100%">
+      <SectionLabel label="schedule" />
 
       <Tabs w="100%" d="flex" flexDirection="column" alignItems="center">
         <TabList
@@ -61,7 +46,6 @@ const Schedule = () => {
           borderBottom="3px solid"
           borderColor="#f7f5f1"
           display="flex"
-          // justifyContent="space-between"
           justifyContent="center"
         >
           <Tab {...tabStyles} mr="4rem">
@@ -79,7 +63,7 @@ const Schedule = () => {
           </TabPanel>
         </TabPanels>
       </Tabs>
-    </Flex>
+    </Box>
   );
 };
 

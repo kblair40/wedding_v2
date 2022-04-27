@@ -36,12 +36,6 @@ const textStyles = {
 const TravelInfo = () => {
   return (
     <Box minW="350px">
-      {/* <AnimatedCheckbox /> */}
-
-      {/* <Heading textAlign="center" fontSize="4xl" fontWeight="700">
-        by plane / by car
-      </Heading> */}
-
       <Flex
         mt="20px"
         direction={{ base: "column", md: "row" }}

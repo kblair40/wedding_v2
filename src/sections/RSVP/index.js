@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Box, Center, Flex, Text, Button } from "@chakra-ui/react";
+import { Box, Center, Flex, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
@@ -8,6 +8,7 @@ import RSVPForm from "components/RSVPSteps/RSVPForm";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
 import SelectGuests from "components/RSVPSteps/SelectGuests";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
+import SectionLabel from "components/SectionLabel";
 
 import "./index.css";
 
@@ -142,19 +143,7 @@ const RSVP = ({ setInView }) => {
   };
 
   return (
-    <Flex
-      maxH="400px"
-      alignItems="center"
-      direction="column"
-      // border="1px solid #00f"
-      px="16px"
-      w="100%"
-      // bg="neutral.100"
-      bg="#f7f5f1"
-      py="32px"
-      overflowY="auto"
-      position="relative"
-    >
+    <Box bg="#f7f5f1" w="100%" pb="32px">
       {/* NEED TO FIGURE OUT WHERE IT'LL GO AND WHAT IT SHOULD LOOK LIKE */}
       {/* <Button
         onClick={startOver}
@@ -166,28 +155,12 @@ const RSVP = ({ setInView }) => {
       >
         RESET
       </Button> */}
-      <Flex direction="column" alignItems="center" mb="2rem">
-        <Text
-          fontSize={{ base: "3xl", sm: "48px" }}
-          textAlign="center"
-          fontWeight="500"
-          w="100%"
-          letterSpacing="2px"
-        >
-          RSVP
-        </Text>
-        <Box h="3px" w="60px" bg="neutral.800" ref={inViewRef} />
-      </Flex>
+      <SectionLabel label="rsvp" />
 
-      <Flex
-        w="100%"
-        justifyContent="center"
-        // border="1px solid #0f0"
-        // minH="148px"
-        //
-      >
+      <Box ref={inViewRef} />
+
+      <Flex w="100%" justifyContent="center">
         <Box
-          // border="1px solid #000"
           minW="340px"
           maxW={{
             base: "420px",
@@ -235,7 +208,7 @@ const RSVP = ({ setInView }) => {
       </Flex>
 
       {showHelp && <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />}
-    </Flex>
+    </Box>
   );
 };
 

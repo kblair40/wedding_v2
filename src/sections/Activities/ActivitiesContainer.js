@@ -4,6 +4,7 @@ import Masonry from "react-masonry-css";
 
 import { ACTIVITIES } from "utils/constants";
 import ActivityList from "./ActivityList";
+import SectionLabel from "components/SectionLabel";
 
 const colBreakpoints = {
   default: 3,
@@ -20,30 +21,13 @@ const ActivitiesContainer = () => {
   });
 
   return (
-    <Flex
-      className="fade-in-immediate"
-      alignItems="center"
-      direction="column"
-      w="100%"
-      pt="32px"
-    >
-      <Text
-        fontSize={{ base: "3xl", sm: "48px" }}
-        textAlign="center"
-        fontWeight="500"
-        w="100%"
-        // mt="32px"
-        letterSpacing="2px"
-      >
-        ACTIVITIES
-      </Text>
-
-      <Box h="3px" w="50px" bg="neutral.800" />
+    <Flex w="100%" flexDirection="column" alignItems="center">
+      <SectionLabel label="activities" />
 
       <Text
-        my="24px"
+        mb="24px"
         textAlign="center"
-        fontSize="lg"
+        fontSize="lgt"
         fontWeight="500"
         minW="300px"
       >
