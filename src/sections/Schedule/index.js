@@ -16,11 +16,8 @@ import ScheduleItems from "components/ScheduleItems";
 const Schedule = () => {
   const tabStyles = {
     color: "neutral.900",
-    // fontSize: "30px",
     fontSize: useBreakpointValue({ base: "26px", sm: "30px" }),
     borderBottom: "3px solid",
-    // borderColor: "neutral.100",
-    // borderColor: "primary.100",
     borderColor: "primary.50",
     p: 0,
     _selected: {

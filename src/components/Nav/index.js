@@ -24,51 +24,61 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
 
   return (
     <Flex
-      h="50px"
+      h="60px"
       className="fade-in-immediate"
       justifyContent="center"
       position="fixed"
       top="0"
       w="100%"
-      bg="#fff"
-      bg={{ base: "rgba(0,0,0,0)", md: "#fff" }}
+      // bg="#fff"
+      // bg={{ base: "rgba(0,0,0,0)", md: "#fff" }}
+      bg={{ base: "rgba(0,0,0,0)", md: "#f7f5f1" }}
+      border="1px solid white"
       zIndex={1000}
-      shadow={{ md: "sm" }}
+      shadow={{ md: "md" }}
     >
       <Box position="relative" w="100%">
         <Flex py="8px" justify="center" align="center" w="100%" h="100%">
-          <Box display={{ base: "flex", md: "none" }} w="100%" h="100%">
-            <Flex
+          <Box
+            display={{ base: "flex", md: "none" }}
+            // w="100%"
+            h="100%"
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            {/* <Flex
+              border="1px solid red"
               w="100%"
               alignItems="center"
               justifyContent="center"
               position="relative"
-            >
-              <IconButton
-                position="absolute"
-                my="auto"
-                left={{ base: "8px" }}
-                size="lg"
-                _hover={{ bg: "transparent" }}
-                _active={{ bg: "transparent" }}
-                position="absolute"
-                onClick={onToggle}
-                color={topInView ? "#fff" : "#000"}
-                icon={
-                  isOpen ? (
-                    <CloseIcon w={3} h={3} />
-                  ) : (
-                    <HamburgerIcon w={8} h={8} />
-                  )
-                }
-                variant={"ghost"}
-                aria-label={"Toggle Navigation"}
-              />
-            </Flex>
+            > */}
+            <IconButton
+              position="absolute"
+              my="auto"
+              left={{ base: "8px" }}
+              size="lg"
+              _hover={{ bg: "transparent" }}
+              _active={{ bg: "transparent" }}
+              position="absolute"
+              onClick={onToggle}
+              color={topInView ? "#fff" : "#000"}
+              icon={
+                isOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={8} h={8} />
+                )
+              }
+              variant={"ghost"}
+              aria-label={"Toggle Navigation"}
+            />
+            {/* </Flex> */}
           </Box>
 
           <Flex
             display={{ base: "none", md: "flex" }}
+            position={{ base: "absolute", md: "block" }}
             justify="center"
             w="100%"
           >
