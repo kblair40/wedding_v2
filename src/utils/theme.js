@@ -4,34 +4,37 @@ import { extendTheme } from "@chakra-ui/react";
 const theme = extendTheme({
   colors: {
     primary: {
-      main: "#F8EEF1", // current
+      main: "#6e8eb4", // current
       50: "#FFFFFF",
-      100: "#fefdfe",
-      200: "#fefcfc",
-      300: "#fdfafb",
-      400: "#fcf8f9",
-      500: "#F8EEF1",
-      600: "#eaccd5",
-      700: "#dca9b8",
-      800: "#cd879c",
-      900: "#bf6480",
+      100: "#bfcddf",
+      200: "#97adca",
+      300: "#6e8eb4",
+      400: "#4b75a6",
+      500: "#085e9f",
+      600: "#005695",
+      700: "#004c8a",
+      800: "#00437f",
+      900: "#00326d",
     },
+    // 6e8eb4 - nice shade of blue that should pair well with secondary.600
     secondary: {
-      main: "#EC9A98", // pink
-      50: "#FFFFFF",
-      100: "#fdf5f5",
-      200: "#fbebea",
-      300: "#f9e1e0",
-      400: "#f7d7d6",
-      500: "#EC9A98",
-      600: "#e67a77",
-      700: "#e05a56",
-      800: "#da3a36",
-      900: "#c52824",
+      main: "#b4946e", // pink
+      50: "#fdecd0",
+      100: "#e9d0b2",
+      200: "#d0b291",
+      300: "#b4946e",
+      400: "#9f7d52",
+      500: "#896637",
+      600: "#7e5c31",
+      700: "#6f4f27",
+      800: "#624120",
+      900: "#533216",
     },
     neutral: {
       black: "#344148",
       main: "#344148",
+      // black: "#14230C",
+      // main: "#14230C",
       white: "#f8eef1",
       50: "#e9edef",
       100: "#d2dadf",
