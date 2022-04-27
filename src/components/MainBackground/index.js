@@ -94,11 +94,11 @@ const ArrowDown = () => (
     direction="column"
     alignItems="center"
     position="absolute"
-    bottom="70px"
+    bottom={{ base: "74px", sm: "16px" }}
     mx="auto"
   >
     <Text
-      fontSize={{ base: "lg", sm: "xl" }}
+      fontSize={{ base: "md", sm: "lg", md: "xl" }}
       letterSpacing="2.5px"
       color="#fff"
       fontWeight="500"
@@ -109,7 +109,7 @@ const ArrowDown = () => (
       mt="8px"
       as={BsChevronDown}
       color="#fff"
-      boxSize={{ base: "40px", sm: "60px" }}
+      boxSize={{ base: "40px", md: "50px", lg: "60px" }}
     />
   </Flex>
 );
