@@ -20,7 +20,8 @@ const Schedule = () => {
 
   const tabStyles = {
     color: "neutral.900",
-    fontSize: useBreakpointValue({ base: "xl", sm: "2xl" }),
+    fontWeight: "500",
+    fontSize: useBreakpointValue({ base: "xlt", sm: "2xlt" }),
     borderBottom: "3px solid",
     borderColor: "#f7f5f1",
     p: 0,
@@ -52,7 +53,7 @@ const Schedule = () => {
       >
         SCHEDULE
       </Text>
-      <Box h="3px" w="60px" bg="neutral.800" mb="24px" />
+      <Box h="3px" w="60px" bg="neutral.800" mb="32px" />
 
       <Tabs w="100%" d="flex" flexDirection="column" alignItems="center">
         <TabList
@@ -60,9 +61,12 @@ const Schedule = () => {
           borderBottom="3px solid"
           borderColor="#f7f5f1"
           display="flex"
-          justifyContent="space-between"
+          // justifyContent="space-between"
+          justifyContent="center"
         >
-          <Tab {...tabStyles}>FRIDAY</Tab>
+          <Tab {...tabStyles} mr="4rem">
+            FRIDAY
+          </Tab>
           <Tab {...tabStyles}>SATURDAY</Tab>
         </TabList>
 
