@@ -91,33 +91,73 @@ const WeddingParty = ({ setInView }) => {
         </GridItem>
 
         <GridItem gridArea="caleb" ref={inViewRef}>
-          <Partier name="caleb magnuson" role="BEST MAN" imgURL={caleb} />
+          <Partier
+            name="caleb magnuson"
+            role="BEST MAN"
+            imgURL={caleb}
+            position="center 0%"
+          />
         </GridItem>
 
         <GridItem gridArea="trevor">
-          <Partier name="trevor weidner" role="GROOMSMAN" imgURL={trevor} />
+          <Partier
+            name="trevor weidner"
+            role="GROOMSMAN"
+            imgURL={trevor}
+            position="center 20%"
+          />
         </GridItem>
 
         <GridItem gridArea="andrew">
-          <Partier name="andrew payne" role="GROOMSMAN" imgURL={andrew} />
+          <Partier
+            name="andrew payne"
+            role="GROOMSMAN"
+            imgURL={andrew}
+            position="center 10%"
+          />
         </GridItem>
         <GridItem gridArea="ted">
-          <Partier name="ted keller" role="GROOMSMAN" imgURL={ted} />
+          <Partier
+            name="ted keller"
+            role="GROOMSMAN"
+            imgURL={ted}
+            position="center 10%"
+          />
         </GridItem>
 
         <GridItem gridArea="bride">
-          <Partier name="shannon dunne" role="BRIDE" imgURL={shannon} />
+          <Partier
+            name="shannon dunne"
+            role="BRIDE"
+            imgURL={shannon}
+            position="center 20%"
+          />
         </GridItem>
 
         <GridItem gridArea="erin">
-          <Partier name="erin dunne" role="MAID OF HONOR" imgURL={erin} />
+          <Partier
+            name="erin dunne"
+            role="MAID OF HONOR"
+            imgURL={erin}
+            position="center 0%"
+          />
         </GridItem>
         <GridItem gridArea="kelly">
-          <Partier name="kelly dunne" role="MATRON OF HONOR" imgURL={kelly} />
+          <Partier
+            name="kelly dunne"
+            role="MATRON OF HONOR"
+            imgURL={kelly}
+            position="center 0%"
+          />
         </GridItem>
 
         <GridItem gridArea="karissa">
-          <Partier name="karissa leith" role="BRIDESMAID" imgURL={karissa} />
+          <Partier
+            name="karissa leith"
+            role="BRIDESMAID"
+            imgURL={karissa}
+            position="center 40%"
+          />
         </GridItem>
 
         <GridItem gridArea="cassidy">
@@ -130,7 +170,7 @@ const WeddingParty = ({ setInView }) => {
             name="august & frederick gerber"
             role="RING BEARERS"
             imgURL={ringBearers}
-            flex={1}
+            position="center 30%"
           />
         </GridItem>
 
@@ -140,7 +180,6 @@ const WeddingParty = ({ setInView }) => {
             name="charlotte reichle"
             role="FLOWER GIRL"
             imgURL={sarlota}
-            flex={1}
           />
         </GridItem>
 
@@ -150,7 +189,7 @@ const WeddingParty = ({ setInView }) => {
             name="andras reichle"
             role="HEAD USHER"
             imgURL={andras}
-            flex={1}
+            position="center 10%"
           />
         </GridItem>
 
@@ -184,6 +223,7 @@ const Partier = ({ name, role, imgURL, position = "center 50%" }) => {
         mb="8px"
         bgImage={imgURL}
         bgPosition={position}
+        bgRepeat="no-repeat"
         bgSize="cover"
       />
       {/* <Avatar boxSize={{ base: "250px", sm: "180px" }} mb="8px" src={imgURL} /> */}
