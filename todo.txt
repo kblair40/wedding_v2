@@ -12,4 +12,4 @@
 12. background-image (main) shrinks way too much when opened on mobile screen
 13. Figure out location/style for reset button in RSVP section
 14. Look up tips for dealing with safari and chrome bottom bars
-15. Make SectionHeader component for one loc to update font styles
+16. Maybe CountdownTimer could go in a SpeedDial type of component that shows when you hover over it only

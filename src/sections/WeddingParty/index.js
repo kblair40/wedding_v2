@@ -1,5 +1,13 @@
 import React, { useEffect } from "react";
-import { Text, Heading, Flex, Avatar, Grid, GridItem } from "@chakra-ui/react";
+import {
+  Text,
+  Heading,
+  Flex,
+  Avatar,
+  Grid,
+  GridItem,
+  Box,
+} from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import SectionLabel from "components/SectionLabel";
@@ -11,10 +19,20 @@ import five from "assets/galleryImages/shannon/shan_five.jpg";
 import four from "assets/galleryImages/shannon/shan_four.jpg";
 import three from "assets/galleryImages/shannon/shan_three.jpg";
 import two from "assets/galleryImages/shannon/shan_two.jpg";
+
 import ringBearers from "assets/images/wedding_party/augustfrederick.jpg";
 import sarlota from "assets/images/wedding_party/sarlota.jpg";
 import andras from "assets/images/wedding_party/andras.jpg";
 import cameron from "assets/images/wedding_party/cameron.jpg";
+import ted from "assets/images/wedding_party/ted.jpeg";
+import trevor from "assets/images/wedding_party/trevor.jpeg";
+import caleb from "assets/images/wedding_party/caleb.jpeg";
+import andrew from "assets/images/wedding_party/andrew.jpg";
+
+import karissa from "assets/images/wedding_party/karissa.jpg";
+import cassidy from "assets/images/wedding_party/cassidy.jpeg";
+import erin from "assets/images/wedding_party/erin.jpeg";
+import kelly from "assets/images/wedding_party/kelly.jpeg";
 
 const WeddingParty = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
@@ -73,18 +91,18 @@ const WeddingParty = ({ setInView }) => {
         </GridItem>
 
         <GridItem gridArea="caleb" ref={inViewRef}>
-          <Partier name="caleb magnuson" role="BEST MAN" imgURL={five} />
+          <Partier name="caleb magnuson" role="BEST MAN" imgURL={caleb} />
         </GridItem>
 
         <GridItem gridArea="trevor">
-          <Partier name="trevor weidner" role="GROOMSMAN" imgURL={four} />
+          <Partier name="trevor weidner" role="GROOMSMAN" imgURL={trevor} />
         </GridItem>
 
         <GridItem gridArea="andrew">
-          <Partier name="andrew payne" role="GROOMSMAN" imgURL={three} />
+          <Partier name="andrew payne" role="GROOMSMAN" imgURL={andrew} />
         </GridItem>
         <GridItem gridArea="ted">
-          <Partier name="ted keller" role="GROOMSMAN" imgURL={two} />
+          <Partier name="ted keller" role="GROOMSMAN" imgURL={ted} />
         </GridItem>
 
         <GridItem gridArea="bride">
@@ -92,18 +110,18 @@ const WeddingParty = ({ setInView }) => {
         </GridItem>
 
         <GridItem gridArea="erin">
-          <Partier name="erin dunne" role="MAID OF HONOR" imgURL={two} />
+          <Partier name="erin dunne" role="MAID OF HONOR" imgURL={erin} />
         </GridItem>
         <GridItem gridArea="kelly">
-          <Partier name="kelly dunne" role="MATRON OF HONOR" imgURL={three} />
+          <Partier name="kelly dunne" role="MATRON OF HONOR" imgURL={kelly} />
         </GridItem>
 
         <GridItem gridArea="karissa">
-          <Partier name="karissa leith" role="BRIDESMAID" imgURL={four} />
+          <Partier name="karissa leith" role="BRIDESMAID" imgURL={karissa} />
         </GridItem>
 
         <GridItem gridArea="cassidy">
-          <Partier name="cassidy blair" role="BRIDESMAID" imgURL={five} />
+          <Partier name="cassidy blair" role="BRIDESMAID" imgURL={cassidy} />
         </GridItem>
 
         <GridItem mt={{ lg: "2rem" }}>
@@ -152,7 +170,7 @@ const WeddingParty = ({ setInView }) => {
 
 export default WeddingParty;
 
-const Partier = ({ name, role, imgURL }) => {
+const Partier = ({ name, role, imgURL, position = "center 50%" }) => {
   return (
     <Flex
       w={{ base: "280px", sm: "232px" }}
@@ -160,7 +178,15 @@ const Partier = ({ name, role, imgURL }) => {
       alignItems="center"
       px={{ base: 0, lg: "16px" }}
     >
-      <Avatar boxSize={{ base: "250px", sm: "180px" }} mb="8px" src={imgURL} />
+      <Box
+        borderRadius="full"
+        boxSize={{ base: "250px", sm: "180px" }}
+        mb="8px"
+        bgImage={imgURL}
+        bgPosition={position}
+        bgSize="cover"
+      />
+      {/* <Avatar boxSize={{ base: "250px", sm: "180px" }} mb="8px" src={imgURL} /> */}
       <Heading
         fontWeight="700"
         fontSize="28px"
