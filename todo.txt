@@ -8,8 +8,6 @@
 10. rsvp not quite responsive enough for mobile.
   - Also test auth flow
 
-11. Arrow down in MainBackground needs to shift up to avoid bottom bar on safari and chrome mobile
-12. background-image (main) shrinks way too much when opened on mobile screen
 13. Figure out location/style for reset button in RSVP section
 14. Look up tips for dealing with safari and chrome bottom bars
 16. Maybe CountdownTimer could go in a SpeedDial type of component that shows when you hover over it only

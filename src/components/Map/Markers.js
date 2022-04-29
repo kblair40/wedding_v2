@@ -1,13 +1,15 @@
 import React from "react";
-import { Marker, Popup, useMap } from "react-leaflet";
-import { Text, Box } from "@chakra-ui/react";
-import { FaPlane, FaPlaneDeparture } from "react-icons/fa";
+import { Marker, Popup, Polygon, Circle } from "react-leaflet";
+// import { Circle } from "react-leaflet/Circle";
+import { Text } from "@chakra-ui/react";
 import airplane_marker from "assets/icons/airplane_marker.svg";
 import hotel_marker from "assets/icons/hotel_marker3.png";
 import venue_marker from "assets/icons/venue_marker.png";
 import mickey from "assets/icons/mickey.svg";
 // import hotel_marker from "assets/icons/hotel_marker2.svg";
 import L from "leaflet";
+
+import { MickeyIcon } from "utils/icons";
 
 const Markers = () => {
   const planeIcon = L.icon({
@@ -33,6 +35,7 @@ const Markers = () => {
 
   return (
     <React.Fragment>
+      {/* <MickeyIcon /> */}
       <Marker
         icon={venueIcon}
         position={[28.60326888554329, -81.34948892630368]}
@@ -74,6 +77,12 @@ const Markers = () => {
           <Text>Orlando Sanford Int'l Airport</Text>
         </Popup>
       </Marker>
+
+      {/* <Circle
+        positions={[28.377959747351433, -81.56906630160574]}
+        color="green"
+      /> */}
+
       <Marker
         icon={mickeyIcon}
         position={[28.377959747351433, -81.56906630160574]}
@@ -82,6 +91,15 @@ const Markers = () => {
           <Text>Disney World</Text>
         </Popup>
       </Marker>
+
+      {/* <Marker
+        icon={mickeyIcon}
+        position={[28.377959747351433, -81.56906630160574]}
+      >
+        <Popup>
+          <Text>Disney World</Text>
+        </Popup>
+      </Marker> */}
     </React.Fragment>
   );
 };
