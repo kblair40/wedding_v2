@@ -6,6 +6,8 @@ import airplane_marker from "assets/icons/airplane_marker.svg";
 import hotel_marker from "assets/icons/hotel_marker3.png";
 import venue_marker from "assets/icons/venue_marker.png";
 import mickey from "assets/icons/mickey.svg";
+import new_mickey from "assets/images/icons/mickey_new.svg";
+import airport from "assets/images/icons/airport.svg";
 // import hotel_marker from "assets/icons/hotel_marker2.svg";
 import L from "leaflet";
 
@@ -13,8 +15,9 @@ import { MickeyIcon } from "utils/icons";
 
 const Markers = () => {
   const planeIcon = L.icon({
-    iconUrl: airplane_marker,
-    iconSize: [24, 24],
+    // iconUrl: airplane_marker,
+    iconUrl: airport,
+    iconSize: [36, 36],
     popupAnchor: [0, 0],
   });
   const hotelIcon = L.icon({
@@ -28,8 +31,9 @@ const Markers = () => {
     popupAnchor: [0, 0],
   });
   const mickeyIcon = L.icon({
-    iconUrl: mickey,
-    iconSize: [36, 36],
+    iconUrl: new_mickey,
+    // iconUrl: mickey,
+    iconSize: [64, 64],
     popupAnchor: [0, 0],
   });
 
@@ -84,8 +88,11 @@ const Markers = () => {
       /> */}
 
       <Marker
+        // icon={mickeyIcon}
+        // icon={<MickeyIcon />}
         icon={mickeyIcon}
-        position={[28.377959747351433, -81.56906630160574]}
+        position={[28.397959747351433, -81.55006630160574]}
+        // position={[28.377959747351433, -81.56906630160574]}
       >
         <Popup>
           <Text>Disney World</Text>
