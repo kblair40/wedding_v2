@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+
+import { gsap } from "gsap";
 
 const CircleText = () => {
+  useEffect(() => {
+    gsap.to(".logo", {
+      duration: 7.5,
+      rotation: 360,
+      repeat: -1,
+      ease: "linear",
+    });
+  }, []);
+
   return (
     <svg
+      className="logo"
       viewBox="0 0 500 500"
       // style={{ border: "1px solid black" }}
     >

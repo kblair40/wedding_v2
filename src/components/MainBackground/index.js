@@ -59,19 +59,18 @@ const MainBackground = ({
         rgba(0, 0, 0, 0.2))"
         />
 
-        <Box
+        {/* <Box
           position="absolute"
           top={{ base: "64px", md: "80px" }}
           left="0"
           boxSize="100%"
           zIndex={1000000}
           transform="scale(1)"
-          // color="white"
         >
           <LogoText />
-        </Box>
+        </Box> */}
 
-        {/* <Box
+        <Box
           position="absolute"
           top={{ base: "64px", md: "80px" }}
           left="0"
@@ -79,7 +78,7 @@ const MainBackground = ({
           zIndex={1}
         >
           <OurNames />
-        </Box> */}
+        </Box>
 
         <ArrowDown />
       </Box>
