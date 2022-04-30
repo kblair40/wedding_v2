@@ -10,6 +10,7 @@ import PageContainer from "components/containers/PageContainer";
 import OurNames from "components/OurNames";
 
 import Travel from "pages/Travel";
+import LogoText from "components/LogoText";
 import WhenAndWhere from "pages/WhenAndWhere";
 // import Schedule from "pages/Schedule";
 import ToDoToEat from "pages/ToDoToEat";
@@ -32,7 +33,6 @@ const Home = () => {
           position="relative"
           bgImage={color_hor_img}
           w="100vw"
-          // h={{ base: "calc(100vh - 50px)" }}
           h={{ base: "100vh" }}
           bgPosition={{ base: "center 70%", md: "center 60%" }}
           bgAttachment="fixed"
@@ -41,14 +41,7 @@ const Home = () => {
           // border="1px solid red"
         />
 
-        <Box
-          position="absolute"
-          top="96px"
-          left="0"
-          boxSize="100%"
-          zIndex={-1}
-          // border="1px solid red"
-        >
+        <Box position="absolute" top="96px" left="0" boxSize="100%" zIndex={-1}>
           <OurNames />
         </Box>
 

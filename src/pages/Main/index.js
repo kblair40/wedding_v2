@@ -17,13 +17,6 @@ const Main = ({
   handleLeaveTopSection,
   handleEnterTopSection,
 }) => {
-  // const [topRef, topInView] = useInView(options);
-  // const [travelRef, travelInView] = useInView(options);
-  // const [scheduleRef, scheduleInView] = useInView(options);
-  // const [activitiesRef, activitiesInView] = useInView(options);
-  // const [weddingPartyRef, weddingPartyInView] = useInView(options);
-  // const [galleryRef, galleryInView] = useInView(options);
-
   const topRef = useRef();
   const travelRef = useRef();
   const scheduleRef = useRef();

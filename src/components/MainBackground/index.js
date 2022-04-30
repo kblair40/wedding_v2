@@ -5,6 +5,7 @@ import { BsChevronDown } from "react-icons/bs";
 
 import mainbg from "assets/images/mainbg.jpg";
 import OurNames from "components/OurNames";
+import LogoText from "components/LogoText";
 
 const MainBackground = ({
   setInView,
@@ -63,10 +64,22 @@ const MainBackground = ({
           top={{ base: "64px", md: "80px" }}
           left="0"
           boxSize="100%"
+          zIndex={1000000}
+          transform="scale(1)"
+          // color="white"
+        >
+          <LogoText />
+        </Box>
+
+        {/* <Box
+          position="absolute"
+          top={{ base: "64px", md: "80px" }}
+          left="0"
+          boxSize="100%"
           zIndex={1}
         >
           <OurNames />
-        </Box>
+        </Box> */}
 
         <ArrowDown />
       </Box>
