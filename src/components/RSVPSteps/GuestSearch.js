@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Button, Text, HStack, Flex } from "@chakra-ui/react";
+import { Input, Button, Text, HStack, Flex, Box } from "@chakra-ui/react";
 
 import { getGuestByName, getRelatedGuests } from "api/api";
 import { toTitleCase } from "utils/helpers";
@@ -140,19 +140,28 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
       </HStack>
 
       {notFoundError && (
-        <Text mt="8px">
-          Sorry, we couldn't find anyone with the entered name. If you're sure
-          you entered your first and last name correctly, please RSVP by filling
-          out our form
+        // <Flex alignItems="flex-end" d="inline-flex" border="1px solid #bbb">
+        <Box d="inline">
+          <Text mt="12px" mr="4px" display="inline" fontSize="sm">
+            Sorry, we couldn't find anyone with the name you entered. If you're
+            sure you entered your first and last name correctly, please RSVP by
+            filling out our form
+          </Text>
           <Button
-            ml="4px"
+            // ml="4px"
+            borderRadius={0}
             variant="link"
             color="text.primary"
             onClick={showHelp}
+            display="inline"
+            fontWeight="500"
+            borderBottom="1px solid #2d2d2d"
+            _hover={{ textDecoration: "none" }}
           >
             HERE
           </Button>
-        </Text>
+        </Box>
+        // </Flex>
       )}
     </form>
   );
