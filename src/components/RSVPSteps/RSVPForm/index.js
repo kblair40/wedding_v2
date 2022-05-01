@@ -154,7 +154,7 @@ const RSVPForm = ({
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <FormLabel fontWeight="500">
+                <FormLabel fontWeight="500" mb="1rem">
                   Please let us know who can and cannot make it
                 </FormLabel>
                 {respondingGuestNames.map((name, i) => {
@@ -165,7 +165,7 @@ const RSVPForm = ({
                       onChange={(val) => handleChangeAttendance(val, name)}
                     >
                       <Box>
-                        <Text>{name}</Text>
+                        <Text fontWeight="700">{name}</Text>
                         <HStack spacing="16px">
                           <Radio value="yes">I'll be there!</Radio>
                           <Radio value="no">Regretfully decline</Radio>
@@ -208,10 +208,9 @@ const RSVPForm = ({
                 top="2px"
                 focusBorderColor="text.tertiary"
                 w="50%"
-                placeholder="Special requests?"
+                placeholder="Any allergies? (optional)"
                 _placeholder={{ color: "text.tertiary" }}
                 size="sm"
-                fontSize="md"
                 onChange={(e) =>
                   handleChangeMeal(
                     e.target.value,
@@ -246,7 +245,7 @@ const RSVPForm = ({
                       isDisabled={formData[name]["attending"] === "no"}
                     >
                       <Box>
-                        <Text>{name}</Text>
+                        <Text fontWeight="700">{name}</Text>
                         <HStack>
                           <Radio value="chicken">Chicken</Radio>
                           <Radio value="beef">Beef</Radio>
@@ -255,7 +254,7 @@ const RSVPForm = ({
                     </RadioGroup>
 
                     <Box flex={1}>
-                      <Text>Special requests? (optional)</Text>
+                      <Text>Any allergies? (optional)</Text>
                       <Input
                         size="sm"
                         fontSize="md"

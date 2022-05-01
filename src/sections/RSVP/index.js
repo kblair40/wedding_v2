@@ -143,7 +143,16 @@ const RSVP = ({ setInView }) => {
   };
 
   return (
-    <Box bg="#f7f5f1" w="100%" pb="32px" px="24px">
+    <Box
+      bg="#f7f5f1"
+      w="100%"
+      pb="32px"
+      px="24px"
+      border="1px solid #ccc"
+      overflowY="auto"
+      minH="330px"
+      maxH="500px"
+    >
       {/* NEED TO FIGURE OUT WHERE IT'LL GO AND WHAT IT SHOULD LOOK LIKE */}
       {/* <Button
         onClick={startOver}
