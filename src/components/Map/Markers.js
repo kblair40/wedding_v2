@@ -2,10 +2,10 @@ import React from "react";
 import { Marker, Popup } from "react-leaflet";
 import { Text } from "@chakra-ui/react";
 import venue_marker from "assets/icons/venue_marker.png";
-import new_mickey from "assets/images/icons/mickey_new.svg";
-import airport from "assets/images/icons/airport.svg";
+import new_mickey from "assets/icons/mickey_new.svg";
+import airport from "assets/icons/airport.svg";
 import L from "leaflet";
-import hotel_icon from "assets/images/icons/hotel_icon.jpg";
+import hotel_icon from "assets/icons/hotel_icon.jpg";
 
 const Markers = () => {
   const planeIcon = L.icon({
