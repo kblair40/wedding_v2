@@ -13,11 +13,7 @@ const CircleText = () => {
   }, []);
 
   return (
-    <svg
-      className="logo"
-      viewBox="0 0 500 500"
-      // style={{ border: "1px solid black" }}
-    >
+    <svg className="logo" viewBox="0 0 500 500">
       <defs>
         <path
           d="M243.2, 382.4c-74.8,   

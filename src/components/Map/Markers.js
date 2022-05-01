@@ -11,7 +11,10 @@ import airport from "assets/images/icons/airport.svg";
 // import hotel_marker from "assets/icons/hotel_marker2.svg";
 import L from "leaflet";
 
+// import LogoText from
 import { MickeyIcon } from "utils/icons";
+// import { Logo } from "utils/icons";
+import logo from "assets/icons/logo.svg";
 
 const Markers = () => {
   const planeIcon = L.icon({
@@ -36,11 +39,17 @@ const Markers = () => {
     iconSize: [64, 64],
     popupAnchor: [0, 0],
   });
+  const logoIcon = L.icon({
+    iconUrl: logo,
+    iconSize: [64, 64],
+    popupAnchor: [0, 0],
+  });
 
   return (
     <React.Fragment>
       {/* <MickeyIcon /> */}
       <Marker
+        // icon={logo}
         icon={venueIcon}
         position={[28.60326888554329, -81.34948892630368]}
       >
