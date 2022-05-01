@@ -1,21 +1,18 @@
 import React, { useState } from "react";
-import { Input, Button, Text, HStack, Flex, Box } from "@chakra-ui/react";
+import { Input, Button, Text, HStack, Box } from "@chakra-ui/react";
 
 import { getGuestByName, getRelatedGuests } from "api/api";
 import { toTitleCase } from "utils/helpers";
 
-const GuestSearch = ({ getSearchResults, showHelp }) => {
-  const [inputVal, setInputVal] = useState("");
+const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [notFoundError, setNotFoundError] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const [guest, setGuest] = useState();
-  // const [relatedGuests, setRelatedGuests] = useState();
 
   const validateInput = async (e) => {
     e.preventDefault();
 
-    let nameArray = inputVal.trim().split(" ");
+    let nameArray = searchInput.trim().split(" ");
     if (nameArray.length < 2) {
       console.log("error1");
       setErrorMsg("First and last names are both required");
@@ -35,7 +32,7 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
   };
 
   const handleSubmitSearch = async (fn, ln) => {
-    console.log("Submitted:", { first_name: fn, last_name: ln });
+    // console.log("Submitted:", { first_name: fn, last_name: ln });
     setLoading(true);
     let guest;
     try {
@@ -67,7 +64,6 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
         let response = await getRelatedGuests(relatedGuests);
         console.log("\nGET RELATED GUESTS RESPONSE:", response);
         if (response) {
-          // setRelatedGuests(response);
           getSearchResults(guest, response); // pass back to parent (RSVP page);
         }
       }
@@ -80,10 +76,11 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
   };
 
   const handleChange = (e) => {
-    setInputVal(e.target.value);
+    onChange(e);
     if (errorMsg) {
       setErrorMsg("");
     }
+
     if (notFoundError) {
       setNotFoundError(false);
     }
@@ -94,7 +91,6 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
       onSubmit={validateInput}
       style={{
         width: "100%",
-        // border: "1px solid red"
       }}
     >
       <Text fontSize="md" fontWeight="400">
@@ -109,6 +105,7 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
         <Input
           pl=".5rem"
           variant="flushed"
+          value={searchInput}
           onChange={handleChange}
           w="100%"
           placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
@@ -148,7 +145,6 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
             filling out our form
           </Text>
           <Button
-            // ml="4px"
             borderRadius={0}
             variant="link"
             color="text.primary"

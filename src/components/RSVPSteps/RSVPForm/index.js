@@ -121,7 +121,8 @@ const RSVPForm = ({
 
   const handleCloseModal = () => {
     setModalIsOpen(false);
-    navigate("/");
+    startOver();
+    // navigate("/");
   };
 
   return (

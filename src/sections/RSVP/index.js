@@ -21,6 +21,7 @@ const RSVP = ({ setInView }) => {
   const [step2Class, setStep2Class] = useState("hidden");
   const [step3Class, setStep3Class] = useState("hidden");
   const [showHelp, setShowHelp] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   let navigate = useNavigate();
 
@@ -47,7 +48,7 @@ const RSVP = ({ setInView }) => {
   }, [inView]);
 
   const getSearchResults = (guest, relatedGuests) => {
-    console.log("SEARCH RESULTES:", { guest, relatedGuests });
+    console.log("SEARCH RESULTS:", { guest, relatedGuests });
     setGuest(guest);
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
@@ -171,6 +172,8 @@ const RSVP = ({ setInView }) => {
           <Box className={step1Class}>
             <GuestSearch
               getSearchResults={getSearchResults}
+              onChange={(e) => setSearchInput(e.target.value)}
+              searchInput={searchInput}
               showHelp={() => {
                 helpOpenedBy.current = "GuestSearch";
                 setShowHelp(true);

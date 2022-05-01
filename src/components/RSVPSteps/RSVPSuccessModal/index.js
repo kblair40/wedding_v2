@@ -6,7 +6,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
   Button,
 } from "@chakra-ui/react";
 
@@ -53,9 +52,6 @@ const RSVPSuccessModal = ({ isOpen, onClose, respondingGuestNames: names }) => {
             firstNames.slice(0, 3).join(", ") +
             ` & ${firstNames[3]} ${lastNames[0]}, `;
           setNameString(firstThree);
-          // setNameString(
-          //   `${firstNames[0]}, ${firstNames[1]} & ${firstNames[2]} ${lastNames[0]}, `
-          // );
         } else {
           setNameString(
             `${names[0]}, ${names[1]}, ${names[2]} & ${names[3]}, `
