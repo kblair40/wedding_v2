@@ -14,9 +14,9 @@ Add dropdown for requesting directions.
 const Map = () => {
   return (
     <Box>
-      <Box border="1px solid #ccc">
+      {/* <Box border="1px solid #ccc">
         <MickeyIcon />
-      </Box>
+      </Box> */}
 
       <MapContainer
         maxBounds={[

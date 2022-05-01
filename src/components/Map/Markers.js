@@ -1,30 +1,20 @@
 import React from "react";
-import { Marker, Popup, Polygon, Circle } from "react-leaflet";
-// import { Circle } from "react-leaflet/Circle";
+import { Marker, Popup } from "react-leaflet";
 import { Text } from "@chakra-ui/react";
-import airplane_marker from "assets/icons/airplane_marker.svg";
-import hotel_marker from "assets/icons/hotel_marker3.png";
 import venue_marker from "assets/icons/venue_marker.png";
-import mickey from "assets/icons/mickey.svg";
 import new_mickey from "assets/images/icons/mickey_new.svg";
 import airport from "assets/images/icons/airport.svg";
-// import hotel_marker from "assets/icons/hotel_marker2.svg";
 import L from "leaflet";
-
-// import LogoText from
-import { MickeyIcon } from "utils/icons";
-// import { Logo } from "utils/icons";
-import logo from "assets/icons/logo.svg";
+import hotel_icon from "assets/images/icons/hotel_icon.jpg";
 
 const Markers = () => {
   const planeIcon = L.icon({
-    // iconUrl: airplane_marker,
     iconUrl: airport,
     iconSize: [36, 36],
     popupAnchor: [0, 0],
   });
   const hotelIcon = L.icon({
-    iconUrl: hotel_marker,
+    iconUrl: hotel_icon,
     iconSize: [36, 36],
     popupAnchor: [0, 0],
   });
@@ -35,21 +25,13 @@ const Markers = () => {
   });
   const mickeyIcon = L.icon({
     iconUrl: new_mickey,
-    // iconUrl: mickey,
-    iconSize: [64, 64],
-    popupAnchor: [0, 0],
-  });
-  const logoIcon = L.icon({
-    iconUrl: logo,
     iconSize: [64, 64],
     popupAnchor: [0, 0],
   });
 
   return (
     <React.Fragment>
-      {/* <MickeyIcon /> */}
       <Marker
-        // icon={logo}
         icon={venueIcon}
         position={[28.60326888554329, -81.34948892630368]}
       >
@@ -91,31 +73,14 @@ const Markers = () => {
         </Popup>
       </Marker>
 
-      {/* <Circle
-        positions={[28.377959747351433, -81.56906630160574]}
-        color="green"
-      /> */}
-
       <Marker
-        // icon={mickeyIcon}
-        // icon={<MickeyIcon />}
         icon={mickeyIcon}
         position={[28.397959747351433, -81.55006630160574]}
-        // position={[28.377959747351433, -81.56906630160574]}
       >
         <Popup>
           <Text>Disney World</Text>
         </Popup>
       </Marker>
-
-      {/* <Marker
-        icon={mickeyIcon}
-        position={[28.377959747351433, -81.56906630160574]}
-      >
-        <Popup>
-          <Text>Disney World</Text>
-        </Popup>
-      </Marker> */}
     </React.Fragment>
   );
 };
