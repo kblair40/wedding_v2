@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   VStack,
@@ -23,8 +23,13 @@ const SelectGuests = ({
 }) => {
   const [checkedGuests, setCheckedGuests] = useState([]);
   const [showNextButton, setShowNextButton] = useState(true);
-  const [display, setDisplay] = useState();
-  // const [showHelp, setShowHelp] = useState(false);
+  const [display, setDisplay] = useState("none");
+
+  useEffect(() => {
+    if (relatedGuests && relatedGuests.length) {
+      setDisplay("block");
+    }
+  }, [relatedGuests]);
 
   const handleChangeRespondingGuests = (val) => {
     console.log("VALUE:", val);
@@ -38,6 +43,10 @@ const SelectGuests = ({
   const handleSubmit = () => {
     getCheckedGuests(checkedGuests);
   };
+
+  // if (!relatedGuests.length) {
+  //   return <Box />;
+  // }
 
   return (
     <Box maxW="580px" display={display}>

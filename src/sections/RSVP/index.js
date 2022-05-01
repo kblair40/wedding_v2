@@ -80,6 +80,7 @@ const RSVP = ({ setInView }) => {
   const transitionOneToThree = () => {
     setStep(3);
     setStep1Class("fade-out-half-second");
+    setStep2Class("hidden");
     setTimeout(() => {
       setStep1Class("hidden");
       setTimeout(() => {
@@ -141,7 +142,6 @@ const RSVP = ({ setInView }) => {
 
     helpOpenedBy.current = "";
   };
-
   return (
     <Box
       bg="#f7f5f1"
