@@ -18,6 +18,7 @@ const SelectGuests = ({
   step,
   getCheckedGuests,
   showHelpModal,
+  startOver,
   checkedGuests: parentCheckedGuests,
 }) => {
   const [checkedGuests, setCheckedGuests] = useState([]);
@@ -40,6 +41,17 @@ const SelectGuests = ({
 
   return (
     <Box maxW="580px" display={display}>
+      {/* <Button
+        onClick={startOver}
+        position="absolute"
+        top="1rem"
+        left=".5rem"
+        // size="sm"
+        zIndex={10000}
+        variant="ghost"
+      >
+        Reset
+      </Button> */}
       <Box>
         <FormControl>
           <FormLabel fontWeight="400">
@@ -109,6 +121,9 @@ const SelectGuests = ({
         opacity={showNextButton ? 1 : 0}
         transition="1s"
       >
+        <Button onClick={startOver} zIndex={10000} variant="ghost">
+          Reset
+        </Button>
         <Button
           rightIcon={<ArrowForwardIcon />}
           onClick={() => {

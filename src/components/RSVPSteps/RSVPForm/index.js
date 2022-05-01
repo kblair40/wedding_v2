@@ -21,6 +21,7 @@ const RSVPForm = ({
   relatedGuests,
   checkedGuests,
   handleSubmit,
+  startOver,
   step,
 }) => {
   // console.log("\n\n\nSTEP:", step, "\n\n\n");
@@ -125,6 +126,17 @@ const RSVPForm = ({
 
   return (
     <Box maxW="580px" borderRadius="4px" p="8px">
+      {/* <Button
+        onClick={startOver}
+        position="absolute"
+        top="1rem"
+        left=".5rem"
+        // size="sm"
+        zIndex={10000}
+        variant="ghost"
+      >
+        Reset
+      </Button> */}
       <Box mb="16px" px="16px" py="16px" maxH="100%">
         {respondingGuests && respondingGuests.length > 1 && (
           <React.Fragment>
@@ -219,7 +231,6 @@ const RSVPForm = ({
                   )
                 }
               />
-              {/* </Box> */}
             </HStack>
           ) : (
             <FormControl>
@@ -272,27 +283,21 @@ const RSVPForm = ({
               })}
             </FormControl>
           )}
+
           <Divider my="12px" />
+
           <FormControl>
             <FormLabel>Anything else we should know? (optional)</FormLabel>
             <Textarea focusBorderColor="text.tertiary" ref={anythingElseRef} />
           </FormControl>
         </Box>
+
         <HStack pt="16px" pb="8px" justifyContent="flex-end">
-          <Button
-            onClick={sendFormData}
-            // onClick={() => {
-            //   handleSubmit(
-            //     {
-            //       ...formData,
-            //       special_requests: anythingElseRef.current.value,
-            //     },
-            //     respondingGuests
-            //   );
-            // }}
-          >
-            Submit
+          <Button onClick={startOver} zIndex={10000} variant="ghost">
+            Reset
           </Button>
+
+          <Button onClick={sendFormData}>Submit</Button>
         </HStack>
       </Box>
       <RSVPSuccessModal

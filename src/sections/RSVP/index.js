@@ -118,7 +118,7 @@ const RSVP = ({ setInView }) => {
       });
 
       if (!guest) {
-        console.log("\n\n\n\nINVALID GUEST:", guest, "\n\n\n");
+        console.warn("\n\n\n\nINVALID GUEST:", guest, "\n\n\n");
         continue;
       }
 
@@ -148,22 +148,12 @@ const RSVP = ({ setInView }) => {
       w="100%"
       pb="32px"
       px="24px"
-      border="1px solid #ccc"
+      // border="1px solid #ccc"
       overflowY="auto"
       minH="330px"
       maxH="500px"
+      position="relative"
     >
-      {/* NEED TO FIGURE OUT WHERE IT'LL GO AND WHAT IT SHOULD LOOK LIKE */}
-      {/* <Button
-        onClick={startOver}
-        position="absolute"
-        top="1rem"
-        left=".5rem"
-        size="xs"
-        zIndex={10000}
-      >
-        RESET
-      </Button> */}
       <SectionLabel label="rsvp" />
 
       <Box ref={inViewRef} />
@@ -178,10 +168,7 @@ const RSVP = ({ setInView }) => {
             lg: "900px",
           }}
         >
-          <Box
-            className={step1Class}
-            // border="1px solid red"
-          >
+          <Box className={step1Class}>
             <GuestSearch
               getSearchResults={getSearchResults}
               showHelp={() => {
@@ -194,6 +181,7 @@ const RSVP = ({ setInView }) => {
           <Box className={step2Class}>
             <Center>
               <SelectGuests
+                startOver={startOver}
                 checkedGuests={checkedGuests}
                 getCheckedGuests={getCheckedGuests}
                 step={step}
@@ -206,6 +194,7 @@ const RSVP = ({ setInView }) => {
 
           <Box className={step3Class}>
             <RSVPForm
+              startOver={startOver}
               step={step}
               guest={guest}
               relatedGuests={relatedGuests}
