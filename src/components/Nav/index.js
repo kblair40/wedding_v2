@@ -30,11 +30,9 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
       position="fixed"
       top="0"
       w={{
-        // base: "auto",
         md: "100%",
       }}
-      // bg="transparent"
-      bg={{ base: "rgba(0,0,0,0)", md: "rgba(255, 255, 255, .98)" }}
+      bg={{ base: "rgba(0,0,0,0)", md: "rgba(255, 255, 255, 1)" }}
       // border="1px solid white"
       zIndex={1000}
       shadow={{ md: "sm" }}
@@ -43,18 +41,10 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
         <Flex py="8px" justify="center" align="center" w="100%" h="100%">
           <Box
             display={{ base: "flex", md: "none" }}
-            // w="100%"
             h="100%"
             justifyContent="flex-start"
             alignItems="center"
           >
-            {/* <Flex
-              border="1px solid red"
-              w="100%"
-              alignItems="center"
-              justifyContent="center"
-              position="relative"
-            > */}
             <IconButton
               position="absolute"
               my="auto"
@@ -75,7 +65,6 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
               variant={"ghost"}
               aria-label={"Toggle Navigation"}
             />
-            {/* </Flex> */}
           </Box>
 
           <Flex
@@ -135,7 +124,7 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
         </Flex>
 
         <Box
-          bg="rgba(255, 255, 255, 0.95)"
+          bg="rgba(255, 255, 255, 0.98)"
           shadow="sm"
           // border="1px solid red"
           position="absolute"
@@ -154,7 +143,10 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
               _active={{ bg: "transparent" }}
             />
 
-            <MobileNav />
+            <MobileNav
+              handleChangeSection={handleChangeSection}
+              onToggle={onToggle}
+            />
           </Collapse>
         </Box>
       </Box>
@@ -164,29 +156,29 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
 
 export default Nav;
 
-const MobileNav = () => {
+const MobileNav = ({ handleChangeSection, onToggle }) => {
   return (
-    <Stack
-      display={{ md: "none" }}
-      spacing="4px"
-      w="100%"
-      // p="16px"
-      p="0 16px 16px"
-      // border="1px solid red"
-    >
+    <Stack display={{ md: "none" }} spacing="4px" w="100%" p="0 16px 16px">
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem
+          key={navItem.label}
+          onClick={() => {
+            handleChangeSection(navItem.section);
+            onToggle();
+          }}
+          {...navItem}
+        />
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, href }) => {
+const MobileNavItem = ({ label, onClick }) => {
   return (
     <Flex
       borderRadius="full"
-      as={Link}
-      href={href ?? "#"}
+      onClick={onClick}
+      cursor="pointer"
       alignItems="center"
       justifyContent="center"
       transition=".3s ease-in-out"
