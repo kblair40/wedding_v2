@@ -69,13 +69,13 @@ const CountdownClock = () => {
       <React.Fragment>
         <Box
           ref={containerRef}
-          opacity={clockOpacity}
+          // opacity={clockOpacity}
           left={0}
-          transition="opacity .3s"
+          // transition="opacity .3s"
           p="8px"
           borderRadius="0 2px 2px 0"
           shadow="md"
-          bg="white"
+          bg="#fff"
           zIndex={10}
         >
           <ClockBody onHide={onHideClock} />

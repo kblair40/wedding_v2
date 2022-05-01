@@ -83,11 +83,10 @@ const CountdownClock = ({ onHide }) => {
           size="sm"
           color="neutral.black"
           fontWeight="500"
-          mt="8px"
+          mt="16px"
           pb="4px"
           sx={{
             ".chakra-button__icon": {
-              // color: "#f00",
               marginInlineEnd: "0.25rem",
             },
           }}
@@ -116,7 +115,7 @@ const TimeUnit = ({ value, unit }) => {
 
   const labelStyles = {
     fontSize: "xs",
-    fontWeight: "500",
+    fontWeight: "700",
     textTransform: "uppercase",
     color: "neutral.black",
     letterSpacing: ".5px",
