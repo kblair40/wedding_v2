@@ -28,9 +28,11 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
   };
 
   const arrowBtnStyles = {
+    // mx: "auto",
     borderRadius: "full",
     position: "absolute",
-    top: top,
+    // top: top,
+    top: "50%",
     zIndex: 2,
     transform: "translate(0%, -50%)",
   };
@@ -45,7 +47,8 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
     >
       <IconButton
         aria-label="left-arrow"
-        left={side}
+        // left={side}
+        left={{ base: "8px", sm: "16px" }}
         onClick={() => (slider ? slider.slickPrev() : undefined)}
         {...arrowBtnStyles}
       >
@@ -54,28 +57,49 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
 
       <IconButton
         aria-label="right-arrow"
-        right={side}
+        // right={side}
+        right={{ base: "8px", sm: "16px" }}
         onClick={() => slider?.slickNext()}
         {...arrowBtnStyles}
       >
         <BiRightArrowAlt fontSize="24px" />
       </IconButton>
 
-      <Slider {...settings} ref={(slider) => setSlider(slider)}>
+      {/* <Flex alignItems="center"> */}
+      <Slider
+        {...settings}
+        ref={(slider) => setSlider(slider)}
+        style={
+          {
+            // display: "flex",
+            // alignItems: "center",
+            // border: "1px solid green",
+          }
+        }
+      >
         {imagesArray.map((url, index) => (
-          <Flex justifyContent="center" w="100%" alignItems="center">
-            <Image
-              mx="auto"
-              src={url}
-              key={index}
-              // h="80vh"
-              maxH="80vh"
-              maxW="100%"
-              borderRadius="4px"
-            />
-          </Flex>
+          // <Flex
+          //   justifyContent="center"
+          //   w="100%"
+          //   alignItems="center"
+          //   // h="100%"
+          //   h="auto"
+          //   border="1px solid red"
+          // >
+          <Image
+            // mx="auto"
+            // my="auto"
+            src={url}
+            key={index}
+            // h="auto"
+            // maxH="80vh"
+            // maxW="100%"
+            borderRadius="4px"
+          />
+          // </Flex>
         ))}
       </Slider>
+      {/* </Flex> */}
     </Box>
   );
 };
