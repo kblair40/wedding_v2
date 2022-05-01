@@ -17,7 +17,7 @@ import SectionLabel from "components/SectionLabel";
 
 const Schedule = () => {
   const theme = useTheme();
-  console.log("\n\n\n\n\n\n\n\nTHEME:", theme);
+  // console.log("\n\n\n\n\n\n\n\nTHEME:", theme);
 
   const tabStyles = {
     color: "neutral.900",

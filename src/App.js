@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 import "animate.css";
@@ -8,7 +8,6 @@ import Admin from "pages/Admin";
 import Main from "pages/Main";
 import Nav from "components/Nav";
 import ScrollToTop from "components/containers/ScrollToTop";
-
 import CountdownClock from "components/CountdownClock";
 
 import "./App.css";
@@ -25,8 +24,13 @@ function App() {
     setSectionInView(newSection);
   };
 
+  const areaInView = useRef();
   const handleChangeSectionInView = (newSection) => {
-    setSectionInView(newSection);
+    areaInView.current = newSection;
+    setTimeout(() => {
+      setSectionInView(areaInView.current);
+    }, 500);
+
     if (newSection === "top") {
       setTopInView(true);
     }
@@ -66,7 +70,6 @@ function App() {
               }
             />
             <Route path="/admin" element={<Admin />} />
-            {/* <Route path="/rsvp" element={<RSVP />} /> */}
           </Routes>
         </ScrollToTop>
       </UserProvider>

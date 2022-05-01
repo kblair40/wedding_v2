@@ -4,14 +4,11 @@ import {
   useBreakpointValue,
   Flex,
   Text,
-  Link,
   useDisclosure,
   Heading,
   Stack,
   Collapse,
   IconButton,
-  Button,
-  CloseButton,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { MdClose } from "react-icons/md";

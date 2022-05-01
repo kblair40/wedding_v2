@@ -18,7 +18,7 @@ const MainBackground = ({
   const [atAllInViewRef, atAllInView] = useInView({ threshold: 0.03 });
 
   useEffect(() => {
-    console.log("\n\n\n\nAT ALL IN VIEW:", atAllInView, "\n\n\n\n");
+    // console.log("\n\n\n\nAT ALL IN VIEW:", atAllInView, "\n\n\n\n");
     if (atAllInView) {
       handleEnterTopSection();
     } else {
@@ -27,9 +27,9 @@ const MainBackground = ({
   }, [atAllInView]);
 
   useEffect(() => {
-    console.log("HOME IN VIEW:", inView);
+    // console.log("HOME IN VIEW:", inView);
     if (inView) {
-      console.log("\n\nHOME IN VIEW:", inView, "\n\n");
+      // console.log("HOME IN VIEW:", inView);
       setInView("top");
     }
   }, [inView]);

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, useBreakpointValue } from "@chakra-ui/react";
 
 import MainBackground from "components/MainBackground";
 import Travel from "sections/Travel";
@@ -8,8 +8,6 @@ import RSVP from "sections/RSVP";
 import WeddingParty from "sections/WeddingParty";
 import Gallery from "sections/Gallery";
 import WhenAndWhere from "sections/WhenAndWhere";
-
-import "./index.css";
 
 const Main = ({
   section,
@@ -25,7 +23,7 @@ const Main = ({
   const galleryRef = useRef();
   const rsvpRef = useRef();
 
-  const refSectionMap = {
+  const refMap = {
     top: topRef,
     rsvp: rsvpRef,
     travel: travelRef,
@@ -36,12 +34,16 @@ const Main = ({
   };
 
   useEffect(() => {
-    const ref = refSectionMap[section];
-    console.log("REF:", ref);
+    const ref = refMap[section];
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [section]);
+
+  const boxStyle = {
+    pb: "24px",
+    scrollMarginTop: useBreakpointValue({ base: 0, md: "32px" }),
+  };
 
   return (
     <Box>
@@ -55,25 +57,25 @@ const Main = ({
 
       <WhenAndWhere />
 
-      <Box ref={rsvpRef} className="scroll-margin">
+      <Box ref={rsvpRef} {...boxStyle}>
         <RSVP setInView={() => handleChangeSectionInView("rsvp")} />
       </Box>
 
-      <Box className="scroll-margin" ref={travelRef} pb="24px">
+      <Box {...boxStyle} ref={travelRef}>
         <Travel setInView={() => handleChangeSectionInView("travel")} />
       </Box>
 
-      <Box className="scroll-margin" ref={activitiesRef} pb="24px">
+      <Box ref={activitiesRef} {...boxStyle}>
         <Activities setInView={() => handleChangeSectionInView("activities")} />
       </Box>
 
-      <Box className="scroll-margin" ref={weddingPartyRef}>
+      <Box {...boxStyle} ref={weddingPartyRef}>
         <WeddingParty
           setInView={() => handleChangeSectionInView("weddingParty")}
         />
       </Box>
 
-      <Box ref={galleryRef} className="scroll-margin">
+      <Box ref={galleryRef} {...boxStyle}>
         <Gallery setInView={() => handleChangeSectionInView("gallery")} />
       </Box>
     </Box>
