@@ -1,13 +1,12 @@
-4. Add ability to go back steps in RSVP process
-5. Add Registry section
-6. Add animated spinner on Casa Feliz on leaflet map.
-7. Whole wedding party needs pictures
-8. Mobile menu still sending to links
-9. Look into custom domains on netlify 
+1. Add ability to go back steps in RSVP process
+2. Add Registry section
+3. Add animated spinner on Casa Feliz on leaflet map.
+4. Whole wedding party needs pictures
+5. Look into custom domains on netlify 
   - https://docs.netlify.com/domains-https/custom-domains/?_ga=2.32618046.1035679050.1651067155-1108596215.1650113601
-10. rsvp not quite responsive enough for mobile.
+6. rsvp not quite responsive enough for mobile.
   - Also test auth flow
 
-13. Figure out location/style for reset button in RSVP section
-14. Look up tips for dealing with safari and chrome bottom bars
-16. Maybe CountdownTimer could go in a SpeedDial type of component that shows when you hover over it only
+7. Figure out location/style for reset button in RSVP section
+8. Look up tips for dealing with safari and chrome bottom bars
+9. Maybe CountdownTimer could go in a SpeedDial type of component that shows when you hover over it only

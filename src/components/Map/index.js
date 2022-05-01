@@ -1,7 +1,6 @@
 import React from "react";
 import { MapContainer } from "react-leaflet";
 import { Box } from "@chakra-ui/react";
-import { MickeyIcon } from "utils/icons";
 
 import MapContents from "./MapContents";
 
@@ -14,10 +13,6 @@ Add dropdown for requesting directions.
 const Map = () => {
   return (
     <Box>
-      {/* <Box border="1px solid #ccc">
-        <MickeyIcon />
-      </Box> */}
-
       <MapContainer
         maxBounds={[
           [28.2, -81.8],
