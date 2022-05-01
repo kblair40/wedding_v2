@@ -97,16 +97,17 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
         // border: "1px solid red"
       }}
     >
-      <Text fontSize="md" fontWeight="500">
+      <Text fontSize="md" fontWeight="400">
         Please enter the first and last name of one member of your party below.
       </Text>
-      <Text mt="4px" fontSize="md" fontWeight="500">
+      <Text mt="8px" fontSize="md" fontWeight="400">
         If you're responding for you and a guest (or your family), you'll be
         able to RSVP for your entire group on the next page.
       </Text>
-      <HStack w="100%" mt="32px" spacing={{ base: "16px", sm: "32px" }}>
+
+      <HStack w="100%" mt="24px" spacing={{ base: "16px", sm: "32px" }}>
         <Input
-          pl="1rem"
+          pl=".5rem"
           variant="flushed"
           onChange={handleChange}
           w="100%"
@@ -140,7 +141,6 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
       </HStack>
 
       {notFoundError && (
-        // <Flex alignItems="flex-end" d="inline-flex" border="1px solid #bbb">
         <Box d="inline">
           <Text mt="12px" mr="4px" display="inline" fontSize="sm">
             Sorry, we couldn't find anyone with the name you entered. If you're
@@ -161,8 +161,12 @@ const GuestSearch = ({ getSearchResults, showHelp }) => {
             HERE
           </Button>
         </Box>
-        // </Flex>
       )}
+
+      <Text mt="8px" fontSize="sm" fontWeight="500" color="text.secondary">
+        *Tip - Try using short and long versions of your first name. &nbsp;Ex.
+        If your first name is James, try using Jim
+      </Text>
     </form>
   );
 };
