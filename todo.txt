@@ -6,4 +6,4 @@
 5. rsvp not quite responsive enough for mobile.
   - Also test auth flow
 6. Look up tips for dealing with safari and chrome bottom bars
-7. Maybe CountdownTimer could go in a SpeedDial type of component that shows when you hover over it only
+7. Vertically center align gallery images
