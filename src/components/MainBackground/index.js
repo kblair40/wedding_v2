@@ -18,10 +18,15 @@ const MainBackground = ({
   const [atAllInViewRef, atAllInView] = useInView({ threshold: 0.03 });
 
   const imageRef = useRef();
+  const arrowDownRef = useRef();
 
   const fadeInImage = () => {
     gsap.to(imageRef.current, { duration: ".5", opacity: 1 });
   };
+
+  useEffect(() => {
+    gsap.to(arrowDownRef.current, { duration: 0.5, delay: 1, opacity: 1 });
+  }, []);
 
   useEffect(() => {
     if (atAllInView) {
@@ -76,7 +81,15 @@ const MainBackground = ({
           <OurNames />
         </Box>
 
-        <ArrowDown />
+        <Box
+          w="100%"
+          ref={arrowDownRef}
+          d="flex"
+          justifyContent="center"
+          opacity={0}
+        >
+          <ArrowDown />
+        </Box>
       </Box>
     </Box>
   );
