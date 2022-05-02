@@ -146,6 +146,7 @@ const RSVP = ({ setInView }) => {
   return (
     <Box
       bg="#f7f5f1"
+      // bg="primary.100"
       w="100%"
       pb="32px"
       px="24px"

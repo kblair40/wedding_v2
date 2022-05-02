@@ -57,7 +57,7 @@ const Main = ({
 
       <WhenAndWhere />
 
-      <Box ref={rsvpRef} {...boxStyle}>
+      <Box {...boxStyle} ref={rsvpRef}>
         <RSVP setInView={() => handleChangeSectionInView("rsvp")} />
       </Box>
 
@@ -65,7 +65,7 @@ const Main = ({
         <Travel setInView={() => handleChangeSectionInView("travel")} />
       </Box>
 
-      <Box ref={activitiesRef} {...boxStyle}>
+      <Box {...boxStyle} ref={activitiesRef}>
         <Activities setInView={() => handleChangeSectionInView("activities")} />
       </Box>
 
@@ -75,7 +75,7 @@ const Main = ({
         />
       </Box>
 
-      <Box ref={galleryRef} {...boxStyle}>
+      <Box {...boxStyle} ref={galleryRef}>
         <Gallery setInView={() => handleChangeSectionInView("gallery")} />
       </Box>
     </Box>
