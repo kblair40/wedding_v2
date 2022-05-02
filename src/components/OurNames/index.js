@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Flex, Text, Heading, useBreakpointValue } from "@chakra-ui/react";
+import { gsap } from "gsap";
 
 const OurNames = () => {
   const headingStyles = {
@@ -22,8 +23,14 @@ const OurNames = () => {
     letterSpacing: "2px",
   };
 
+  useEffect(() => {
+    gsap.to(".names-container", { duration: 0.5, delay: 1, opacity: 1 });
+  }, []);
+
   return (
     <Flex
+      className="names-container"
+      opacity={0}
       mx="auto"
       p="8px"
       w="min-content"
@@ -51,23 +58,8 @@ const OurNames = () => {
         mt="0px"
         flexDirection={{ base: "column", md: "row" }}
       >
-        <Text
-          {...dateLocStyles}
-          // color="#fff"
-          // letterSpacing="2.5px"
-          // fontWeight={{ base: "500", md: "400" }}
-          // fontSize={{ base: "md", sm: "lg" }}
-        >
-          JANUARY 21, 2023
-        </Text>
-        <Text
-          ml={{ md: "1rem" }}
-          {...dateLocStyles}
-          // color="#fff"
-          // letterSpacing="2.5px"
-          // fontWeight={{ base: "500", md: "400" }}
-          // fontSize={{ base: "md", sm: "lg" }}
-        >
+        <Text {...dateLocStyles}>JANUARY 21, 2023</Text>
+        <Text ml={{ md: "1rem" }} {...dateLocStyles}>
           WINTER PARK, FL
         </Text>
       </Flex>
