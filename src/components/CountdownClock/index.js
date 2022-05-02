@@ -2,20 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import { Box, IconButton } from "@chakra-ui/react";
 import { MdOutlineChevronRight } from "react-icons/md";
 import { useLocalstorageState } from "rooks";
+import { gsap } from "gsap";
 
 import ClockBody from "./ClockBody";
 import "./index.css";
 
 const CountdownClock = () => {
   const [ready, setReady] = useState(false);
-  const [showClock, setShowClock] = useLocalstorageState("showClock");
+  const [showClock, setShowClock] = useLocalstorageState("showClock", false);
   const [clockOpacity, setClockOpacity] = useState(0);
 
   const containerRef = useRef();
   const showButtonRef = useRef();
 
   useEffect(() => {
-    setReady(Boolean(containerRef.current) && Boolean(showButtonRef.current));
+    const isReady =
+      Boolean(containerRef.current) && Boolean(showButtonRef.current);
+    setReady(isReady);
+
+    if (isReady) {
+      gsap.to(".vertical-center", { duration: 0.5, delay: 0.75, opacity: 1 });
+    }
   }, [containerRef.current, showButtonRef.current]);
 
   useEffect(() => {
@@ -34,7 +41,6 @@ const CountdownClock = () => {
     if (!ready) return;
 
     if (showClock) {
-      // console.log("\n\n SHOW THE CLOCK \n\n");
       showButtonRef.current.classList.remove("slide-in"); // new
       showButtonRef.current.classList.add("slide-out");
       setTimeout(() => {
@@ -65,13 +71,12 @@ const CountdownClock = () => {
   };
 
   return (
-    <Box className="vertical-center">
+    <Box className="vertical-center" opacity={0}>
       <React.Fragment>
         <Box
           ref={containerRef}
-          // opacity={clockOpacity}
+          opacity={clockOpacity}
           left={0}
-          // transition="opacity .3s"
           p="8px"
           borderRadius="0 2px 2px 0"
           shadow="md"
