@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Box, Icon, Flex, Text, Image } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { BsChevronDown } from "react-icons/bs";
+import { gsap } from "gsap";
 
 import mainbg from "assets/images/mainbg.jpg";
 import OurNames from "components/OurNames";
-import LogoText from "components/LogoText";
 
 const MainBackground = ({
   setInView,
@@ -17,8 +17,13 @@ const MainBackground = ({
 
   const [atAllInViewRef, atAllInView] = useInView({ threshold: 0.03 });
 
+  const imageRef = useRef();
+
+  const fadeInImage = () => {
+    gsap.to(imageRef.current, { duration: ".5", opacity: 1 });
+  };
+
   useEffect(() => {
-    // console.log("\n\n\n\nAT ALL IN VIEW:", atAllInView, "\n\n\n\n");
     if (atAllInView) {
       handleEnterTopSection();
     } else {
@@ -27,9 +32,7 @@ const MainBackground = ({
   }, [atAllInView]);
 
   useEffect(() => {
-    // console.log("HOME IN VIEW:", inView);
     if (inView) {
-      // console.log("HOME IN VIEW:", inView);
       setInView("top");
     }
   }, [inView]);
@@ -46,9 +49,13 @@ const MainBackground = ({
       >
         <Image
           src={mainbg}
+          opacity={0}
           boxSize="100%"
           position="absolute"
           objectFit="cover"
+          loading="eager"
+          ref={imageRef}
+          onLoad={fadeInImage}
         />
 
         <Box
@@ -58,17 +65,6 @@ const MainBackground = ({
           bgImage="linear-gradient(rgba(0, 0, 0, 0.45),
         rgba(0, 0, 0, 0.2))"
         />
-
-        {/* <Box
-          position="absolute"
-          top={{ base: "64px", md: "80px" }}
-          left="0"
-          boxSize="100%"
-          zIndex={1000000}
-          transform="scale(1)"
-        >
-          <LogoText />
-        </Box> */}
 
         <Box
           position="absolute"
