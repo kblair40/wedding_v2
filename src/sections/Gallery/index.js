@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  Flex,
-  Modal,
-  ModalContent,
-  ModalCloseButton,
-  Box,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, Modal, ModalContent, Box, IconButton } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
+import { MdClose } from "react-icons/md";
 
 import GalleryImages from "components/GalleryImages";
 import GalleryImageCarousel from "components/GalleryImageCarousel";
@@ -106,12 +100,16 @@ const Gallery = ({ setInView }) => {
               size="full"
             >
               <ModalContent bg="rgba(0, 0, 0, .7)" px="8px" overflow="hidden">
-                <ModalCloseButton
-                  right="8px"
-                  zIndex={1}
+                <IconButton
+                  zIndex={10000}
+                  onClick={() => setShowCarousel(false)}
+                  position="absolute"
+                  right={{ base: "8px", sm: "16px" }}
+                  top={{ base: "8px", sm: "16px" }}
+                  _hover={{ bg: "text.tertiary" }}
+                  _active={{ bg: "neutral.black" }}
                   bg="neutral.black"
-                  transition=".3s ease-in-out"
-                  color="neutral.white"
+                  icon={<MdClose fill="white" size={24} />}
                 />
                 <Flex alignItems="center" h="100vh">
                   <GalleryImageCarousel
