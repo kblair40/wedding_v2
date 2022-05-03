@@ -35,7 +35,7 @@ const Gallery = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
 
   useEffect(() => {
-    console.log("GALLERY IN VIEW:", inView);
+    // console.log("GALLERY IN VIEW:", inView);
     if (inView) {
       setInView("gallery");
     }

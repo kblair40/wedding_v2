@@ -13,9 +13,9 @@ const RSVPSuccessModal = ({ isOpen, onClose, respondingGuestNames: names }) => {
   const [nameString, setNameString] = useState("");
 
   useEffect(() => {
-    console.log("\n\n\n");
-    console.log({ names });
-    console.log("\n\n\n");
+    // console.log("\n\n\n");
+    // console.log({ names });
+    // console.log("\n\n\n");
 
     if (names.length === 1) {
       setNameString(`${names[0]}, `);
@@ -29,7 +29,7 @@ const RSVPSuccessModal = ({ isOpen, onClose, respondingGuestNames: names }) => {
       });
 
       let uniqueLastNameCount = getNumOfUniqueValues(lastNames);
-      console.log("\n\nuniqueLastNameCount:", uniqueLastNameCount);
+      // console.log("\n\nuniqueLastNameCount:", uniqueLastNameCount);
       if (names.length === 2) {
         if (uniqueLastNameCount === 1) {
           setNameString(

@@ -38,7 +38,7 @@ const WeddingParty = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
 
   useEffect(() => {
-    console.log("WEDDING PARTY IN VIEW:", inView);
+    // console.log("WEDDING PARTY IN VIEW:", inView);
     if (inView) {
       setInView("weddingParty");
     }

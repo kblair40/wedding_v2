@@ -15,7 +15,6 @@ const Main = ({
   handleLeaveTopSection,
   handleEnterTopSection,
 }) => {
-  console.log("\n\n\n\n\n PUSH WORKED!!!!\n\n\n\n\n\n\n");
   const topRef = useRef();
   const travelRef = useRef();
   const scheduleRef = useRef();

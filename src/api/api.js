@@ -32,26 +32,26 @@ export const addGuest = async ({
   significant_other,
   other_family,
 }) => {
-  console.log("DATA RECEIVED", {
-    first_name,
-    last_name,
-    priority,
-    att_exp,
-    replied,
-    dinner_selection,
-    dinner_selection_notes,
-    age_range,
-    special_requests,
-    plus_one,
-    attending,
-    email,
-    phone_number,
-    side,
-    passcode,
-    significant_other,
-    other_family,
-    timestamp: Timestamp.now(),
-  });
+  // console.log("DATA RECEIVED", {
+  //   first_name,
+  //   last_name,
+  //   priority,
+  //   att_exp,
+  //   replied,
+  //   dinner_selection,
+  //   dinner_selection_notes,
+  //   age_range,
+  //   special_requests,
+  //   plus_one,
+  //   attending,
+  //   email,
+  //   phone_number,
+  //   side,
+  //   passcode,
+  //   significant_other,
+  //   other_family,
+  //   timestamp: Timestamp.now(),
+  // });
 
   try {
     const inviteesRef = collection(db, "invitees");
@@ -75,11 +75,11 @@ export const addGuest = async ({
       other_family,
       timestamp: Timestamp.now(),
     });
-    console.log("RESPONSE:", dbResponse);
+    // console.log("RESPONSE:", dbResponse);
   } catch (err) {
     console.error("FAILED ADDING GUEST:", err);
   }
-  console.log("\ndatabase:", db);
+  // console.log("\ndatabase:", db);
 };
 
 export const getAllInvitees = async () => {
@@ -102,7 +102,7 @@ export const getAllInvitees = async () => {
 };
 
 export const patchGuest = async (id, data) => {
-  console.log("\n\n\n\nPATCH GUEST DATA", { id, data });
+  // console.log("\n\n\n\nPATCH GUEST DATA", { id, data });
   let guestRef = doc(db, "invitees", id);
 
   let patchData = {
@@ -115,9 +115,9 @@ export const patchGuest = async (id, data) => {
   try {
     // let patchRes = await updateDoc(guestRef, patchData);
     let patchRes = await setDoc(guestRef, patchData, { merge: true });
-    console.log("\nPATCH RES:", patchRes);
+    // console.log("\nPATCH RES:", patchRes);
   } catch (err) {
-    console.log("FAILED PATCHING GUEST:", err);
+    // console.log("FAILED PATCHING GUEST:", err);
   }
 
   // console.log("\n\n\n\n");
@@ -135,27 +135,27 @@ export const getGuestByName = async (fn, ln) => {
 
     const invitees = await getDocs(q);
     const inviteeDocs = invitees.docs;
-    console.log("INVITEE DOCS:", inviteeDocs);
+    // console.log("INVITEE DOCS:", inviteeDocs);
 
     if (inviteeDocs.length) {
-      inviteeDocs.forEach((doc) => console.log("NAME DOC:", doc.data()));
+      // inviteeDocs.forEach((doc) => console.log("NAME DOC:", doc.data()));
 
-      console.log(
-        "GET GUEST RETURNING:",
-        inviteeDocs[0].data(),
-        inviteeDocs[0].id
-      );
+      // console.log(
+      //   "GET GUEST RETURNING:",
+      //   inviteeDocs[0].data(),
+      //   inviteeDocs[0].id
+      // );
       const id = inviteeDocs[0].id;
       return { ...inviteeDocs[0].data(), id };
     }
   } catch (err) {
-    console.log("QUERY FAILED!");
+    console.warn("QUERY FAILED");
   }
 };
 
 export const getRelatedGuests = async (names) => {
   if (!names.length) return;
-  else console.log("NAMES RECEIVED:", names);
+  // else console.log("NAMES RECEIVED:", names);
 
   const inviteesRef = collection(db, `invitees`);
 
@@ -201,10 +201,10 @@ export const getGuest = async (passcode) => {
     if (inviteeDocs.length) {
       inviteeDocs.forEach((doc) => console.log("DOC:", doc.data()));
 
-      console.log("GET GUEST RETURNING:", inviteeDocs[0].data());
+      // console.log("GET GUEST RETURNING:", inviteeDocs[0].data());
       return inviteeDocs[0].data();
     }
   } catch (err) {
-    console.log("QUERY FAILED!");
+    console.warn("QUERY FAILED");
   }
 };

@@ -32,17 +32,17 @@ const PaymentForm = () => {
           // requestPayerEmail: true,
         });
 
-        console.log("\n\nPR OBJECT:", pr);
+        // console.log("\n\nPR OBJECT:", pr);
         let cmp = await pr.canMakePayment();
-        console.log("Can make payment:", cmp);
+        // console.log("Can make payment:", cmp);
 
         // Check the availability of the Payment Request API.
         pr.canMakePayment().then((result) => {
           if (result) {
-            console.log("SUCCESS RESULT:", result);
+            // console.log("SUCCESS RESULT:", result);
             setPaymentRequest(pr);
           } else {
-            console.log("FAILED RESULT:", result);
+            // console.log("FAILED RESULT:", result);
           }
         });
       }

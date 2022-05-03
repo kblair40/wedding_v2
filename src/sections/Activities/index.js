@@ -9,7 +9,7 @@ const Activities = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
 
   useEffect(() => {
-    console.log("ACTIVITIES IN VIEW:", inView);
+    // console.log("ACTIVITIES IN VIEW:", inView);
     if (inView) {
       setInView("activities");
     }

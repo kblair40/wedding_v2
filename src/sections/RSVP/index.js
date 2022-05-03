@@ -41,14 +41,14 @@ const RSVP = ({ setInView }) => {
   };
 
   useEffect(() => {
-    console.log("RSVP inView:", inView);
+    // console.log("RSVP inView:", inView);
     if (inView) {
       setInView("rsvp");
     }
   }, [inView]);
 
   const getSearchResults = (guest, relatedGuests) => {
-    console.log("SEARCH RESULTS:", { guest, relatedGuests });
+    // console.log("SEARCH RESULTS:", { guest, relatedGuests });
     setGuest(guest);
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
@@ -102,14 +102,14 @@ const RSVP = ({ setInView }) => {
   };
 
   const getCheckedGuests = (guestIndexes) => {
-    console.log("\n\nINDEXES:", guestIndexes);
+    // console.log("\n\nINDEXES:", guestIndexes);
     setCheckedGuests(guestIndexes);
 
     transitionTwoToThree();
   };
 
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
-    console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
+    // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
     let names = Object.keys(data).filter((name) => name !== "anythingElse");
 
     for (let name of names) {
@@ -129,7 +129,7 @@ const RSVP = ({ setInView }) => {
         ...guestData,
         special_requests: data.special_requests,
       });
-      console.log("RES:", res);
+      // console.log("RES:", res);
     }
     return true;
   };

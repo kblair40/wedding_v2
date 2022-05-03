@@ -24,7 +24,7 @@ const SelectGuestsForm = ({
   relatedGuests,
   handleChangeRespondingGuests,
 }) => {
-  console.log("\n\nGUEST:", guest);
+  // console.log("\n\nGUEST:", guest);
   const [loading, setLoading] = useState(false);
   // const [relatedGuests, setRelatedGuests] = useState(null);
   const [checkedGuests, setCheckedGuests] = useState([]);
@@ -51,7 +51,7 @@ const SelectGuestsForm = ({
 
         if (others.length) {
           const response = await getRelatedGuests(others);
-          console.log("\nRESPONSE:", response);
+          // console.log("\nRESPONSE:", response);
 
           if (response.length) {
             setRelatedGuests(response);

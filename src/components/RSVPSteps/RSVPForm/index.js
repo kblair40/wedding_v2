@@ -50,7 +50,7 @@ const RSVPForm = ({
         respondants.push(relatedGuests[idx]);
       }
     }
-    console.log("RESPONDING GUESTS:", respondants);
+    // console.log("RESPONDING GUESTS:", respondants);
     setRespondingGuests(respondants);
 
     let guestNames = respondants.map((respondant) =>
@@ -73,7 +73,7 @@ const RSVPForm = ({
         blankDataObjects[name] = blankFormData;
       }
 
-      console.log("\n\nBLANK OBJECTS:", blankDataObjects);
+      // console.log("\n\nBLANK OBJECTS:", blankDataObjects);
       setFormData(blankDataObjects);
     } else {
       setFormData({ [guestNames[0]]: blankFormData });
@@ -81,7 +81,7 @@ const RSVPForm = ({
   }, [relatedGuests, checkedGuests]);
 
   const handleChangeAttendance = (val, name) => {
-    console.log("CHANGE ATTENDANCE:", { val, name });
+    // console.log("CHANGE ATTENDANCE:", { val, name });
     setFormData({
       ...formData,
       [name]: { ...formData[name], attending: val },

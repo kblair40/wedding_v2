@@ -32,7 +32,7 @@ const SelectGuests = ({
   }, [relatedGuests]);
 
   const handleChangeRespondingGuests = (val) => {
-    console.log("VALUE:", val);
+    // console.log("VALUE:", val);
     if (checkedGuests.includes(val)) {
       setCheckedGuests(checkedGuests.filter((idx) => idx !== val));
     } else {

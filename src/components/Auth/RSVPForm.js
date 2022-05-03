@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 
 const RSVPForm = ({ guest, relatedGuests, checkedGuests, handleSubmit }) => {
-  console.log("\n\nRSVP FORM RCVD:", { guest, relatedGuests, checkedGuests });
+  // console.log("\n\nRSVP FORM RCVD:", { guest, relatedGuests, checkedGuests });
 
   const [respondingGuests, setRespondingGuests] = useState([]);
   const [respondingGuestNames, setRespondingGuestNames] = useState([]);
@@ -60,7 +60,7 @@ const RSVPForm = ({ guest, relatedGuests, checkedGuests, handleSubmit }) => {
       for (let name of guestNames) {
         blankDataObjects[name] = blankFormData;
       }
-      console.log("\n\nBLANK OBJECTS:", blankDataObjects);
+      // console.log("\n\nBLANK OBJECTS:", blankDataObjects);
       setFormData(blankDataObjects);
     }
   }, [relatedGuests, checkedGuests]);

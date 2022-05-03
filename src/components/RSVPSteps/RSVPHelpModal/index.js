@@ -17,7 +17,7 @@ const RSVPHelpModal = ({ isOpen, onClose }) => {
   const toast = useToast();
 
   const handleSubmit = async (data, addAnother = false) => {
-    console.log("DATA:", data);
+    // console.log("DATA:", data);
     try {
       const res = await emailjs.send(
         "service_ujghu3o",
@@ -25,7 +25,7 @@ const RSVPHelpModal = ({ isOpen, onClose }) => {
         data,
         key
       );
-      console.log("RES:", res);
+      // console.log("RES:", res);
       let message;
       if (data.attending === "yes") {
         message = "We'll see you there!";
@@ -41,7 +41,7 @@ const RSVPHelpModal = ({ isOpen, onClose }) => {
         isClosable: true,
       });
     } catch (err) {
-      console.log("FAILED SENDING EMAIL");
+      console.warn("FAILED SENDING EMAIL");
     }
   };
 

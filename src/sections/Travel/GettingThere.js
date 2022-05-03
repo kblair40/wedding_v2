@@ -13,11 +13,12 @@ const GettingThere = ({ setInView }) => {
   const [inViewRef, inView] = useInView(options);
 
   useEffect(() => {
-    console.log("travelInView:", inView);
+    // console.log("travelInView:", inView);
     if (inView) {
       setInView("travel");
     }
   }, [inView]);
+
   return (
     <Box bg="#fff" w="100%">
       <Flex direction="column" alignItems="center">

@@ -14,12 +14,12 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
 
     let nameArray = searchInput.trim().split(" ");
     if (nameArray.length < 2) {
-      console.log("error1");
+      // console.log("error1");
       setErrorMsg("First and last names are both required");
       return;
     } else if (nameArray.length > 2) {
       setErrorMsg("Please only enter your first and last name");
-      console.log("error2");
+      // console.log("error2");
       return;
     }
 
@@ -27,7 +27,7 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
     fn = toTitleCase(fn);
     ln = toTitleCase(ln);
 
-    console.log("INPUT NAMES:", { fn, ln });
+    // console.log("INPUT NAMES:", { fn, ln });
     handleSubmitSearch(fn, ln);
   };
 
@@ -37,9 +37,9 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
     let guest;
     try {
       guest = await getGuestByName(fn, ln);
-      console.log("GUEST:", guest);
+      // console.log("GUEST:", guest);
     } catch (err) {
-      console.log("FAILED TO RETRIEVE GUEST");
+      console.warn("FAILED TO RETRIEVE GUEST");
     }
 
     if (!guest) {
@@ -55,20 +55,20 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       if (guest.significant_other) relatedGuests.push(guest.significant_other);
       if (guest.other_family) {
         let family = guest.other_family.split(", ");
-        console.log("\nFAMILY:", family);
+        // console.log("\nFAMILY:", family);
         relatedGuests = [...relatedGuests, ...family];
-        console.log("\nALL RELATED GUESTS:", relatedGuests);
+        // console.log("\nALL RELATED GUESTS:", relatedGuests);
       }
 
       if (relatedGuests.length) {
         let response = await getRelatedGuests(relatedGuests);
-        console.log("\nGET RELATED GUESTS RESPONSE:", response);
+        // console.log("\nGET RELATED GUESTS RESPONSE:", response);
         if (response) {
           getSearchResults(guest, response); // pass back to parent (RSVP page);
         }
       }
     } else {
-      console.log("no other family / significant other");
+      // console.log("no other family / significant other");
       getSearchResults(guest);
     }
 

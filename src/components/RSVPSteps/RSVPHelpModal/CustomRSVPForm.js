@@ -45,7 +45,7 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
       dinner_selection: dinnerSelection,
       attending: attending,
     };
-    console.log("FORM DATA:", formData);
+    // console.log("FORM DATA:", formData);
 
     const requiredFields = ["first_name", "last_name", "attending"];
 
@@ -56,7 +56,7 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
     }
 
     if (!validateForm(formData, requiredFields)) {
-      console.log("\n", { valid: true });
+      // console.log("\n", { valid: true });
       return;
     }
 
@@ -84,19 +84,19 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
   };
 
   const validateForm = (data, fields) => {
-    console.log({ data, fields });
+    // console.log({ data, fields });
     let isValid = true;
     let missingFields = [];
     for (let field of fields) {
       if (!data[field]) {
-        console.log("FAILED ON", field);
+        // console.log("FAILED ON", field);
         isValid = false;
         missingFields.push(field);
       }
     }
 
     if (missingFields.length) {
-      console.log({ missingFields });
+      // console.log({ missingFields });
 
       setMissingFields(missingFields);
     }
