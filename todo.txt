@@ -1,8 +1,6 @@
 1. Add Registry section
 2. Add animated spinner on Casa Feliz on leaflet map.
 3. Whole wedding party needs pictures
-4. Look into custom domains on netlify 
-  - https://docs.netlify.com/domains-https/custom-domains/?_ga=2.32618046.1035679050.1651067155-1108596215.1650113601
 5. rsvp not quite responsive enough for mobile.
   - Also test auth flow
 6. Look up tips for dealing with safari and chrome bottom bars
