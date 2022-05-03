@@ -61,13 +61,7 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
   };
 
   return (
-    <Box
-      position="relative"
-      height="90vh"
-      width="100%"
-      overflow="hidden"
-      pt="12px"
-    >
+    <Box position="relative" width="100%" overflow="hidden" pt="12px">
       <IconButton
         aria-label="left-arrow"
         left={{ base: "8px", sm: "16px" }}
@@ -100,7 +94,7 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
               src={url}
               maxH="80vh"
               maxW="100%"
-              borderRadius="4px"
+              borderRadius="2px"
             />
           </Flex>
         ))}

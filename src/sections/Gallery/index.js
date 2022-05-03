@@ -104,7 +104,7 @@ const Gallery = ({ setInView }) => {
                   zIndex={10000}
                   onClick={() => setShowCarousel(false)}
                   position="absolute"
-                  right={{ base: "8px", sm: "16px" }}
+                  left={{ base: "16px", sm: "24px" }}
                   top={{ base: "8px", sm: "16px" }}
                   _hover={{ bg: "text.tertiary" }}
                   _active={{ bg: "neutral.black" }}
