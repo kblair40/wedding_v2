@@ -5,7 +5,6 @@
   - Also test auth flow
 6. Look up tips for dealing with safari and chrome bottom bars
 7. Vertically center align gallery images
-8. Protect admin page (maybe 4 digit password?)
 9. Add left/right arrow key interactions to Gallery
 
 
