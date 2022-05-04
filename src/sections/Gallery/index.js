@@ -113,7 +113,7 @@ const Gallery = ({ setInView }) => {
                   position="absolute"
                   left={{ base: "16px", sm: "24px" }}
                   top={{ base: "8px", sm: "16px" }}
-                  _hover={{ bg: "text.tertiary" }}
+                  _hover={{ bg: "#2d2d2d" }}
                   _active={{ bg: "neutral.black" }}
                   bg="neutral.black"
                   icon={<MdClose fill="white" size={24} />}
