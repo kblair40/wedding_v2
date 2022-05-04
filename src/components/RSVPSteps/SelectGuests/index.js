@@ -125,7 +125,7 @@ const SelectGuests = ({
       </Box>
 
       <HStack
-        border="1px solid black"
+        // border="1px solid black"
         pt="16px"
         justifyContent="flex-end"
         opacity={showNextButton ? 1 : 0}

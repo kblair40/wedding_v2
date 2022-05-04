@@ -216,6 +216,11 @@ const RSVP = ({ setInView }) => {
         <SelectGuestsModal
           isOpen={SelectGuestsModal}
           onClose={() => setShowSelectGuestsModal(false)}
+          startOver={startOver}
+          checkedGuests={checkedGuests}
+          getCheckedGuests={getCheckedGuests}
+          guest={guest}
+          relatedGuests={relatedGuests}
         />
       )}
 
