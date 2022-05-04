@@ -67,28 +67,11 @@ const SelectGuests = ({
             Who would you like to respond for? (check all that apply)
           </FormLabel>
           {guest && (
-            <Flex
-              alignItems="flex-end"
-              // border="1px solid blue"
-              //
-              mb="8px"
-            >
-              <Checkbox
-                // pb="8px"
-                isChecked={true}
-                fontWeight="400"
-                // border="1px solid orange"
-                // alignItems="center"
-              >
+            <Flex alignItems="flex-end" mb="8px">
+              <Checkbox isChecked={true} fontWeight="400">
                 {`${guest.first_name} ${guest.last_name}`}
               </Checkbox>
-              <Text
-                ml="8px"
-                // lineHeight="100%"
-                fontSize="sm"
-                fontStyle="italic"
-                // border="1px solid red"
-              >
+              <Text ml="8px" fontSize="sm" fontStyle="italic">
                 Not you?
               </Text>
               <Box
@@ -125,7 +108,6 @@ const SelectGuests = ({
       </Box>
 
       <HStack
-        // border="1px solid black"
         pt="16px"
         justifyContent="flex-end"
         opacity={showNextButton ? 1 : 0}

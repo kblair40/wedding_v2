@@ -55,7 +55,8 @@ const RSVP = ({ setInView }) => {
     setGuest(guest);
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
-      transitionOneToTwo();
+      setShowSelectGuestsModal(true);
+      // transitionOneToTwo();
     } else {
       getCheckedGuests([]);
       transitionOneToThree();
@@ -217,7 +218,6 @@ const RSVP = ({ setInView }) => {
           isOpen={SelectGuestsModal}
           onClose={() => setShowSelectGuestsModal(false)}
           startOver={startOver}
-          checkedGuests={checkedGuests}
           getCheckedGuests={getCheckedGuests}
           guest={guest}
           relatedGuests={relatedGuests}
