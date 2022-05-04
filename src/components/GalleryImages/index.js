@@ -6,13 +6,14 @@ import GalleryImage from "./GalleryImage";
 
 const GalleryImages = ({ imagesArray, onClick }) => {
   const colBreakpoints = {
-    default: 2,
+    default: 4,
     768: 2,
     1280: 3,
   };
 
   return (
     <Box
+      px="8px"
       mt="32px"
       sx={{
         ".masonry-grid": {
