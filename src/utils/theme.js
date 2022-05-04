@@ -103,6 +103,13 @@ const theme = extendTheme({
     },
   },
   components: {
+    Modal: {
+      baseStyle: {
+        dialogContainer: {
+          "@supports(height: -webkit-fill-available)": {},
+        },
+      },
+    },
     Radio: {
       defaultProps: {
         colorScheme: "darkScheme",
