@@ -100,13 +100,7 @@ const Gallery = ({ setInView }) => {
               size="full"
               scrollBehavior="inside"
             >
-              <ModalContent
-                bg="rgba(0, 0, 0, .7)"
-                px="8px"
-                h="100vh"
-                border="2px solid red"
-                // overflow="hidden"
-              >
+              <ModalContent bg="rgba(0, 0, 0, .7)" px="8px" h="100vh">
                 <IconButton
                   zIndex={10000}
                   onClick={() => setShowCarousel(false)}
