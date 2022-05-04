@@ -12,7 +12,7 @@ const GalleryImage = ({ src, onClick }) => {
       position="relative"
     >
       <Image src={src} maxWidth="100%" />
-      <Description open={descOpen} />
+      <Description open={descOpen} src={src} />
     </Box>
   );
 };
@@ -20,7 +20,7 @@ const GalleryImage = ({ src, onClick }) => {
 export default GalleryImage;
 
 const description = "Aliqua nulla Lorem est consequat";
-const Description = ({ open }) => {
+const Description = ({ open, src }) => {
   return (
     <Collapse in={open} startingHeight={0}>
       <Box
@@ -32,7 +32,8 @@ const Description = ({ open }) => {
         left={0}
         right={0}
       >
-        <Text color="neutral.white">{description}</Text>
+        {/* <Text color="neutral.white">{description}</Text> */}
+        <Text color="neutral.white">{src}</Text>
       </Box>
     </Collapse>
   );
