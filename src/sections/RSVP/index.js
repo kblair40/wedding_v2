@@ -7,6 +7,7 @@ import { patchGuest } from "api/api";
 import RSVPForm from "components/RSVPSteps/RSVPForm";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
 import SelectGuests from "components/RSVPSteps/SelectGuests";
+import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
 import SectionLabel from "components/SectionLabel";
 
@@ -22,6 +23,8 @@ const RSVP = ({ setInView }) => {
   const [step3Class, setStep3Class] = useState("hidden");
   const [showHelp, setShowHelp] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+
+  const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
 
   let navigate = useNavigate();
 
@@ -208,6 +211,13 @@ const RSVP = ({ setInView }) => {
           </Box>
         </Box>
       </Flex>
+
+      {showSelectGuestsModal && (
+        <SelectGuestsModal
+          isOpen={SelectGuestsModal}
+          onClose={() => setShowSelectGuestsModal(false)}
+        />
+      )}
 
       {showHelp && <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />}
     </Box>

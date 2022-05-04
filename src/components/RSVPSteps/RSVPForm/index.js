@@ -11,6 +11,7 @@ import {
   Divider,
   Button,
   Textarea,
+  Flex,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -194,7 +195,10 @@ const RSVPForm = ({
           <Divider my="16px" />
 
           {!multipleRespondants ? (
-            <HStack alignItems="flex-end">
+            <Flex
+              alignItems={{ sm: "flex-end" }}
+              flexDirection={{ base: "column", sm: "row" }}
+            >
               <FormControl w="50%">
                 <FormLabel fontWeight="500" whiteSpace="nowrap">
                   Please select a dinner entree
@@ -209,18 +213,28 @@ const RSVPForm = ({
                     )
                   }
                 >
-                  <HStack spacing="16px" flexWrap="wrap">
+                  <Flex
+                    direction={{ base: "column", sm: "row" }}
+                    flexWrap="wrap"
+                  >
                     <Radio value="chicken">Chicken</Radio>
-                    <Radio value="beef">Beef</Radio>
-                  </HStack>
+                    <Radio
+                      ml={{ sm: "16px" }}
+                      mt={{ base: "4px", sm: 0 }}
+                      value="beef"
+                    >
+                      Beef
+                    </Radio>
+                  </Flex>
                 </RadioGroup>
               </FormControl>
 
               <Input
+                mt={{ base: "4px", sm: 0 }}
                 position="relative"
                 top="2px"
                 focusBorderColor="text.tertiary"
-                w="50%"
+                w={{ base: "100%", sm: "50%" }}
                 placeholder="Any allergies? (optional)"
                 _placeholder={{ color: "text.tertiary" }}
                 size="sm"
@@ -232,7 +246,7 @@ const RSVPForm = ({
                   )
                 }
               />
-            </HStack>
+            </Flex>
           ) : (
             <FormControl>
               <FormLabel fontWeight="500">

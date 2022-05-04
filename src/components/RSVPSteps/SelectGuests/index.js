@@ -125,6 +125,7 @@ const SelectGuests = ({
       </Box>
 
       <HStack
+        border="1px solid black"
         pt="16px"
         justifyContent="flex-end"
         opacity={showNextButton ? 1 : 0}
@@ -137,7 +138,7 @@ const SelectGuests = ({
           rightIcon={<ArrowForwardIcon />}
           onClick={() => {
             handleSubmit();
-            setShowNextButton(false);
+            // setShowNextButton(false);
           }}
           color="neutral.black"
           fontWeight="500"

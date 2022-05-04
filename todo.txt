@@ -4,8 +4,8 @@
 5. rsvp not quite responsive enough for mobile.
   - Also test auth flow
 6. Look up tips for dealing with safari and chrome bottom bars
-7. Vertically center align gallery images
-9. Add left/right arrow key interactions to Gallery
+7. Put gallery image arrows fixed to left/right sides of screen on mobile (<480px)
+8. RSVP needs to go in a modal (after searching)
 
 
 non-code stuff
