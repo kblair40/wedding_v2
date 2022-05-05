@@ -28,7 +28,7 @@ const RSVPFormModal = ({
   guest,
   relatedGuests,
   checkedGuests,
-  handleSubmit,
+  onSubmit,
   startOver,
 }) => {
   const [respondingGuests, setRespondingGuests] = useState([]);
@@ -36,13 +36,44 @@ const RSVPFormModal = ({
   const [multipleRespondants, setMultipleRespondants] = useState(null);
   const [attendingNames, setAttendingNames] = useState([]);
   const [formData, setFormData] = useState(null);
+  const [formComplete, setFormComplete] = useState(false);
   // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const anythingElseRef = useRef();
+  const shouldLog = useRef(true);
 
   const formatName = (fn, ln) => {
     return `${fn} ${ln}`;
   };
+
+  useEffect(() => {
+    if (!shouldLog.current) return;
+
+    console.log("\n\n\n\nFORM DATA:", formData);
+
+    for (let guest in formData) {
+      console.log("GUEST - CHECK FOR COMPLETION:", guest);
+
+      const { dinner_selection, attending } = formData[guest];
+      console.log("attending? ", attending);
+      console.log("dinner_selection? ", dinner_selection);
+
+      if (attending === undefined) {
+        console.log("INCOMPLETE1");
+        setFormComplete(false);
+        return;
+      } else if (attending === "yes") {
+        if (!dinner_selection) {
+          console.log("INCOMPLETE2");
+          setFormComplete(false);
+          return;
+        }
+      }
+    }
+
+    console.log("COMPLETE");
+    setFormComplete(true);
+  }, [formData]);
 
   useEffect(() => {
     if (!guest) return;
@@ -109,7 +140,8 @@ const RSVPFormModal = ({
   };
 
   const sendFormData = async () => {
-    let res = await handleSubmit(
+    shouldLog.current = false;
+    let res = await onSubmit(
       {
         ...formData,
         special_requests: anythingElseRef.current.value,
@@ -117,14 +149,7 @@ const RSVPFormModal = ({
       respondingGuests
     );
 
-    // if (res) {
-    //   setModalIsOpen(true);
-    // }
-  };
-
-  const handleCloseModal = () => {
-    // setModalIsOpen(false);
-    // startOver();
+    console.log("\n\nSUBMIT RES:", res);
   };
 
   const labelStyles = {
@@ -149,7 +174,7 @@ const RSVPFormModal = ({
         </ModalHeader>
 
         <ModalBody>
-          <FormControl mb={multipleRespondants ? "1.75rem" : "1rem"}>
+          <FormControl mb={multipleRespondants ? "2rem" : "1rem"}>
             {!multipleRespondants ? (
               <React.Fragment>
                 <FormLabel {...labelStyles}>Can you make it?</FormLabel>
@@ -266,7 +291,7 @@ const RSVPFormModal = ({
               />
             </Flex>
           ) : (
-            <FormControl mb="1.75rem">
+            <FormControl mb="2rem">
               <FormLabel {...labelStyles} mb=".5rem">
                 Please select a dinner entree for each guest
               </FormLabel>
@@ -287,7 +312,6 @@ const RSVPFormModal = ({
                       }
                       isDisabled={formData[name]["attending"] === "no"}
                     >
-                      {/* <Box> */}
                       <Text fontWeight="700" mb="4px">
                         {name}
                       </Text>
@@ -299,14 +323,12 @@ const RSVPFormModal = ({
                           Beef
                         </Radio>
                       </HStack>
-                      {/* </Box> */}
                     </RadioGroup>
 
                     <Input
                       placeholder="Any allergies? (optional)"
                       _placeholder={{
                         color: "text.tertiary",
-                        // border: "1px solid black",
                       }}
                       h={{ base: "32px", sm: "26px" }}
                       pl="8px"
@@ -365,8 +387,8 @@ const RSVPFormModal = ({
             <Button variant="ghost" onClick={onClose} mr="16px">
               Cancel
             </Button>
-            <Button rightIcon={<ArrowForwardIcon boxSize="20px" />}>
-              Next
+            <Button onClick={sendFormData} isDisabled={!formComplete}>
+              Submit
             </Button>
           </Flex>
         </ModalFooter>

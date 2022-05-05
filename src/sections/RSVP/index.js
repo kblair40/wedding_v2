@@ -120,7 +120,8 @@ const RSVP = ({ setInView }) => {
 
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
     // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
-    let names = Object.keys(data).filter((name) => name !== "anythingElse");
+    let names = Object.keys(data).filter((name) => name !== "special_requests");
+    console.log("\n\nNAMES:", names);
 
     for (let name of names) {
       let [fn, ln] = name.split(" ");
@@ -128,6 +129,7 @@ const RSVP = ({ setInView }) => {
       let guest = respondingGuests.find((g) => {
         return g.first_name === fn && g.last_name === ln;
       });
+      console.log("\nGUEST:", guest);
 
       if (!guest) {
         console.warn("\n\n\n\nINVALID GUEST:", guest, "\n\n\n");
@@ -135,12 +137,19 @@ const RSVP = ({ setInView }) => {
       }
 
       const guestData = data[name];
-      const res = await patchGuest(guest.id, {
-        ...guestData,
-        special_requests: data.special_requests,
-      });
-      // console.log("RES:", res);
+      try {
+        const res = await patchGuest(guest.id, {
+          ...guestData,
+          special_requests: data.special_requests,
+          replied: "TRUE",
+        });
+        console.log("RES:", res);
+      } catch (e) {
+        console.log(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
+      }
     }
+
+    setShowRSVPFormModal(false);
     return true;
   };
 
@@ -237,7 +246,7 @@ const RSVP = ({ setInView }) => {
           guest={guest}
           relatedGuests={relatedGuests}
           checkedGuests={checkedGuests}
-          handleSubmit={handleSubmitRSVPForm}
+          onSubmit={handleSubmitRSVPForm}
         />
       )}
 
