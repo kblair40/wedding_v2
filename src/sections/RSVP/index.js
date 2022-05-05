@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Box, Center, Flex, Button } from "@chakra-ui/react";
+import { Box, Center, Flex, Button, ModalOverlay } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import { gsap } from "gsap";
 
 import { patchGuest } from "api/api";
 import RSVPForm from "components/RSVPSteps/RSVPForm";
@@ -57,7 +58,8 @@ const RSVP = ({ setInView }) => {
     setGuest(guest);
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
-      setShowSelectGuestsModal(true);
+      // setShowSelectGuestsModal(true);
+      openSelectGuestsModal();
       // transitionOneToTwo();
     } else {
       getCheckedGuests([]);
@@ -72,6 +74,12 @@ const RSVP = ({ setInView }) => {
     //     setStep2Class("fade-in-half-second");
     //   }, 50);
     // }, 600);
+  };
+
+  const openSelectGuestsModal = () => {
+    setShowSelectGuestsModal(true);
+
+    // gsap.to('.select-guests');
   };
 
   const transitionOneToTwo = () => {
@@ -162,10 +170,15 @@ const RSVP = ({ setInView }) => {
 
     helpOpenedBy.current = "";
   };
+
+  const handleClickShowHelp = () => {
+    setShowSelectGuestsModal(false);
+    setShowHelp(true);
+  };
+
   return (
     <Box
       bg="#f7f5f1"
-      // bg="primary.100"
       w="100%"
       pb="32px"
       px="24px"
@@ -179,6 +192,17 @@ const RSVP = ({ setInView }) => {
 
       <Box ref={inViewRef} />
 
+      {/* {(showSelectGuestsModal || showRSVPFormModal) && (
+        <Box
+          position="fixed"
+          zIndex="-1"
+          w="100vw"
+          h="100vh"
+          bg="rgba(0, 0, 0, 0.6)"
+          border="3px solid green"
+        />
+      )} */}
+
       <Flex w="100%" justifyContent="center">
         <Box
           minW="340px"
@@ -189,19 +213,19 @@ const RSVP = ({ setInView }) => {
             lg: "900px",
           }}
         >
-          <Box className={step1Class}>
-            <GuestSearch
-              getSearchResults={getSearchResults}
-              onChange={(e) => setSearchInput(e.target.value)}
-              searchInput={searchInput}
-              showHelp={() => {
-                helpOpenedBy.current = "GuestSearch";
-                setShowHelp(true);
-              }}
-            />
-          </Box>
+          {/* <Box className={step1Class}> */}
+          <GuestSearch
+            getSearchResults={getSearchResults}
+            onChange={(e) => setSearchInput(e.target.value)}
+            searchInput={searchInput}
+            showHelp={() => {
+              helpOpenedBy.current = "GuestSearch";
+              setShowHelp(true);
+            }}
+          />
+          {/* </Box> */}
 
-          <Box className={step2Class}>
+          {/* <Box className={step2Class}>
             <Center>
               <SelectGuests
                 startOver={startOver}
@@ -210,7 +234,7 @@ const RSVP = ({ setInView }) => {
                 step={step}
                 guest={guest}
                 relatedGuests={relatedGuests}
-                showHelpModal={() => setShowHelp(true)}
+                showHelpModal={handleClickShowHelp}
               />
             </Center>
           </Box>
@@ -223,18 +247,18 @@ const RSVP = ({ setInView }) => {
               checkedGuests={checkedGuests}
               handleSubmit={handleSubmitRSVPForm}
             />
-          </Box>
+          </Box> */}
         </Box>
       </Flex>
 
       {showSelectGuestsModal && (
         <SelectGuestsModal
-          isOpen={SelectGuestsModal}
+          isOpen={showSelectGuestsModal}
           onClose={() => setShowSelectGuestsModal(false)}
-          startOver={startOver}
           guest={guest}
           getCheckedGuests={getCheckedGuests}
           relatedGuests={relatedGuests}
+          showHelpModal={handleClickShowHelp}
         />
       )}
 

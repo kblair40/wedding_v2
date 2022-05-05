@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Input, Button, Text, HStack, Box } from "@chakra-ui/react";
+import {
+  Input,
+  Button,
+  Text,
+  HStack,
+  Box,
+  FormHelperText,
+  FormControl,
+} from "@chakra-ui/react";
 
 import { getGuestByName, getRelatedGuests } from "api/api";
 import { toTitleCase } from "utils/helpers";
@@ -93,49 +101,62 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
         width: "100%",
       }}
     >
-      <Text fontSize="md" fontWeight="400">
-        Please enter the first and last name of one member of your party below.
-      </Text>
-      <Text mt="8px" fontSize="md" fontWeight="400">
-        If you're responding for you and a guest (or your family), you'll be
-        able to RSVP for your entire group on the next page.
-      </Text>
-
-      <HStack w="100%" mt="24px" spacing={{ base: "16px", sm: "32px" }}>
-        <Input
-          pl=".5rem"
-          variant="flushed"
-          value={searchInput}
-          onChange={handleChange}
-          w="100%"
-          placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
-          borderColor="text.tertiary"
-          focusBorderColor="text.primary"
-          _placeholder={{
-            color: "text.secondary",
-            fontStyle: "italic",
-            fontSize: { base: "13px", sm: "md" },
-          }}
-        />
-        <Button onClick={validateInput} isLoading={loading}>
-          Find Me
-        </Button>
-      </HStack>
-
-      <HStack alignItems="flex-end" spacing="16px" mt="2px">
-        <Text color="red.500" fontSize="sm" mt="4px">
-          {errorMsg ? `${errorMsg}` : ""}
+      <FormControl>
+        <Text fontSize="md" fontWeight="400">
+          Please enter the first and last name of one member of your party
+          below.
         </Text>
-        <Button
-          variant="link"
-          size="sm"
-          color="text.primary"
-          fontWeight="500"
-          display={errorMsg ? "block" : "none"}
+        <Text mt="8px" fontSize="md" fontWeight="400">
+          If you're responding for you and a guest (or your family), you'll be
+          able to RSVP for your entire group on the next page.
+        </Text>
+
+        <HStack w="100%" mt="24px" spacing={{ base: "16px", sm: "32px" }}>
+          <Input
+            pl=".5rem"
+            variant="flushed"
+            value={searchInput}
+            onChange={handleChange}
+            w="100%"
+            placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
+            borderColor="text.tertiary"
+            focusBorderColor="text.primary"
+            _placeholder={{
+              color: "text.secondary",
+              fontStyle: "italic",
+              fontSize: { base: "13px", sm: "md" },
+            }}
+          />
+          <Button onClick={validateInput} isLoading={loading}>
+            Find Me
+          </Button>
+        </HStack>
+
+        <FormHelperText
+        // mt="4px"
+        // border="1px solid #ccc"
+        //
+        // pl="4px"
         >
-          Need help?
-        </Button>
-      </HStack>
+          <strong>Tip</strong>: &nbsp;Try using short and long versions of your
+          first name. &nbsp;Ex. If your first name is James, try using Jim
+        </FormHelperText>
+
+        <HStack alignItems="flex-end" spacing="16px" mt="2px">
+          <Text color="red.500" fontSize="sm" mt="4px">
+            {errorMsg ? `${errorMsg}` : ""}
+          </Text>
+          <Button
+            variant="link"
+            size="sm"
+            color="text.primary"
+            fontWeight="500"
+            display={errorMsg ? "block" : "none"}
+          >
+            Need help?
+          </Button>
+        </HStack>
+      </FormControl>
 
       {notFoundError && (
         <Box d="inline">
@@ -159,10 +180,10 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
         </Box>
       )}
 
-      <Text mt="8px" fontSize="sm" fontWeight="500" color="text.secondary">
+      {/* <Text mt="8px" fontSize="sm" fontWeight="500" color="text.secondary">
         *Tip - Try using short and long versions of your first name. &nbsp;Ex.
         If your first name is James, try using Jim
-      </Text>
+      </Text> */}
     </form>
   );
 };

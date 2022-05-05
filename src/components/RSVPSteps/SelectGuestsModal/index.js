@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -16,6 +16,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { gsap } from "gsap";
 
 const SelectGuestsModal = ({
   isOpen,
@@ -24,10 +25,20 @@ const SelectGuestsModal = ({
   relatedGuests,
   getCheckedGuests,
   showHelpModal,
-  startOver,
 }) => {
   const [checkedGuests, setCheckedGuests] = useState([]);
-  // const [showNextButton, setShowNextButton] = useState(true);
+
+  const selectGuestsRef = useRef();
+
+  const transitionOut = (ref) => {
+    // gsap.to(ref, { duration: 1, opacity: 0, onComplete: () => onClose() });
+    gsap.to(".select-guests", {
+      duration: 0.3,
+      opacity: 0,
+      // y: -1000,
+      onComplete: () => onClose(),
+    });
+  };
 
   const handleChangeRespondingGuests = (val) => {
     // console.log("VALUE:", val);
@@ -43,9 +54,18 @@ const SelectGuestsModal = ({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      // onCloseComplete={}
+      motionPreset="slideInBottom"
+      preserveScrollBarGap
+    >
+      <ModalOverlay className="select-guests" />
+      <ModalContent
+        // ref={selectGuestsRef}
+        className="select-guests"
+      >
         <ModalHeader>Who would you like to respond for?</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -65,7 +85,7 @@ const SelectGuestsModal = ({
                   _hover={{ p: { textDecoration: "underline" } }}
                   onClick={showHelpModal}
                 >
-                  <Text fontSize="sm" fontWeight="500" as={"p"}>
+                  <Text fontSize="sm" fontWeight="7=500" as={"p"}>
                     Email us instead
                   </Text>
                 </Box>
@@ -96,24 +116,12 @@ const SelectGuestsModal = ({
         </ModalBody>
 
         <ModalFooter>
-          {/* <Button
-            position="relative"
-            px="8px"
-            right="8px"
-            leftIcon={
-              <ArrowForwardIcon
-                boxSize="20px"
-                style={{
-                  transform: "rotate(180deg)",
-                }}
-              />
-            }
+          <Button
             variant="ghost"
+            // onClick={onClose}
+            onClick={() => transitionOut(selectGuestsRef.current)}
+            mr="16px"
           >
-            Back
-          </Button> */}
-
-          <Button variant="ghost" onClick={onClose} mr="16px">
             Cancel
           </Button>
           <Button
