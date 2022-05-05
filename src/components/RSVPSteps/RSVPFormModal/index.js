@@ -23,12 +23,12 @@ import {
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 const RSVPFormModal = ({
-  isOpen,
   onClose,
   guest,
   relatedGuests,
   checkedGuests,
   onSubmit,
+  isOpen,
   startOver,
 }) => {
   const [respondingGuests, setRespondingGuests] = useState([]);
@@ -48,7 +48,6 @@ const RSVPFormModal = ({
 
   useEffect(() => {
     if (!shouldLog.current) return;
-
     console.log("\n\n\n\nFORM DATA:", formData);
 
     for (let guest in formData) {
@@ -162,245 +161,222 @@ const RSVPFormModal = ({
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      scrollBehavior="inside"
-      size="lg"
-      motionPreset="none"
-      preserveScrollBarGap
-    >
-      {/* <ModalOverlay /> */}
+    <React.Fragment>
+      <ModalHeader>
+        <Text color="text.secondary" fontSize="lg">
+          Replying for {`${respondingGuestNames.join(", ")}`}
+        </Text>
+      </ModalHeader>
 
-      <ModalContent minW="340px" className="rsvp-form" top="100vh">
-        <ModalCloseButton />
-        <ModalHeader>
-          <Text color="text.secondary" fontSize="lg">
-            Replying for {`${respondingGuestNames.join(", ")}`}
-          </Text>
-        </ModalHeader>
-
-        <ModalBody>
-          <FormControl mb={multipleRespondants ? "2rem" : "1rem"}>
-            {!multipleRespondants ? (
-              <React.Fragment>
-                <FormLabel {...labelStyles}>Can you make it?</FormLabel>
-
-                <RadioGroup
-                  onChange={(val) =>
-                    handleChangeAttendance(val, respondingGuestNames[0])
-                  }
-                >
-                  <HStack spacing="16px" flexWrap="wrap">
-                    <Radio {...radioStyles} value="yes">
-                      I'll be there!
-                    </Radio>
-                    <Radio {...radioStyles} value="no">
-                      Regretfully decline
-                    </Radio>
-                  </HStack>
-                </RadioGroup>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <FormLabel {...labelStyles} mb=".5rem">
-                  Please let us know who can and cannot make it
-                </FormLabel>
-                {respondingGuestNames.map((name, i) => {
-                  return (
-                    <RadioGroup
-                      key={i}
-                      mb="16px"
-                      onChange={(val) => handleChangeAttendance(val, name)}
-                    >
-                      <Box>
-                        <Text fontWeight="700" mb="4px">
-                          {name}
-                        </Text>
-                        <HStack spacing="16px">
-                          <Radio {...radioStyles} value="yes">
-                            I'll be there!
-                          </Radio>
-                          <Radio {...radioStyles} value="no">
-                            Regretfully decline
-                          </Radio>
-                        </HStack>
-                      </Box>
-                    </RadioGroup>
-                  );
-                })}
-              </React.Fragment>
-            )}
-          </FormControl>
-
+      <ModalBody>
+        <FormControl mb={multipleRespondants ? "2rem" : "1rem"}>
           {!multipleRespondants ? (
-            <Flex
-              alignItems={{ sm: "flex-end" }}
-              flexDirection={{ base: "column", sm: "row" }}
-              mb="1rem"
-              // mb={multipleRespondants ? "1.5rem" : "1rem"}
-            >
-              <FormControl
-                w={{ base: "100%", sm: "190px" }}
+            <React.Fragment>
+              <FormLabel {...labelStyles}>Can you make it?</FormLabel>
 
-                // border="1px solid green"
-              >
-                <FormLabel {...labelStyles}>
-                  Please select a dinner entree
-                </FormLabel>
-
-                <RadioGroup
-                  onChange={(val) =>
-                    handleChangeMeal(
-                      val,
-                      respondingGuestNames[0],
-                      "dinner_selection"
-                    )
-                  }
-                >
-                  <Flex
-                    direction={{ base: "column", sm: "row" }}
-                    flexWrap="wrap"
-                  >
-                    <Radio {...radioStyles} value="chicken">
-                      Chicken
-                    </Radio>
-                    <Radio {...radioStyles} ml={{ sm: "16px" }} value="beef">
-                      Beef
-                    </Radio>
-                  </Flex>
-                </RadioGroup>
-              </FormControl>
-
-              <Input
-                mt={{ base: "8px", sm: 0 }}
-                borderColor="text.tertiary"
-                _hover={{ borderColor: "text.tertiary" }}
-                focusBorderColor="text.secondary"
-                // w={{ base: "100%", sm: "50%" }}
-                w={{ base: "50%", sm: "100%" }}
-                placeholder="Any allergies? (optional)"
-                _placeholder={{
-                  color: "text.tertiary",
-                  // border: "1px solid black",
-                }}
-                size="sm"
-                h={{ base: "32px", sm: "26px" }}
-                pl="8px"
-                // py="24px"
-                onChange={(e) =>
-                  handleChangeMeal(
-                    e.target.value,
-                    `${guest.first_name} ${guest.last_name}`,
-                    "dinner_selection_notes"
-                  )
+              <RadioGroup
+                onChange={(val) =>
+                  handleChangeAttendance(val, respondingGuestNames[0])
                 }
-              />
-            </Flex>
+              >
+                <HStack spacing="16px" flexWrap="wrap">
+                  <Radio {...radioStyles} value="yes">
+                    I'll be there!
+                  </Radio>
+                  <Radio {...radioStyles} value="no">
+                    Regretfully decline
+                  </Radio>
+                </HStack>
+              </RadioGroup>
+            </React.Fragment>
           ) : (
-            <FormControl mb="2rem">
+            <React.Fragment>
               <FormLabel {...labelStyles} mb=".5rem">
-                Please select a dinner entree for each guest
+                Please let us know who can and cannot make it
               </FormLabel>
-
               {respondingGuestNames.map((name, i) => {
                 return (
-                  <Flex
+                  <RadioGroup
                     key={i}
-                    spacing="24px"
                     mb="16px"
-                    flexDirection={{ base: "column", sm: "row" }}
-                    alignItems={{ base: "flex-start", sm: "flex-end" }}
+                    onChange={(val) => handleChangeAttendance(val, name)}
                   >
-                    <RadioGroup
-                      mr={{ base: "0px", sm: "16px" }}
-                      onChange={(val) =>
-                        handleChangeMeal(val, name, "dinner_selection")
-                      }
-                      isDisabled={formData[name]["attending"] === "no"}
-                    >
+                    <Box>
                       <Text fontWeight="700" mb="4px">
                         {name}
                       </Text>
-                      <HStack mb="4px">
-                        <Radio {...radioStyles} value="chicken">
-                          Chicken
+                      <HStack spacing="16px">
+                        <Radio {...radioStyles} value="yes">
+                          I'll be there!
                         </Radio>
-                        <Radio {...radioStyles} value="beef">
-                          Beef
+                        <Radio {...radioStyles} value="no">
+                          Regretfully decline
                         </Radio>
                       </HStack>
-                    </RadioGroup>
-
-                    <Input
-                      placeholder="Any allergies? (optional)"
-                      _placeholder={{
-                        color: "text.tertiary",
-                      }}
-                      h={{ base: "32px", sm: "26px" }}
-                      pl="8px"
-                      borderColor="text.tertiary"
-                      focusBorderColor="text.secondary"
-                      _hover={{ borderColor: "text.tertiary" }}
-                      size="sm"
-                      fontSize="md"
-                      onChange={(e) =>
-                        handleChangeMeal(
-                          e.target.value,
-                          name,
-                          "dinner_selection_notes"
-                        )
-                      }
-                    />
-                  </Flex>
+                    </Box>
+                  </RadioGroup>
                 );
               })}
-            </FormControl>
+            </React.Fragment>
           )}
+        </FormControl>
 
-          <FormControl>
-            <FormLabel {...labelStyles}>
-              Anything else we should know? (optional)
-            </FormLabel>
-            <Textarea
-              size="sm"
+        {!multipleRespondants ? (
+          <Flex
+            alignItems={{ sm: "flex-end" }}
+            flexDirection={{ base: "column", sm: "row" }}
+            mb="1rem"
+          >
+            <FormControl w={{ base: "100%", sm: "190px" }}>
+              <FormLabel {...labelStyles}>
+                Please select a dinner entree
+              </FormLabel>
+
+              <RadioGroup
+                onChange={(val) =>
+                  handleChangeMeal(
+                    val,
+                    respondingGuestNames[0],
+                    "dinner_selection"
+                  )
+                }
+              >
+                <Flex direction={{ base: "column", sm: "row" }} flexWrap="wrap">
+                  <Radio {...radioStyles} value="chicken">
+                    Chicken
+                  </Radio>
+                  <Radio {...radioStyles} ml={{ sm: "16px" }} value="beef">
+                    Beef
+                  </Radio>
+                </Flex>
+              </RadioGroup>
+            </FormControl>
+
+            <Input
+              mt={{ base: "8px", sm: 0 }}
               borderColor="text.tertiary"
               _hover={{ borderColor: "text.tertiary" }}
               focusBorderColor="text.secondary"
-              ref={anythingElseRef}
+              w={{ base: "50%", sm: "100%" }}
+              placeholder="Any allergies? (optional)"
+              _placeholder={{
+                color: "text.tertiary",
+              }}
+              size="sm"
+              h={{ base: "32px", sm: "26px" }}
+              pl="8px"
+              onChange={(e) =>
+                handleChangeMeal(
+                  e.target.value,
+                  `${guest.first_name} ${guest.last_name}`,
+                  "dinner_selection_notes"
+                )
+              }
             />
-          </FormControl>
-        </ModalBody>
-
-        <ModalFooter justifyContent="space-between">
-          <Button
-            position="relative"
-            px="8px"
-            right="8px"
-            leftIcon={
-              <ArrowForwardIcon
-                boxSize="20px"
-                style={{
-                  transform: "rotate(180deg)",
-                }}
-              />
-            }
-            variant="ghost"
-          >
-            Back
-          </Button>
-
-          <Flex>
-            <Button variant="ghost" onClick={onClose} mr="16px">
-              Cancel
-            </Button>
-            <Button onClick={sendFormData} isDisabled={!formComplete}>
-              Submit
-            </Button>
           </Flex>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+        ) : (
+          <FormControl mb="2rem">
+            <FormLabel {...labelStyles} mb=".5rem">
+              Please select a dinner entree for each guest
+            </FormLabel>
+
+            {respondingGuestNames.map((name, i) => {
+              return (
+                <Flex
+                  key={i}
+                  spacing="24px"
+                  mb="16px"
+                  flexDirection={{ base: "column", sm: "row" }}
+                  alignItems={{ base: "flex-start", sm: "flex-end" }}
+                >
+                  <RadioGroup
+                    mr={{ base: "0px", sm: "16px" }}
+                    onChange={(val) =>
+                      handleChangeMeal(val, name, "dinner_selection")
+                    }
+                    isDisabled={formData[name]["attending"] === "no"}
+                  >
+                    <Text fontWeight="700" mb="4px">
+                      {name}
+                    </Text>
+                    <HStack mb="4px">
+                      <Radio {...radioStyles} value="chicken">
+                        Chicken
+                      </Radio>
+                      <Radio {...radioStyles} value="beef">
+                        Beef
+                      </Radio>
+                    </HStack>
+                  </RadioGroup>
+
+                  <Input
+                    placeholder="Any allergies? (optional)"
+                    _placeholder={{
+                      color: "text.tertiary",
+                    }}
+                    h={{ base: "32px", sm: "26px" }}
+                    pl="8px"
+                    borderColor="text.tertiary"
+                    focusBorderColor="text.secondary"
+                    _hover={{ borderColor: "text.tertiary" }}
+                    size="sm"
+                    fontSize="md"
+                    onChange={(e) =>
+                      handleChangeMeal(
+                        e.target.value,
+                        name,
+                        "dinner_selection_notes"
+                      )
+                    }
+                  />
+                </Flex>
+              );
+            })}
+          </FormControl>
+        )}
+
+        <FormControl>
+          <FormLabel {...labelStyles}>
+            Anything else we should know? (optional)
+          </FormLabel>
+          <Textarea
+            size="sm"
+            borderColor="text.tertiary"
+            _hover={{ borderColor: "text.tertiary" }}
+            focusBorderColor="text.secondary"
+            ref={anythingElseRef}
+          />
+        </FormControl>
+      </ModalBody>
+
+      <ModalFooter justifyContent="space-between">
+        <Button
+          position="relative"
+          px="8px"
+          right="8px"
+          leftIcon={
+            <ArrowForwardIcon
+              boxSize="20px"
+              style={{
+                transform: "rotate(180deg)",
+              }}
+            />
+          }
+          variant="ghost"
+        >
+          Back
+        </Button>
+
+        <Flex>
+          <Button variant="ghost" onClick={onClose} mr="16px">
+            Cancel
+          </Button>
+          <Button onClick={sendFormData} isDisabled={!formComplete}>
+            Submit
+          </Button>
+        </Flex>
+      </ModalFooter>
+    </React.Fragment>
   );
 };
 

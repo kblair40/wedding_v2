@@ -5,8 +5,10 @@ import {
   Flex,
   Button,
   ModalOverlay,
+  ModalContent,
+  ModalCloseButton,
   Modal,
-  transition,
+  Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
@@ -76,8 +78,8 @@ const RSVP = ({ setInView }) => {
     setGuest(guest);
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
-      // setShowSelectGuestsModal(true);
-      openSelectGuestsModal();
+      setShowSelectGuestsModal(true);
+      // openSelectGuestsModal();
       // transitionOneToTwo();
     } else {
       getCheckedGuests([]);
@@ -87,12 +89,25 @@ const RSVP = ({ setInView }) => {
   };
 
   const openSelectGuestsModal = () => {
-    setShowSelectGuestsModal(true);
+    // setShowSelectGuestsModal(true);
+
+    gsap.set(".select-guests", {
+      y: "100vh",
+      // display: "block",
+    });
+
+    // setTimeout(() => {
+    gsap.to(".select-guests", {
+      duration: ".5",
+      y: "0vh",
+      onComplete: () => console.log("FINISHED TRANSITION!"),
+    });
+    // }, 100); // 0.1 seconds
   };
 
   const transitionTwoToThree = () => {
-    transitionOutSelectGuests();
-    transitionInRSVPForm();
+    // transitionOutSelectGuests();
+    // transitionInRSVPForm();
   };
 
   const getCheckedGuests = (guestIndexes) => {
@@ -104,14 +119,12 @@ const RSVP = ({ setInView }) => {
   };
 
   const transitionOutSelectGuests = () => {
-    // gsap.to(ref, { duration: 1, opacity: 0, onComplete: () => onClose() });
     gsap.to(".select-guests", {
       duration: 0.5,
       opacity: 0,
       y: -500,
       onComplete: () => {
         setShowSelectGuestsModal(false);
-        // transitionInRSVPForm();
       },
     });
   };
@@ -119,17 +132,12 @@ const RSVP = ({ setInView }) => {
   const transitionInRSVPForm = () => {
     setShowRSVPFormModal(true);
 
-    // gsap.to(".rsvp-form", {
-    //   duration: 0.5,
-    //   y: 0,
-    // });
-
     gsap.fromTo(
       ".rsvp-form",
       { y: 500 },
       {
         duration: 0.5,
-        y: -500,
+        y: 0,
       }
     );
   };
@@ -189,27 +197,24 @@ const RSVP = ({ setInView }) => {
       bg="#f7f5f1"
       w="100%"
       pb="32px"
-      px="24px"
-      // border="1px solid #ccc"
+      // px="24px"
+      border="1px solid #ccc"
       overflowY="auto"
       minH="330px"
       maxH="500px"
-      position="relative"
+      sx={{
+        ".chakra-modal__content-container": {
+          zIndex: -1,
+        },
+        ".chakra-modal__content": {
+          zIndex: -1,
+          border: "1px solid green",
+        },
+      }}
     >
       <SectionLabel label="rsvp" />
 
       <Box ref={inViewRef} />
-
-      {/* {(showSelectGuestsModal || showRSVPFormModal) && (
-        <Box
-          position="fixed"
-          zIndex="-1"
-          w="100vw"
-          h="100vh"
-          bg="rgba(0, 0, 0, 0.6)"
-          border="3px solid green"
-        />
-      )} */}
 
       <Flex w="100%" justifyContent="center">
         <Box
@@ -233,34 +238,47 @@ const RSVP = ({ setInView }) => {
         </Box>
       </Flex>
 
-      {(showSelectGuestsModal || showRSVPFormModal) && (
-        <Modal
-          isOpen={true}
-          onClose={() => console.log("SHOULD CLOSE")}
-          preserveScrollBarGap
-        >
-          <ModalOverlay />
-          <Box
-            position="fixed"
-            zIndex="-1"
-            w="100vw"
-            h="100vh"
-            bg="rgba(0, 0, 0, 0.6)"
-            border="3px solid green"
+      {/*  */}
+      <Modal
+        isOpen={showSelectGuestsModal || showRSVPFormModal}
+        onClose={() => {
+          setShowRSVPFormModal(false);
+          setShowSelectGuestsModal(false);
+        }}
+        motionPreset="none"
+        isCentered
+        preserveScrollBarGap
+      >
+        <ModalOverlay
+          // opacity={0}
+          // transition=".5s"
+          onClick={() => console.log("OVERLAY CLICKED!")}
+        />
+
+        {showSelectGuestsModal && (
+          <SelectGuestContent
+            onClose={() => setShowSelectGuestsModal(false)}
+            guest={guest}
+            getCheckedGuests={getCheckedGuests}
+            relatedGuests={relatedGuests}
+            showHelpModal={handleClickShowHelp}
           />
+          // <ModalContent className="select-guests">
+          //   <ModalCloseButton />
+          //   <SelectGuestsModal
+          //     onClose={() => setShowSelectGuestsModal(false)}
+          //     guest={guest}
+          //     getCheckedGuests={getCheckedGuests}
+          //     relatedGuests={relatedGuests}
+          //     showHelpModal={handleClickShowHelp}
+          //   />
+          // </ModalContent>
+        )}
 
-          {showSelectGuestsModal && (
-            <SelectGuestsModal
-              isOpen={showSelectGuestsModal}
-              onClose={() => setShowSelectGuestsModal(false)}
-              guest={guest}
-              getCheckedGuests={getCheckedGuests}
-              relatedGuests={relatedGuests}
-              showHelpModal={handleClickShowHelp}
-            />
-          )}
+        {!showSelectGuestsModal && (
+          <ModalContent minW="340px" className="rsvp-form" top="100vh">
+            <ModalCloseButton />
 
-          {showRSVPFormModal && (
             <RSVPFormModal
               isOpen={showRSVPFormModal}
               onClose={() => setShowRSVPFormModal(false)}
@@ -270,9 +288,9 @@ const RSVP = ({ setInView }) => {
               checkedGuests={checkedGuests}
               onSubmit={handleSubmitRSVPForm}
             />
-          )}
-        </Modal>
-      )}
+          </ModalContent>
+        )}
+      </Modal>
 
       {showHelp && <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />}
     </Box>
@@ -280,3 +298,35 @@ const RSVP = ({ setInView }) => {
 };
 
 export default RSVP;
+
+const SelectGuestContent = ({
+  getCheckedGuests,
+  guest,
+  onClose,
+  relatedGuests,
+  handleClickShowHelp,
+}) => {
+  useEffect(() => {
+    gsap.set(".select-guests", { display: "initial" });
+    gsap.fromTo(
+      ".select-guests",
+      {
+        y: "200%",
+      },
+      { y: "0%", duration: "0.1" }
+    );
+  }, []);
+
+  return (
+    <ModalContent className="select-guests" display="none">
+      <ModalCloseButton />
+      <SelectGuestsModal
+        onClose={onClose}
+        guest={guest}
+        getCheckedGuests={getCheckedGuests}
+        relatedGuests={relatedGuests}
+        showHelpModal={handleClickShowHelp}
+      />
+    </ModalContent>
+  );
+};
