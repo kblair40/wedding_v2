@@ -155,7 +155,11 @@ const RSVPFormModal = ({
     fontWeight: 600,
     whiteSpace: "nowrap",
     mb: "4px",
+    borderBottom: "1px solid #2d2d2d",
+    fontSize: "lg",
+    w: "min-content",
   };
+
   const radioStyles = {
     borderColor: "text.tertiary",
   };
@@ -168,10 +172,7 @@ const RSVPFormModal = ({
         </Text>
       </ModalHeader>
 
-      <ModalBody
-      // overflowY="auto"
-      // overflowY="scroll"
-      >
+      <ModalBody>
         <FormControl mb={multipleRespondants ? "2rem" : "1rem"}>
           {!multipleRespondants ? (
             <React.Fragment>
@@ -205,7 +206,7 @@ const RSVPFormModal = ({
                     onChange={(val) => handleChangeAttendance(val, name)}
                   >
                     <Box>
-                      <Text fontWeight="700" mb="4px">
+                      <Text fontWeight="600" mb="4px">
                         {name}
                       </Text>
                       <HStack spacing="16px">
@@ -299,7 +300,7 @@ const RSVPFormModal = ({
                     }
                     isDisabled={formData[name]["attending"] === "no"}
                   >
-                    <Text fontWeight="700" mb="4px">
+                    <Text fontWeight="600" mb="4px">
                       {name}
                     </Text>
                     <HStack mb="4px">
@@ -313,11 +314,13 @@ const RSVPFormModal = ({
                   </RadioGroup>
 
                   <Input
+                    position="relative"
+                    bottom={{ sm: "4px" }}
                     placeholder="Any allergies? (optional)"
                     _placeholder={{
                       color: "text.tertiary",
                     }}
-                    h={{ base: "32px", sm: "26px" }}
+                    h={{ base: "32px", sm: "28px" }}
                     pl="8px"
                     borderColor="text.tertiary"
                     focusBorderColor="text.secondary"
@@ -339,7 +342,7 @@ const RSVPFormModal = ({
         )}
 
         <FormControl>
-          <FormLabel {...labelStyles}>
+          <FormLabel {...labelStyles} borderBottom="none">
             Anything else we should know? (optional)
           </FormLabel>
           <Textarea
@@ -352,32 +355,13 @@ const RSVPFormModal = ({
         </FormControl>
       </ModalBody>
 
-      <ModalFooter justifyContent="space-between">
-        <Button
-          position="relative"
-          px="8px"
-          right="8px"
-          leftIcon={
-            <ArrowForwardIcon
-              boxSize="20px"
-              style={{
-                transform: "rotate(180deg)",
-              }}
-            />
-          }
-          variant="ghost"
-        >
-          Back
+      <ModalFooter>
+        <Button variant="ghost" onClick={onClose} mr="16px">
+          Cancel
         </Button>
-
-        <Flex>
-          <Button variant="ghost" onClick={onClose} mr="16px">
-            Cancel
-          </Button>
-          <Button onClick={sendFormData} isDisabled={!formComplete}>
-            Submit
-          </Button>
-        </Flex>
+        <Button onClick={sendFormData} isDisabled={!formComplete}>
+          Submit
+        </Button>
       </ModalFooter>
     </React.Fragment>
   );

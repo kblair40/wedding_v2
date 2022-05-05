@@ -251,7 +251,6 @@ const RSVPFormContent = ({
       display="none"
       maxH="90vh"
       overflowY="auto"
-      // borderRadius="12px"
     >
       <ModalCloseButton />
 
