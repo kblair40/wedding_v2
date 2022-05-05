@@ -9,6 +9,7 @@ import GuestSearch from "components/RSVPSteps/GuestSearch";
 import SelectGuests from "components/RSVPSteps/SelectGuests";
 import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
+import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
 
 import "./index.css";
@@ -25,6 +26,7 @@ const RSVP = ({ setInView }) => {
   const [searchInput, setSearchInput] = useState("");
 
   const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
+  const [showRSVPFormModal, setShowRSVPFormModal] = useState(true);
 
   let navigate = useNavigate();
 
@@ -203,7 +205,6 @@ const RSVP = ({ setInView }) => {
           <Box className={step3Class}>
             <RSVPForm
               startOver={startOver}
-              step={step}
               guest={guest}
               relatedGuests={relatedGuests}
               checkedGuests={checkedGuests}
@@ -218,9 +219,21 @@ const RSVP = ({ setInView }) => {
           isOpen={SelectGuestsModal}
           onClose={() => setShowSelectGuestsModal(false)}
           startOver={startOver}
+          guest={guest}
           getCheckedGuests={getCheckedGuests}
+          relatedGuests={relatedGuests}
+        />
+      )}
+
+      {showRSVPFormModal && (
+        <RSVPFormModal
+          isOpen={showRSVPFormModal}
+          onClose={() => setShowRSVPFormModal(false)}
+          startOver={startOver}
           guest={guest}
           relatedGuests={relatedGuests}
+          checkedGuests={checkedGuests}
+          handleSubmit={handleSubmitRSVPForm}
         />
       )}
 

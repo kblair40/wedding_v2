@@ -46,11 +46,7 @@ const SelectGuestsModal = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader
-        // fontSize="xl"
-        >
-          Who would you like to respond for?
-        </ModalHeader>
+        <ModalHeader>Who would you like to respond for?</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <FormControl>

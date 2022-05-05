@@ -13,7 +13,6 @@ import {
   Textarea,
   Flex,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 
 import RSVPSuccessModal from "components/RSVPSteps/RSVPSuccessModal";
 
@@ -23,18 +22,13 @@ const RSVPForm = ({
   checkedGuests,
   handleSubmit,
   startOver,
-  step,
 }) => {
-  // console.log("\n\n\nSTEP:", step, "\n\n\n");
   const [respondingGuests, setRespondingGuests] = useState([]);
   const [respondingGuestNames, setRespondingGuestNames] = useState([]);
   const [multipleRespondants, setMultipleRespondants] = useState(null);
   const [attendingNames, setAttendingNames] = useState([]);
   const [formData, setFormData] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [showNextButton, setShowNextButton] = useState(false);
-
-  const navigate = useNavigate("/");
 
   const anythingElseRef = useRef();
 
@@ -128,17 +122,6 @@ const RSVPForm = ({
 
   return (
     <Box maxW="580px" borderRadius="4px" p="8px">
-      {/* <Button
-        onClick={startOver}
-        position="absolute"
-        top="1rem"
-        left=".5rem"
-        // size="sm"
-        zIndex={10000}
-        variant="ghost"
-      >
-        Reset
-      </Button> */}
       <Box mb="16px" px="16px" py="16px" maxH="100%">
         {respondingGuests && respondingGuests.length > 1 && (
           <React.Fragment>
@@ -308,7 +291,7 @@ const RSVPForm = ({
         </Box>
 
         <HStack pt="16px" pb="8px" justifyContent="flex-end">
-          <Button onClick={startOver} zIndex={10000} variant="ghost">
+          <Button onClick={startOver} zIndex={1} variant="ghost">
             Reset
           </Button>
 
