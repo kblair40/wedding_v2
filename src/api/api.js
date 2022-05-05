@@ -112,12 +112,18 @@ export const patchGuest = async (id, data) => {
     special_requests: data.special_requests,
   };
 
+  if (data.replied !== undefined) {
+    patchData["replied"] = data.replied;
+  }
+
   try {
-    // let patchRes = await updateDoc(guestRef, patchData);
-    let patchRes = await setDoc(guestRef, patchData, { merge: true });
-    // console.log("\nPATCH RES:", patchRes);
+    // let patchRes = await setDoc(guestRef, patchData, { merge: true });
+    await setDoc(guestRef, patchData, { merge: true });
+    // console.log("PATCH RES:", patchRes);
+    return true;
   } catch (err) {
-    // console.log("FAILED PATCHING GUEST:", err);
+    console.log("FAILED PATCHING GUEST:", err);
+    return false;
   }
 
   // console.log("\n\n\n\n");
