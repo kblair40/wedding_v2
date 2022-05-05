@@ -162,7 +162,13 @@ const RSVPFormModal = ({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside" size="lg">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      scrollBehavior="inside"
+      size="lg"
+      preserveScrollBarGap
+    >
       <ModalOverlay />
 
       <ModalContent minW="340px">
