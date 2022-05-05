@@ -99,10 +99,14 @@ const SelectGuestsModal = ({
           </FormControl>
         </ModalBody>
 
-        <ModalFooter justifyContent="space-between">
-          <Button
+        <ModalFooter>
+          {/* <Button
+            position="relative"
+            px="8px"
+            right="8px"
             leftIcon={
               <ArrowForwardIcon
+                boxSize="20px"
                 style={{
                   transform: "rotate(180deg)",
                 }}
@@ -111,14 +115,12 @@ const SelectGuestsModal = ({
             variant="ghost"
           >
             Back
-          </Button>
+          </Button> */}
 
-          <Flex>
-            <Button variant="ghost" onClick={onClose} mr="16px">
-              Cancel
-            </Button>
-            <Button rightIcon={<ArrowForwardIcon />}>Next</Button>
-          </Flex>
+          <Button variant="ghost" onClick={onClose} mr="16px">
+            Cancel
+          </Button>
+          <Button rightIcon={<ArrowForwardIcon boxSize="20px" />}>Next</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
