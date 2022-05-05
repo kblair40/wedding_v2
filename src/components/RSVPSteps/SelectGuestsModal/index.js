@@ -15,6 +15,7 @@ import {
   Checkbox,
   Button,
 } from "@chakra-ui/react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 const SelectGuestsModal = ({
   isOpen,
@@ -98,10 +99,26 @@ const SelectGuestsModal = ({
           </FormControl>
         </ModalBody>
 
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
-          <Button variant="ghost">Cancel</Button>
-          <Button variant="ghost">Reset</Button>
+        <ModalFooter justifyContent="space-between">
+          <Button
+            leftIcon={
+              <ArrowForwardIcon
+                style={{
+                  transform: "rotate(180deg)",
+                }}
+              />
+            }
+            variant="ghost"
+          >
+            Back
+          </Button>
+
+          <Flex>
+            <Button variant="ghost" onClick={onClose} mr="16px">
+              Cancel
+            </Button>
+            <Button rightIcon={<ArrowForwardIcon />}>Next</Button>
+          </Flex>
         </ModalFooter>
       </ModalContent>
     </Modal>

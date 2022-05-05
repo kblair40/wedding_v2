@@ -113,7 +113,7 @@ const SelectGuests = ({
         opacity={showNextButton ? 1 : 0}
         transition="1s"
       >
-        <Button onClick={startOver} zIndex={10000} variant="ghost">
+        <Button onClick={startOver} zIndex={1} variant="ghost">
           Reset
         </Button>
         <Button
