@@ -167,11 +167,12 @@ const RSVPFormModal = ({
       onClose={onClose}
       scrollBehavior="inside"
       size="lg"
+      motionPreset="none"
       preserveScrollBarGap
     >
-      <ModalOverlay />
+      {/* <ModalOverlay /> */}
 
-      <ModalContent minW="340px">
+      <ModalContent minW="340px" className="rsvp-form" top="100vh">
         <ModalCloseButton />
         <ModalHeader>
           <Text color="text.secondary" fontSize="lg">

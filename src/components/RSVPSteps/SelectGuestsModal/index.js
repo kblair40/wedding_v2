@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import {
   Modal,
-  ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalFooter,
@@ -16,7 +15,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { gsap } from "gsap";
 
 const SelectGuestsModal = ({
   isOpen,
@@ -27,18 +25,6 @@ const SelectGuestsModal = ({
   showHelpModal,
 }) => {
   const [checkedGuests, setCheckedGuests] = useState([]);
-
-  const selectGuestsRef = useRef();
-
-  const transitionOut = (ref) => {
-    // gsap.to(ref, { duration: 1, opacity: 0, onComplete: () => onClose() });
-    gsap.to(".select-guests", {
-      duration: 0.3,
-      opacity: 0,
-      // y: -1000,
-      onComplete: () => onClose(),
-    });
-  };
 
   const handleChangeRespondingGuests = (val) => {
     // console.log("VALUE:", val);
@@ -61,7 +47,7 @@ const SelectGuestsModal = ({
       motionPreset="slideInBottom"
       preserveScrollBarGap
     >
-      <ModalOverlay className="select-guests" />
+      {/* <ModalOverlay className="select-guests" /> */}
       <ModalContent
         // ref={selectGuestsRef}
         className="select-guests"
@@ -116,12 +102,7 @@ const SelectGuestsModal = ({
         </ModalBody>
 
         <ModalFooter>
-          <Button
-            variant="ghost"
-            // onClick={onClose}
-            onClick={() => transitionOut(selectGuestsRef.current)}
-            mr="16px"
-          >
+          <Button variant="ghost" onClick={onClose} mr="16px">
             Cancel
           </Button>
           <Button

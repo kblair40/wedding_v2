@@ -1,5 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Box, Center, Flex, Button, ModalOverlay } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Flex,
+  Button,
+  ModalOverlay,
+  Modal,
+  transition,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
@@ -32,6 +40,16 @@ const RSVP = ({ setInView }) => {
   let navigate = useNavigate();
 
   const helpOpenedBy = useRef("");
+
+  const progress = useRef({
+    one: false,
+    two: false,
+    three: false,
+  });
+
+  const updateProgress = (newProgress) => {
+    progress.current = { ...progress.current, ...newProgress };
+  };
 
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
 
@@ -66,64 +84,54 @@ const RSVP = ({ setInView }) => {
       setShowRSVPFormModal(true);
       // transitionOneToThree();
     }
-    // setStep(2);
-    // setStep1Class("fade-out-half-second");
-    // setTimeout(() => {
-    //   setStep1Class("hidden");
-    //   setTimeout(() => {
-    //     setStep2Class("fade-in-half-second");
-    //   }, 50);
-    // }, 600);
   };
 
   const openSelectGuestsModal = () => {
     setShowSelectGuestsModal(true);
-
-    // gsap.to('.select-guests');
-  };
-
-  const transitionOneToTwo = () => {
-    setStep(2);
-    setStep1Class("fade-out-half-second");
-    setTimeout(() => {
-      setStep1Class("hidden");
-      setTimeout(() => {
-        setStep2Class("fade-in-half-second");
-      }, 50);
-    }, 600);
-  };
-
-  const transitionOneToThree = () => {
-    setStep(3);
-    setStep1Class("fade-out-half-second");
-    setStep2Class("hidden");
-    setTimeout(() => {
-      setStep1Class("hidden");
-      setTimeout(() => {
-        setStep3Class("fade-in-half-second");
-      }, 50);
-    }, 600);
   };
 
   const transitionTwoToThree = () => {
-    setStep(3);
-    setStep2Class("fade-out-half-second");
-    setTimeout(() => {
-      setStep2Class("hidden");
-      setTimeout(() => {
-        setStep3Class("fade-in-half-second");
-      }, 50);
-    }, 600);
+    transitionOutSelectGuests();
+    transitionInRSVPForm();
   };
 
   const getCheckedGuests = (guestIndexes) => {
     // console.log("\n\nINDEXES:", guestIndexes);
     setCheckedGuests(guestIndexes);
 
-    setShowSelectGuestsModal(false);
+    transitionTwoToThree();
+    // transitionOutSelectGuests();
+  };
+
+  const transitionOutSelectGuests = () => {
+    // gsap.to(ref, { duration: 1, opacity: 0, onComplete: () => onClose() });
+    gsap.to(".select-guests", {
+      duration: 0.5,
+      opacity: 0,
+      y: -500,
+      onComplete: () => {
+        setShowSelectGuestsModal(false);
+        // transitionInRSVPForm();
+      },
+    });
+  };
+
+  const transitionInRSVPForm = () => {
     setShowRSVPFormModal(true);
 
-    // transitionTwoToThree();
+    // gsap.to(".rsvp-form", {
+    //   duration: 0.5,
+    //   y: 0,
+    // });
+
+    gsap.fromTo(
+      ".rsvp-form",
+      { y: 500 },
+      {
+        duration: 0.5,
+        y: -500,
+      }
+    );
   };
 
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
@@ -213,7 +221,6 @@ const RSVP = ({ setInView }) => {
             lg: "900px",
           }}
         >
-          {/* <Box className={step1Class}> */}
           <GuestSearch
             getSearchResults={getSearchResults}
             onChange={(e) => setSearchInput(e.target.value)}
@@ -223,55 +230,48 @@ const RSVP = ({ setInView }) => {
               setShowHelp(true);
             }}
           />
-          {/* </Box> */}
+        </Box>
+      </Flex>
 
-          {/* <Box className={step2Class}>
-            <Center>
-              <SelectGuests
-                startOver={startOver}
-                checkedGuests={checkedGuests}
-                getCheckedGuests={getCheckedGuests}
-                step={step}
-                guest={guest}
-                relatedGuests={relatedGuests}
-                showHelpModal={handleClickShowHelp}
-              />
-            </Center>
-          </Box>
+      {(showSelectGuestsModal || showRSVPFormModal) && (
+        <Modal
+          isOpen={true}
+          onClose={() => console.log("SHOULD CLOSE")}
+          preserveScrollBarGap
+        >
+          <ModalOverlay />
+          <Box
+            position="fixed"
+            zIndex="-1"
+            w="100vw"
+            h="100vh"
+            bg="rgba(0, 0, 0, 0.6)"
+            border="3px solid green"
+          />
 
-          <Box className={step3Class}>
-            <RSVPForm
+          {showSelectGuestsModal && (
+            <SelectGuestsModal
+              isOpen={showSelectGuestsModal}
+              onClose={() => setShowSelectGuestsModal(false)}
+              guest={guest}
+              getCheckedGuests={getCheckedGuests}
+              relatedGuests={relatedGuests}
+              showHelpModal={handleClickShowHelp}
+            />
+          )}
+
+          {showRSVPFormModal && (
+            <RSVPFormModal
+              isOpen={showRSVPFormModal}
+              onClose={() => setShowRSVPFormModal(false)}
               startOver={startOver}
               guest={guest}
               relatedGuests={relatedGuests}
               checkedGuests={checkedGuests}
-              handleSubmit={handleSubmitRSVPForm}
+              onSubmit={handleSubmitRSVPForm}
             />
-          </Box> */}
-        </Box>
-      </Flex>
-
-      {showSelectGuestsModal && (
-        <SelectGuestsModal
-          isOpen={showSelectGuestsModal}
-          onClose={() => setShowSelectGuestsModal(false)}
-          guest={guest}
-          getCheckedGuests={getCheckedGuests}
-          relatedGuests={relatedGuests}
-          showHelpModal={handleClickShowHelp}
-        />
-      )}
-
-      {showRSVPFormModal && (
-        <RSVPFormModal
-          isOpen={showRSVPFormModal}
-          onClose={() => setShowRSVPFormModal(false)}
-          startOver={startOver}
-          guest={guest}
-          relatedGuests={relatedGuests}
-          checkedGuests={checkedGuests}
-          onSubmit={handleSubmitRSVPForm}
-        />
+          )}
+        </Modal>
       )}
 
       {showHelp && <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />}
