@@ -162,13 +162,16 @@ const RSVPFormModal = ({
 
   return (
     <React.Fragment>
-      <ModalHeader>
+      <ModalHeader maxW="calc(100% - 48px)">
         <Text color="text.secondary" fontSize="lg">
           Replying for {`${respondingGuestNames.join(", ")}`}
         </Text>
       </ModalHeader>
 
-      <ModalBody>
+      <ModalBody
+      // overflowY="auto"
+      // overflowY="scroll"
+      >
         <FormControl mb={multipleRespondants ? "2rem" : "1rem"}>
           {!multipleRespondants ? (
             <React.Fragment>
