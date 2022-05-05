@@ -149,7 +149,7 @@ const RSVPFormModal = ({
         </ModalHeader>
 
         <ModalBody>
-          <FormControl mb="1rem">
+          <FormControl mb={multipleRespondants ? "1.75rem" : "1rem"}>
             {!multipleRespondants ? (
               <React.Fragment>
                 <FormLabel {...labelStyles}>Can you make it?</FormLabel>
@@ -171,7 +171,7 @@ const RSVPFormModal = ({
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <FormLabel {...labelStyles} mb="1rem">
+                <FormLabel {...labelStyles} mb=".5rem">
                   Please let us know who can and cannot make it
                 </FormLabel>
                 {respondingGuestNames.map((name, i) => {
@@ -182,7 +182,9 @@ const RSVPFormModal = ({
                       onChange={(val) => handleChangeAttendance(val, name)}
                     >
                       <Box>
-                        <Text fontWeight="700">{name}</Text>
+                        <Text fontWeight="700" mb="4px">
+                          {name}
+                        </Text>
                         <HStack spacing="16px">
                           <Radio {...radioStyles} value="yes">
                             I'll be there!
@@ -204,9 +206,11 @@ const RSVPFormModal = ({
               alignItems={{ sm: "flex-end" }}
               flexDirection={{ base: "column", sm: "row" }}
               mb="1rem"
+              // mb={multipleRespondants ? "1.5rem" : "1rem"}
             >
               <FormControl
                 w={{ base: "100%", sm: "190px" }}
+
                 // border="1px solid green"
               >
                 <FormLabel {...labelStyles}>
@@ -229,12 +233,7 @@ const RSVPFormModal = ({
                     <Radio {...radioStyles} value="chicken">
                       Chicken
                     </Radio>
-                    <Radio
-                      {...radioStyles}
-                      ml={{ sm: "16px" }}
-                      mt={{ base: "4px", sm: 0 }}
-                      value="beef"
-                    >
+                    <Radio {...radioStyles} ml={{ sm: "16px" }} value="beef">
                       Beef
                     </Radio>
                   </Flex>
@@ -246,7 +245,8 @@ const RSVPFormModal = ({
                 borderColor="text.tertiary"
                 _hover={{ borderColor: "text.tertiary" }}
                 focusBorderColor="text.secondary"
-                w={{ base: "100%", sm: "50%" }}
+                // w={{ base: "100%", sm: "50%" }}
+                w={{ base: "50%", sm: "100%" }}
                 placeholder="Any allergies? (optional)"
                 _placeholder={{
                   color: "text.tertiary",
@@ -266,59 +266,64 @@ const RSVPFormModal = ({
               />
             </Flex>
           ) : (
-            <FormControl>
-              <FormLabel {...labelStyles}>
+            <FormControl mb="1.75rem">
+              <FormLabel {...labelStyles} mb=".5rem">
                 Please select a dinner entree for each guest
               </FormLabel>
 
               {respondingGuestNames.map((name, i) => {
                 return (
-                  <HStack
+                  <Flex
                     key={i}
-                    justifyContent="flex-start"
                     spacing="24px"
                     mb="16px"
-                    alignItems="flex-start"
-                    h="100%"
+                    flexDirection={{ base: "column", sm: "row" }}
+                    alignItems={{ base: "flex-start", sm: "flex-end" }}
                   >
                     <RadioGroup
-                      h="100%"
+                      mr={{ base: "0px", sm: "16px" }}
                       onChange={(val) =>
                         handleChangeMeal(val, name, "dinner_selection")
                       }
                       isDisabled={formData[name]["attending"] === "no"}
                     >
-                      <Box>
-                        <Text fontWeight="700">{name}</Text>
-                        <HStack>
-                          <Radio {...radioStyles} value="chicken">
-                            Chicken
-                          </Radio>
-                          <Radio {...radioStyles} value="beef">
-                            Beef
-                          </Radio>
-                        </HStack>
-                      </Box>
+                      {/* <Box> */}
+                      <Text fontWeight="700" mb="4px">
+                        {name}
+                      </Text>
+                      <HStack mb="4px">
+                        <Radio {...radioStyles} value="chicken">
+                          Chicken
+                        </Radio>
+                        <Radio {...radioStyles} value="beef">
+                          Beef
+                        </Radio>
+                      </HStack>
+                      {/* </Box> */}
                     </RadioGroup>
 
-                    <Box flex={1}>
-                      <Text>Any allergies? (optional)</Text>
-                      <Input
-                        borderColor="text.tertiary"
-                        focusBorderColor="text.secondary"
-                        _hover={{ borderColor: "text.tertiary" }}
-                        size="sm"
-                        fontSize="md"
-                        onChange={(e) =>
-                          handleChangeMeal(
-                            e.target.value,
-                            name,
-                            "dinner_selection_notes"
-                          )
-                        }
-                      />
-                    </Box>
-                  </HStack>
+                    <Input
+                      placeholder="Any allergies? (optional)"
+                      _placeholder={{
+                        color: "text.tertiary",
+                        // border: "1px solid black",
+                      }}
+                      h={{ base: "32px", sm: "26px" }}
+                      pl="8px"
+                      borderColor="text.tertiary"
+                      focusBorderColor="text.secondary"
+                      _hover={{ borderColor: "text.tertiary" }}
+                      size="sm"
+                      fontSize="md"
+                      onChange={(e) =>
+                        handleChangeMeal(
+                          e.target.value,
+                          name,
+                          "dinner_selection_notes"
+                        )
+                      }
+                    />
+                  </Flex>
                 );
               })}
             </FormControl>

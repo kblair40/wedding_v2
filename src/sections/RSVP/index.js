@@ -26,7 +26,7 @@ const RSVP = ({ setInView }) => {
   const [searchInput, setSearchInput] = useState("");
 
   const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
-  const [showRSVPFormModal, setShowRSVPFormModal] = useState(true);
+  const [showRSVPFormModal, setShowRSVPFormModal] = useState(false);
 
   let navigate = useNavigate();
 
@@ -61,16 +61,17 @@ const RSVP = ({ setInView }) => {
       // transitionOneToTwo();
     } else {
       getCheckedGuests([]);
-      transitionOneToThree();
+      setShowRSVPFormModal(true);
+      // transitionOneToThree();
     }
-    setStep(2);
-    setStep1Class("fade-out-half-second");
-    setTimeout(() => {
-      setStep1Class("hidden");
-      setTimeout(() => {
-        setStep2Class("fade-in-half-second");
-      }, 50);
-    }, 600);
+    // setStep(2);
+    // setStep1Class("fade-out-half-second");
+    // setTimeout(() => {
+    //   setStep1Class("hidden");
+    //   setTimeout(() => {
+    //     setStep2Class("fade-in-half-second");
+    //   }, 50);
+    // }, 600);
   };
 
   const transitionOneToTwo = () => {
@@ -111,7 +112,10 @@ const RSVP = ({ setInView }) => {
     // console.log("\n\nINDEXES:", guestIndexes);
     setCheckedGuests(guestIndexes);
 
-    transitionTwoToThree();
+    setShowSelectGuestsModal(false);
+    setShowRSVPFormModal(true);
+
+    // transitionTwoToThree();
   };
 
   const handleSubmitRSVPForm = async (data, respondingGuests) => {

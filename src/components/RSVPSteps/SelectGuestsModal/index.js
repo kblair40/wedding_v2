@@ -116,7 +116,12 @@ const SelectGuestsModal = ({
           <Button variant="ghost" onClick={onClose} mr="16px">
             Cancel
           </Button>
-          <Button rightIcon={<ArrowForwardIcon boxSize="20px" />}>Next</Button>
+          <Button
+            onClick={handleSubmit}
+            rightIcon={<ArrowForwardIcon boxSize="20px" />}
+          >
+            Next
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
