@@ -83,7 +83,6 @@ export const CustomToast = ({ isAttending, title, description }) => {
       p="8px 24px"
       borderRadius="8px"
       bg={isAttending ? "primary.400" : "error.400"}
-      my="4px"
       w="min-content"
       alignItems={!description ? "center" : "flex-start"}
     >

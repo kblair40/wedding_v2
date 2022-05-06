@@ -122,8 +122,19 @@ const theme = extendTheme({
     },
     Button: {
       baseStyle: {
-        fontWeight: 400,
+        // fontWeight: 400,
         color: "neutral.black",
+      },
+      variants: {
+        main_filled: {
+          fontWeight: 600,
+          color: "#fff",
+          bg: "primary.400",
+          transition: ".2s",
+          _hover: {
+            bg: "primary.500",
+          },
+        },
       },
     },
     Text: {

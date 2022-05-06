@@ -29,6 +29,7 @@ const RSVPFormModal = ({
   const [attendingNames, setAttendingNames] = useState([]);
   const [formData, setFormData] = useState(null);
   const [formComplete, setFormComplete] = useState(false);
+  const [loading, setLoading] = useState(false);
   // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const anythingElseRef = useRef();
@@ -132,6 +133,7 @@ const RSVPFormModal = ({
 
   const sendFormData = async () => {
     shouldLog.current = false;
+    setLoading(true);
     let res = await onSubmit(
       {
         ...formData,
@@ -139,6 +141,8 @@ const RSVPFormModal = ({
       },
       respondingGuests
     );
+
+    setLoading(false);
 
     console.log("\n\nSUBMIT RES:", res);
   };
@@ -351,7 +355,16 @@ const RSVPFormModal = ({
         <Button variant="ghost" onClick={onClose} mr="16px">
           Cancel
         </Button>
-        <Button onClick={sendFormData} isDisabled={!formComplete}>
+        <Button
+          variant="main_filled"
+          // bg="primary.400"
+          // color="neutral.white"
+          // color="#fff"
+          fontWeight="600"
+          onClick={sendFormData}
+          // isDisabled={!formComplete}
+          isLoading={loading}
+        >
           Submit
         </Button>
       </ModalFooter>

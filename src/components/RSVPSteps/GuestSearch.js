@@ -127,7 +127,11 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
               fontSize: { base: "13px", sm: "md" },
             }}
           />
-          <Button onClick={validateInput} isLoading={loading}>
+          <Button
+            onClick={validateInput}
+            isLoading={loading}
+            variant="main_filled"
+          >
             Find Me
           </Button>
         </HStack>
