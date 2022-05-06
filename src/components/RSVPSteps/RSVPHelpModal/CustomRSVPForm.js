@@ -11,6 +11,7 @@ import {
   ModalBody,
   ModalFooter,
   Button,
+  Flex,
 } from "@chakra-ui/react";
 
 const CustomRSVPForm = ({ onSubmit, onClose }) => {
@@ -25,15 +26,26 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
   const dinnerSelectionNotes = useRef();
   const email = useRef();
 
+  const radioStyles = {
+    borderColor: "text.tertiary",
+  };
+
   const inputStyles = {
     borderColor: "text.tertiary",
-    _focus: { borderColor: "text.secondary" },
+    _focus: { borderColor: "text.primary" },
     _hover: { borderColor: "text.secondary" },
     _placeholder: {
       color: "text.tertiary",
       fontSize: { base: "xs", sm: "md" },
     },
     size: "sm",
+  };
+
+  const labelStyles = {
+    fontWeight: 600,
+    whiteSpace: "nowrap",
+    mb: "4px",
+    fontSize: "15px",
   };
 
   const handleSubmit = async (addAnother = false) => {
@@ -113,30 +125,37 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
   return (
     <React.Fragment>
       <ModalBody>
-        <Text mb="4px" fontSize="sm" fontWeight="500">
-          Please fill this out instead...
-        </Text>
-        <Text mb="24px" fontSize="sm" fontWeight="500">
+        <Text mb="20px" fontWeight="400" textAlign="center">
           If you are replying for more than just yourself, please click the
-          'Send and Add Another' option at the bottom
+          'Send and Add Another' option at the bottom when you are done
         </Text>
 
         <Box>
           <HStack spacing="1rem">
             <FormControl>
-              <FormLabel>First Name</FormLabel>
+              <FormLabel {...labelStyles}>First Name</FormLabel>
               <Input {...inputStyles} ref={firstName} onFocus={clearErrors} />
               {missingFields.includes("first_name") && (
-                <Text mt="2px" fontSize="sm" color="red.500">
+                <Text
+                  mt="4px"
+                  fontSize="sm"
+                  color="error.500"
+                  lineHeight="110%"
+                >
                   Please enter your first name
                 </Text>
               )}
             </FormControl>
             <FormControl>
-              <FormLabel>Last Name</FormLabel>
+              <FormLabel {...labelStyles}>Last Name</FormLabel>
               <Input {...inputStyles} ref={lastName} onFocus={clearErrors} />
               {missingFields.includes("last_name") && (
-                <Text mt="2px" fontSize="sm" color="red.500">
+                <Text
+                  mt="4px"
+                  fontSize="sm"
+                  color="error.500"
+                  lineHeight="110%"
+                >
                   Please enter your last name
                 </Text>
               )}
@@ -144,9 +163,7 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
           </HStack>
 
           <Box mt="24px">
-            <Text mb="8px" fontWeight="500">
-              Will you be attending?
-            </Text>
+            <Text {...labelStyles}>Will you be attending?</Text>
 
             <RadioGroup
               onChange={(val) => {
@@ -154,22 +171,27 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
                 setAttending(val);
               }}
               value={attending}
+              borderColor="text.primary"
             >
               <HStack spacing="16px">
-                <Radio value="yes">Yes!</Radio>
+                <Radio {...radioStyles} value="yes">
+                  Yes!
+                </Radio>
 
-                <Radio value="no">Unfortunately not</Radio>
+                <Radio {...radioStyles} value="no">
+                  Unfortunately not
+                </Radio>
               </HStack>
             </RadioGroup>
             {missingFields.includes("attending") && (
-              <Text mt="2px" fontSize="sm" color="error.500">
+              <Text mt="4px" fontSize="sm" color="error.500" lineHeight="110%">
                 Please choose an option!
               </Text>
             )}
           </Box>
 
           <Box mt="24px">
-            <Text mb="8px" fontWeight="500">
+            <Text {...labelStyles} mb={{ base: "4px", sm: 0 }}>
               Pick a dinner entree
             </Text>
             <RadioGroup
@@ -179,20 +201,34 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
               }}
               value={dinnerSelection}
             >
-              <HStack spacing="24px">
+              <Flex
+                spacing="24px"
+                flexDirection={{ base: "column", sm: "row" }}
+              >
                 <HStack spacing="16px">
-                  <Radio value="chicken">Chicken</Radio>
-                  <Radio value="beef">Beef</Radio>
+                  <Radio {...radioStyles} value="chicken">
+                    Chicken
+                  </Radio>
+                  <Radio {...radioStyles} value="beef">
+                    Beef
+                  </Radio>
                 </HStack>
                 <Input
                   {...inputStyles}
+                  ml={{ sm: "24px" }}
+                  mt={{ base: "6px", sm: 0 }}
+                  size="sm"
+                  h={{ base: "32px", sm: "28px" }}
                   placeholder="Any dietary restrictions?"
+                  _placeholder={{
+                    color: "text.tertiary",
+                  }}
                   ref={dinnerSelectionNotes}
                 />
-              </HStack>
+              </Flex>
             </RadioGroup>
             {missingFields.includes("dinner_selection") && (
-              <Text mt="2px" fontSize="sm" color="red.500">
+              <Text mt="4px" fontSize="sm" color="error.500" lineHeight="110%">
                 Please choose an option!
               </Text>
             )}
@@ -200,9 +236,9 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
         </Box>
 
         <FormControl mt="24px" mb="16px">
-          <FormLabel>
+          <FormLabel {...labelStyles}>
             Your email address (optional)
-            <Text fontSize="sm">
+            <Text fontSize="sm" whiteSpace="normal">
               If you provide this, we'll send you an email to confirm that we
               got your response
             </Text>

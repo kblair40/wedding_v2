@@ -9,6 +9,7 @@ import {
   Text,
   Flex,
   Icon,
+  Heading,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 import { MdCheckCircle } from "react-icons/md";
@@ -49,10 +50,22 @@ const RSVPHelpModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside">
       <ModalOverlay />
       <ModalContent w="100%" maxW={{ base: "359px", sm: "420px" }} mx="auto">
-        <ModalHeader fontWeight="500">Sorry about that!</ModalHeader>
+        <ModalHeader
+          // border="1px solid #ccc"
+          //
+          pb="8px"
+        >
+          <Text fontSize="xl" fontWeight="700" mb="8px">
+            Sorry about that!
+          </Text>
+
+          <Text fontSize="lg" fontWeight="500">
+            Please fill this out instead...
+          </Text>
+        </ModalHeader>
 
         <CustomRSVPForm onSubmit={handleSubmit} onClose={onClose} />
       </ModalContent>
