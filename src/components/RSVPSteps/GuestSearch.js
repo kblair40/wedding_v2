@@ -27,7 +27,8 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
   const validateInput = async (e) => {
     e.preventDefault();
 
-    let nameArray = searchInput.trim().split(" ");
+    let nameArray = searchInput.trim().split(/\s+/);
+    console.log('NAME ARRAY:', nameArray)
     if (nameArray.length < 2) {
       // console.log("error1");
       setErrorMsg("First and last names are both required");

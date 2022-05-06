@@ -21,6 +21,7 @@ import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
 import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
+import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
 
 import "./index.css";
@@ -141,6 +142,8 @@ const RSVP = ({ setInView }) => {
       {/* {hasReplied && <Text textAlign="center">THANKS FOR REPLYING</Text>} */}
 
       <Box ref={inViewRef} />
+
+      {hasReplied && <AlreadyRepliedAlert />}
 
       <Flex w="100%" justifyContent="center">
         <Box
