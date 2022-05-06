@@ -28,7 +28,7 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
     e.preventDefault();
 
     let nameArray = searchInput.trim().split(/\s+/);
-    console.log('NAME ARRAY:', nameArray)
+    console.log("NAME ARRAY:", nameArray);
     if (nameArray.length < 2) {
       // console.log("error1");
       setErrorMsg("First and last names are both required");
@@ -110,16 +110,21 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       }}
     >
       <FormControl>
-        <Text fontSize="md" fontWeight="400">
+        <Text textAlign="center" fontSize="md" fontWeight="400">
           Please enter the first and last name of one member of your party
           below.
         </Text>
-        <Text mt="8px" fontSize="md" fontWeight="400">
+        <Text textAlign="center" mt="8px" fontSize="md" fontWeight="400">
           If you're responding for you and a guest (or your family), you'll be
           able to RSVP for your entire group on the next page.
         </Text>
 
-        <HStack w="100%" mt="24px" spacing={{ base: "16px", sm: "32px" }}>
+        <HStack
+          w="100%"
+          mt="24px"
+          spacing={{ base: "16px", sm: "32px" }}
+          justifyContent="center"
+        >
           <Input
             pl=".5rem"
             variant="flushed"
