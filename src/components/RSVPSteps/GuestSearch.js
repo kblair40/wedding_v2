@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Input,
   Button,
@@ -16,6 +16,13 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [notFoundError, setNotFoundError] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (searchInput === "") {
+      setErrorMsg("");
+      setNotFoundError(false);
+    }
+  }, [searchInput]);
 
   const validateInput = async (e) => {
     e.preventDefault();

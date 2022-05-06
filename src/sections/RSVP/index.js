@@ -97,6 +97,10 @@ const RSVP = ({ setInView }) => {
       }
     }
 
+    if (searchInput) {
+      setSearchInput("");
+    }
+
     toast({
       duration: 7000,
       isClosable: true,
@@ -155,6 +159,7 @@ const RSVP = ({ setInView }) => {
             showHelp={() => {
               helpOpenedBy.current = "GuestSearch";
               setShowHelp(true);
+              setSearchInput("");
             }}
           />
         </Box>
