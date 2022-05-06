@@ -7,6 +7,7 @@ import {
   ModalCloseButton,
   Modal,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
@@ -20,6 +21,7 @@ import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
 import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
+import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
 
 import "./index.css";
 
@@ -33,6 +35,8 @@ const RSVP = ({ setInView }) => {
   const [showRSVPFormModal, setShowRSVPFormModal] = useState(false);
 
   const [hasReplied, setHasReplied] = useLocalstorageState("hasReplied", false);
+
+  const toast = useToast();
 
   const helpOpenedBy = useRef("");
 
@@ -92,6 +96,18 @@ const RSVP = ({ setInView }) => {
         console.log(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
       }
     }
+
+    toast({
+      duration: 7000,
+      isClosable: true,
+      render: () => (
+        <CustomToast
+          title={`Thanks for replying!`}
+          // description={message}
+          isAttending={true}
+        />
+      ),
+    });
 
     setShowRSVPFormModal(false);
     setHasReplied(true);

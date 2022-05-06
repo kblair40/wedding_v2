@@ -77,7 +77,7 @@ const RSVPHelpModal = ({ isOpen, onClose, setHasReplied }) => {
 
 export default RSVPHelpModal;
 
-const CustomToast = ({ isAttending, title, description }) => {
+export const CustomToast = ({ isAttending, title, description }) => {
   return (
     <Flex
       p="8px 24px"
@@ -85,6 +85,7 @@ const CustomToast = ({ isAttending, title, description }) => {
       bg={isAttending ? "primary.400" : "error.400"}
       my="4px"
       w="min-content"
+      alignItems={!description ? "center" : "flex-start"}
     >
       {!isAttending ? (
         <Icon as={FaRegSadTear} color="white" boxSize="24px" />
@@ -99,7 +100,7 @@ const CustomToast = ({ isAttending, title, description }) => {
           fontWeight="700"
           fontSize="lg"
           lineHeight="18px"
-          mb="8px"
+          mb={description ? "8px" : "0"}
         >
           {title}
         </Text>

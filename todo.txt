@@ -9,6 +9,8 @@
 9. Need a favicon for title bar
 10. When RSVP modal closes (successfully), show a thank you message where the input used to be.
     - Include a button to show the input in case they need to update/add another rsvp
+11. GuestSearch input needs to be split on any amount of whitespace with a regex
+    - currently it thinks there are three names if there is more than one space between first and last name
 
 
 non-code stuff
