@@ -143,7 +143,9 @@ const RSVP = ({ setInView }) => {
 
       <Box ref={inViewRef} />
 
-      {hasReplied && <AlreadyRepliedAlert />}
+      <Flex w="100%" justifyContent="center">
+        {!hasReplied && <AlreadyRepliedAlert />}
+      </Flex>
 
       <Flex w="100%" justifyContent="center">
         <Box
