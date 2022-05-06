@@ -133,6 +133,10 @@ const theme = extendTheme({
           _hover: {
             bg: "primary.500",
           },
+          _loading: {
+            bg: "primary.300",
+            _hover: { bg: "primary.300" },
+          },
         },
         ghost: {
           _hover: {
