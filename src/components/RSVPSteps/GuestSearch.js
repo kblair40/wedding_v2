@@ -159,8 +159,14 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       </FormControl>
 
       {notFoundError && (
-        <Box d="inline">
-          <Text mt="12px" mr="4px" display="inline" fontSize="sm">
+        <Box d="inline-block" lineHeight="0px" mt="8px">
+          <Text
+            mr="4px"
+            d="inline"
+            fontSize="15px"
+            color="error.700"
+            lineHeight="22px"
+          >
             Sorry, we couldn't find anyone with the name you entered. If you're
             sure you entered your first and last name correctly, please RSVP by
             filling out our form
@@ -170,10 +176,16 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
             variant="link"
             color="text.primary"
             onClick={showHelp}
-            display="inline"
+            d="inline"
             fontWeight="500"
-            borderBottom="1px solid #2d2d2d"
-            _hover={{ textDecoration: "none" }}
+            fontSize="15px"
+            borderBottom="1px solid"
+            borderColor="#2d2d2d"
+            _hover={{
+              textDecoration: "none",
+              color: "#000",
+              borderColor: "#000",
+            }}
           >
             HERE
           </Button>
