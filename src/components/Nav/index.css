@@ -3,7 +3,7 @@
   display: block;
   width: 0;
   height: 2px;
-  background: #79919e;
+  background: #97adca;
   transition: 0.2s;
   position: relative;
   bottom: 4px;
@@ -15,12 +15,13 @@
   transition: width 0.2s;
 }
 
-.link-active:after {
+.link-active::after {
   content: "";
   position: relative;
   bottom: 2px;
   display: block;
   margin: 0 auto;
   width: 35px;
-  border-bottom: 2px solid #344148;
+  /* border-bottom: 2px solid #344148; */
+  border-bottom: 2px solid #00437f;
 }
