@@ -122,7 +122,6 @@ const theme = extendTheme({
     },
     Button: {
       baseStyle: {
-        // fontWeight: 400,
         color: "neutral.black",
       },
       variants: {
@@ -133,6 +132,11 @@ const theme = extendTheme({
           transition: ".2s",
           _hover: {
             bg: "primary.500",
+          },
+        },
+        ghost: {
+          _hover: {
+            bg: "primary.50",
           },
         },
       },

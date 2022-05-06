@@ -91,6 +91,7 @@ const SelectGuestsModal = ({
           Cancel
         </Button>
         <Button
+          variant="main_filled"
           onClick={handleSubmit}
           rightIcon={<ArrowForwardIcon boxSize="20px" />}
         >

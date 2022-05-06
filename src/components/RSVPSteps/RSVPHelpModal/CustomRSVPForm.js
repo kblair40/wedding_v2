@@ -125,7 +125,7 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
   return (
     <React.Fragment>
       <ModalBody>
-        <Text mb="20px" fontWeight="400" textAlign="center">
+        <Text mb="20px" fontWeight="400">
           If you are replying for more than just yourself, please click the
           'Send and Add Another' option at the bottom when you are done
         </Text>
@@ -259,7 +259,11 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
         >
           Send and Add Another
         </Button>
-        <Button isLoading={sending} onClick={() => handleSubmit(false)}>
+        <Button
+          variant="main_filled"
+          isLoading={sending}
+          onClick={() => handleSubmit(false)}
+        >
           Send
         </Button>
       </ModalFooter>
