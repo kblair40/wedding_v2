@@ -28,11 +28,7 @@ import "./index.css";
 const RSVP = ({ setInView }) => {
   const [guest, setGuest] = useState();
   const [relatedGuests, setRelatedGuests] = useState();
-  const [step, setStep] = useState(1);
   const [checkedGuests, setCheckedGuests] = useState();
-  const [step1Class, setStep1Class] = useState("fade-in-half-second");
-  const [step2Class, setStep2Class] = useState("hidden");
-  const [step3Class, setStep3Class] = useState("hidden");
   const [showHelp, setShowHelp] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
@@ -129,29 +125,20 @@ const RSVP = ({ setInView }) => {
   const closeHelpModal = () => {
     setShowHelp(false);
 
-    if (helpOpenedBy.current !== "GuestSearch") {
-      navigate(0);
-    }
-
     helpOpenedBy.current = "";
   };
 
   const handleClickShowHelp = () => {
+    console.log("SHOW HELP");
     setShowSelectGuestsModal(false);
-    setShowHelp(true);
+
+    setTimeout(() => {
+      setShowHelp(true);
+    }, 100);
   };
 
   return (
-    <Box
-      bg="#f7f5f1"
-      w="100%"
-      pb="32px"
-      // px="24px"
-      border="1px solid #ccc"
-      // overflowY="auto"
-      minH="330px"
-      maxH="500px"
-    >
+    <Box bg="#f7f5f1" w="100%" pb="32px" px="24px" minH="330px" maxH="500px">
       <SectionLabel label="rsvp" />
 
       <Box ref={inViewRef} />
@@ -199,7 +186,7 @@ const RSVP = ({ setInView }) => {
             guest={guest}
             getCheckedGuests={getCheckedGuests}
             relatedGuests={relatedGuests}
-            showHelpModal={handleClickShowHelp}
+            handleClickShowHelp={handleClickShowHelp}
           />
         )}
 
@@ -216,7 +203,9 @@ const RSVP = ({ setInView }) => {
         )}
       </Modal>
 
-      {showHelp && <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />}
+      {/* {showHelp && ( */}
+      <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />
+      {/* )} */}
     </Box>
   );
 };

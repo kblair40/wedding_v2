@@ -1,12 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
   Box,
   FormControl,
   FormLabel,
@@ -15,12 +11,10 @@ import {
   Radio,
   RadioGroup,
   Text,
-  Divider,
   Button,
   Textarea,
   Flex,
 } from "@chakra-ui/react";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 const RSVPFormModal = ({
   onClose,
@@ -28,8 +22,6 @@ const RSVPFormModal = ({
   relatedGuests,
   checkedGuests,
   onSubmit,
-  isOpen,
-  startOver,
 }) => {
   const [respondingGuests, setRespondingGuests] = useState([]);
   const [respondingGuestNames, setRespondingGuestNames] = useState([]);
@@ -156,7 +148,7 @@ const RSVPFormModal = ({
     whiteSpace: "nowrap",
     mb: "4px",
     borderBottom: "1px solid #2d2d2d",
-    fontSize: "lg",
+    fontSize: "15px",
     w: "min-content",
   };
 
