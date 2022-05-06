@@ -132,25 +132,22 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
           </Button>
         </HStack>
 
-        <FormHelperText
-        // mt="4px"
-        // border="1px solid #ccc"
-        //
-        // pl="4px"
-        >
+        <FormHelperText>
           <strong>Tip</strong>: &nbsp;Try using short and long versions of your
           first name. &nbsp;Ex. If your first name is James, try using Jim
         </FormHelperText>
 
-        <HStack alignItems="flex-end" spacing="16px" mt="2px">
-          <Text color="red.500" fontSize="sm" mt="4px">
+        <HStack alignItems="center" spacing="8px" mt="8px">
+          <Text color="error.700" fontSize="15px" lineHeight="100%">
             {errorMsg ? `${errorMsg}` : ""}
           </Text>
           <Button
+            onClick={showHelp}
             variant="link"
             size="sm"
+            fontSize="15px"
             color="text.primary"
-            fontWeight="500"
+            fontWeight="600"
             display={errorMsg ? "block" : "none"}
           >
             Need help?
