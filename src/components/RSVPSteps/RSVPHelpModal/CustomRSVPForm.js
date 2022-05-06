@@ -162,7 +162,7 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
               </HStack>
             </RadioGroup>
             {missingFields.includes("attending") && (
-              <Text mt="2px" fontSize="sm" color="red.500">
+              <Text mt="2px" fontSize="sm" color="error.500">
                 Please choose an option!
               </Text>
             )}

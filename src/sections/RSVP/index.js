@@ -132,6 +132,9 @@ const RSVP = ({ setInView }) => {
     <Box bg="#f7f5f1" w="100%" pb="32px" px="24px" minH="330px" maxH="500px">
       <SectionLabel label="rsvp" />
 
+      {/* <Box boxSize="50px" bg="primary.200" /> */}
+      {/* <Box boxSize="50px" bg="error.200" /> */}
+
       <Box ref={inViewRef} />
 
       <Flex w="100%" justifyContent="center">

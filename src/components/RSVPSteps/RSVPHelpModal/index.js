@@ -5,8 +5,14 @@ import {
   ModalContent,
   ModalHeader,
   useToast,
+  Box,
+  Text,
+  Flex,
+  Icon,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
+import { MdCheckCircle } from "react-icons/md";
+import { FaRegSadTear } from "react-icons/fa";
 
 import { toTitleCase } from "utils/helpers";
 import CustomRSVPForm from "components/RSVPSteps/RSVPHelpModal/CustomRSVPForm";
@@ -19,29 +25,26 @@ const RSVPHelpModal = ({ isOpen, onClose }) => {
   const handleSubmit = async (data, addAnother = false) => {
     // console.log("DATA:", data);
     try {
-      const res = await emailjs.send(
-        "service_ujghu3o",
-        "template_lxrzaso",
-        data,
-        key
-      );
-      // console.log("RES:", res);
-      let message;
-      if (data.attending === "yes") {
-        message = "We'll see you there!";
-      } else {
-        message = "Sorry you can't make it";
-      }
+      await emailjs.send("service_ujghu3o", "template_lxrzaso", data, key);
+
+      let isAttending = data.attending === "yes";
+      let message = isAttending
+        ? "We'll see you there!"
+        : "Sorry you can't make it";
 
       toast({
-        title: `Thanks, ${toTitleCase(data.first_name)}`,
-        description: message,
-        status: "success",
         duration: 7000,
         isClosable: true,
+        render: () => (
+          <CustomToast
+            description={message}
+            isAttending={isAttending}
+            title={`Thanks, ${toTitleCase(data.first_name)}!`}
+          />
+        ),
       });
     } catch (err) {
-      console.warn("FAILED SENDING EMAIL");
+      console.warn("FAILED SENDING EMAIL:", err);
     }
   };
 
@@ -58,3 +61,42 @@ const RSVPHelpModal = ({ isOpen, onClose }) => {
 };
 
 export default RSVPHelpModal;
+
+const CustomToast = ({ isAttending, title, description }) => {
+  return (
+    <Flex
+      p="8px 24px"
+      borderRadius="8px"
+      bg={isAttending ? "primary.400" : "error.400"}
+      my="4px"
+      w="min-content"
+    >
+      {!isAttending ? (
+        <Icon as={FaRegSadTear} color="white" boxSize="24px" />
+      ) : (
+        <Icon as={MdCheckCircle} color="white" boxSize="24px" />
+      )}
+
+      <Box ml="16px">
+        <Text
+          whiteSpace="nowrap"
+          color="white"
+          fontWeight="700"
+          fontSize="lg"
+          lineHeight="18px"
+          mb="8px"
+        >
+          {title}
+        </Text>
+        <Text
+          whiteSpace="nowrap"
+          color="white"
+          fontWeight="500"
+          lineHeight="16px"
+        >
+          {description}
+        </Text>
+      </Box>
+    </Flex>
+  );
+};
