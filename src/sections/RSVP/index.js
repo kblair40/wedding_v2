@@ -1,23 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
   Box,
-  Center,
   Flex,
-  Button,
   ModalOverlay,
   ModalContent,
   ModalCloseButton,
   Modal,
-  Text,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
 
 import { patchGuest } from "api/api";
-import RSVPForm from "components/RSVPSteps/RSVPForm";
+// import RSVPForm from "components/RSVPSteps/RSVPForm";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
-import SelectGuests from "components/RSVPSteps/SelectGuests";
+// import SelectGuests from "components/RSVPSteps/SelectGuests";
 import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
 import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
@@ -34,8 +30,6 @@ const RSVP = ({ setInView }) => {
 
   const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
   const [showRSVPFormModal, setShowRSVPFormModal] = useState(false);
-
-  let navigate = useNavigate();
 
   const helpOpenedBy = useRef("");
 
@@ -63,14 +57,12 @@ const RSVP = ({ setInView }) => {
   };
 
   useEffect(() => {
-    // console.log("RSVP inView:", inView);
     if (inView) {
       setInView("rsvp");
     }
   }, [inView]);
 
   const getSearchResults = (guest, relatedGuests) => {
-    // console.log("SEARCH RESULTS:", { guest, relatedGuests });
     setGuest(guest);
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
@@ -82,7 +74,6 @@ const RSVP = ({ setInView }) => {
   };
 
   const getCheckedGuests = (guestIndexes) => {
-    // console.log("\n\nINDEXES:", guestIndexes);
     setCheckedGuests(guestIndexes);
     setShowRSVPFormModal(true);
   };
@@ -192,9 +183,7 @@ const RSVP = ({ setInView }) => {
 
         {!showSelectGuestsModal && checkedGuests && (
           <RSVPFormContent
-            isOpen={showRSVPFormModal}
             onClose={() => setShowRSVPFormModal(false)}
-            startOver={startOver}
             guest={guest}
             relatedGuests={relatedGuests}
             checkedGuests={checkedGuests}
@@ -203,9 +192,7 @@ const RSVP = ({ setInView }) => {
         )}
       </Modal>
 
-      {/* {showHelp && ( */}
-      <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />
-      {/* )} */}
+      {showHelp && <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />}
     </Box>
   );
 };
@@ -213,9 +200,7 @@ const RSVP = ({ setInView }) => {
 export default RSVP;
 
 const RSVPFormContent = ({
-  isOpen,
   onClose,
-  startOver,
   guest,
   relatedGuests,
   checkedGuests,
@@ -244,9 +229,7 @@ const RSVPFormContent = ({
       <ModalCloseButton />
 
       <RSVPFormModal
-        isOpen={isOpen}
         onClose={onClose}
-        startOver={startOver}
         guest={guest}
         relatedGuests={relatedGuests}
         checkedGuests={checkedGuests}

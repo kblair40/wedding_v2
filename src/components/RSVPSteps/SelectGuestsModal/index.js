@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import {
-  Modal,
-  ModalContent,
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
   Box,
   Flex,
   Text,
@@ -75,7 +72,6 @@ const SelectGuestsModal = ({
                   <Checkbox
                     mb="8px"
                     fontWeight={checkedGuests.includes(i) ? "400" : "300"}
-                    // size="lg"
                     key={i}
                     value={i}
                     onChange={() => handleChangeRespondingGuests(i)}
