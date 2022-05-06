@@ -6,9 +6,11 @@ import {
   ModalContent,
   ModalCloseButton,
   Modal,
+  Text,
 } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
+import { useLocalstorageState } from "rooks";
 
 import { patchGuest } from "api/api";
 // import RSVPForm from "components/RSVPSteps/RSVPForm";
@@ -27,34 +29,14 @@ const RSVP = ({ setInView }) => {
   const [checkedGuests, setCheckedGuests] = useState();
   const [showHelp, setShowHelp] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-
   const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
   const [showRSVPFormModal, setShowRSVPFormModal] = useState(false);
 
+  const [hasReplied, setHasReplied] = useLocalstorageState("hasReplied", false);
+
   const helpOpenedBy = useRef("");
 
-  const progress = useRef({
-    one: false,
-    two: false,
-    three: false,
-  });
-
-  const updateProgress = (newProgress) => {
-    progress.current = { ...progress.current, ...newProgress };
-  };
-
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
-
-  const startOver = () => {
-    // setGuest();
-    // setRelatedGuests();
-    // setStep(1);
-    // setCheckedGuests();
-    // setStep2Class("hidden");
-    // setStep3Class("hidden");
-    // setShowHelp(false);
-    // setStep1Class("fade-in-half-second");
-  };
 
   useEffect(() => {
     if (inView) {
@@ -71,10 +53,12 @@ const RSVP = ({ setInView }) => {
       getCheckedGuests([]);
       setShowRSVPFormModal(true);
     }
+    setSearchInput("");
   };
 
   const getCheckedGuests = (guestIndexes) => {
     setCheckedGuests(guestIndexes);
+
     setShowRSVPFormModal(true);
   };
 
@@ -110,6 +94,7 @@ const RSVP = ({ setInView }) => {
     }
 
     setShowRSVPFormModal(false);
+    setHasReplied(true);
     return true;
   };
 
@@ -125,6 +110,7 @@ const RSVP = ({ setInView }) => {
 
     setTimeout(() => {
       setShowHelp(true);
+      setSearchInput("");
     }, 100);
   };
 
@@ -132,8 +118,7 @@ const RSVP = ({ setInView }) => {
     <Box bg="#f7f5f1" w="100%" pb="32px" px="24px" minH="330px" maxH="500px">
       <SectionLabel label="rsvp" />
 
-      {/* <Box boxSize="50px" bg="primary.200" /> */}
-      {/* <Box boxSize="50px" bg="error.200" /> */}
+      {/* {hasReplied && <Text textAlign="center">THANKS FOR REPLYING</Text>} */}
 
       <Box ref={inViewRef} />
 
@@ -195,7 +180,13 @@ const RSVP = ({ setInView }) => {
         )}
       </Modal>
 
-      {showHelp && <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />}
+      {showHelp && (
+        <RSVPHelpModal
+          isOpen={showHelp}
+          onClose={closeHelpModal}
+          setHasReplied={setHasReplied}
+        />
+      )}
     </Box>
   );
 };

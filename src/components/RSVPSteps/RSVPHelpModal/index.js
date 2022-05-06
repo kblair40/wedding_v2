@@ -18,7 +18,7 @@ import { FaRegSadTear } from "react-icons/fa";
 import { toTitleCase } from "utils/helpers";
 import CustomRSVPForm from "components/RSVPSteps/RSVPHelpModal/CustomRSVPForm";
 
-const RSVPHelpModal = ({ isOpen, onClose }) => {
+const RSVPHelpModal = ({ isOpen, onClose, setHasReplied }) => {
   const key = "W69ff_xL68cgt7IZI";
 
   const toast = useToast();
@@ -32,6 +32,8 @@ const RSVPHelpModal = ({ isOpen, onClose }) => {
       let message = isAttending
         ? "We'll see you there!"
         : "Sorry you can't make it";
+
+      setHasReplied(true);
 
       toast({
         duration: 7000,
