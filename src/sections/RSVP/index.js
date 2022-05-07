@@ -8,11 +8,13 @@ import {
   Modal,
   Text,
   useToast,
+  Image,
 } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
 import { useLocalstorageState } from "rooks";
 
+import { glass } from "utils/styles";
 import { patchGuest } from "api/api";
 // import RSVPForm from "components/RSVPSteps/RSVPForm";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
@@ -24,7 +26,13 @@ import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
 
-import casa8 from "assets/images/casa/casa8.png";
+import casa1 from "assets/images/casa/casa1.png";
+import casa2 from "assets/images/casa/casa2.png";
+import casa3 from "assets/images/casa/casa3.png";
+import casa5 from "assets/images/casa/casa5.png";
+import casa6 from "assets/images/casa/casa6.png";
+import casa7 from "assets/images/casa/casa7.png";
+import casa8 from "assets/images/casa/casa8.png"; // preferred
 
 import "./index.css";
 
@@ -154,40 +162,66 @@ const RSVP = ({ setInView }) => {
   };
 
   return (
-    <Box bg="#f7f5f1" w="100%" pb="32px" px="24px" minH="330px" maxH="500px">
-      <SectionLabel label="rsvp" />
+    <Flex
+      justifyContent="center"
+      flexDirection="column"
+      alignItems="center"
+      // bg="#f7f5f1"
+      w="100%"
+      pb="24px"
+      px="24px"
+    >
+      <Image
+        src={casa8}
+        w="100%"
+        minW="900px"
+        zIndex="-1"
+        position="absolute"
+      />
+      <Flex
+        mt="24px"
+        p={{ base: "16px" }}
+        shadow="md"
+        justifyContent={{ base: "center" }}
+        maxW={{ base: "350px", sm: "450px", md: "600px" }}
+        flexDirection="column"
+        alignItems="center"
+        w="100%"
+        {...glass}
+      >
+        <SectionLabel label="rsvp" />
+        {/* {hasReplied && <Text textAlign="center">THANKS FOR REPLYING</Text>} */}
 
-      {/* {hasReplied && <Text textAlign="center">THANKS FOR REPLYING</Text>} */}
+        <Box ref={inViewRef} />
 
-      <Box ref={inViewRef} />
+        {hasReplied && (
+          <Flex w="100%" justifyContent="center">
+            <AlreadyRepliedAlert />
+          </Flex>
+        )}
 
-      {hasReplied && (
         <Flex w="100%" justifyContent="center">
-          <AlreadyRepliedAlert />
-        </Flex>
-      )}
-
-      <Flex w="100%" justifyContent="center">
-        <Box
-          minW="340px"
-          maxW={{
-            base: "420px",
-            sm: "524px", // allows full placeholder text to show
-            md: "720px",
-            lg: "900px",
-          }}
-        >
-          <GuestSearch
-            getSearchResults={getSearchResults}
-            onChange={(e) => setSearchInput(e.target.value)}
-            searchInput={searchInput}
-            showHelp={() => {
-              helpOpenedBy.current = "GuestSearch";
-              setShowHelp(true);
-              setSearchInput("");
+          <Box
+            minW="340px"
+            maxW={{
+              base: "420px",
+              sm: "524px", // allows full placeholder text to show
+              md: "720px",
+              lg: "900px",
             }}
-          />
-        </Box>
+          >
+            <GuestSearch
+              getSearchResults={getSearchResults}
+              onChange={(e) => setSearchInput(e.target.value)}
+              searchInput={searchInput}
+              showHelp={() => {
+                helpOpenedBy.current = "GuestSearch";
+                setShowHelp(true);
+                setSearchInput("");
+              }}
+            />
+          </Box>
+        </Flex>
       </Flex>
 
       {/*  */}
@@ -233,7 +267,7 @@ const RSVP = ({ setInView }) => {
           setHasReplied={setHasReplied}
         />
       )}
-    </Box>
+    </Flex>
   );
 };
 
