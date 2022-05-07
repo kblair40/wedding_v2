@@ -24,6 +24,17 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
     }
   }, [searchInput]);
 
+  const handleClickShowHelp = () => {
+    if (errorMsg) {
+      setErrorMsg("");
+    }
+    if (notFoundError) {
+      setNotFoundError(false);
+    }
+
+    showHelp();
+  };
+
   const validateInput = async (e) => {
     e.preventDefault();
 
@@ -159,7 +170,7 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
             {errorMsg ? `${errorMsg}` : ""}
           </Text>
           <Button
-            onClick={showHelp}
+            onClick={handleClickShowHelp}
             variant="link"
             size="sm"
             fontSize="15px"
@@ -189,7 +200,7 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
             borderRadius={0}
             variant="link"
             color="text.primary"
-            onClick={showHelp}
+            onClick={handleClickShowHelp}
             d="inline"
             fontWeight="500"
             fontSize="15px"

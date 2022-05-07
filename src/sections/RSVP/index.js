@@ -30,7 +30,7 @@ const RSVP = ({ setInView }) => {
   const [guest, setGuest] = useState();
   const [relatedGuests, setRelatedGuests] = useState();
   const [checkedGuests, setCheckedGuests] = useState();
-  const [showHelp, setShowHelp] = useState(true);
+  const [showHelp, setShowHelp] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
   const [showRSVPFormModal, setShowRSVPFormModal] = useState(false);
