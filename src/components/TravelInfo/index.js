@@ -3,19 +3,15 @@ import {
   Heading,
   Flex,
   VStack,
-  HStack,
   Icon,
   Text,
   Button,
   Box,
   Link,
 } from "@chakra-ui/react";
-import { FaPlane, FaPlaneDeparture } from "react-icons/fa";
 import { IoAirplaneOutline } from "react-icons/io5";
 import { AiOutlineCar } from "react-icons/ai";
 
-import AnimatedCheckbox from "components/Animated/AnimatedCheckbox";
-// import { MAX_WIDTHS } from "utils/constants";
 import Paper from "components/containers/Paper";
 
 const paperStyles = {
@@ -24,13 +20,28 @@ const paperStyles = {
   maxW: { base: "350px", sm: "375px", md: "350px", lg: "350px" },
   bg: "white",
   shadow: "none",
-  // border: "1px solid #ccc",
 };
 
 const textStyles = {
   fontWeight: "400",
   lineHeight: "20px",
   textAlign: "center",
+};
+
+const buttonStyles = {
+  w: "100%",
+  bg: "white",
+  transition: ".2s ease-in-out",
+  border: "1px solid",
+  borderColor: "neutral.black",
+  variant: "outline",
+  fontWeight: "600",
+  _hover: {
+    bg: "primary.50",
+    borderColor: "primary.900",
+    color: "primary.900",
+  },
+  _active: { bg: "text.secondary" },
 };
 
 const TravelInfo = () => {
@@ -80,22 +91,7 @@ const TravelInfo = () => {
                   textDecoration: "none",
                 }}
               >
-                <Button
-                  w="100%"
-                  bg="white"
-                  transition=".25s ease-in-out"
-                  border="1px solid"
-                  borderColor="neutral.black"
-                  variant="outline"
-                  fontWeight="600"
-                  _hover={{
-                    bg: "neutral.black",
-                    color: "neutral.white",
-                  }}
-                  _active={{ bg: "text.secondary" }}
-                >
-                  Search Flights
-                </Button>
+                <Button {...buttonStyles}>Search Flights</Button>
               </Link>
             </Box>
           </VStack>
@@ -129,22 +125,7 @@ const TravelInfo = () => {
               pt="8px"
               w="100%"
             >
-              <Button
-                w="100%"
-                bg="white"
-                transition=".25s ease-in-out"
-                border="1px solid"
-                borderColor="neutral.black"
-                fontWeight="600"
-                variant="outline"
-                _hover={{
-                  bg: "neutral.black",
-                  color: "neutral.white",
-                }}
-                _active={{ bg: "text.secondary" }}
-              >
-                Get Directions
-              </Button>
+              <Button {...buttonStyles}>Get Directions</Button>
             </Box>
           </VStack>
         </Paper>
