@@ -139,6 +139,7 @@ const theme = extendTheme({
           },
         },
         ghost: {
+          color: "primary.900",
           _hover: {
             bg: "primary.50",
           },
