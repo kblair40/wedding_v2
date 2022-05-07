@@ -67,6 +67,22 @@ const RSVP = ({ setInView }) => {
     setShowRSVPFormModal(true);
   };
 
+  const formatNames = (names) => {
+    if (!names || !names.length) return;
+
+    names = names.map((name) => name.split(" ")[0]);
+
+    if (names.length === 1) {
+      return `${names[0]}`;
+    } else if (names.length === 2) {
+      return `${names[0]} & ${names[1]}`;
+    } else if (names.length === 3) {
+      return `${names[0]}, ${names[1]} & ${names[2]}`;
+    } else if (names.length === 4) {
+      return `${names[0]}, ${names[1]}, ${names[2]} & ${names[3]}`;
+    }
+  };
+
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
     // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
     let names = Object.keys(data).filter((name) => name !== "special_requests");
@@ -107,7 +123,7 @@ const RSVP = ({ setInView }) => {
       isClosable: true,
       render: () => (
         <CustomToast
-          title={`Thanks for replying!`}
+          title={`${formatNames(names)}, thanks for replying!`}
           // description={message}
           isAttending={true}
         />

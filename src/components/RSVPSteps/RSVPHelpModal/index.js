@@ -80,7 +80,7 @@ export default RSVPHelpModal;
 export const CustomToast = ({ isAttending, title, description }) => {
   return (
     <Flex
-      p="8px 24px"
+      p={description ? "8px 24px" : "8px 16px"}
       borderRadius="8px"
       bg={isAttending ? "primary.400" : "error.400"}
       w="min-content"
