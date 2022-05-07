@@ -24,6 +24,8 @@ import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
 
+import casa8 from "assets/images/casa/casa8.png";
+
 import "./index.css";
 
 const RSVP = ({ setInView }) => {

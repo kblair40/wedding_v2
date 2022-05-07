@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { Flex, Text, Button } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
+import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
+import casa1 from "assets/images/casa/casa1.png";
+import casa2 from "assets/images/casa/casa2.png";
+import casa3 from "assets/images/casa/casa3.png";
+import casa5 from "assets/images/casa/casa5.png";
+import casa8 from "assets/images/casa/casa8.png";
 
 const Registry = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
@@ -24,7 +30,7 @@ const Registry = ({ setInView }) => {
     fontWeight: "600",
     mt: "24px",
     _hover: {
-      bg: "neutral.800",
+      bg: "neutral.900",
       color: "#fff",
     },
     _active: { bg: "text.secondary" },
@@ -39,16 +45,19 @@ const Registry = ({ setInView }) => {
       pb="24px"
       pt="24px"
       px={{ base: "16px" }}
+      backgroundImage={casa5}
+      bgRepeat="no-repeat"
+      bgSize="cover"
     >
       <Flex
-        borderRadius="4px"
         p={{ base: "16px" }}
         shadow="md"
         justifyContent={{ base: "center" }}
-        bg="#fff"
+        // bg="rgba(255, 255, 255, 0.97)"
         maxW={{ base: "350px", sm: "450px", md: "600px" }}
         flexDirection="column"
         alignItems="center"
+        {...glass}
       >
         <SectionLabel label="registry" pt="8px" />
         <Text
