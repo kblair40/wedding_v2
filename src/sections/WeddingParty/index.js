@@ -7,18 +7,13 @@ import {
   Grid,
   GridItem,
   Box,
+  Image,
 } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import SectionLabel from "components/SectionLabel";
 
 import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
-import shannon from "assets/galleryImages/shannon/shan_six.jpg";
-
-import five from "assets/galleryImages/shannon/shan_five.jpg";
-import four from "assets/galleryImages/shannon/shan_four.jpg";
-import three from "assets/galleryImages/shannon/shan_three.jpg";
-import two from "assets/galleryImages/shannon/shan_two.jpg";
 
 import ringBearers from "assets/images/wedding_party/augustfrederick.jpg";
 import sarlota from "assets/images/wedding_party/sarlota.jpg";
@@ -31,8 +26,9 @@ import andrew from "assets/images/wedding_party/andrew.jpg";
 
 import karissa from "assets/images/wedding_party/karissa.jpg";
 import cassidy from "assets/images/wedding_party/cassidy.jpeg";
-import erin from "assets/images/wedding_party/erin.jpeg";
-import kelly from "assets/images/wedding_party/kelly.jpeg";
+import erin2 from "assets/images/wedding_party/erin2.jpg";
+import kelly2 from "assets/images/wedding_party/kelly2.jpg";
+import shannon2 from "assets/images/wedding_party/meandshannon.jpg";
 
 const WeddingParty = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
@@ -47,9 +43,10 @@ const WeddingParty = ({ setInView }) => {
   return (
     <Flex direction="column" alignItems="center" bg="#f7f5f1" pb="24px">
       <SectionLabel label="wedding party" />
+      {/* <Image src={karissa} maxW="100%" /> */}
 
       <Grid
-        rowGap={{ base: "1rem" }}
+        rowGap={{ base: "1rem", sm: "1.25rem", md: "1rem" }}
         columnGap={{ sm: "1rem" }}
         justifyItems={{ base: "center" }}
         templateAreas={{
@@ -129,7 +126,7 @@ const WeddingParty = ({ setInView }) => {
           <Partier
             name="shannon dunne"
             role="BRIDE"
-            imgURL={shannon}
+            imgURL={shannon2}
             position="center 20%"
           />
         </GridItem>
@@ -138,16 +135,16 @@ const WeddingParty = ({ setInView }) => {
           <Partier
             name="erin dunne"
             role="MAID OF HONOR"
-            imgURL={erin}
-            position="center 0%"
+            imgURL={erin2}
+            position="center 10%"
           />
         </GridItem>
         <GridItem gridArea="kelly">
           <Partier
             name="kelly dunne"
             role="MATRON OF HONOR"
-            imgURL={kelly}
-            position="center 0%"
+            imgURL={kelly2}
+            position="center 10%"
           />
         </GridItem>
 
@@ -156,7 +153,7 @@ const WeddingParty = ({ setInView }) => {
             name="karissa leith"
             role="BRIDESMAID"
             imgURL={karissa}
-            position="center 40%"
+            position="center 45%"
           />
         </GridItem>
 
@@ -209,7 +206,13 @@ const WeddingParty = ({ setInView }) => {
 
 export default WeddingParty;
 
-const Partier = ({ name, role, imgURL, position = "center 50%" }) => {
+const Partier = ({
+  name,
+  role,
+  imgURL,
+  position = "center 50%",
+  size = "cover",
+}) => {
   return (
     <Flex
       w={{ base: "280px", sm: "232px" }}
@@ -224,7 +227,7 @@ const Partier = ({ name, role, imgURL, position = "center 50%" }) => {
         bgImage={imgURL}
         bgPosition={position}
         bgRepeat="no-repeat"
-        bgSize="cover"
+        bgSize={size}
       />
       {/* <Avatar boxSize={{ base: "250px", sm: "180px" }} mb="8px" src={imgURL} /> */}
       <Heading
