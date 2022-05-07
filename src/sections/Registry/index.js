@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Flex, Text, Button } from "@chakra-ui/react";
+import { Flex, Text, Button, Image } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import { glass } from "utils/styles";
@@ -8,6 +8,8 @@ import casa1 from "assets/images/casa/casa1.png";
 import casa2 from "assets/images/casa/casa2.png";
 import casa3 from "assets/images/casa/casa3.png";
 import casa5 from "assets/images/casa/casa5.png";
+import casa6 from "assets/images/casa/casa6.png";
+import casa7 from "assets/images/casa/casa7.png";
 import casa8 from "assets/images/casa/casa8.png";
 
 const Registry = ({ setInView }) => {
@@ -41,15 +43,21 @@ const Registry = ({ setInView }) => {
       ref={inViewRef}
       direction="column"
       alignItems="center"
-      bg="#f7f5f1"
       pb="24px"
-      pt="24px"
+      // pt="24px"
       px={{ base: "16px" }}
-      backgroundImage={casa5}
-      bgRepeat="no-repeat"
-      bgSize="cover"
+      position="relative"
+      overflow="hidden"
     >
+      <Image
+        src={casa7}
+        w="100%"
+        minW="900px"
+        zIndex="-1"
+        position="absolute"
+      />
       <Flex
+        mt="24px"
         p={{ base: "16px" }}
         shadow="md"
         justifyContent={{ base: "center" }}
