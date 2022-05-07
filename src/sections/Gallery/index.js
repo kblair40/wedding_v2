@@ -22,6 +22,9 @@ import shan_eight from "assets/galleryImages/shannon/shan_eight.jpg";
 import shan_nine from "assets/galleryImages/shannon/shan_nine.jpg";
 import shan_eleven from "assets/galleryImages/shannon/shan_eleven.jpg";
 
+import blairfam1 from "assets/galleryImages/brooke/blairfam1.jpg";
+import withaugustandfrederick from "assets/galleryImages/brooke/withaugustandfrederick.jpg";
+
 const Gallery = ({ setInView }) => {
   const [showCarousel, setShowCarousel] = useState(false);
   const [startingSlideIdx, setStartingSlideIdx] = useState();
@@ -39,10 +42,12 @@ const Gallery = ({ setInView }) => {
     one,
     shan_five,
     shan_eight,
+    blairfam1,
     shan_one,
     three,
     four,
     shan_nine,
+    withaugustandfrederick,
     shan_three,
     shan_seven,
     shan_six,
