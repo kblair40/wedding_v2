@@ -20,15 +20,19 @@ const Schedule = () => {
   // console.log("\n\n\n\n\n\n\n\nTHEME:", theme);
 
   const tabStyles = {
-    color: "neutral.900",
+    color: "text.primary",
     fontWeight: "500",
     fontSize: useBreakpointValue({ base: "xlt", sm: "2xlt" }),
     borderBottom: "3px solid",
     borderColor: "#f7f5f1",
     p: 0,
     _selected: {
-      color: "neutral.900",
+      color: "text.primary",
       borderColor: "secondary.200",
+      fontWeight: "600",
+    },
+    _active: {
+      bg: "secondary.50",
     },
   };
 
