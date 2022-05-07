@@ -8,6 +8,7 @@ import RSVP from "sections/RSVP";
 import WeddingParty from "sections/WeddingParty";
 import Gallery from "sections/Gallery";
 import WhenAndWhere from "sections/WhenAndWhere";
+import Registry from "sections/Registry";
 
 const Main = ({
   section,
@@ -22,6 +23,7 @@ const Main = ({
   const weddingPartyRef = useRef();
   const galleryRef = useRef();
   const rsvpRef = useRef();
+  const registryRef = useRef();
 
   const refMap = {
     top: topRef,
@@ -31,6 +33,7 @@ const Main = ({
     activities: activitiesRef,
     weddingParty: weddingPartyRef,
     gallery: galleryRef,
+    registry: registryRef,
   };
 
   useEffect(() => {
@@ -68,6 +71,10 @@ const Main = ({
 
       <Box {...boxStyle} ref={activitiesRef}>
         <Activities setInView={() => handleChangeSectionInView("activities")} />
+      </Box>
+
+      <Box {...boxStyle} ref={registryRef}>
+        <Registry setInView={() => handleChangeSectionInView("registry")} />
       </Box>
 
       <Box {...boxStyle} ref={weddingPartyRef}>

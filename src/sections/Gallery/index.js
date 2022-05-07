@@ -78,7 +78,7 @@ const Gallery = ({ setInView }) => {
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
 
-      <Flex direction="column" alignItems="center" bg="white" pb="24px">
+      <Flex direction="column" alignItems="center" bg="#f7f5f1" pb="24px">
         <SectionLabel label="gallery" />
         <Box ref={inViewRef} />
 

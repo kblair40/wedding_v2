@@ -41,7 +41,8 @@ const WeddingParty = ({ setInView }) => {
   }, [inView]);
 
   return (
-    <Flex direction="column" alignItems="center" bg="#f7f5f1" pb="24px">
+    // <Flex direction="column" alignItems="center" bg="#f7f5f1" pb="24px">
+    <Flex direction="column" alignItems="center" bg="#fff" pb="24px">
       <SectionLabel label="wedding party" />
       {/* <Image src={karissa} maxW="100%" /> */}
 
