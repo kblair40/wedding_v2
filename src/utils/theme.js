@@ -111,8 +111,33 @@ const theme = extendTheme({
       },
     },
     Radio: {
+      baseStyle: {
+        container: {
+          borderColor: "neutral.800",
+          _checked: {
+            borderColor: "#000",
+          },
+        },
+        control: {
+          _hover: {
+            bg: "primary.50",
+          },
+          _checked: {
+            bg: "neutral.800",
+            borderColor: "neutral.900",
+            _hover: {
+              borderColor: "neutral.900",
+              bg: "neutral.800",
+            },
+            _before: {
+              bg: "primary.50",
+            },
+          },
+        },
+      },
       defaultProps: {
-        colorScheme: "darkScheme",
+        // colorScheme: "darkScheme",
+        colorScheme: undefined,
       },
     },
     Checkbox: {

@@ -27,7 +27,7 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
   const email = useRef();
 
   const radioStyles = {
-    borderColor: "text.tertiary",
+    // borderColor: "text.tertiary",
   };
 
   const inputStyles = {
