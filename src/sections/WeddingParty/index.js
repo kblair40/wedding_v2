@@ -158,7 +158,7 @@ const WeddingParty = ({ setInView }) => {
         </GridItem>
 
         <GridItem gridArea="cassidy">
-          <Partier name="cassidy blair" role="BRIDESMAID" imgURL={cassidy} />
+          <Partier name="cassidy gerber" role="BRIDESMAID" imgURL={cassidy} />
         </GridItem>
 
         <GridItem mt={{ lg: "2rem" }}>
@@ -174,7 +174,7 @@ const WeddingParty = ({ setInView }) => {
         <GridItem mt={{ lg: "2rem" }}>
           <Partier
             gridArea="fg"
-            name="charlotte reichle"
+            name="lola reichle"
             role="FLOWER GIRL"
             imgURL={sarlota}
           />
