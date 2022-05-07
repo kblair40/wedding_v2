@@ -26,10 +26,6 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
   const dinnerSelectionNotes = useRef();
   const email = useRef();
 
-  const radioStyles = {
-    // borderColor: "text.tertiary",
-  };
-
   const inputStyles = {
     borderColor: "text.tertiary",
     _focus: { borderColor: "text.primary" },
@@ -57,7 +53,6 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
       dinner_selection: dinnerSelection,
       attending: attending,
     };
-    // console.log("FORM DATA:", formData);
 
     const requiredFields = ["first_name", "last_name", "attending"];
 
@@ -174,13 +169,9 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
               borderColor="text.primary"
             >
               <HStack spacing="16px">
-                <Radio {...radioStyles} value="yes">
-                  Yes!
-                </Radio>
+                <Radio value="yes">Yes!</Radio>
 
-                <Radio {...radioStyles} value="no">
-                  Unfortunately not
-                </Radio>
+                <Radio value="no">Unfortunately not</Radio>
               </HStack>
             </RadioGroup>
             {missingFields.includes("attending") && (
@@ -206,12 +197,8 @@ const CustomRSVPForm = ({ onSubmit, onClose }) => {
                 flexDirection={{ base: "column", sm: "row" }}
               >
                 <HStack spacing="16px">
-                  <Radio {...radioStyles} value="chicken">
-                    Chicken
-                  </Radio>
-                  <Radio {...radioStyles} value="beef">
-                    Beef
-                  </Radio>
+                  <Radio value="chicken">Chicken</Radio>
+                  <Radio value="beef">Beef</Radio>
                 </HStack>
                 <Input
                   {...inputStyles}

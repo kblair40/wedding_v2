@@ -48,16 +48,28 @@ const SelectGuestsModal = ({
               <Checkbox isChecked={true} borderColor="text.secondary">
                 {`${guest.first_name} ${guest.last_name}`}
               </Checkbox>
-              <Text ml="8px" fontSize="sm" fontStyle="italic">
-                Not you?
+              <Text
+                ml="8px"
+                fontSize="sm"
+                color="text.secondary"
+                fontWeight="500"
+              >
+                Not you?&nbsp;&nbsp;
               </Text>
               <Box
-                ml="6px"
+                // ml="6px"
                 cursor="pointer"
-                _hover={{ p: { textDecoration: "underline" } }}
+                _hover={{
+                  p: { textDecoration: "underline", color: "text.primary" },
+                }}
                 onClick={showHelpModal}
               >
-                <Text fontSize="sm" fontWeight="7=500" as={"p"}>
+                <Text
+                  fontSize="sm"
+                  fontWeight="500"
+                  as={"p"}
+                  color="text.secondary"
+                >
                   Email us instead
                 </Text>
               </Box>

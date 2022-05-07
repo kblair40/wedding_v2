@@ -144,11 +144,11 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
             w="100%"
             placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
             borderColor="text.tertiary"
+            _hover={{ borderColor: "text.secondary" }}
             focusBorderColor="text.primary"
             _placeholder={{
               color: "text.secondary",
-              fontStyle: "italic",
-              fontSize: { base: "13px", sm: "md" },
+              fontSize: { base: "13px", sm: "sm" },
             }}
           />
           <Button
