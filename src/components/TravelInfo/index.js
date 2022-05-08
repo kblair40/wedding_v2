@@ -12,6 +12,7 @@ import {
 import { IoAirplaneOutline } from "react-icons/io5";
 import { AiOutlineCar } from "react-icons/ai";
 
+import { outlineButton } from "utils/styles";
 import Paper from "components/containers/Paper";
 
 const paperStyles = {
@@ -37,9 +38,12 @@ const buttonStyles = {
   variant: "outline",
   fontWeight: "600",
   _hover: {
-    bg: "primary.50",
-    borderColor: "primary.900",
-    color: "primary.900",
+    // bg: "primary.50",
+    // borderColor: "primary.900",
+    // color: "primary.900",
+    bg: "neutral.900",
+    // borderColor: ''
+    color: "#fff",
   },
   _active: { bg: "text.secondary" },
 };
@@ -91,7 +95,9 @@ const TravelInfo = () => {
                   textDecoration: "none",
                 }}
               >
-                <Button {...buttonStyles}>Search Flights</Button>
+                <Button {...outlineButton} mt="24px" w="100%">
+                  Search Flights
+                </Button>
               </Link>
             </Box>
           </VStack>
@@ -125,7 +131,9 @@ const TravelInfo = () => {
               pt="8px"
               w="100%"
             >
-              <Button {...buttonStyles}>Get Directions</Button>
+              <Button {...outlineButton} mt="24px" w="100%">
+                Get Directions
+              </Button>
             </Box>
           </VStack>
         </Paper>
