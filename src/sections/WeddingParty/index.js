@@ -12,6 +12,7 @@ import {
 import { useInView } from "react-intersection-observer";
 
 import SectionLabel from "components/SectionLabel";
+import Us from "components/Us";
 
 import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
 
@@ -41,10 +42,20 @@ const WeddingParty = ({ setInView }) => {
   }, [inView]);
 
   return (
-    // <Flex direction="column" alignItems="center" bg="#f7f5f1" pb="24px">
-    <Flex direction="column" alignItems="center" bg="#fff" pb="24px">
+    <Flex
+      direction="column"
+      alignItems="center"
+      bg="#fff"
+      pb="24px"
+      sx={{
+        ".partier": {
+          // border: "1px solid #ccc",
+        },
+      }}
+    >
       <SectionLabel label="wedding party" />
-      {/* <Image src={karissa} maxW="100%" /> */}
+
+      <Us />
 
       <Grid
         rowGap={{ base: "1rem", sm: "1.25rem", md: "1rem" }}
@@ -68,7 +79,7 @@ const WeddingParty = ({ setInView }) => {
           'cam'
         `,
           sm: `
-          'bride groom'
+          // 'bride groom'
           'erin caleb'
           'kelly trevor'
           'karissa andrew'
@@ -84,9 +95,9 @@ const WeddingParty = ({ setInView }) => {
         `,
         }}
       >
-        <GridItem gridArea="groom">
+        {/* <GridItem gridArea="groom">
           <Partier name="kevin blair" role="GROOM" imgURL={kevin} />
-        </GridItem>
+        </GridItem> */}
 
         <GridItem gridArea="caleb" ref={inViewRef}>
           <Partier
@@ -123,14 +134,14 @@ const WeddingParty = ({ setInView }) => {
           />
         </GridItem>
 
-        <GridItem gridArea="bride">
+        {/* <GridItem gridArea="bride">
           <Partier
             name="shannon dunne"
             role="BRIDE"
             imgURL={shannon2}
             position="center 20%"
           />
-        </GridItem>
+        </GridItem> */}
 
         <GridItem gridArea="erin">
           <Partier
@@ -207,7 +218,7 @@ const WeddingParty = ({ setInView }) => {
 
 export default WeddingParty;
 
-const Partier = ({
+export const Partier = ({
   name,
   role,
   imgURL,
@@ -216,6 +227,7 @@ const Partier = ({
 }) => {
   return (
     <Flex
+      className="partier"
       w={{ base: "280px", sm: "232px" }}
       direction="column"
       alignItems="center"
