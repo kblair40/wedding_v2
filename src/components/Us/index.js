@@ -13,6 +13,7 @@ const Us = () => {
 
   const options = {
     threshold: 1,
+    triggerOnce: true,
   };
 
   const [inViewRef, inView] = useInView(options);
