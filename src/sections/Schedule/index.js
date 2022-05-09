@@ -13,10 +13,10 @@ import {
   useTheme,
 } from "@chakra-ui/react";
 
-import casa1 from "assets/images/casa/casa1.png";
-import casa2 from "assets/images/casa/casa2.png";
-import casa3 from "assets/images/casa/casa3.png";
-import casa4 from "assets/images/casa/casa4.png";
+import casa1 from "assets/images/casa/casa_1.png";
+import casa2 from "assets/images/casa/casa_2.png";
+import casa3 from "assets/images/casa/casa_3.png";
+import casa4 from "assets/images/casa/casa_4.png";
 import casa5 from "assets/images/casa/casa5.png";
 import casa6 from "assets/images/casa/casa6.png";
 import casa7 from "assets/images/casa/casa7.png";
