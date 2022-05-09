@@ -21,7 +21,7 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
 
   return (
     <Flex
-      h="60px"
+      h="52px"
       className="fade-in-immediate"
       justifyContent="center"
       position="fixed"
@@ -30,7 +30,6 @@ const Nav = ({ handleChangeSection, sectionInView, topInView }) => {
         md: "100%",
       }}
       bg={{ base: "rgba(0,0,0,0)", md: "rgba(255, 255, 255, 1)" }}
-      // border="1px solid white"
       zIndex={1000}
       shadow={{ md: "sm" }}
     >
