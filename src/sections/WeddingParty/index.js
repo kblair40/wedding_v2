@@ -23,6 +23,7 @@ import cameron from "assets/images/wedding_party/cameron.jpg";
 import ted from "assets/images/wedding_party/ted.jpeg";
 import trevor from "assets/images/wedding_party/trevor.jpeg";
 import caleb from "assets/images/wedding_party/caleb.jpeg";
+import caleb2 from "assets/images/wedding_party/caleb2.jpg";
 import andrew from "assets/images/wedding_party/andrew.jpg";
 
 import karissa from "assets/images/wedding_party/karissa.jpg";
@@ -103,8 +104,8 @@ const WeddingParty = ({ setInView }) => {
           <Partier
             name="caleb magnuson"
             role="BEST MAN"
-            imgURL={caleb}
-            position="center 0%"
+            imgURL={caleb2}
+            position="center 20%"
           />
         </GridItem>
 

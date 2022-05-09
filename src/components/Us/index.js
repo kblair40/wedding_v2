@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, Box, Icon } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
+import { FaRegHeart } from "react-icons/fa";
 
 import { Partier } from "sections/WeddingParty";
 import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
@@ -36,11 +37,13 @@ const Us = () => {
   const slideTogether = () => {
     gsap.to(".bride", { duration: 1, x: transitionAmount });
     gsap.to(".groom", { duration: 1, x: -transitionAmount });
+    gsap.to(".heart", { duration: 2, opacity: 1 });
   };
 
   const slideApart = () => {
     gsap.to(".bride", { duration: 1, x: 0 });
     gsap.to(".groom", { duration: 1, x: 0 });
+    gsap.to(".heart", { duration: 1, opacity: 0 });
   };
 
   useEffect(() => {
@@ -60,6 +63,7 @@ const Us = () => {
       mb="32px"
       w="100%"
       justifyContent="space-between"
+      alignItems="center"
       ref={inViewRef}
       sx={{
         ".us": {
@@ -80,6 +84,9 @@ const Us = () => {
           imgURL={shannon2}
           position="center 20%"
         />
+      </Box>
+      <Box className="heart" position="relative" bottom="16px" opacity={0}>
+        <Icon as={FaRegHeart} boxSize="40px" fill="error.400" />
       </Box>
       <Box className="us groom">
         <Partier name="kevin blair" role="GROOM" imgURL={kevin} />
