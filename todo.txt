@@ -1,17 +1,17 @@
 1. Add Registry section
 2. Add animated spinner on Casa Feliz on leaflet map.
+  - Could make extra markers for each category in activities section and functionality to hide/show them
 3. Whole wedding party needs pictures
 5. rsvp not quite responsive enough for mobile.
   - Also test auth flow
 6. Look up tips for dealing with safari and chrome bottom bars
 7. Put gallery image arrows fixed to left/right sides of screen on mobile (<480px)
-8. RSVP needs to go in a modal (after searching)
-9. Need a favicon for title bar
-10. When RSVP modal closes (successfully), show a thank you message where the input used to be.
-    - Include a button to show the input in case they need to update/add another rsvp
-11. GuestSearch input needs to be split on any amount of whitespace with a regex
-    - currently it thinks there are three names if there is more than one space between first and last name
-
+8. Links to google maps with pre-entered for map and activity locations
+9. Style map marker popups
+10. Ask Shannon to figure out text for
+   - accommodations
+   - 'by car'
+   - Registry
 
 non-code stuff
 1. force https to main website (or don't.  Chrome appears to force it on its own.  Worth looking into)

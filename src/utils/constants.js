@@ -43,7 +43,7 @@ export const NAV_ITEMS = [
 
 export const MAX_WIDTHS = () => ({
   base: "420px",
-  sm: "480px",
+  sm: "540px",
   md: "720px",
   lg: "900px",
 });

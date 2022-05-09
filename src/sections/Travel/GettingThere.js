@@ -31,7 +31,7 @@ const GettingThere = ({ setInView }) => {
             <Accommodations />
           </Box>
 
-          <Box mt="20px" px="16px">
+          <Box mt="20px" px="16px" border="1px solid green">
             <Map />
           </Box>
         </Box>
