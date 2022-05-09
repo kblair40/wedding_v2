@@ -103,7 +103,7 @@ const ArrowDown = () => {
       direction="column"
       alignItems="center"
       position="absolute"
-      bottom={{ base: "74px", sm: "16px" }}
+      bottom={{ base: "82px", sm: "16px" }}
       mx="auto"
       zIndex={10}
     >
