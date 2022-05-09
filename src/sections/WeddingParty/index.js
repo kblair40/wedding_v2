@@ -1,30 +1,19 @@
 import React, { useEffect } from "react";
-import {
-  Text,
-  Heading,
-  Flex,
-  Avatar,
-  Grid,
-  GridItem,
-  Box,
-  Image,
-} from "@chakra-ui/react";
+import { Text, Heading, Flex, Grid, GridItem, Box } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import SectionLabel from "components/SectionLabel";
 import Us from "components/Us";
 
 import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
-
 import ringBearers from "assets/images/wedding_party/augustfrederick.jpg";
 import sarlota from "assets/images/wedding_party/sarlota.jpg";
 import andras from "assets/images/wedding_party/andras.jpg";
 import cameron from "assets/images/wedding_party/cameron.jpg";
-import ted from "assets/images/wedding_party/ted.jpeg";
+import ted2 from "assets/images/wedding_party/ted2.jpg";
 import trevor from "assets/images/wedding_party/trevor.jpeg";
-import caleb from "assets/images/wedding_party/caleb.jpeg";
-import caleb2 from "assets/images/wedding_party/caleb2.jpg";
-import andrew from "assets/images/wedding_party/andrew.jpg";
+import caleb3 from "assets/images/wedding_party/caleb3.jpg";
+import andrew2 from "assets/images/wedding_party/andrew2.jpg";
 
 import karissa from "assets/images/wedding_party/karissa.jpg";
 import cassidy from "assets/images/wedding_party/cassidy.jpeg";
@@ -104,7 +93,7 @@ const WeddingParty = ({ setInView }) => {
           <Partier
             name="caleb magnuson"
             role="BEST MAN"
-            imgURL={caleb2}
+            imgURL={caleb3}
             position="center 20%"
           />
         </GridItem>
@@ -122,7 +111,7 @@ const WeddingParty = ({ setInView }) => {
           <Partier
             name="andrew payne"
             role="GROOMSMAN"
-            imgURL={andrew}
+            imgURL={andrew2}
             position="center 10%"
           />
         </GridItem>
@@ -130,7 +119,7 @@ const WeddingParty = ({ setInView }) => {
           <Partier
             name="ted keller"
             role="GROOMSMAN"
-            imgURL={ted}
+            imgURL={ted2}
             position="center 10%"
           />
         </GridItem>
