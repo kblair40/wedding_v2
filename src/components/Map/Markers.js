@@ -29,49 +29,58 @@ const Markers = () => {
     popupAnchor: [0, 0],
   });
 
+  const markers = {
+    airports: [
+      {
+        icon: planeIcon,
+        position: [28.41790802830519, -81.30407546724783],
+        popupText: "Orlando Int'l Airport",
+      },
+      {
+        icon: planeIcon,
+        position: [28.776062533251384, -81.23416988528194],
+        popupText: "Orlando Sanford Int'l Airport",
+      },
+    ],
+    hotels: [
+      {
+        icon: hotelIcon,
+        position: [28.59595340467498, -81.34747020857483],
+        popupText: "The Alfond Inn",
+      },
+      {
+        icon: hotelIcon,
+        position: [28.606618391256887, -81.36597780672565],
+        popupText: "Hilton Garden Inn",
+      },
+    ],
+    restaurants: [
+      {
+        // icon: restaurantIcon,
+        position: [28.597306662119003, -81.36607228885731],
+        popupText: "Hillstone Restaurant",
+        websiteURL: "http://hillstonerestaurant.com/locations/winterpark/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Hillstone+Restaurant,+215+S+Orlando+Ave,+Winter+Park,+FL+32789/@28.5970853,-81.3682288,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e7706dedb6b565:0x1e77ea39f3977eff!2m2!1d-81.3660401!2d28.5970806!3e0",
+      },
+    ],
+  };
+
   return (
     <React.Fragment>
-      <Marker
+      <CustomMarker
         icon={venueIcon}
         position={[28.60326888554329, -81.34948892630368]}
-      >
-        <Popup>
-          <Text>Casa Feliz</Text>
-        </Popup>
-      </Marker>
+        popupText="Casa Feliz"
+      />
 
-      <Marker
-        position={[28.59595340467498, -81.34747020857483]}
-        icon={hotelIcon}
-      >
-        <Popup>
-          <Text>The Alfond Inn</Text>
-        </Popup>
-      </Marker>
-      <Marker
-        position={[28.606618391256887, -81.36597780672565]}
-        icon={hotelIcon}
-      >
-        <Popup>
-          <Text>Hilton Garden Inn</Text>
-        </Popup>
-      </Marker>
-      <Marker
-        position={[28.41790802830519, -81.30407546724783]}
-        icon={planeIcon}
-      >
-        <Popup>
-          <Text>Orlando Int'l Airport</Text>
-        </Popup>
-      </Marker>
-      <Marker
-        icon={planeIcon}
-        position={[28.776062533251384, -81.23416988528194]}
-      >
-        <Popup>
-          <Text>Orlando Sanford Int'l Airport</Text>
-        </Popup>
-      </Marker>
+      {markers.airports.map((marker, i) => (
+        <CustomMarker {...marker} />
+      ))}
+
+      {markers.hotels.map((marker, i) => (
+        <CustomMarker {...marker} />
+      ))}
 
       <Marker
         icon={mickeyIcon}
@@ -86,3 +95,13 @@ const Markers = () => {
 };
 
 export default Markers;
+
+const CustomMarker = ({ position, icon, popupText }) => {
+  return (
+    <Marker icon={icon} position={position}>
+      <Popup>
+        <Text>{popupText}</Text>
+      </Popup>
+    </Marker>
+  );
+};
