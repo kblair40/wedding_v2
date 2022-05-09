@@ -160,7 +160,7 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
           </Button>
         </HStack>
 
-        <FormHelperText>
+        <FormHelperText color="text.secondary" opacity=".85">
           <strong>Tip</strong>: &nbsp;Try using short and long versions of your
           first name. &nbsp;Ex. If your first name is James, try using Jim
         </FormHelperText>
