@@ -1,5 +1,5 @@
 import React from "react";
-import { Marker, Popup } from "react-leaflet";
+import { Marker, Popup, LayersControl, LayerGroup } from "react-leaflet";
 import { Text } from "@chakra-ui/react";
 import venue_marker from "assets/icons/venue_marker.png";
 import new_mickey from "assets/icons/mickey_new.svg";
@@ -144,23 +144,47 @@ const Markers = () => {
 
   return (
     <React.Fragment>
-      <CustomMarker
-        icon={venueIcon}
-        position={[28.60326888554329, -81.34948892630368]}
-        popupText="Casa Feliz"
-      />
+      <LayersControl position="topright">
+        <LayersControl.Overlay name="Wedding Venue" checked>
+          <CustomMarker
+            icon={venueIcon}
+            position={[28.60326888554329, -81.34948892630368]}
+            popupText="Casa Feliz"
+          />
+        </LayersControl.Overlay>
 
-      {markers.airports.map((marker, i) => (
-        <CustomMarker {...marker} key={i} />
-      ))}
+        <LayersControl.Overlay name="Airports" checked>
+          <LayerGroup>
+            {markers.airports.map((marker, i) => (
+              <CustomMarker {...marker} key={i} />
+            ))}
+          </LayerGroup>
+        </LayersControl.Overlay>
 
-      {markers.hotels.map((marker, i) => (
+        <LayersControl.Overlay name="Hotels" checked>
+          <LayerGroup>
+            {markers.hotels.map((marker, i) => (
+              <CustomMarker {...marker} key={i} />
+            ))}
+          </LayerGroup>
+        </LayersControl.Overlay>
+
+        <LayersControl.Overlay name="Restaurants" checked>
+          <LayerGroup>
+            {markers.restaurants.map((marker, i) => (
+              <CustomMarker {...marker} key={i} />
+            ))}
+          </LayerGroup>
+        </LayersControl.Overlay>
+      </LayersControl>
+
+      {/* {markers.hotels.map((marker, i) => (
         <CustomMarker {...marker} key={i} />
       ))}
 
       {markers.restaurants.map((marker, i) => (
         <CustomMarker {...marker} key={i} />
-      ))}
+      ))} */}
 
       <Marker
         icon={mickeyIcon}
@@ -173,6 +197,37 @@ const Markers = () => {
     </React.Fragment>
   );
 };
+
+// return (
+//   <React.Fragment>
+//     <CustomMarker
+//       icon={venueIcon}
+//       position={[28.60326888554329, -81.34948892630368]}
+//       popupText="Casa Feliz"
+//     />
+
+//     {markers.airports.map((marker, i) => (
+//       <CustomMarker {...marker} key={i} />
+//     ))}
+
+//     {markers.hotels.map((marker, i) => (
+//       <CustomMarker {...marker} key={i} />
+//     ))}
+
+//     {markers.restaurants.map((marker, i) => (
+//       <CustomMarker {...marker} key={i} />
+//     ))}
+
+//     <Marker
+//       icon={mickeyIcon}
+//       position={[28.397959747351433, -81.55006630160574]}
+//     >
+//       <Popup>
+//         <Text>Disney World</Text>
+//       </Popup>
+//     </Marker>
+//   </React.Fragment>
+// );
 
 export default Markers;
 
