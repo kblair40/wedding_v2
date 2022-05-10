@@ -3,7 +3,7 @@ import { TileLayer, useMap } from "react-leaflet";
 
 import Markers from "./Markers";
 
-const MapContents = () => {
+const MapContents = ({ activeLayers }) => {
   const map = useMap();
   const LEAFLET_API_KEY = process.env.REACT_APP_LEAFLET_API_KEY;
   // console.log({ LEAFLET_API_KEY });
@@ -17,7 +17,7 @@ const MapContents = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       /> */}
-      <Markers />
+      <Markers activeLayers={activeLayers} />
     </React.Fragment>
   );
 };

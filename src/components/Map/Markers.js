@@ -8,15 +8,14 @@ import L, { Control } from "leaflet";
 import venue_marker from "assets/icons/venue_marker.png";
 import new_mickey from "assets/icons/mickey_new.svg";
 // import airport from "assets/icons/airport.svg";
-import hotel_icon from "assets/icons/hotel_icon.jpg";
 import hotel from "assets/images/markers/hotel.png";
 import park from "assets/images/markers/park.png";
 import restaurant from "assets/images/markers/restaurant.png";
 import drink from "assets/images/markers/drink.png";
 import airport from "assets/images/markers/airport.png";
-import CustomLayerControl from "./CustomLayerControl";
+import sweets from "assets/images/markers/sweets.png";
 
-const Markers = () => {
+const Markers = ({ activeLayers }) => {
   const planeIcon = L.icon({
     iconUrl: airport,
     iconSize: [28, 36],
@@ -34,11 +33,16 @@ const Markers = () => {
   });
   const mickeyIcon = L.icon({
     iconUrl: new_mickey,
-    iconSize: [64, 64],
+    iconSize: [48, 48],
     popupAnchor: [0, 0],
   });
   const restaurantIcon = L.icon({
     iconUrl: restaurant,
+    iconSize: [28, 36],
+    popupAnchor: [0, 0],
+  });
+  const sweetsIcon = L.icon({
+    iconUrl: sweets,
     iconSize: [28, 36],
     popupAnchor: [0, 0],
   });
@@ -68,7 +72,7 @@ const Markers = () => {
         popupText: "Hilton Garden Inn",
       },
     ],
-    restaurants: [
+    food: [
       {
         icon: restaurantIcon,
         subcategory: "lunch/dinner",
@@ -142,6 +146,33 @@ const Markers = () => {
         directionsURL:
           "https://www.google.com/maps/dir//First+Watch,+2215+Aloma+Ave+Suite+K1,+Winter+Park,+FL+32792/@28.5833176,-81.3613986,14z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e76fea2bb7ad4b:0x28221f403d86a3bb!2m2!1d-81.322931!2d28.6022985!3e0",
       },
+      {
+        icon: sweetsIcon,
+        subcategory: "sweets",
+        position: [28.56890500764239, -81.34164159058969],
+        popupText: "Gideon's Bakehouse",
+        websiteURL: "https://gideonsbakehouse.com/bakery-menu/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Gideon's+Bakehouse,+3201+Corrine+Dr,+Orlando,+FL+32803/@28.5683585,-81.3437659,15z/data=!3m1!5s0x88e77ab3b6a88455:0xe8fc0b16688f49f9!4m9!4m8!1m0!1m5!1m1!1s0x88e77ab3b46fda0b:0xc2fb867f64065de8!2m2!1d-81.3437659!2d28.5683585!3e0",
+      },
+      {
+        icon: sweetsIcon,
+        subcategory: "sweets",
+        position: [28.56836973462912, -81.3437238815216],
+        popupText: "Sugar Dough Bakehouse",
+        websiteURL: "https://www.sugardoughbakehouse.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Sugar+Dough+Bakehouse,+3122+Corrine+Dr,+Orlando,+FL+32803/@28.5675217,-81.3444749,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77bad44156ed3:0x12a0ac4e14abcd70!2m2!1d-81.3444749!2d28.5675217!3e0",
+      },
+      {
+        icon: sweetsIcon,
+        subcategory: "sweets",
+        position: [28.568306553960362, -81.34634100537241],
+        popupText: "P is for Pie Bake Shop",
+        websiteURL: "http://crazyforpies.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//P+is+for+Pie+Bake+Shop,+2806+Corrine+Dr,+Orlando,+FL+32803/@28.5675339,-81.3478645,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77ab113a37e0f:0xb38a8300e5e71be!2m2!1d-81.3478652!2d28.5675938!3e0",
+      },
     ],
   };
 
@@ -162,17 +193,16 @@ const Markers = () => {
         popupText="Casa Feliz"
       />
 
-      {markers.airports.map((marker, i) => (
-        <CustomMarker {...marker} key={i} />
-      ))}
+      {activeLayers.includes("airports") &&
+        markers.airports.map((marker, i) => (
+          <CustomMarker {...marker} key={i} />
+        ))}
 
-      {markers.hotels.map((marker, i) => (
-        <CustomMarker {...marker} key={i} />
-      ))}
+      {activeLayers.includes("hotels") &&
+        markers.hotels.map((marker, i) => <CustomMarker {...marker} key={i} />)}
 
-      {markers.restaurants.map((marker, i) => (
-        <CustomMarker {...marker} key={i} />
-      ))}
+      {activeLayers.includes("food") &&
+        markers.food.map((marker, i) => <CustomMarker {...marker} key={i} />)}
 
       <Marker
         icon={mickeyIcon}

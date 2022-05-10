@@ -168,11 +168,6 @@ export const ACTIVITIES = {
       priceLevel: 2,
     },
     {
-      name: "Ice & Bites Cafe",
-      url: "https://icenbitesorlando.wixsite.com/iceandbites",
-      priceLevel: 2,
-    },
-    {
       name: "Sugar Dough Bakehouse",
       url: "https://www.sugardoughbakehouse.com/",
       priceLevel: 2,
@@ -180,11 +175,6 @@ export const ACTIVITIES = {
     {
       name: "P is for Pie Bake Shop",
       url: "http://crazyforpies.com/",
-      priceLevel: 2,
-    },
-    {
-      name: "Ice & Bites Cafe",
-      url: "https://icenbitesorlando.wixsite.com/iceandbites",
       priceLevel: 2,
     },
   ],

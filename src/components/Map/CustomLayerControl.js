@@ -18,8 +18,14 @@ const CustomLayerControl = ({
   };
 
   return (
-    <Box borderRadius="4px" border="1px solid #ccc">
-      <Flex justifyContent="center">
+    <Box
+      borderRadius="4px"
+      // border="1px solid #ccc"
+    >
+      <Flex
+        // justifyContent="center"
+        p=".25rem .5rem"
+      >
         <Wrap spacing="1.25rem">
           {availableLayers.map((lyr, i) => {
             return (

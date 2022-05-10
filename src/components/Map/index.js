@@ -42,7 +42,7 @@ const Map = () => {
         style={{ height: "400px", zIndex: 1 }}
         whenReady={() => setReady(true)}
       >
-        {ready && <MapContents />}
+        {ready && <MapContents activeLayers={activeLayers} />}
       </MapContainer>
       <CustomLayerControl
         activeLayers={activeLayers}
