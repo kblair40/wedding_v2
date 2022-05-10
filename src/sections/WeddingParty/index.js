@@ -143,7 +143,7 @@ const WeddingParty = ({ setInView }) => {
         </GridItem>
         <GridItem gridArea="kelly">
           <Partier
-            name="kelly dunne"
+            name="kelly brown"
             role="MATRON OF HONOR"
             imgURL={kelly2}
             position="center 10%"
@@ -153,7 +153,7 @@ const WeddingParty = ({ setInView }) => {
         <GridItem gridArea="karissa">
           <Partier
             name="karissa leith"
-            role="BRIDESMAID"
+            role="MAIDEN OF HONOR"
             imgURL={karissa}
             position="center 45%"
           />
@@ -176,7 +176,7 @@ const WeddingParty = ({ setInView }) => {
         <GridItem mt={{ lg: "2rem" }}>
           <Partier
             gridArea="fg"
-            name="lola reichle"
+            name="sarlota reichle"
             role="FLOWER GIRL"
             imgURL={sarlota}
           />
