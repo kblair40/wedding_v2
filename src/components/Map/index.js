@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { MapContainer } from "react-leaflet";
 import { Box } from "@chakra-ui/react";
 
 import MapContents from "./MapContents";
+import CustomLayerControl from "./CustomLayerControl";
+
+import "./index.css";
 
 /*
 Add dropdown for requesting directions.
@@ -11,6 +14,21 @@ Add dropdown for requesting directions.
 */
 
 const Map = () => {
+  const [ready, setReady] = useState(false);
+  const [activeLayers, setActiveLayers] = useState([
+    "venue",
+    "hotels",
+    "airports",
+  ]);
+
+  const handleAddActiveLayers = (newLayer) => {
+    setActiveLayers([...activeLayers, newLayer]);
+  };
+
+  const handleRemoveActiveLayers = (layer) => {
+    setActiveLayers(activeLayers.filter((lyr) => lyr !== layer));
+  };
+
   return (
     <Box>
       <MapContainer
@@ -22,9 +40,15 @@ const Map = () => {
         zoom={10}
         minZoom={10}
         style={{ height: "400px", zIndex: 1 }}
+        whenReady={() => setReady(true)}
       >
-        <MapContents />
+        {ready && <MapContents />}
       </MapContainer>
+      <CustomLayerControl
+        activeLayers={activeLayers}
+        handleAddActiveLayers={handleAddActiveLayers}
+        handleRemoveActiveLayers={handleRemoveActiveLayers}
+      />
     </Box>
   );
 };
