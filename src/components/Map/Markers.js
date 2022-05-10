@@ -68,7 +68,9 @@ const Markers = () => {
     restaurants: [
       {
         icon: restaurantIcon,
+        subcategory: "lunch/dinner",
         position: [28.597306662119003, -81.36607228885731],
+        // position: [28.606618391256886, -81.3660722888573],
         popupText: "Hillstone Restaurant",
         websiteURL: "http://hillstonerestaurant.com/locations/winterpark/",
         directionsURL:
@@ -76,6 +78,7 @@ const Markers = () => {
       },
       {
         icon: restaurantIcon,
+        subcategory: "lunch/dinner",
         position: [28.597753121736748, -81.3506015084386],
         popupText: "Bosphorous Turkish Cuisine",
         websiteURL: "http://www.bosphorousrestaurant.com/",
@@ -84,11 +87,57 @@ const Markers = () => {
       },
       {
         icon: restaurantIcon,
+        subcategory: "lunch/dinner",
         position: [28.593987299273344, -81.35558226191405],
         popupText: "The Ravenous Pig",
         websiteURL: "https://www.theravenouspig.com/",
         directionsURL:
           "https://www.google.com/maps/dir//The+Ravenous+Pig,+565+W+Fairbanks+Ave,+Winter+Park,+FL+32789/@28.5933844,-81.3559685,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77074cef78d83:0x5c19a6ecedc2e205!2m2!1d-81.3559685!2d28.5933844!3e0",
+      },
+      {
+        icon: restaurantIcon,
+        subcategory: "breakfast",
+        position: [28.600299258484384, -81.35080308465712],
+        popupText: "Briarpatch Restaurant",
+        websiteURL: "http://www.thebriarpatchrestaurant.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Briarpatch+Restaurant,+252+N+Park+Ave+%233814,+Winter+Park,+FL+32789/@28.599508,-81.350846,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77010a00e128d:0x761d451cbcaed653!2m2!1d-81.3509438!2d28.59951!3e0",
+      },
+      {
+        icon: restaurantIcon,
+        subcategory: "breakfast",
+        position: [28.60201599540113, -81.36447686137156],
+        popupText: "Another Broken Egg Cafe",
+        websiteURL: "http://www.anotherbrokenegg.com",
+        directionsURL:
+          "http://www.anotherbrokenegg.com/location/winter-park-fl",
+      },
+      {
+        icon: restaurantIcon,
+        subcategory: "breakfast",
+        position: [28.59618470472456, -81.3648739754585],
+        popupText: "The Glass Knife",
+        websiteURL: "http://theglassknife.com",
+        directionsURL:
+          "https://www.google.com/maps/dir//The+Glass+Knife,+276+S+Orlando+Ave,+Winter+Park,+FL+32789/@28.5959398,-81.3669983,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e770727f9c2c63:0x40ac4df603de1b33!2m2!1d-81.3648096!2d28.5959398!3e0",
+      },
+      {
+        icon: restaurantIcon,
+        subcategory: "breakfast",
+        position: [28.552687112888414, -81.34679567725692],
+        popupText: "Se7en Bites",
+        websiteURL: "http://www.se7enbites.com",
+        directionsURL:
+          "https://www.google.com/maps/dir//Se7enBites,+617+Primrose+Dr,+Orlando,+FL+32803/@28.5518578,-81.347139,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77ad1068e88bb:0x9625ec30973118e2!2m2!1d-81.347139!2d28.5518578!3e0",
+      },
+      {
+        icon: restaurantIcon,
+        subcategory: "breakfast",
+        position: [28.60366551387852, -81.32277480312078],
+        popupText: "First Watch",
+        websiteURL: "http://www.firstwatch.com",
+        directionsURL:
+          "https://www.google.com/maps/dir//First+Watch,+2215+Aloma+Ave+Suite+K1,+Winter+Park,+FL+32792/@28.5833176,-81.3613986,14z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e76fea2bb7ad4b:0x28221f403d86a3bb!2m2!1d-81.322931!2d28.6022985!3e0",
       },
     ],
   };
@@ -109,9 +158,9 @@ const Markers = () => {
         <CustomMarker {...marker} key={i} />
       ))}
 
-      {markers.restaurants.map((marker, i) => {
-        <CustomMarker {...marker} key={i} />;
-      })}
+      {markers.restaurants.map((marker, i) => (
+        <CustomMarker {...marker} key={i} />
+      ))}
 
       <Marker
         icon={mickeyIcon}
