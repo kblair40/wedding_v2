@@ -1,5 +1,3 @@
-import L from "leaflet";
-
 export const NAV_ITEMS = [
   {
     label: "Home",

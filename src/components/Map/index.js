@@ -5,8 +5,6 @@ import { Box } from "@chakra-ui/react";
 import MapContents from "./MapContents";
 import CustomLayerControl from "./CustomLayerControl";
 
-import "./index.css";
-
 /*
 Add dropdown for requesting directions.
 'To' column and 'From' column
