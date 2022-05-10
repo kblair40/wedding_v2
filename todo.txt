@@ -12,6 +12,7 @@
    - accommodations
    - 'by car'
    - Registry
+11. Still need markers for drinks
 
 non-code stuff
 1. force https to main website (or don't.  Chrome appears to force it on its own.  Worth looking into)

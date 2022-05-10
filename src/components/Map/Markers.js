@@ -1,13 +1,11 @@
 import React, { useRef, useEffect } from "react";
-import { Text, Box } from "@chakra-ui/react";
-import { Marker, Popup, LayersControl, LayerGroup } from "react-leaflet";
-import { createControlComponent } from "@react-leaflet/core";
-
-import L, { Control } from "leaflet";
+import { Text, Flex, IconButton, Tooltip } from "@chakra-ui/react";
+import { Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import { FaDirections, FaExternalLinkAlt } from "react-icons/fa";
 
 import venue_marker from "assets/icons/venue_marker.png";
 import new_mickey from "assets/icons/mickey_new.svg";
-// import airport from "assets/icons/airport.svg";
 import hotel from "assets/images/markers/hotel.png";
 import park from "assets/images/markers/park.png";
 import restaurant from "assets/images/markers/restaurant.png";
@@ -15,6 +13,7 @@ import drink from "assets/images/markers/drink.png";
 import airport from "assets/images/markers/airport.png";
 import sweets from "assets/images/markers/sweets.png";
 import coffee from "assets/images/markers/coffee.png";
+import { InternalLink, ExternalLink } from "components/Links";
 
 const Markers = ({ activeLayers }) => {
   const planeIcon = L.icon({
@@ -88,7 +87,6 @@ const Markers = ({ activeLayers }) => {
         icon: restaurantIcon,
         subcategory: "lunch/dinner",
         position: [28.597306662119003, -81.36607228885731],
-        // position: [28.606618391256886, -81.3660722888573],
         popupText: "Hillstone Restaurant",
         websiteURL: "http://hillstonerestaurant.com/locations/winterpark/",
         directionsURL:
@@ -272,6 +270,7 @@ const Markers = ({ activeLayers }) => {
           icon={venueIcon}
           position={[28.60326888554329, -81.34948892630368]}
           popupText="Casa Feliz"
+          directionsURL="https://www.google.com/maps/dir//Casa+Feliz+Historic+Home+Museum,+656+N+Park+Ave,+Winter+Park,+FL+32789/@28.6029769,-81.3524501,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77017623254df:0x3708950b43ef5f1e!2m2!1d-81.3502614!2d28.6029769!3e0"
         />
       )}
 
@@ -310,10 +309,56 @@ const CustomMarker = ({
   websiteURL,
   directionsURL,
 }) => {
+  const hasLinks = Boolean(websiteURL) || Boolean(directionsURL);
+
+  const iconButtonStyle = {
+    borderRadius: "50%",
+    bg: "white",
+    border: "1px solid #546975",
+    transition: ".3s",
+    _hover: {
+      border: "1px solid #344148",
+      bg: "neutral.50",
+    },
+  };
+
   return (
     <Marker icon={icon} position={position}>
       <Popup>
-        <Text>{popupText}</Text>
+        <Text
+          fontWeight="500"
+          // border="1px solid #ccc"
+          //
+        >
+          {popupText}
+        </Text>
+        {hasLinks && (
+          <React.Fragment>
+            <Flex w="100%" mt="-8px" justifyContent="center">
+              {directionsURL && (
+                <ExternalLink to={directionsURL} mr={websiteURL ? "1.5rem" : 0}>
+                  <Tooltip label="Get directions" placement="top">
+                    <IconButton
+                      icon={<FaDirections size={24} />}
+                      {...iconButtonStyle}
+                    />
+                  </Tooltip>
+                </ExternalLink>
+              )}
+
+              {websiteURL && (
+                <ExternalLink to={websiteURL}>
+                  <Tooltip label="Go to website" placement="top">
+                    <IconButton
+                      icon={<FaExternalLinkAlt size={18} />}
+                      {...iconButtonStyle}
+                    />
+                  </Tooltip>
+                </ExternalLink>
+              )}
+            </Flex>
+          </React.Fragment>
+        )}
       </Popup>
     </Marker>
   );
