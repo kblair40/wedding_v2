@@ -63,11 +63,15 @@ const Markers = ({ activeLayers }) => {
         icon: planeIcon,
         position: [28.41790802830519, -81.30407546724783],
         popupText: "Orlando Int'l Airport",
+        directionsURL:
+          "https://www.google.com/maps/place/Orlando+International+Airport/@28.4179167,-81.3041451,15z/data=!4m2!3m1!1s0x0:0xad4ab9369411e16d?sa=X&ved=2ahUKEwizx5jnjdb3AhWGecAKHYN7BosQ_BJ6BQiIARAF",
       },
       {
         icon: planeIcon,
         position: [28.776062533251384, -81.23416988528194],
         popupText: "Orlando Sanford Int'l Airport",
+        directionsURL:
+          "https://www.google.com/maps/dir//Orlando+Sanford+International+Airport+(SFB),+1200+Red+Cleveland+Blvd,+Sanford,+FL+32773/@28.7759403,-81.2364766,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e76b527ddfdee5:0x936f506a1ef8b245!2m2!1d-81.2342879!2d28.7759403!3e0",
       },
     ],
     hotels: [
@@ -75,11 +79,18 @@ const Markers = ({ activeLayers }) => {
         icon: hotelIcon,
         position: [28.59595340467498, -81.34747020857483],
         popupText: "The Alfond Inn",
+        directionsURL:
+          "https://www.google.com/maps/dir//The+Alfond+Inn+at+Rollins+College,+300+E+New+England+Ave,+Winter+Park,+FL+32789/@28.5957556,-81.3478028,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e7701b2fe39c15:0x18c36cc2316db67!2m2!1d-81.3478028!2d28.5957556!3e0",
+        websiteURL: "https://thealfondinn.com/",
       },
       {
         icon: hotelIcon,
         position: [28.606618391256887, -81.36597780672565],
         popupText: "Hilton Garden Inn",
+        directionsURL:
+          "https://www.google.com/maps/dir//hilton+garden+inn+winter+park/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x88e771c2c1f0e119:0x871fd7036dc605e0?sa=X&ved=2ahUKEwjmmcmejtb3AhWVbc0KHZusBKwQ9Rd6BAhQEAQ",
+        websiteURL:
+          "https://www.hilton.com/en/hotels/mcowpgi-hilton-garden-inn-winter-park/?SEO_id=GMB-GI-MCOWPGI",
       },
     ],
     food: [
