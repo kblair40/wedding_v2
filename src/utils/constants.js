@@ -238,7 +238,7 @@ export const scheduleItems = {
       locationMapLink: "",
     },
     {
-      heading: "Ceremony",
+      heading: "ceremony",
       time: "4pm - 4:45pm",
       who: "Wedding Party and Family",
       locationName: "Casa Feliz",

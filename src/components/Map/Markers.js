@@ -67,7 +67,6 @@ const Markers = () => {
     ],
     restaurants: [
       {
-        // icon: restaurantIcon,
         icon: restaurantIcon,
         position: [28.597306662119003, -81.36607228885731],
         popupText: "Hillstone Restaurant",
@@ -76,13 +75,20 @@ const Markers = () => {
           "https://www.google.com/maps/dir//Hillstone+Restaurant,+215+S+Orlando+Ave,+Winter+Park,+FL+32789/@28.5970853,-81.3682288,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e7706dedb6b565:0x1e77ea39f3977eff!2m2!1d-81.3660401!2d28.5970806!3e0",
       },
       {
-        // icon: restaurantIcon,
         icon: restaurantIcon,
         position: [28.597753121736748, -81.3506015084386],
         popupText: "Bosphorous Turkish Cuisine",
         websiteURL: "http://www.bosphorousrestaurant.com/",
         directionsURL:
           "https://www.google.com/maps/dir//Bosphorous+Turkish+Cuisine,+108+S+Park+Ave,+Winter+Park,+FL+32789/@28.5976448,-81.3531228,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e7701078a3f7ed:0x11368fae0664d1a2!2m2!1d-81.3509319!2d28.5976419!3e0",
+      },
+      {
+        icon: restaurantIcon,
+        position: [28.593987299273344, -81.35558226191405],
+        popupText: "The Ravenous Pig",
+        websiteURL: "https://www.theravenouspig.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//The+Ravenous+Pig,+565+W+Fairbanks+Ave,+Winter+Park,+FL+32789/@28.5933844,-81.3559685,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77074cef78d83:0x5c19a6ecedc2e205!2m2!1d-81.3559685!2d28.5933844!3e0",
       },
     ],
   };
