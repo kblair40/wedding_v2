@@ -180,17 +180,6 @@ export const ACTIVITIES = {
   ],
 };
 
-{
-  /* <ScheduleItem
-  heading="rehearsal"
-  time="12pm - 2pm"
-  who="Wedding Party"
-  locationName="Casa Feliz"
-  dressCode="Casual"
-  locationMapLink=""
-/> */
-}
-
 export const scheduleItems = {
   friday: [
     {

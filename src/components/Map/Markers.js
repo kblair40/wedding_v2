@@ -14,6 +14,7 @@ import restaurant from "assets/images/markers/restaurant.png";
 import drink from "assets/images/markers/drink.png";
 import airport from "assets/images/markers/airport.png";
 import sweets from "assets/images/markers/sweets.png";
+import coffee from "assets/images/markers/coffee.png";
 
 const Markers = ({ activeLayers }) => {
   const planeIcon = L.icon({
@@ -43,6 +44,16 @@ const Markers = ({ activeLayers }) => {
   });
   const sweetsIcon = L.icon({
     iconUrl: sweets,
+    iconSize: [28, 36],
+    popupAnchor: [0, 0],
+  });
+  const coffeeIcon = L.icon({
+    iconUrl: coffee,
+    iconSize: [28, 36],
+    popupAnchor: [0, 0],
+  });
+  const parksIcon = L.icon({
+    iconUrl: park,
     iconSize: [28, 36],
     popupAnchor: [0, 0],
   });
@@ -173,6 +184,75 @@ const Markers = ({ activeLayers }) => {
         directionsURL:
           "https://www.google.com/maps/dir//P+is+for+Pie+Bake+Shop,+2806+Corrine+Dr,+Orlando,+FL+32803/@28.5675339,-81.3478645,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77ab113a37e0f:0xb38a8300e5e71be!2m2!1d-81.3478652!2d28.5675938!3e0",
       },
+      {
+        icon: coffeeIcon,
+        subcategory: "coffee",
+        position: [28.59348194823915, -81.35074441688191],
+        popupText: "KOS Coffee & Bodega",
+        websiteURL: "https://choosekos.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//KOS+Coffee+%26+Bodega,+129+W+Fairbanks+Ave,+Winter+Park,+FL+32789/@28.5933171,-81.3535285,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e771fb1ed21437:0x828fd7f2686f603b!2m2!1d-81.3513345!2d28.5933124!3e0",
+      },
+      {
+        icon: coffeeIcon,
+        subcategory: "coffee",
+        position: [28.596319784242755, -81.34973980708371],
+        popupText: "New General",
+        websiteURL: "https://www.newgeneral.us/",
+        directionsURL:
+          "https://www.google.com/maps/dir//New+General,+155+E+New+England+Ave,+Winter+Park,+FL+32789/@28.596089,-81.3523415,17z/data=!3m1!5s0x88e7701abd112d3f:0x3821dce1e4112907!4m9!4m8!1m0!1m5!1m1!1s0x88e7701abc4fb84b:0x3aafea967d47c1f1!2m2!1d-81.3501475!2d28.5960843!3e0",
+      },
+      {
+        icon: coffeeIcon,
+        subcategory: "coffee",
+        position: [28.597639301420585, -81.35051013776689],
+        popupText: "Barnie's Coffee & Tea Co.",
+        websiteURL: "https://www.barniescoffee.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Barnie's+Coffee+%26+Tea+Co.,+118+S+Park+Ave,+Winter+Park,+FL+32789/@28.5974462,-81.353026,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77010787e8407:0x98d235533ffe018f!2m2!1d-81.3509265!2d28.5974396!3e0",
+      },
+    ],
+    parks: [
+      {
+        icon: parksIcon,
+        subcategory: "parks",
+        position: [28.610886676475527, -81.34495607584131],
+        popupText: "Kraft Azalea Garden",
+        websiteURL:
+          "https://cityofwinterpark.org/departments/parks-recreation/parks-playgrounds/parks/kraft-azalea-garden/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Kraft+Azalea+Garden,+1365+Alabama+Dr,+Winter+Park,+FL+32789/@28.6106936,-81.3470857,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e7702144f038f9:0x675b88adafa936b3!2m2!1d-81.3448917!2d28.6106889!3e0",
+      },
+      {
+        icon: parksIcon,
+        subcategory: "parks",
+        position: [28.597845382351124, -81.35156449118315],
+        popupText: "Central Park",
+        websiteURL:
+          "https://cityofwinterpark.org/departments/parks-recreation/parks-playgrounds/parks/central-park/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Central+Park,+150+W+Morse+Blvd,+Winter+Park,+FL+32789/@28.5978501,-81.3536512,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77010888534dd:0x62216c8ba4de9a33!2m2!1d-81.3514572!2d28.5978454!3e0",
+      },
+      {
+        icon: parksIcon,
+        subcategory: "parks",
+        position: [28.60997652582753, -81.33062504515803],
+        popupText: "Phelps Park",
+        websiteURL:
+          "https://cityofwinterpark.org/departments/parks-recreation/parks-playgrounds/parks/phelps-park/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Phelps+Park,+1206+N+Phelps+Ave,+Winter+Park,+FL+32789/@28.6100095,-81.3328405,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e76fdcbe7d0ce7:0x61e74fe8626b22e9!2m2!1d-81.3306465!2d28.6100048!3e0",
+      },
+      {
+        icon: parksIcon,
+        subcategory: "parks",
+        position: [28.594105825575483, -81.34479040708376],
+        popupText: "Dinky Dock",
+        websiteURL:
+          "https://cityofwinterpark.org/departments/parks-recreation/parks/dinky-dock/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Dinky+Dock+Park,+410+Ollie+Ave,+Winter+Park,+FL+32789/@28.5939975,-81.3473921,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e770034544342f:0x3a337b7002c02fc9!2m2!1d-81.3451981!2d28.5939928!3e0",
+      },
     ],
   };
 
@@ -187,11 +267,13 @@ const Markers = ({ activeLayers }) => {
 
   return (
     <React.Fragment>
-      <CustomMarker
-        icon={venueIcon}
-        position={[28.60326888554329, -81.34948892630368]}
-        popupText="Casa Feliz"
-      />
+      {activeLayers.includes("venue") && (
+        <CustomMarker
+          icon={venueIcon}
+          position={[28.60326888554329, -81.34948892630368]}
+          popupText="Casa Feliz"
+        />
+      )}
 
       {activeLayers.includes("airports") &&
         markers.airports.map((marker, i) => (
@@ -203,6 +285,9 @@ const Markers = ({ activeLayers }) => {
 
       {activeLayers.includes("food") &&
         markers.food.map((marker, i) => <CustomMarker {...marker} key={i} />)}
+
+      {activeLayers.includes("parks") &&
+        markers.parks.map((marker, i) => <CustomMarker {...marker} key={i} />)}
 
       <Marker
         icon={mickeyIcon}
@@ -233,53 +318,3 @@ const CustomMarker = ({
     </Marker>
   );
 };
-
-//   <React.Fragment>
-//     {/* <CustomLayerControl position="topleft" /> */}
-//     <LayersControl position="topright" className="main-control">
-//       <LayersControl.Overlay name="Wedding Venue" checked ref={layerRef}>
-//         <Box ref={markerRef}>
-//           <CustomMarker
-//             icon={venueIcon}
-//             position={[28.60326888554329, -81.34948892630368]}
-//             popupText="Casa Feliz"
-//           />
-//         </Box>
-//       </LayersControl.Overlay>
-
-//       <LayersControl.Overlay name="Airports" checked>
-//         <LayerGroup>
-//           {markers.airports.map((marker, i) => (
-//             <CustomMarker {...marker} key={i} />
-//           ))}
-//         </LayerGroup>
-//       </LayersControl.Overlay>
-
-//       <LayersControl.Overlay name="Hotels" checked>
-//         <LayerGroup>
-//           {markers.hotels.map((marker, i) => (
-//             <CustomMarker {...marker} key={i} />
-//           ))}
-//         </LayerGroup>
-//       </LayersControl.Overlay>
-
-//       <LayersControl.Overlay name="Restaurants" checked>
-//         <LayerGroup>
-//           {markers.restaurants.map((marker, i) => (
-//             <CustomMarker {...marker} key={i} />
-//           ))}
-//         </LayerGroup>
-//       </LayersControl.Overlay>
-//       {/* </CustomLayerControl> */}
-//     </LayersControl>
-
-//     <Marker
-//       icon={mickeyIcon}
-//       position={[28.397959747351433, -81.55006630160574]}
-//     >
-//       <Popup>
-//         <Text>Disney World</Text>
-//       </Popup>
-//     </Marker>
-//   </React.Fragment>
-// );
