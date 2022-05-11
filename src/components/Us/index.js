@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Flex, Box, Icon } from "@chakra-ui/react";
+import { Flex, Box, Icon, useBreakpointValue } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
 import { FaRegHeart } from "react-icons/fa";
@@ -10,6 +10,8 @@ import shannon2 from "assets/images/wedding_party/meandshannon.jpg";
 
 const Us = () => {
   const [transitionAmount, setTransitionAmount] = useState();
+
+  const isMobile = useBreakpointValue({ base: true, sm: false });
 
   const options = {
     threshold: 1,
@@ -26,15 +28,6 @@ const Us = () => {
     }
   }, [inView]);
 
-  const dims = {
-    480: 0,
-    500: 10,
-    600: 60,
-    700: 110,
-    800: 160,
-    900: 210,
-  };
-
   const slideTogether = () => {
     gsap.to(".bride", { duration: 1, x: transitionAmount });
     gsap.to(".groom", { duration: 1, x: -transitionAmount });
@@ -48,7 +41,7 @@ const Us = () => {
   };
 
   useEffect(() => {
-    if (!transitionAmount) {
+    if (!transitionAmount || isMobile) {
       return;
     }
 
@@ -63,20 +56,10 @@ const Us = () => {
     <Flex
       mb="32px"
       w="100%"
-      justifyContent="space-between"
+      flexDirection={{ base: "column", sm: "row" }}
+      justifyContent={{ sm: "space-between" }}
       alignItems="center"
       ref={inViewRef}
-      sx={{
-        ".us": {
-          // border: "1px solid #bbb",
-        },
-        ".bride": {
-          // border: "1px solid red",
-        },
-        ".groom": {
-          // border: "1px solid blue",
-        },
-      }}
     >
       <Box className="us bride">
         <Partier

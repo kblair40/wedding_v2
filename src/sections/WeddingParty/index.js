@@ -19,7 +19,6 @@ import karissa from "assets/images/wedding_party/karissa.jpg";
 import cassidy from "assets/images/wedding_party/cassidy.jpeg";
 import erin2 from "assets/images/wedding_party/erin2.jpg";
 import kelly2 from "assets/images/wedding_party/kelly2.jpg";
-import shannon2 from "assets/images/wedding_party/meandshannon.jpg";
 
 const WeddingParty = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
