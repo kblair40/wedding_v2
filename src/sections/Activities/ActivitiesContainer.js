@@ -76,11 +76,24 @@ const ActivitiesContainer = () => {
             />
 
             <ActivityList
+              label="activities"
+              activities={ACTIVITIES.activities}
+            />
+            <ActivityList
               label="lunch/dinner"
               activities={ACTIVITIES.lunchDinner}
             />
 
-            <ActivityList label="parks" activities={ACTIVITIES.parks} />
+            <ActivityList
+              label="wine bars nearby"
+              activities={ACTIVITIES.wineBars}
+            />
+            <ActivityList
+              label="cocktail bars in orlando"
+              activities={ACTIVITIES.cocktailBars}
+            />
+
+            {/* <ActivityList label="parks" activities={ACTIVITIES.parks} /> */}
             <ActivityList label="drinks" activities={ACTIVITIES.drinks} />
             <ActivityList label="sweets" activities={ACTIVITIES.sweets} />
           </Masonry>

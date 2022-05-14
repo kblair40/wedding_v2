@@ -57,6 +57,28 @@ const Markers = ({ activeLayers }) => {
     popupAnchor: [0, 0],
   });
 
+  // TO ADD
+  // BARNIES COFFEE & TEA
+  // PRATO
+  // ARMANDO'S
+  // EVERYTHING UNDER ACTIVITIES, WINE BARS AND COCKTAIL BARS
+
+  // TO REMOVE
+  // KOS COFFEE
+  // Another Broken Egg Cafe
+  // First Watch
+  // The Ravenous Pig
+  // ALL PARKS
+  // Sugar Dough Bakehouse
+  // PETERBROOKE
+  // KILWINS
+  // ALL PARKS
+
+  // OTHER
+  // No need for parks icon
+  // figure out activities icon, cocktail bars icon, wine bars icon
+  //
+
   const markers = {
     airports: [
       {

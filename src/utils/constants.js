@@ -58,23 +58,24 @@ export const ACTIVITIES = {
     {
       name: "Bosphorous",
       url: "https://www.bosphorousrestaurant.com/",
-      priceLevel: 1,
+      priceLevel: 2,
     },
     {
-      name: "The Ravenous Pig",
-      url: "https://www.bosphorousrestaurant.com/",
+      name: "Prato",
+      url: "https://www.prato-wp.com/",
       priceLevel: 2,
+    },
+    {
+      name: "Armando's",
+      url: "http://www.armandosorlando.com/",
+      priceLevel: 2,
+      // 463 W New England Ave., Winter Park, FL
     },
   ],
   breakfast: [
     {
       name: "Briarpatch Restaurant",
       url: "http://www.thebriarpatchrestaurant.com/",
-      priceLevel: 2,
-    },
-    {
-      name: "Another Broken Egg Cafe",
-      url: "http://www.anotherbrokenegg.com",
       priceLevel: 2,
     },
     {
@@ -87,16 +88,11 @@ export const ACTIVITIES = {
       url: "http://www.se7enbites.com",
       priceLevel: 2,
     },
-    {
-      name: "First Watch",
-      url: "http://www.firstwatch.com",
-      priceLevel: 2,
-    },
   ],
   coffeeTea: [
     {
-      name: "KOS Coffee & Bodega",
-      url: "https://choosekos.com/",
+      name: "Barnie's Coffee & Tea Co.",
+      url: "https://www.barniescoffee.com/pages/our-cafe",
       priceLevel: 2,
     },
     {
@@ -106,7 +102,7 @@ export const ACTIVITIES = {
     },
     {
       name: "Foxtail Coffee",
-      url: "https://www.foxtailcoffee.com/",
+      url: "https://www.foxtailcoffee.com/winter-park",
       priceLevel: 1,
     },
     {
@@ -166,13 +162,99 @@ export const ACTIVITIES = {
       priceLevel: 2,
     },
     {
-      name: "Sugar Dough Bakehouse",
-      url: "https://www.sugardoughbakehouse.com/",
+      name: "P is for Pie Bake Shop",
+      url: "http://crazyforpies.com/",
       priceLevel: 2,
     },
     {
-      name: "P is for Pie Bake Shop",
-      url: "http://crazyforpies.com/",
+      name: "Peterbrooke Chocolatier",
+      url: "http://www.peterbrookewp.com/",
+      priceLevel: 2,
+    },
+    {
+      name: "Kilwin's",
+      url: "https://www.kilwins.com/stores/kilwins-winter-park",
+      priceLevel: 2,
+    },
+  ],
+  activities: [
+    {
+      name: "Farmer’s Market (Saturday Morning)",
+      url: "https://cityofwinterpark.org/departments/parks-recreation/farmers-market/",
+      priceLevel: 0,
+    },
+    {
+      name: "Winter Park Boat Tour",
+      url: "https://www.scenicboattours.com/",
+      priceLevel: 0,
+    },
+    {
+      name: "Golf",
+      url: "https://cityofwinterpark.org/departments/parks-recreation/golf-course/",
+      priceLevel: 2,
+    },
+    {
+      name: "Beach",
+      url: "https://www.visitnsbfl.com/",
+      priceLevel: 0,
+    },
+    {
+      name: "East End Market",
+      url: "https://eastendmkt.com/",
+      priceLevel: 0,
+    },
+    {
+      name: "Shopping on Park Avenue",
+      url: "https://winterpark.org/park-avenue",
+      priceLevel: 0,
+    },
+    {
+      name: "Full Circle Yoga",
+      url: "https://fullcircleyoga.com/",
+      priceLevel: 2,
+    },
+    {
+      name: "Paddle Boarding",
+      url: "https://paddleboard-winter-park-lucky-paddle-co.business.site/",
+      priceLevel: 1,
+    },
+    {
+      name: "Mall at Millenia",
+      url: "https://www.mallatmillenia.com/",
+      priceLevel: 0,
+    },
+    {
+      name: "Leu Gardens",
+      url: "https://www.leugardens.org/",
+      priceLevel: 0,
+    },
+  ],
+  wineBars: [
+    {
+      name: "The Wine Room on Park Ave",
+      url: "https://www.thewineroomonline.com/winter-park",
+      priceLevel: 2,
+    },
+    {
+      name: "The Parkview",
+      url: "https://theparkviewwp.com/",
+      priceLevel: 2,
+    },
+  ],
+  cocktailBars: [
+    {
+      name: "Mather’s Social Gathering",
+      url: "https://www.mathersorlando.com/",
+      priceLevel: 2,
+    },
+    {
+      name: "The Robinson",
+      url: "https://www.therobinsonroom.com/",
+      priceLevel: 2,
+    },
+    {
+      name: "The Hall on the yard at Ivanhoe",
+      url: "https://thehallontheyard.com/",
       priceLevel: 2,
     },
   ],
