@@ -1,19 +1,14 @@
 import React, { useEffect } from "react";
-import { Flex, Text, Button, Image } from "@chakra-ui/react";
+import { Flex, Text, Button, Image, useToast } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
-import casa1 from "assets/images/casa/casa_1.png";
-import casa2 from "assets/images/casa/casa_2.png";
-import casa3 from "assets/images/casa/casa_3.png";
-import casa5 from "assets/images/casa/casa5.png";
-import casa6 from "assets/images/casa/casa6.png";
 import casa7 from "assets/images/casa/casa7.png";
-import casa8 from "assets/images/casa/casa8.png";
 
 const Registry = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
+  const toast = useToast();
 
   useEffect(() => {
     console.log("REGISTRY IN VIEW:", inView);
@@ -29,7 +24,8 @@ const Registry = ({ setInView }) => {
     border: "1px solid",
     borderColor: "neutral.black",
     variant: "outline",
-    fontWeight: "600",
+    fontWeight: "400",
+    fontStyle: "italic",
     mt: "24px",
     _hover: {
       bg: "neutral.900",
@@ -37,6 +33,12 @@ const Registry = ({ setInView }) => {
     },
     _active: { bg: "text.secondary" },
   };
+
+  // const handleClick = () => {
+  //   toast({
+
+  //   })
+  // }
 
   return (
     <Flex
@@ -68,17 +70,19 @@ const Registry = ({ setInView }) => {
         {...glass}
       >
         <SectionLabel label="registry" pt="8px" />
-        <Text
-          textAlign="center"
-          fontWeight="500"
-          //
-        >
-          The best present you could possibly give us is the celebration of our
-          marriage. However, if you’d like to spoil us, we’ve picked out a few
-          items, activities, and charities that pique our interests.
+        <Text textAlign="center" fontWeight="500">
+          We’ve picked out a few items and activities that piqued our interest.
         </Text>
+        {/* <Text
+          textAlign="center"
+          fontSize="sm"
+          fontWeight="400"
+          fontStyle="italic"
+        > */}
+        {/* </Text> */}
 
-        <Button {...buttonStyles}>See Registry on Zola</Button>
+        <Button {...buttonStyles}>Registry coming soon...</Button>
+        {/* <Button {...buttonStyles}>See Registry on Zola</Button> */}
       </Flex>
     </Flex>
   );
