@@ -5,6 +5,7 @@ import MainBackground from "components/MainBackground";
 import Travel from "sections/Travel";
 import Activities from "sections/Activities";
 import RSVP from "sections/RSVP";
+import TempRSVPSection from "sections/RSVP/TempRSVPSection";
 import WeddingParty from "sections/WeddingParty";
 import Gallery from "sections/Gallery";
 import WhenAndWhere from "sections/WhenAndWhere";
@@ -62,7 +63,8 @@ const Main = ({
       <WhenAndWhere />
 
       <Box {...boxStyle} ref={rsvpRef}>
-        <RSVP setInView={() => handleChangeSectionInView("rsvp")} />
+        {/* <RSVP setInView={() => handleChangeSectionInView("rsvp")} /> */}
+        <TempRSVPSection setInView={() => handleChangeSectionInView("rsvp")} />
       </Box>
 
       <Box {...boxStyle} ref={travelRef}>
