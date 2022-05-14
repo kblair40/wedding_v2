@@ -1,6 +1,15 @@
 import React, { useEffect } from "react";
-import { Flex, Text, Button, Image, useToast } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  Button,
+  Image,
+  useToast,
+  Box,
+  Icon,
+} from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
+import { FiAlertTriangle } from "react-icons/fi";
 
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
@@ -34,11 +43,24 @@ const Registry = ({ setInView }) => {
     _active: { bg: "text.secondary" },
   };
 
-  // const handleClick = () => {
-  //   toast({
-
-  //   })
-  // }
+  const handleClick = () => {
+    toast({
+      duration: 1000,
+      render: () => (
+        <Flex
+          p="16px 24px"
+          bg="secondary.100"
+          borderRadius="4px"
+          alignItems="center"
+        >
+          <Icon as={FiAlertTriangle} mr="8px" />
+          <Text fontWeight="500" fontSize="xl" lineHeight="100%">
+            Sorry, our registry isn't ready yet
+          </Text>
+        </Flex>
+      ),
+    });
+  };
 
   return (
     <Flex
@@ -81,7 +103,9 @@ const Registry = ({ setInView }) => {
         > */}
         {/* </Text> */}
 
-        <Button {...buttonStyles}>Registry coming soon...</Button>
+        <Button onClick={handleClick} {...buttonStyles}>
+          Registry coming soon...
+        </Button>
         {/* <Button {...buttonStyles}>See Registry on Zola</Button> */}
       </Flex>
     </Flex>
