@@ -11,7 +11,6 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-import Paper from "components/containers/Paper";
 import OverlayCard from "components/containers/OverlayCard";
 import alfond from "assets/images/alfond1.jpeg";
 import hgi_lobby from "assets/images/hgi_lobby.jpeg";
@@ -32,8 +31,17 @@ const Accommodations = () => {
       </Text>
 
       <Flex mt="16px" justify="space-between" mb="32px">
-        <OverlayCard imageURL={hgi_lobby} label="Hilton Garden Inn" />
-        <OverlayCard ml="16px" imageURL={alfond} label="The Alfond Inn" />
+        <OverlayCard
+          imageURL={alfond}
+          label="The Alfond Inn"
+          to="https://thealfondinn.com/"
+        />
+        <OverlayCard
+          ml="16px"
+          imageURL={hgi_lobby}
+          label="Hilton Garden Inn"
+          to="https://www.hilton.com/en/hotels/mcowpgi-hilton-garden-inn-winter-park/"
+        />
       </Flex>
     </Flex>
   );
