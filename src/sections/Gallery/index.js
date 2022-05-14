@@ -6,12 +6,10 @@ import { MdClose } from "react-icons/md";
 import GalleryImages from "components/GalleryImages";
 import GalleryImageCarousel from "components/GalleryImageCarousel";
 import SectionLabel from "components/SectionLabel";
-
+// 4356
 import one from "assets/galleryImages/sydney/one.jpg";
 import three from "assets/galleryImages/sydney/three.jpg";
-import four from "assets/galleryImages/sydney/four.jpg";
 import seven from "assets/galleryImages/sydney/seven.jpg";
-import nine from "assets/galleryImages/sydney/nine.jpg";
 
 import shan_one from "assets/galleryImages/shannon/shan_one.jpg";
 import shan_three from "assets/galleryImages/shannon/shan_three.jpg";
@@ -22,8 +20,17 @@ import shan_eight from "assets/galleryImages/shannon/shan_eight.jpg";
 import shan_nine from "assets/galleryImages/shannon/shan_nine.jpg";
 import shan_eleven from "assets/galleryImages/shannon/shan_eleven.jpg";
 
-import blairfam1 from "assets/galleryImages/brooke/blairfam1.jpg";
-import withaugustandfrederick from "assets/galleryImages/brooke/withaugustandfrederick.jpg";
+import newone from "assets/galleryImages/newone.jpg";
+import newtwo from "assets/galleryImages/newtwo.jpg";
+import newthree from "assets/galleryImages/newthree.jpg";
+import newfour from "assets/galleryImages/newfour.jpg";
+import newfive from "assets/galleryImages/newfive.jpg";
+import newsix from "assets/galleryImages/newsix.jpg";
+import newseven from "assets/galleryImages/newseven.jpg";
+import neweight from "assets/galleryImages/neweight.jpg";
+import newnine from "assets/galleryImages/newnine.jpg";
+import newten from "assets/galleryImages/newten.jpg";
+import neweleven from "assets/galleryImages/neweleven.jpg";
 
 const Gallery = ({ setInView }) => {
   const [showCarousel, setShowCarousel] = useState(false);
@@ -40,20 +47,27 @@ const Gallery = ({ setInView }) => {
 
   const imagesArray = [
     one,
+    neweight,
     shan_five,
+    newone,
+    newtwo,
+    newthree,
     shan_eight,
-    blairfam1,
     shan_one,
     three,
-    four,
+    neweleven,
+    newfour,
     shan_nine,
-    withaugustandfrederick,
+    newfive,
+    newsix,
     shan_three,
+    newnine,
+    newseven,
     shan_seven,
     shan_six,
+    newten,
     seven,
     shan_eleven,
-    nine,
   ];
 
   const openCarousel = (imgIdx) => {
