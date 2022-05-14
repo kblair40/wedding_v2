@@ -207,8 +207,8 @@ export const scheduleItems = {
       locationMapLink: "",
     },
     {
-      heading: "reception",
-      time: "5pm - 7pm",
+      heading: "cocktail hour and reception",
+      time: "5pm - 10:30pm",
       who: "Guests",
       locationName: "Casa Feliz",
       dressCode: "Cocktail Attire",
