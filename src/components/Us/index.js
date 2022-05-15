@@ -7,6 +7,10 @@ import { FaRegHeart } from "react-icons/fa";
 import { Partier } from "sections/WeddingParty";
 import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
 import shannon2 from "assets/images/wedding_party/meandshannon.jpg";
+import shanface from "assets/shanface.jpg";
+import kevface from "assets/kevface.jpg";
+import kev from "assets/kev.jpg";
+import shan from "assets/shan.jpg";
 
 const Us = () => {
   const [transitionAmount, setTransitionAmount] = useState();
@@ -52,28 +56,33 @@ const Us = () => {
     }
   }, [inView]);
 
+  let shift = useBreakpointValue({ base: 0, sm: "60px" });
+  let kevImg = useBreakpointValue({ base: kev, sm: kevface });
+  let shanImg = useBreakpointValue({ base: shan, sm: shanface });
+
   return (
     <Flex
-      mb="32px"
+      mb={{ base: "32px", sm: "80px" }}
+      mt={{ base: 0, sm: "48px" }}
       w="100%"
       flexDirection={{ base: "column", sm: "row" }}
       justifyContent={{ sm: "space-between" }}
       alignItems="center"
       ref={inViewRef}
     >
-      <Box className="us bride">
+      <Box className="us bride" position="relative" top={shift}>
         <Partier
           name="shannon dunne"
           role="BRIDE"
-          imgURL={shannon2}
+          imgURL={shanImg}
           position="center 20%"
         />
       </Box>
       <Box className="heart" position="relative" bottom="16px" opacity={0}>
         <Icon as={FaRegHeart} boxSize="40px" fill="error.400" />
       </Box>
-      <Box className="us groom">
-        <Partier name="kevin blair" role="GROOM" imgURL={kevin} />
+      <Box className="us groom" position="relative" bottom={shift}>
+        <Partier name="kevin blair" role="GROOM" imgURL={kevImg} />
       </Box>
     </Flex>
   );

@@ -51,7 +51,7 @@ export const MAX_WIDTHS = () => ({
 export const ACTIVITIES = {
   lunchDinner: [
     {
-      name: "Hillstone",
+      name: "Hillstone (where we got engaged!)",
       url: "https://hillstonerestaurant.com/locations/winterpark/",
       priceLevel: 3,
     },
@@ -104,11 +104,6 @@ export const ACTIVITIES = {
       name: "Foxtail Coffee",
       url: "https://www.foxtailcoffee.com/winter-park",
       priceLevel: 1,
-    },
-    {
-      name: "Barnie's Coffee & Tea Co.",
-      url: "https://www.barniescoffee.com/",
-      priceLevel: 2,
     },
   ],
   parks: [

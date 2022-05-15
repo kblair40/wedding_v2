@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Text,
-  Flex,
-  Heading,
-  Stack,
-  HStack,
-  VStack,
-  Button,
-} from "@chakra-ui/react";
+import { Text, Flex, Heading, Button } from "@chakra-ui/react";
 
 const ScheduleItem = ({
   heading,
@@ -24,21 +15,9 @@ const ScheduleItem = ({
   };
 
   return (
-    <Flex
-      direction="column"
-      mb="40px"
-      // border="1px solid black"
-      w="100%"
-      maxW="600px"
-      // alignItems="center"
-    >
-      <Flex
-        justifyContent="space-between"
-        w="100%"
-        mb="12px"
-        // border="1px solid red"
-      >
-        <Heading fontSize="2xlh" fontWeight="700">
+    <Flex direction="column" mb="40px" w="100%" maxW="600px">
+      <Flex justifyContent="space-between" w="100%" mb="12px">
+        <Heading mr="4px" fontSize="2xlh" fontWeight="700">
           {heading}
         </Heading>
         <Text {...textStyles}>{time}</Text>
