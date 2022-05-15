@@ -240,6 +240,11 @@ export const ACTIVITIES = {
       url: "https://theparkviewwp.com/",
       priceLevel: 2,
     },
+    {
+      name: "The Wine Barn",
+      url: "https://thewinebarn.net/",
+      priceLevel: 2,
+    },
   ],
   cocktailBars: [
     {
