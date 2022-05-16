@@ -52,8 +52,6 @@ const WeddingParty = ({ setInView }) => {
         justifyItems={{ base: "center" }}
         templateAreas={{
           base: `
-          'bride'
-          'groom'
           'erin'
           'caleb'
           'kelly'
@@ -68,7 +66,6 @@ const WeddingParty = ({ setInView }) => {
           'cam'
         `,
           sm: `
-          // 'bride groom'
           'erin caleb'
           'kelly trevor'
           'karissa andrew'
@@ -77,7 +74,6 @@ const WeddingParty = ({ setInView }) => {
           'andras cam'
         `,
           lg: `
-          'bride bride groom groom'
           'erin kelly caleb trevor'
           'karissa cassidy andrew ted'
           'rb fg andras cam'
