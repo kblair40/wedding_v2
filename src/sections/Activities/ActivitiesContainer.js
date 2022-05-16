@@ -71,14 +71,14 @@ const ActivitiesContainer = () => {
             />
 
             <ActivityList
+              label="activities"
+              activities={ACTIVITIES.activities}
+            />
+            <ActivityList
               label="breakfast/brunch"
               activities={ACTIVITIES.breakfast}
             />
 
-            <ActivityList
-              label="activities"
-              activities={ACTIVITIES.activities}
-            />
             <ActivityList
               label="lunch/dinner"
               activities={ACTIVITIES.lunchDinner}
@@ -94,7 +94,6 @@ const ActivitiesContainer = () => {
             />
 
             {/* <ActivityList label="parks" activities={ACTIVITIES.parks} /> */}
-            <ActivityList label="drinks" activities={ACTIVITIES.drinks} />
             <ActivityList label="sweets" activities={ACTIVITIES.sweets} />
           </Masonry>
         </Flex>

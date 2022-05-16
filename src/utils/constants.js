@@ -128,28 +128,6 @@ export const ACTIVITIES = {
       priceLevel: 0,
     },
   ],
-  drinks: [
-    {
-      name: "Ivanhoe Park Brewing Co.",
-      url: "https://ivanhoeparkbrewing.com",
-      priceLevel: 2,
-    },
-    {
-      name: "The Gnarly Barley",
-      url: "https://www.thegnarlybarley.com",
-      priceLevel: 2,
-    },
-    {
-      name: "Tactical Brewing",
-      url: "http://www.tacticalbeer.com",
-      priceLevel: 2,
-    },
-    {
-      name: "Redlight Redlight",
-      url: "http://redlightredlightbeerparlour.com",
-      priceLevel: 2,
-    },
-  ],
   sweets: [
     {
       name: "Gideon's Bakehouse",
