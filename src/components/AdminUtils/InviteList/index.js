@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   TableContainer,
   Table,
@@ -9,7 +9,6 @@ import {
   Td,
   Button,
   useDisclosure,
-  Box,
 } from "@chakra-ui/react";
 
 import uniqueRandom from "unique-random";
@@ -83,22 +82,21 @@ const InviteList = ({ data }) => {
         replied: row[2],
         significant_other: row[3],
         other_family: row[4],
-        dinner_selection: row[6],
-        dinner_selection_notes: row[14],
-        age_range: row[7],
-        special_requests: row[8],
-        plus_one: row[9],
-        attending: row[10],
-        email: row[11],
-        phone_number: row[12],
-        side: row[13],
-        passcode: num,
+        dinner_selection: row[5],
+        dinner_selection_notes: row[13],
+        age_range: row[6],
+        special_requests: row[7],
+        plus_one: row[8],
+        attending: row[9],
+        email: row[10],
+        phone_number: row[11],
+        side: row[12],
       };
+
       if (guestData.significant_other) {
         console.log("GUEST DATA:", guestData);
       }
-      // console.log("row:", row);
-      // console.log("\nGUEST DATA:", guestData);
+
       try {
         await addGuest(guestData);
         console.log("\n\nSUCCESS\n\n");
@@ -110,34 +108,19 @@ const InviteList = ({ data }) => {
     console.log("RANDOM NUMBERS:", randomNums);
   };
 
-  // {
-  //   first_name,
-  //   last_name,
-  //   priority,
-  //   att_exp,
-  //   replied,
-  //   dinner_selection,
-  //   age_range,
-  //   special_requests,
-  //   plus_one,
-  //   response,
-  //   email,
-  //   phone_number,
-  //   side,
-  //   timestamp: Timestamp.now(),
-  // }
-
   return (
     <React.Fragment>
       <Button size="sm" onClick={uploadGuests} my="8px" w="min-content">
         Upload Guests
       </Button>
+
       <TableContainer>
         <Table size="sm" variant="striped">
           <Thead>{getHeader()}</Thead>
           <Tbody>{getBody()}</Tbody>
         </Table>
       </TableContainer>
+
       <ManageGuestModal
         isOpen={isOpen}
         onClose={onClose}

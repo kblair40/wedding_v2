@@ -25,13 +25,9 @@ const CSVInput = () => {
   };
 
   return (
-    <Box
-    // w="100vw"
-    // overflowX="auto"
-    //
-    >
+    <Box>
       <CSVReader onUploadAccepted={(results) => handleResults(results)}>
-        {({ getRootProps, acceptedFile, ProgressBar, getRemoveFileProps }) => (
+        {({ getRootProps, acceptedFile, getRemoveFileProps }) => (
           <>
             <HStack>
               <Box>
