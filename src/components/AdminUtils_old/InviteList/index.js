@@ -4,12 +4,14 @@ import {
   Table,
   Thead,
   Tbody,
+  // Tfoot,
   Tr,
   Th,
   Td,
+  HStack,
+  Text,
   Button,
   useDisclosure,
-  Box,
 } from "@chakra-ui/react";
 
 import uniqueRandom from "unique-random";
@@ -79,10 +81,11 @@ const InviteList = ({ data }) => {
       let guestData = {
         first_name: row[0].split(" ")[0],
         last_name: row[0].split(" ")[1] || "",
-        aliases: row[1],
-        replied: row[2],
-        significant_other: row[3],
-        other_family: row[4],
+        priority: row[1],
+        att_exp: row[2],
+        replied: row[3],
+        significant_other: row[4],
+        other_family: row[5],
         dinner_selection: row[6],
         dinner_selection_notes: row[14],
         age_range: row[7],
@@ -129,10 +132,10 @@ const InviteList = ({ data }) => {
 
   return (
     <React.Fragment>
-      <Button size="sm" onClick={uploadGuests} my="8px" w="min-content">
+      <Button onClick={uploadGuests} mt="1rem" w="min-content">
         Upload Guests
       </Button>
-      <TableContainer>
+      <TableContainer mt="24px">
         <Table size="sm" variant="striped">
           <Thead>{getHeader()}</Thead>
           <Tbody>{getBody()}</Tbody>

@@ -17,38 +17,40 @@ const CSVInput = () => {
 
   const { CSVReader } = useCSVReader();
 
+  const handleResults = (results) => {
+    console.log("---------------------------");
+    console.log(results);
+    console.log("---------------------------");
+    setData(results.data);
+  };
+
   return (
-    <Flex direction="column">
-      <CSVReader
-        onUploadAccepted={(results) => {
-          // console.log("---------------------------");
-          // console.log(results);
-          // console.log("---------------------------");
-          setData(results.data);
-        }}
-      >
+    <Box
+    // w="100vw"
+    // overflowX="auto"
+    //
+    >
+      <CSVReader onUploadAccepted={(results) => handleResults(results)}>
         {({ getRootProps, acceptedFile, ProgressBar, getRemoveFileProps }) => (
           <>
-            <HStack spacing="16px">
-              <Button {...getRootProps()}>Browse file</Button>
-              <Box>{acceptedFile && acceptedFile.name}</Box>
-              <Button {...getRemoveFileProps()} bg="red.100">
+            <HStack>
+              <Box>
+                <Button {...getRootProps()} size="sm">
+                  Browse file
+                </Button>
+                {acceptedFile && <Box>{acceptedFile.name}</Box>}
+              </Box>
+
+              <Button {...getRemoveFileProps()} bg="red.100" size="sm">
                 Remove
               </Button>
             </HStack>
-            {/* <ProgressBar
-              style={{
-                width: "100%",
-                backgroundColor: "#404040",
-                marginTop: "16px",
-              }}
-            /> */}
           </>
         )}
       </CSVReader>
 
       {data && <InviteList data={data} />}
-    </Flex>
+    </Box>
   );
 };
 

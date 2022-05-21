@@ -46,7 +46,7 @@ function App() {
   };
 
   return (
-    <Box position="relative" sx={{ overflow: "hidden !important" }}>
+    <Box position="relative" sx={{ overflow: "hidden" }}>
       <Nav
         topInView={topInView}
         handleChangeSection={handleChangeSection}

@@ -23,10 +23,17 @@ const Admin = () => {
   }, []);
 
   return (
-    <Box px="24px">
-      <Flex marginTop="4rem">
+    <Box
+      px="24px"
+      marginTop="4rem"
+      // w="100vw"
+    >
+      <Box
+      // w="100vw"
+      >
+        <CSVInput />
         <APIButtons />
-      </Flex>
+      </Box>
     </Box>
   );
 };
