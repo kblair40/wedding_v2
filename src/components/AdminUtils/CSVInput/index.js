@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Text,
@@ -13,10 +13,18 @@ import api from "apifast";
 import InviteList from "components/AdminUtils/InviteList";
 import { useCSVReader } from "react-papaparse";
 
-const CSVInput = () => {
+const CSVInput = ({ apiGuestData }) => {
   const [data, setData] = useState(null);
+  const [dataFrom, setDataFrom] = useState("file");
 
   const { CSVReader } = useCSVReader();
+
+  useEffect(() => {
+    if (apiGuestData) {
+      setData(apiGuestData);
+      setDataFrom("api");
+    }
+  }, [apiGuestData]);
 
   const handleResults = (results) => {
     console.log("---------------------------");

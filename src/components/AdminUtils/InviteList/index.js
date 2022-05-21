@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TableContainer,
   Table,
@@ -15,16 +15,45 @@ import uniqueRandom from "unique-random";
 import { addGuest } from "api/api";
 import ManageGuestModal from "./ManageGuestModal";
 
+const rowLabels = [
+  "full_name",
+  "aliases",
+  "significant_other",
+  "other_family",
+  "replied",
+  "attending",
+  "plus_one",
+  "dinner_selection",
+  "dinner_selection_notes",
+  "age_range",
+  "email",
+  "phone_number",
+  "side",
+  "special_requests",
+  "pk",
+];
+
 const InviteList = ({ data }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
 
   const [selectedRow, setSelectedRow] = useState(null);
-  console.log(data);
+  console.log("\n\nINVITE LIST DATA:", data);
+  const [localData, setLocalData] = useState();
+
+  useEffect(() => {
+    if (data) {
+      console.log("DATA TYPE:", typeof data, "isArray?", Array.isArray(data));
+      for (let d of data) {
+        console.log("DATA POINT:", d);
+      }
+      setLocalData(data);
+    }
+  }, [data]);
 
   const getHeader = () => {
     return (
       <Tr>
-        {data[0].map((label, i) => (
+        {rowLabels.map((label, i) => (
           <Th textAlign={i > 0 ? "center" : undefined}>{label}</Th>
         ))}
 
@@ -34,14 +63,17 @@ const InviteList = ({ data }) => {
   };
 
   const getBody = () => {
-    return data.slice(1).map((row, idx) => {
+    return localData.slice(1).map((row, idx) => {
       return (
-        <Tr>
-          {row.map((text, i) => (
-            <Td textAlign={i > 0 ? "center" : undefined} key={i}>
-              {text}
-            </Td>
-          ))}
+        <Tr key={idx}>
+          {rowLabels.map((label, i) => {
+            let res = row[label];
+            if (["other_family", "aliases"].includes(label)) {
+              res = res.join(", ");
+            }
+
+            return <Td textAlign={i === 0 ? "left" : "center"}>{res}</Td>;
+          })}
           <Td>
             <Button
               bg={idx % 2 ? "white" : "#EDF2F7"}
@@ -109,6 +141,10 @@ const InviteList = ({ data }) => {
     console.log("RANDOM NUMBERS:", randomNums);
   };
 
+  if (!localData) {
+    return null;
+  }
+
   return (
     <React.Fragment>
       <Button size="sm" onClick={uploadGuests} my="8px" w="min-content">
@@ -132,3 +168,44 @@ const InviteList = ({ data }) => {
 };
 
 export default InviteList;
+
+//
+//
+//
+// VERSIONS THAT WORKED WITH FIREBASE
+// const getHeader = () => {
+//   return (
+//     <Tr>
+//       {localData[0].map((label, i) => (
+//         <Th textAlign={i > 0 ? "center" : undefined}>{label}</Th>
+//       ))}
+
+//       <Th>Manage</Th>
+//     </Tr>
+//   );
+// };
+
+// const getBody = () => {
+//   return localData.slice(1).map((row, idx) => {
+//     return (
+//       <Tr>
+//         {row.map((text, i) => (
+//           <Td textAlign={i > 0 ? "center" : undefined} key={i}>
+//             {text}
+//           </Td>
+//         ))}
+//         <Td>
+//           <Button
+//             bg={idx % 2 ? "white" : "#EDF2F7"}
+//             onClick={() => {
+//               setSelectedRow(row);
+//               onOpen();
+//             }}
+//           >
+//             Manage
+//           </Button>
+//         </Td>
+//       </Tr>
+//     );
+//   });
+// };

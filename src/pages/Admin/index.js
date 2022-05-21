@@ -11,6 +11,7 @@ import api from "apifast";
 
 const Admin = () => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [apiGuestData, setApiGuestData] = useState();
 
   const inputRef = useRef();
 
@@ -20,17 +21,8 @@ const Admin = () => {
     }
   };
 
-  const handleSubmitName = async () => {
-    if (!inputRef.current) return;
-
-    let { value: name } = inputRef.current;
-    console.log("NAME:", name);
-
-    let response = await api.post("/guest", {
-      full_name: name,
-    });
-
-    console.log("RESPONSE:", response);
+  const getAllGuests = (guests) => {
+    setApiGuestData(guests);
   };
 
   useEffect(() => {
@@ -38,12 +30,8 @@ const Admin = () => {
   }, []);
 
   return (
-    <Box
-      px="24px"
-      marginTop="4rem"
-      // w="100vw"
-    >
-      <Flex mb="8px">
+    <Box px="24px" marginTop="4rem">
+      {/* <Flex mb="8px" display="none">
         <Input
           size="sm"
           placeholder="new guest full name"
@@ -53,13 +41,11 @@ const Admin = () => {
         <Button ml="4px" size="sm" onClick={handleSubmitName}>
           Submit
         </Button>
-      </Flex>
+      </Flex> */}
 
-      <Box
-      // w="100vw"
-      >
-        <CSVInput />
-        <APIButtons />
+      <Box>
+        <CSVInput apiGuestData={apiGuestData} />
+        <APIButtons getAllGuests={getAllGuests} />
       </Box>
     </Box>
   );
