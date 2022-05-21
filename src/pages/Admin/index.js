@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Flex, Box } from "@chakra-ui/react";
+import React, { useState, useEffect, useRef } from "react";
+import { Flex, Box, Input, Button } from "@chakra-ui/react";
 // import InviteList from 'components/InviteList';
 
 import FetchedInviteList from "components/AdminUtils/FetchedInviteList";
@@ -12,10 +12,25 @@ import api from "apifast";
 const Admin = () => {
   const [authenticated, setAuthenticated] = useState(false);
 
+  const inputRef = useRef();
+
   const handleSubmit = (password) => {
     if (password === "0326") {
       setAuthenticated(true);
     }
+  };
+
+  const handleSubmitName = async () => {
+    if (!inputRef.current) return;
+
+    let { value: name } = inputRef.current;
+    console.log("NAME:", name);
+
+    let response = await api.post("/guest", {
+      full_name: name,
+    });
+
+    console.log("RESPONSE:", response);
   };
 
   useEffect(() => {
@@ -28,6 +43,18 @@ const Admin = () => {
       marginTop="4rem"
       // w="100vw"
     >
+      <Flex mb="8px">
+        <Input
+          size="sm"
+          placeholder="new guest full name"
+          w="140px"
+          ref={inputRef}
+        />
+        <Button ml="4px" size="sm" onClick={handleSubmitName}>
+          Submit
+        </Button>
+      </Flex>
+
       <Box
       // w="100vw"
       >

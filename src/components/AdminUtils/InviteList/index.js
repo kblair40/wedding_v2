@@ -76,8 +76,9 @@ const InviteList = ({ data }) => {
       }
 
       let guestData = {
-        first_name: row[0].split(" ")[0],
-        last_name: row[0].split(" ")[1] || "",
+        full_name: row[0],
+        // first_name: row[0].split(" ")[0],
+        // last_name: row[0].split(" ")[1] || "",
         aliases: row[1],
         replied: row[2],
         significant_other: row[3],
