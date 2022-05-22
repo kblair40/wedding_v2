@@ -163,6 +163,14 @@ const theme = extendTheme({
             _hover: { bg: "primary.300" },
           },
         },
+        danger: {
+          fontWeight: 600,
+          color: "text.primary",
+          bg: "error.100",
+          transition: ".2s",
+          _hover: { bg: "error.200" },
+          _active: { bg: "error.300" },
+        },
         ghost: {
           color: "primary.900",
           _hover: {

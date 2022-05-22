@@ -18,13 +18,7 @@ const ConfirmDeleteModal = ({ onClose, isOpen, onConfirm, deleting }) => {
             <Button onClick={onClose} mr="1rem">
               Cancel
             </Button>
-            <Button
-              isLoading={deleting}
-              onClick={onConfirm}
-              bg="error.100"
-              _hover={{ bg: "error.200" }}
-              _active={{ bg: "error.300" }}
-            >
+            <Button isLoading={deleting} onClick={onConfirm} variant="danger">
               Confirm
             </Button>
           </Flex>

@@ -232,7 +232,7 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
           ml="8px"
           onClick={onDeleteModalOpen}
           size="sm"
-          bg="error.100"
+          variant="danger"
         >
           Delete
         </Button>
