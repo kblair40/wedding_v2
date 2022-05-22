@@ -74,13 +74,8 @@ const CSVInput = ({ apiGuestData }) => {
     // return JSON.stringify(res);
   };
 
-  const makeArray = (data, sep = ", ") => {
-    if (!data) return [];
-
-    let array = data.split(sep).map((n) => n.toLowerCase());
-    return array;
-    // return JSON.stringify(array);
-  };
+  const makeArray = (data, sep = ", ") =>
+    data ? data.split(sep).map((n) => n.toLowerCase()) : [];
 
   return (
     <Box>

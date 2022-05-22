@@ -17,6 +17,7 @@ import {
 import api from "apifast";
 import ManageGuestModal from "./ManageGuestModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import { sortByLastName } from "utils/helpers";
 
 const rowLabels = [
   "full_name",
@@ -65,6 +66,8 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
   useEffect(() => {
     if (data && dataFrom) {
       console.log("DATA TYPE:", typeof data, "isArray?", Array.isArray(data));
+
+      data = sortByLastName(data);
 
       setLocalData(data);
     }

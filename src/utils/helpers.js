@@ -38,3 +38,21 @@ export const getMaxWidths = (arr) => {
     lg: base[3],
   };
 };
+
+export const sortByLastName = (data) => {
+  console.log("DATA:", data);
+  data.sort((a, b) => {
+    let a_last = a.full_name.split(" ")[1];
+    let b_last = b.full_name.split(" ")[1];
+    console.log("A LAST:", a_last);
+    console.log("B LAST:", b_last);
+
+    let returnVal = a_last > b_last ? 1 : a_last < b_last ? -1 : 0;
+    console.log("RETURNING", returnVal, "\n\n");
+
+    return returnVal;
+    // return a > b ? 1 : a < b ? -1 : 0
+  });
+
+  return data;
+};
