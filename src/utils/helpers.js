@@ -5,6 +5,7 @@ export const getRandomNum = () => {
 };
 
 export const toTitleCase = (str, removeWhitespace = true) => {
+  console.log("TO TITLE CASE STRING:", str);
   return str
     .toLowerCase()
     .trim()

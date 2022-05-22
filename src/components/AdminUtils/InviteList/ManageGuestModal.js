@@ -7,10 +7,14 @@ import {
   ModalOverlay,
   ModalBody,
   ModalFooter,
+  Heading,
   Text,
+  Flex,
 } from "@chakra-ui/react";
 
+import { toTitleCase } from "utils/helpers";
 import api from "apifast";
+import PatchForm from "./PatchForm";
 
 const ManageGuestModal = ({ isOpen, onClose, selectedRow }) => {
   const [rowData, setRowData] = useState();
@@ -27,7 +31,7 @@ const ManageGuestModal = ({ isOpen, onClose, selectedRow }) => {
     console.log("\n\nFETCH GUEST DATA:", data);
   };
 
-  if (!rowData) {
+  if (!rowData || !isOpen) {
     return null;
   }
 
@@ -35,10 +39,14 @@ const ManageGuestModal = ({ isOpen, onClose, selectedRow }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        {/* <ModalHeader>Guest name</ModalHeader> */}
-        <ModalHeader>{selectedRow && selectedRow[0]}</ModalHeader>
+        <ModalHeader>
+          <Flex flexDirection="column">
+            <Text fontSize="2xl">{toTitleCase(rowData["full_name"])}</Text>
+            <Text>pk: {rowData["pk"]}</Text>
+          </Flex>
+        </ModalHeader>
         <ModalBody>
-          {/* <Text>{selectedRow && selectedRow[0]}</Text> */}
+          <PatchForm data={rowData} />
         </ModalBody>
       </ModalContent>
     </Modal>
