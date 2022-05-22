@@ -21,8 +21,8 @@ const CSVInput = ({ apiGuestData }) => {
 
   useEffect(() => {
     if (apiGuestData) {
-      setData(apiGuestData);
       setDataFrom("api");
+      setData(apiGuestData);
     }
   }, [apiGuestData]);
 
@@ -30,8 +30,9 @@ const CSVInput = ({ apiGuestData }) => {
     console.log("---------------------------");
     console.log(results);
     console.log("---------------------------");
+    setDataFrom("file");
     setData(results.data);
-    uploadResults(results.data);
+    // uploadResults(results.data);
   };
 
   const uploadResults = async (results) => {
@@ -101,7 +102,13 @@ const CSVInput = ({ apiGuestData }) => {
         )}
       </CSVReader>
 
-      {data && <InviteList data={data} />}
+      {data && (
+        <InviteList
+          data={data}
+          dataFrom={dataFrom}
+          uploadResults={uploadResults}
+        />
+      )}
     </Box>
   );
 };

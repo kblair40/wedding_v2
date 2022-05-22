@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Flex, Box, Input, Button } from "@chakra-ui/react";
 // import InviteList from 'components/InviteList';
 
@@ -10,39 +10,25 @@ import APIButtons from "./APIButtons";
 import api from "apifast";
 
 const Admin = () => {
-  const [authenticated, setAuthenticated] = useState(false);
+  // const [authenticated, setAuthenticated] = useState(false);
   const [apiGuestData, setApiGuestData] = useState();
 
-  const inputRef = useRef();
-
-  const handleSubmit = (password) => {
-    if (password === "0326") {
-      setAuthenticated(true);
-    }
-  };
+  // const handleSubmit = (password) => {
+  //   if (password === "0326") {
+  //     setAuthenticated(true);
+  //   }
+  // };
 
   const getAllGuests = (guests) => {
     setApiGuestData(guests);
   };
 
-  useEffect(() => {
-    //
-  }, []);
+  // useEffect(() => {
+  //
+  // }, []);
 
   return (
     <Box px="24px" marginTop="4rem">
-      {/* <Flex mb="8px" display="none">
-        <Input
-          size="sm"
-          placeholder="new guest full name"
-          w="140px"
-          ref={inputRef}
-        />
-        <Button ml="4px" size="sm" onClick={handleSubmitName}>
-          Submit
-        </Button>
-      </Flex> */}
-
       <Box>
         <CSVInput apiGuestData={apiGuestData} />
         <APIButtons getAllGuests={getAllGuests} />

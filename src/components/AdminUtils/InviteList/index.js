@@ -33,28 +33,38 @@ const rowLabels = [
   "pk",
 ];
 
-const InviteList = ({ data }) => {
+const repliedStyles = {
+  bg: "rgba(20, 240, 20, 0.05)",
+};
+
+const notRepliedStyles = {
+  bg: "rgba(240, 20, 20, 0.05)",
+};
+
+const InviteList = ({ data, dataFrom, uploadResults }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
 
   const [selectedRow, setSelectedRow] = useState(null);
-  console.log("\n\nINVITE LIST DATA:", data);
+  // console.log("\n\nINVITE LIST DATA:", data);
   const [localData, setLocalData] = useState();
 
   useEffect(() => {
-    if (data) {
+    if (data && dataFrom) {
       console.log("DATA TYPE:", typeof data, "isArray?", Array.isArray(data));
       for (let d of data) {
         console.log("DATA POINT:", d);
       }
       setLocalData(data);
     }
-  }, [data]);
+  }, [data, dataFrom]);
 
-  const getHeader = () => {
+  const getHeaderAPI = () => {
     return (
       <Tr>
         {rowLabels.map((label, i) => (
-          <Th textAlign={i > 0 ? "center" : undefined}>{label}</Th>
+          <Th fontFamily="cabin" textAlign={i > 0 ? "center" : undefined}>
+            {label}
+          </Th>
         ))}
 
         <Th>Manage</Th>
@@ -62,10 +72,16 @@ const InviteList = ({ data }) => {
     );
   };
 
-  const getBody = () => {
+  const getBodyAPI = () => {
     return localData.slice(1).map((row, idx) => {
+      console.log("ROW:", row);
+      console.log("ROW[REPLIED]:", row["replied"]);
       return (
-        <Tr key={idx}>
+        <Tr
+          key={idx}
+          w="100%"
+          sx={row["replied"] === "FALSE" ? notRepliedStyles : repliedStyles}
+        >
           {rowLabels.map((label, i) => {
             let res = row[label];
             if (["other_family", "aliases"].includes(label)) {
@@ -90,27 +106,58 @@ const InviteList = ({ data }) => {
     });
   };
 
+  const getHeaderFile = () => {
+    return (
+      <Tr>
+        {localData[0].map((label, i) => (
+          <Th fontFamily="header" textAlign={i > 0 ? "center" : undefined}>
+            {label}
+          </Th>
+        ))}
+
+        <Th>Manage</Th>
+      </Tr>
+    );
+  };
+
+  const getBodyFile = () => {
+    return localData.slice(1).map((row, idx) => {
+      return (
+        <Tr>
+          {row.map((text, i) => (
+            <Td textAlign={i > 0 ? "center" : undefined} key={i}>
+              {text}
+            </Td>
+          ))}
+          <Td>
+            <Button
+              bg={idx % 2 ? "white" : "#EDF2F7"}
+              onClick={() => {
+                setSelectedRow(row);
+                onOpen();
+              }}
+            >
+              Manage
+            </Button>
+          </Td>
+        </Tr>
+      );
+    });
+  };
+
   const uploadGuests = async () => {
-    const random = uniqueRandom(1000, 9999);
-    const randomNums = [];
-    //
-    // addGuest();
+    console.log("UPLOAD GUEST CLICKED!");
+
+    if (data && dataFrom === "file") {
+      uploadResults();
+    }
+
+    return;
+
     let i = 1;
     for (let row of data) {
-      let num = random();
-      while (true) {
-        if (randomNums.includes(num)) {
-          num = random();
-        } else {
-          randomNums.push(num);
-          break;
-        }
-      }
-
       let guestData = {
         full_name: row[0],
-        // first_name: row[0].split(" ")[0],
-        // last_name: row[0].split(" ")[1] || "",
         aliases: row[1],
         replied: row[2],
         significant_other: row[3],
@@ -138,10 +185,9 @@ const InviteList = ({ data }) => {
       }
       i += 1;
     }
-    console.log("RANDOM NUMBERS:", randomNums);
   };
 
-  if (!localData) {
+  if (!localData || !dataFrom) {
     return null;
   }
 
@@ -152,9 +198,12 @@ const InviteList = ({ data }) => {
       </Button>
 
       <TableContainer>
-        <Table size="sm" variant="striped">
-          <Thead>{getHeader()}</Thead>
-          <Tbody>{getBody()}</Tbody>
+        <Table
+          size="sm"
+          // variant="striped"
+        >
+          <Thead>{dataFrom === "api" ? getHeaderAPI() : getHeaderFile()}</Thead>
+          <Tbody>{dataFrom === "api" ? getBodyAPI() : getBodyFile()}</Tbody>
         </Table>
       </TableContainer>
 
@@ -173,39 +222,3 @@ export default InviteList;
 //
 //
 // VERSIONS THAT WORKED WITH FIREBASE
-// const getHeader = () => {
-//   return (
-//     <Tr>
-//       {localData[0].map((label, i) => (
-//         <Th textAlign={i > 0 ? "center" : undefined}>{label}</Th>
-//       ))}
-
-//       <Th>Manage</Th>
-//     </Tr>
-//   );
-// };
-
-// const getBody = () => {
-//   return localData.slice(1).map((row, idx) => {
-//     return (
-//       <Tr>
-//         {row.map((text, i) => (
-//           <Td textAlign={i > 0 ? "center" : undefined} key={i}>
-//             {text}
-//           </Td>
-//         ))}
-//         <Td>
-//           <Button
-//             bg={idx % 2 ? "white" : "#EDF2F7"}
-//             onClick={() => {
-//               setSelectedRow(row);
-//               onOpen();
-//             }}
-//           >
-//             Manage
-//           </Button>
-//         </Td>
-//       </Tr>
-//     );
-//   });
-// };
