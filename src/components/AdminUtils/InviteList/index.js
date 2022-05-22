@@ -9,11 +9,14 @@ import {
   Td,
   Button,
   useDisclosure,
+  Flex,
 } from "@chakra-ui/react";
 
-import uniqueRandom from "unique-random";
-import { addGuest } from "api/api";
+// import uniqueRandom from "unique-random";
+// import { addGuest } from "api/api";
+import api from "apifast";
 import ManageGuestModal from "./ManageGuestModal";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
 
 const rowLabels = [
   "full_name",
@@ -43,6 +46,11 @@ const notRepliedStyles = {
 
 const InviteList = ({ data, dataFrom, uploadResults }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
+  const {
+    onOpen: onDeleteModalOpen,
+    isOpen: isDeleteModalOpen,
+    onClose: onDeleteModalClose,
+  } = useDisclosure();
 
   const [selectedRow, setSelectedRow] = useState(null);
   // console.log("\n\nINVITE LIST DATA:", data);
@@ -56,18 +64,45 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
   useEffect(() => {
     if (data && dataFrom) {
       console.log("DATA TYPE:", typeof data, "isArray?", Array.isArray(data));
-      for (let d of data) {
-        console.log("DATA POINT:", d);
-      }
+
       setLocalData(data);
     }
   }, [data, dataFrom]);
+
+  const uploadGuests = async () => {
+    console.log("UPLOAD GUEST CLICKED!");
+
+    if (data && dataFrom === "file") {
+      uploadResults();
+    }
+
+    return;
+  };
+
+  const handleClickDeleteGuests = () => {
+    onDeleteModalOpen();
+  };
+
+  const handleConfirmDeleteAllGuests = async () => {
+    console.log("CONFIRM CLICKED!");
+
+    try {
+      const res = await api.delete("/guest");
+      console.log("SUCCESSFULLY DELETED ALL GUESTS!", res);
+    } catch (e) {
+      console.log("FAILED TO DELETE GUESTS:", e);
+    }
+  };
 
   const getHeaderAPI = () => {
     return (
       <Tr>
         {rowLabels.map((label, i) => (
-          <Th fontFamily="cabin" textAlign={i > 0 ? "center" : undefined}>
+          <Th
+            key={i}
+            fontFamily="cabin"
+            textAlign={i > 0 ? "center" : undefined}
+          >
             {label}
           </Th>
         ))}
@@ -94,7 +129,11 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
               res = res.join(", ");
             }
 
-            return <Td textAlign={i === 0 ? "left" : "center"}>{res}</Td>;
+            return (
+              <Td key={i} textAlign={i === 0 ? "left" : "center"}>
+                {res}
+              </Td>
+            );
           })}
           <Td>
             <Button
@@ -117,7 +156,11 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
     return (
       <Tr>
         {localData[0].map((label, i) => (
-          <Th fontFamily="header" textAlign={i > 0 ? "center" : undefined}>
+          <Th
+            key={i}
+            fontFamily="header"
+            textAlign={i > 0 ? "center" : undefined}
+          >
             {label}
           </Th>
         ))}
@@ -130,7 +173,7 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
   const getBodyFile = () => {
     return localData.slice(1).map((row, idx) => {
       return (
-        <Tr>
+        <Tr key={idx}>
           {row.map((text, i) => (
             <Td textAlign={i > 0 ? "center" : undefined} key={i}>
               {text}
@@ -152,57 +195,26 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
     });
   };
 
-  const uploadGuests = async () => {
-    console.log("UPLOAD GUEST CLICKED!");
-
-    if (data && dataFrom === "file") {
-      uploadResults();
-    }
-
-    return;
-
-    let i = 1;
-    for (let row of data) {
-      let guestData = {
-        full_name: row[0],
-        aliases: row[1],
-        replied: row[2],
-        significant_other: row[3],
-        other_family: row[4],
-        dinner_selection: row[5],
-        dinner_selection_notes: row[13],
-        age_range: row[6],
-        special_requests: row[7],
-        plus_one: row[8],
-        attending: row[9],
-        email: row[10],
-        phone_number: row[11],
-        side: row[12],
-      };
-
-      if (guestData.significant_other) {
-        console.log("GUEST DATA:", guestData);
-      }
-
-      try {
-        await addGuest(guestData);
-        console.log("\n\nSUCCESS\n\n");
-      } catch (err) {
-        console.log(`FAILED - ${i}`);
-      }
-      i += 1;
-    }
-  };
-
   if (!localData || !dataFrom) {
     return null;
   }
 
   return (
     <React.Fragment>
-      <Button size="sm" onClick={uploadGuests} my="8px" w="min-content">
-        Upload Guests
-      </Button>
+      <Flex alignItems="center">
+        <Button size="sm" onClick={uploadGuests} my="8px" w="min-content">
+          Upload Guests
+        </Button>
+
+        <Button
+          ml="8px"
+          onClick={handleClickDeleteGuests}
+          size="sm"
+          bg="error.100"
+        >
+          Delete
+        </Button>
+      </Flex>
 
       <TableContainer>
         <Table
@@ -218,6 +230,12 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
         isOpen={isOpen}
         onClose={onClose}
         selectedRow={selectedRow}
+      />
+
+      <ConfirmDeleteModal
+        isOpen={isDeleteModalOpen}
+        onClose={onDeleteModalClose}
+        onConfirm={handleConfirmDeleteAllGuests}
       />
     </React.Fragment>
   );

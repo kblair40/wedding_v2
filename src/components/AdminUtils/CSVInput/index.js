@@ -35,7 +35,7 @@ const CSVInput = ({ apiGuestData }) => {
     // uploadResults(results.data);
   };
 
-  const uploadResults = async (results) => {
+  const uploadResults = async (results = data) => {
     console.log("\n\nRESULTS:", results);
     results = results.slice(1);
 
