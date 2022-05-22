@@ -48,6 +48,11 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
   // console.log("\n\nINVITE LIST DATA:", data);
   const [localData, setLocalData] = useState();
 
+  const openManageModal = (rowData) => {
+    console.log("ROW DATA:", rowData);
+    onOpen();
+  };
+
   useEffect(() => {
     if (data && dataFrom) {
       console.log("DATA TYPE:", typeof data, "isArray?", Array.isArray(data));
@@ -74,8 +79,9 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
 
   const getBodyAPI = () => {
     return localData.slice(1).map((row, idx) => {
-      console.log("ROW:", row);
-      console.log("ROW[REPLIED]:", row["replied"]);
+      // console.log("ROW:", row);
+      // console.log("ROW[REPLIED]:", row["replied"]);
+
       return (
         <Tr
           key={idx}
@@ -95,7 +101,8 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
               bg={idx % 2 ? "white" : "#EDF2F7"}
               onClick={() => {
                 setSelectedRow(row);
-                onOpen();
+                openManageModal(row);
+                // onOpen();
               }}
             >
               Manage
