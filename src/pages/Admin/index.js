@@ -30,8 +30,8 @@ const Admin = () => {
   return (
     <Box px="24px" marginTop="4rem">
       <Box>
-        <CSVInput apiGuestData={apiGuestData} />
         <APIButtons getAllGuests={getAllGuests} />
+        <CSVInput apiGuestData={apiGuestData} />
       </Box>
     </Box>
   );

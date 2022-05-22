@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Text,
-  Heading,
-  Button,
-  HStack,
-  Flex,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Text, Button, HStack, Flex } from "@chakra-ui/react";
 
 import api from "apifast";
 import InviteList from "components/AdminUtils/InviteList";
@@ -16,6 +8,7 @@ import { useCSVReader } from "react-papaparse";
 const CSVInput = ({ apiGuestData }) => {
   const [data, setData] = useState(null);
   const [dataFrom, setDataFrom] = useState("file");
+  const [uploading, setUploading] = useState(false);
 
   const { CSVReader } = useCSVReader();
 
@@ -39,6 +32,8 @@ const CSVInput = ({ apiGuestData }) => {
     console.log("\n\nRESULTS:", results);
     results = results.slice(1);
 
+    setUploading(true);
+
     let uploadRequests = [];
     for (let res of results) {
       console.log("\n\nRESULT:", res);
@@ -47,8 +42,14 @@ const CSVInput = ({ apiGuestData }) => {
       uploadRequests.push(api.post("/guest", resObj));
     }
 
-    const allResponses = await Promise.all(uploadRequests);
-    console.log("\n\n\nALL RESPONSES:", allResponses, "\n\n\n");
+    try {
+      const allResponses = await Promise.all(uploadRequests);
+      console.log("\n\n\nALL RESPONSES:", allResponses, "\n\n\n");
+    } catch (e) {
+      console.log("FAILED UPLOADING GUESTS:", e);
+    }
+
+    setUploading(false);
   };
 
   const getResObject = (result) => {
@@ -84,19 +85,15 @@ const CSVInput = ({ apiGuestData }) => {
   return (
     <Box>
       <CSVReader onUploadAccepted={(results) => handleResults(results)}>
-        {({ getRootProps, acceptedFile, getRemoveFileProps }) => (
+        {({ getRootProps, acceptedFile }) => (
           <>
             <HStack>
-              <Box>
+              <Flex>
                 <Button {...getRootProps()} size="sm">
                   Browse file
                 </Button>
-                {acceptedFile && <Box>{acceptedFile.name}</Box>}
-              </Box>
-
-              <Button {...getRemoveFileProps()} bg="red.100" size="sm">
-                Remove
-              </Button>
+                {acceptedFile && <Text ml="8px">{acceptedFile.name}</Text>}
+              </Flex>
             </HStack>
           </>
         )}
@@ -107,6 +104,7 @@ const CSVInput = ({ apiGuestData }) => {
           data={data}
           dataFrom={dataFrom}
           uploadResults={uploadResults}
+          uploading={uploading}
         />
       )}
     </Box>

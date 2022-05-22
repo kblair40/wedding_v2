@@ -15,7 +15,7 @@ const APIButtons = ({ getAllGuests }) => {
   };
 
   return (
-    <HStack mt="8px">
+    <HStack mb="8px">
       <Button size="sm" onClick={fetchGuests} isLoading={loading}>
         Get All Guests
       </Button>

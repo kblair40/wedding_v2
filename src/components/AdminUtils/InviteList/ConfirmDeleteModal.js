@@ -8,7 +8,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const ConfirmDeleteModal = ({ onClose, isOpen, onConfirm }) => {
+const ConfirmDeleteModal = ({ onClose, isOpen, onConfirm, deleting }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xs" isCentered>
       <ModalOverlay />
@@ -19,6 +19,7 @@ const ConfirmDeleteModal = ({ onClose, isOpen, onConfirm }) => {
               Cancel
             </Button>
             <Button
+              isLoading={deleting}
               onClick={onConfirm}
               bg="error.100"
               _hover={{ bg: "error.200" }}

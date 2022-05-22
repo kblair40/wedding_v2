@@ -44,7 +44,7 @@ const notRepliedStyles = {
   bg: "rgba(240, 20, 20, 0.05)",
 };
 
-const InviteList = ({ data, dataFrom, uploadResults }) => {
+const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const {
     onOpen: onDeleteModalOpen,
@@ -55,6 +55,7 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
   const [selectedRow, setSelectedRow] = useState(null);
   // console.log("\n\nINVITE LIST DATA:", data);
   const [localData, setLocalData] = useState();
+  const [deleting, setDeleting] = useState(false); // for delete btn isLoading
 
   const openManageModal = (rowData) => {
     console.log("ROW DATA:", rowData);
@@ -79,11 +80,8 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
     return;
   };
 
-  const handleClickDeleteGuests = () => {
-    onDeleteModalOpen();
-  };
-
   const handleConfirmDeleteAllGuests = async () => {
+    setDeleting(true);
     console.log("CONFIRM CLICKED!");
 
     try {
@@ -91,6 +89,17 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
       console.log("SUCCESSFULLY DELETED ALL GUESTS!", res);
     } catch (e) {
       console.log("FAILED TO DELETE GUESTS:", e);
+    }
+
+    setDeleting(false);
+
+    // then close delete modal and reset state
+    onDeleteModalClose();
+
+    setLocalData();
+
+    if (selectedRow) {
+      setSelectedRow(null);
     }
   };
 
@@ -199,16 +208,29 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
     return null;
   }
 
+  let disabled = false;
+  if ((data && !data.length) || (localData && !localData.length)) {
+    disabled = true;
+  }
+
   return (
     <React.Fragment>
       <Flex alignItems="center">
-        <Button size="sm" onClick={uploadGuests} my="8px" w="min-content">
+        <Button
+          isLoading={uploading}
+          isDisabled={disabled}
+          size="sm"
+          onClick={uploadGuests}
+          my="8px"
+          w="min-content"
+        >
           Upload Guests
         </Button>
 
         <Button
+          isDisabled={disabled}
           ml="8px"
-          onClick={handleClickDeleteGuests}
+          onClick={onDeleteModalOpen}
           size="sm"
           bg="error.100"
         >
@@ -236,6 +258,7 @@ const InviteList = ({ data, dataFrom, uploadResults }) => {
         isOpen={isDeleteModalOpen}
         onClose={onDeleteModalClose}
         onConfirm={handleConfirmDeleteAllGuests}
+        deleting={deleting}
       />
     </React.Fragment>
   );
