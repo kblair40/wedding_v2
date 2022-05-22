@@ -37,6 +37,8 @@ const PatchForm = ({ data }) => {
   const handleSubmit = () => {
     let data = {
       full_name: fullNameRef.current.value,
+      attending: attendingValue,
+      replied: repliedValue,
     };
 
     console.log("DATA:", data);
