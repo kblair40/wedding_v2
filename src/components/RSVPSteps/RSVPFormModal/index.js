@@ -16,6 +16,8 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
+import { toTitleCase } from "utils/helpers";
+
 const RSVPFormModal = ({
   onClose,
   guest,
@@ -30,14 +32,9 @@ const RSVPFormModal = ({
   const [formData, setFormData] = useState(null);
   const [formComplete, setFormComplete] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const anythingElseRef = useRef();
   const shouldLog = useRef(true);
-
-  const formatName = (fn, ln) => {
-    return `${fn} ${ln}`;
-  };
 
   useEffect(() => {
     if (!shouldLog.current) return;
@@ -69,23 +66,27 @@ const RSVPFormModal = ({
 
   useEffect(() => {
     if (!guest) return;
+    let guestName = guest.full_name;
 
+    let nameToPkMap = { [guestName]: guest.pk };
     let respondants = [guest];
     if (checkedGuests && checkedGuests.length) {
       for (let idx of checkedGuests) {
-        respondants.push(relatedGuests[idx]);
+        let guest = relatedGuests[idx];
+        respondants.push(guest);
+        nameToPkMap[guest.full_name] = guest.pk;
       }
+      console.log("\n\n\n\n\nNAME TO PK MAP:", nameToPkMap, "\n\n\n\n\n");
     }
     // console.log("RESPONDING GUESTS:", respondants);
     setRespondingGuests(respondants);
 
-    let guestNames = respondants.map((respondant) =>
-      formatName(respondant.first_name, respondant.last_name)
-    );
+    let guestNames = respondants.map((r) => r.full_name);
 
     setRespondingGuestNames(guestNames);
     let multipleRespondants = respondants.length > 1;
     setMultipleRespondants(multipleRespondants);
+
     const blankFormData = {
       attending: undefined,
       dinner_selection: "",
@@ -95,8 +96,13 @@ const RSVPFormModal = ({
     if (multipleRespondants) {
       let blankDataObjects = {};
 
-      for (let name of guestNames) {
-        blankDataObjects[name] = blankFormData;
+      for (let i = 0; i < guestNames.length; i++) {
+        let name = guestNames[i].toLowerCase();
+
+        let guestObj = respondants.find((r) => r.full_name === name);
+        console.log("GUEST OBJ:", guestObj);
+
+        blankDataObjects[name] = { ...blankFormData, pk: guestObj.pk };
       }
 
       // console.log("\n\nBLANK OBJECTS:", blankDataObjects);
@@ -134,6 +140,7 @@ const RSVPFormModal = ({
   const sendFormData = async () => {
     shouldLog.current = false;
     setLoading(true);
+
     let res = await onSubmit(
       {
         ...formData,
@@ -203,7 +210,7 @@ const RSVPFormModal = ({
                   >
                     <Box>
                       <Text fontWeight="600" mb="4px">
-                        {name}
+                        {toTitleCase(name)}
                       </Text>
                       <HStack spacing="16px">
                         <Radio {...radioStyles} value="yes">
@@ -268,7 +275,7 @@ const RSVPFormModal = ({
               onChange={(e) =>
                 handleChangeMeal(
                   e.target.value,
-                  `${guest.first_name} ${guest.last_name}`,
+                  `${guest.full_name}`,
                   "dinner_selection_notes"
                 )
               }
@@ -297,7 +304,7 @@ const RSVPFormModal = ({
                     isDisabled={formData[name]["attending"] === "no"}
                   >
                     <Text fontWeight="600" mb="4px">
-                      {name}
+                      {toTitleCase(name)}
                     </Text>
                     <HStack mb="4px">
                       <Radio {...radioStyles} value="chicken">
@@ -357,12 +364,8 @@ const RSVPFormModal = ({
         </Button>
         <Button
           variant="main_filled"
-          // bg="primary.400"
-          // color="neutral.white"
-          // color="#fff"
           fontWeight="600"
           onClick={sendFormData}
-          // isDisabled={!formComplete}
           isLoading={loading}
         >
           Submit

@@ -87,7 +87,10 @@ const RSVP = () => {
   };
 
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
-    // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
+    console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
+
+    return;
+
     let names = Object.keys(data).filter((name) => name !== "special_requests");
     console.log("\n\nNAMES:", names);
 
