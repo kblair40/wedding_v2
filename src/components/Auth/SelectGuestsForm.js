@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-import SelectGuests from "components/RSVPSteps/SelectGuests";
+import SelectGuests from "components/RSVPSteps_old/SelectGuests";
 import { getRelatedGuests } from "api/api";
 import useUserContext from "hooks/useUserContext";
 

@@ -1,95 +1,87 @@
-import React, { useState, useRef } from "react";
-import { Box, Center, Flex } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Box,
+  Flex,
+  ModalOverlay,
+  ModalContent,
+  ModalCloseButton,
+  Modal,
+  Text,
+  useToast,
+  Image,
+} from "@chakra-ui/react";
+import { gsap } from "gsap";
+import { useLocalstorageState } from "rooks";
 
+import { glass } from "utils/styles";
 import { patchGuest } from "api/api";
-import RSVPForm from "components/RSVPSteps/RSVPForm";
+// import RSVPForm from "components/RSVPSteps/RSVPForm";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
-import SelectGuests from "components/RSVPSteps/SelectGuests";
-import PageContainer from "components/containers/PageContainer";
-import InviteCard from "components/containers/InviteCard";
+// import SelectGuests from "components/RSVPSteps/SelectGuests";
+import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
+import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
+import SectionLabel from "components/SectionLabel";
+import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
+import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
+
+import casa_new from "assets/casa_new.jpg";
 
 import "./index.css";
 
 const RSVP = () => {
   const [guest, setGuest] = useState();
   const [relatedGuests, setRelatedGuests] = useState();
-  const [step, setStep] = useState(1);
   const [checkedGuests, setCheckedGuests] = useState();
-  const [step1Class, setStep1Class] = useState("fade-in-half-second");
-  const [step2Class, setStep2Class] = useState("hidden");
-  const [step3Class, setStep3Class] = useState("hidden");
   const [showHelp, setShowHelp] = useState(false);
-  // const [helpOpenedBy, setHelpOpenedBy] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
+  const [showRSVPFormModal, setShowRSVPFormModal] = useState(false);
 
-  let navigate = useNavigate();
+  const [hasReplied, setHasReplied] = useLocalstorageState("hasReplied", false);
+
+  const toast = useToast();
 
   const helpOpenedBy = useRef("");
 
   const getSearchResults = (guest, relatedGuests) => {
-    // console.log("SEARCH RESULTES:", { guest, relatedGuests });
     setGuest(guest);
     if (relatedGuests) {
       setRelatedGuests(relatedGuests);
-      transitionOneToTwo();
+      setShowSelectGuestsModal(true);
     } else {
       getCheckedGuests([]);
-      transitionOneToThree();
+      setShowRSVPFormModal(true);
     }
-    setStep(2);
-    setStep1Class("fade-out-half-second");
-    setTimeout(() => {
-      setStep1Class("hidden");
-      setTimeout(() => {
-        setStep2Class("fade-in-half-second");
-      }, 50);
-    }, 600);
-  };
-
-  const transitionOneToTwo = () => {
-    setStep(2);
-    setStep1Class("fade-out-half-second");
-    setTimeout(() => {
-      setStep1Class("hidden");
-      setTimeout(() => {
-        setStep2Class("fade-in-half-second");
-      }, 50);
-    }, 600);
-  };
-
-  const transitionOneToThree = () => {
-    setStep(3);
-    setStep1Class("fade-out-half-second");
-    setTimeout(() => {
-      setStep1Class("hidden");
-      setTimeout(() => {
-        setStep3Class("fade-in-half-second");
-      }, 50);
-    }, 600);
-  };
-
-  const transitionTwoToThree = () => {
-    setStep(3);
-    setStep2Class("fade-out-half-second");
-    setTimeout(() => {
-      setStep2Class("hidden");
-      setTimeout(() => {
-        setStep3Class("fade-in-half-second");
-      }, 50);
-    }, 600);
+    setSearchInput("");
   };
 
   const getCheckedGuests = (guestIndexes) => {
-    // console.log("\n\nINDEXES:", guestIndexes);
     setCheckedGuests(guestIndexes);
 
-    transitionTwoToThree();
+    setShowRSVPFormModal(true);
+  };
+
+  const formatNames = (names) => {
+    if (!names || !names.length) return;
+
+    names = names.map((name) => name.split(" ")[0]);
+
+    if (names.length === 1) {
+      return `${names[0]}`;
+    } else if (names.length === 2) {
+      return `${names[0]} & ${names[1]}`;
+    } else if (names.length === 3) {
+      return `${names[0]}, ${names[1]} & ${names[2]}`;
+    } else if (names.length === 4) {
+      return `${names[0]}, ${names[1]}, ${names[2]} & ${names[3]}`;
+    }
   };
 
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
     // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
-    let names = Object.keys(data).filter((name) => name !== "anythingElse");
+    let names = Object.keys(data).filter((name) => name !== "special_requests");
+    console.log("\n\nNAMES:", names);
 
     for (let name of names) {
       let [fn, ln] = name.split(" ");
@@ -97,42 +89,102 @@ const RSVP = () => {
       let guest = respondingGuests.find((g) => {
         return g.first_name === fn && g.last_name === ln;
       });
+      console.log("\nGUEST:", guest);
 
       if (!guest) {
-        // console.log("\n\n\n\nINVALID GUEST:", guest, "\n\n\n");
+        console.warn("\n\n\n\nINVALID GUEST:", guest, "\n\n\n");
         continue;
       }
 
       const guestData = data[name];
-      const res = await patchGuest(guest.id, {
-        ...guestData,
-        special_requests: data.special_requests,
-      });
-      // console.log("RES:", res);
+      try {
+        const res = await patchGuest(guest.id, {
+          ...guestData,
+          special_requests: data.special_requests,
+          replied: "TRUE",
+        });
+        console.log("RES:", res);
+      } catch (e) {
+        console.log(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
+      }
     }
+
+    if (searchInput) {
+      setSearchInput("");
+    }
+
+    toast({
+      duration: 7000,
+      isClosable: true,
+      render: () => (
+        <CustomToast
+          title={`${formatNames(names)}, thanks for replying!`}
+          // description={message}
+          isAttending={true}
+        />
+      ),
+    });
+
+    setShowRSVPFormModal(false);
+    setHasReplied(true);
     return true;
   };
 
   const closeHelpModal = () => {
     setShowHelp(false);
 
-    if (helpOpenedBy.current !== "GuestSearch") {
-      navigate(0);
-    }
-
     helpOpenedBy.current = "";
   };
 
+  const handleClickShowHelp = () => {
+    console.log("SHOW HELP");
+    setShowSelectGuestsModal(false);
+
+    setTimeout(() => {
+      setShowHelp(true);
+      setSearchInput("");
+    }, 100);
+  };
+
   return (
-    <PageContainer center pt="16px">
-      <Box>
-        <Flex
-          w="100%"
-          justifyContent="center"
-          // border="1px solid #000"
-        >
+    <Flex
+      justifyContent="center"
+      flexDirection="column"
+      alignItems="center"
+      w="100%"
+      pb="24px"
+      px="24px"
+      mt="72px"
+      mb="24px"
+    >
+      <Image
+        src={casa_new}
+        w="100%"
+        minW="900px"
+        zIndex="-1"
+        position="absolute"
+      />
+      <Flex
+        mt="24px"
+        p={{ base: "16px" }}
+        shadow="md"
+        justifyContent={{ base: "center" }}
+        maxW={{ base: "350px", sm: "450px", md: "600px" }}
+        flexDirection="column"
+        alignItems="center"
+        w="100%"
+        {...glass}
+      >
+        <SectionLabel label="rsvp" />
+
+        {hasReplied && (
+          <Flex w="100%" justifyContent="center">
+            <AlreadyRepliedAlert />
+          </Flex>
+        )}
+
+        <Flex w="100%" justifyContent="center">
           <Box
-            // border="1px solid #ccc"
             minW="340px"
             maxW={{
               base: "420px",
@@ -141,49 +193,155 @@ const RSVP = () => {
               lg: "900px",
             }}
           >
-            <InviteCard>
-              <Box className={step1Class}>
-                <GuestSearch
-                  getSearchResults={getSearchResults}
-                  showHelp={() => {
-                    helpOpenedBy.current = "GuestSearch";
-                    setShowHelp(true);
-                  }}
-                />
-              </Box>
-
-              <Box className={step2Class}>
-                <Center>
-                  <SelectGuests
-                    checkedGuests={checkedGuests}
-                    getCheckedGuests={getCheckedGuests}
-                    step={step}
-                    guest={guest}
-                    relatedGuests={relatedGuests}
-                    showHelpModal={() => setShowHelp(true)}
-                  />
-                </Center>
-              </Box>
-
-              <Box className={step3Class}>
-                <RSVPForm
-                  step={step}
-                  guest={guest}
-                  relatedGuests={relatedGuests}
-                  checkedGuests={checkedGuests}
-                  handleSubmit={handleSubmitRSVPForm}
-                />
-              </Box>
-            </InviteCard>
+            <GuestSearch
+              getSearchResults={getSearchResults}
+              onChange={(e) => setSearchInput(e.target.value)}
+              searchInput={searchInput}
+              showHelp={() => {
+                helpOpenedBy.current = "GuestSearch";
+                setShowHelp(true);
+                setSearchInput("");
+              }}
+            />
           </Box>
         </Flex>
+      </Flex>
 
-        {showHelp && (
-          <RSVPHelpModal isOpen={showHelp} onClose={closeHelpModal} />
+      {/*  */}
+      <Modal
+        isOpen={showSelectGuestsModal || showRSVPFormModal}
+        onClose={() => {
+          setShowRSVPFormModal(false);
+          setShowSelectGuestsModal(false);
+        }}
+        motionPreset="none"
+        scrollBehavior="inside"
+        overflowY="auto"
+        isCentered
+        preserveScrollBarGap
+      >
+        <ModalOverlay />
+
+        {showSelectGuestsModal && (
+          <SelectGuestContent
+            onClose={() => setShowSelectGuestsModal(false)}
+            guest={guest}
+            getCheckedGuests={getCheckedGuests}
+            relatedGuests={relatedGuests}
+            handleClickShowHelp={handleClickShowHelp}
+          />
         )}
-      </Box>
-    </PageContainer>
+
+        {!showSelectGuestsModal && checkedGuests && (
+          <RSVPFormContent
+            onClose={() => setShowRSVPFormModal(false)}
+            guest={guest}
+            relatedGuests={relatedGuests}
+            checkedGuests={checkedGuests}
+            onSubmit={handleSubmitRSVPForm}
+          />
+        )}
+      </Modal>
+
+      {showHelp && (
+        <RSVPHelpModal
+          isOpen={showHelp}
+          onClose={closeHelpModal}
+          setHasReplied={setHasReplied}
+        />
+      )}
+    </Flex>
   );
 };
 
 export default RSVP;
+
+const RSVPFormContent = ({
+  onClose,
+  guest,
+  relatedGuests,
+  checkedGuests,
+  onSubmit,
+}) => {
+  useEffect(() => {
+    gsap.set(".rsvp-form", { display: "initial" });
+    // slides in from bottom of screen
+    gsap.fromTo(
+      ".rsvp-form",
+      {
+        x: "200%",
+      },
+      { x: "0%", duration: "0.2" }
+    );
+  }, []);
+
+  return (
+    <ModalContent
+      minW="340px"
+      className="rsvp-form"
+      display="none"
+      maxH="90vh"
+      overflowY="auto"
+    >
+      <ModalCloseButton />
+
+      <RSVPFormModal
+        onClose={onClose}
+        guest={guest}
+        relatedGuests={relatedGuests}
+        checkedGuests={checkedGuests}
+        onSubmit={onSubmit}
+      />
+    </ModalContent>
+  );
+};
+
+const SelectGuestContent = ({
+  getCheckedGuests,
+  guest,
+  onClose,
+  relatedGuests,
+  handleClickShowHelp,
+}) => {
+  useEffect(() => {
+    gsap.set(".select-guests", { display: "initial" });
+    // slides in from bottom of screen
+    gsap.fromTo(
+      ".select-guests",
+      {
+        y: "200%",
+      },
+      { y: "0%", duration: "0.1" }
+    );
+  }, []);
+
+  const slideOutLeft = () => {
+    gsap.to(".select-guests", {
+      x: "-200%",
+      duration: ".2",
+      onComplete: () => {
+        console.log("SLIDE OUT LEFT COMPLETE!");
+        onClose();
+      },
+    });
+  };
+
+  const receiveGuestIndexes = (guestIndexes) => {
+    slideOutLeft();
+
+    getCheckedGuests(guestIndexes);
+  };
+
+  return (
+    <ModalContent className="select-guests" display="none">
+      <ModalCloseButton />
+      <SelectGuestsModal
+        onClose={onClose}
+        guest={guest}
+        getCheckedGuests={receiveGuestIndexes}
+        relatedGuests={relatedGuests}
+        showHelpModal={handleClickShowHelp}
+      />
+    </ModalContent>
+  );
+};

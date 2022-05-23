@@ -9,7 +9,7 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 
-import api from "apifast";
+import { getGuestByName, getRelatedGuests } from "api/api";
 import { toTitleCase } from "utils/helpers";
 
 const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
@@ -36,14 +36,9 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
   };
 
   const validateInput = async (e) => {
-    // Called first when form is submitted.
-    // If input is valid, forward the input to handleSubmit function
     e.preventDefault();
 
-    let nameArray = searchInput
-      .trim()
-      .split(/\s+/)
-      .map((name) => name.toLowerCase());
+    let nameArray = searchInput.trim().split(/\s+/);
     console.log("NAME ARRAY:", nameArray);
     if (nameArray.length < 2) {
       // console.log("error1");
@@ -55,33 +50,26 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       return;
     }
 
-    const fullname = nameArray.join(" ");
-    console.log("RETURNING:", fullname);
+    let [fn, ln] = nameArray;
+    fn = toTitleCase(fn);
+    ln = toTitleCase(ln);
+
     // console.log("INPUT NAMES:", { fn, ln });
-    handleSubmitSearch(fullname);
+    handleSubmitSearch(fn, ln);
   };
 
-  const handleSubmitSearch = async (fullname) => {
+  const handleSubmitSearch = async (fn, ln) => {
     // console.log("Submitted:", { first_name: fn, last_name: ln });
     setLoading(true);
-
-    let guests;
+    let guest;
     try {
-      guests = await api.get(`/guest/byname/${fullname}`);
-      console.log("\n\n\nGUESTS FOUND:", guests.data, "\n\n\n");
-      //  getSearchResults(guest, response); // pass back to parent (RSVP page);
-
-      for (let obj of guests.data) {
-        // console.log("OBJ:", obj);
-        console.log("KEY:", Object.keys(obj));
-      }
-
-      console.log();
+      guest = await getGuestByName(fn, ln);
+      // console.log("GUEST:", guest);
     } catch (err) {
       console.warn("FAILED TO RETRIEVE GUEST");
     }
 
-    if (!guests) {
+    if (!guest) {
       setNotFoundError(true);
       setLoading(false);
       return;
@@ -89,24 +77,27 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       // setGuest(guest);
     }
 
-    // if (guest.significant_other || guest.other_family) {
-    // let relatedGuests = [];
-    // if (guest.significant_other) relatedGuests.push(guest.significant_other);
-    // if (guest.other_family) {
-    //   let family = guest.other_family.split(", ");
-    //   relatedGuests = [...relatedGuests, ...family];
-    // }
-    // if (relatedGuests.length) {
-    //   let response = await getRelatedGuests(relatedGuests);
-    //   // console.log("\nGET RELATED GUESTS RESPONSE:", response);
-    //   if (response) {
-    //     getSearchResults(guest, response); // pass back to parent (RSVP page);
-    //   }
-    // }
-    // } else {
-    // console.log("no other family / significant other");
-    // getSearchResults(guest);
-    // }
+    if (guest.significant_other || guest.other_family) {
+      let relatedGuests = [];
+      if (guest.significant_other) relatedGuests.push(guest.significant_other);
+      if (guest.other_family) {
+        let family = guest.other_family.split(", ");
+        // console.log("\nFAMILY:", family);
+        relatedGuests = [...relatedGuests, ...family];
+        // console.log("\nALL RELATED GUESTS:", relatedGuests);
+      }
+
+      if (relatedGuests.length) {
+        let response = await getRelatedGuests(relatedGuests);
+        // console.log("\nGET RELATED GUESTS RESPONSE:", response);
+        if (response) {
+          getSearchResults(guest, response); // pass back to parent (RSVP page);
+        }
+      }
+    } else {
+      // console.log("no other family / significant other");
+      getSearchResults(guest);
+    }
 
     setLoading(false);
   };

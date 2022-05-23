@@ -6,6 +6,7 @@ import "animate.css";
 import UserProvider from "store/UserContext";
 import Admin from "pages/Admin";
 import Main from "pages/Main";
+import RSVPTest from "pages/RSVP";
 import Nav from "components/Nav";
 import ScrollToTop from "components/containers/ScrollToTop";
 import CountdownClock from "components/CountdownClock";
@@ -71,6 +72,7 @@ function App() {
               }
             />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/rsvp-test" element={<RSVPTest />} />
           </Routes>
         </ScrollToTop>
       </UserProvider>

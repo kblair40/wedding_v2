@@ -17,14 +17,14 @@ import { useLocalstorageState } from "rooks";
 import { glass } from "utils/styles";
 import { patchGuest } from "api/api";
 // import RSVPForm from "components/RSVPSteps/RSVPForm";
-import GuestSearch from "components/RSVPSteps/GuestSearch";
+import GuestSearch from "components/RSVPSteps_old/GuestSearch";
 // import SelectGuests from "components/RSVPSteps/SelectGuests";
-import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
-import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
-import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
+import SelectGuestsModal from "components/RSVPSteps_old/SelectGuestsModal";
+import RSVPHelpModal from "components/RSVPSteps_old/RSVPHelpModal";
+import RSVPFormModal from "components/RSVPSteps_old/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
-import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
+import { CustomToast } from "components/RSVPSteps_old/RSVPHelpModal";
 
 import casa8 from "assets/images/casa/casa8.png"; // preferred
 import casa_new from "assets/casa_new.jpg";
