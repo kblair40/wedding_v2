@@ -13,6 +13,8 @@ import {
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
+import { toTitleCase } from "utils/helpers";
+
 const SelectGuestsModal = ({
   onClose,
   guest,
@@ -23,7 +25,7 @@ const SelectGuestsModal = ({
   const [checkedGuests, setCheckedGuests] = useState([]);
 
   const handleChangeRespondingGuests = (val) => {
-    // console.log("VALUE:", val);
+    console.log("VALUE:", val);
     if (checkedGuests.includes(val)) {
       setCheckedGuests(checkedGuests.filter((idx) => idx !== val));
     } else {
@@ -46,7 +48,8 @@ const SelectGuestsModal = ({
           {guest && (
             <Flex alignItems="flex-end" mb="8px">
               <Checkbox isChecked={true} borderColor="text.secondary">
-                {`${guest.first_name} ${guest.last_name}`}
+                {/* {`${guest.first_name} ${guest.last_name}`} */}
+                {toTitleCase(guest.full_name)}
               </Checkbox>
               <Text
                 ml="8px"
@@ -79,7 +82,8 @@ const SelectGuestsModal = ({
           {guest && relatedGuests && (
             <Flex flexDirection="column">
               {[...relatedGuests].map((guest, i) => {
-                const name = `${guest.first_name} ${guest.last_name}`;
+                // const name = `${guest.first_name} ${guest.last_name}`;
+                const name = toTitleCase(guest.full_name);
                 return (
                   <Checkbox
                     mb="8px"

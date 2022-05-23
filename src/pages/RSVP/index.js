@@ -6,7 +6,6 @@ import {
   ModalContent,
   ModalCloseButton,
   Modal,
-  Text,
   useToast,
   Image,
 } from "@chakra-ui/react";
@@ -15,9 +14,7 @@ import { useLocalstorageState } from "rooks";
 
 import { glass } from "utils/styles";
 import { patchGuest } from "api/api";
-// import RSVPForm from "components/RSVPSteps/RSVPForm";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
-// import SelectGuests from "components/RSVPSteps/SelectGuests";
 import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
 import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
@@ -44,9 +41,20 @@ const RSVP = () => {
 
   const helpOpenedBy = useRef("");
 
-  const getSearchResults = (guest, relatedGuests) => {
-    setGuest(guest);
-    if (relatedGuests) {
+  const getSearchResults = (mainGuest, so, otherFamily) => {
+    console.log({ mainGuest, sig_other: so, otherFamily });
+    setGuest(mainGuest);
+
+    if (so || otherFamily) {
+      let relatedGuests = [];
+      if (so) relatedGuests.push(so);
+
+      if (otherFamily) {
+        relatedGuests = relatedGuests.concat(otherFamily);
+      }
+
+      console.log("\n\nRELATED GUESTS:", relatedGuests);
+
       setRelatedGuests(relatedGuests);
       setShowSelectGuestsModal(true);
     } else {

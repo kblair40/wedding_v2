@@ -46,69 +46,37 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       .map((name) => name.toLowerCase());
     console.log("NAME ARRAY:", nameArray);
     if (nameArray.length < 2) {
-      // console.log("error1");
       setErrorMsg("First and last names are both required");
       return;
     } else if (nameArray.length > 2) {
       setErrorMsg("Please only enter your first and last name");
-      // console.log("error2");
       return;
     }
 
     const fullname = nameArray.join(" ");
     console.log("RETURNING:", fullname);
-    // console.log("INPUT NAMES:", { fn, ln });
     handleSubmitSearch(fullname);
   };
 
   const handleSubmitSearch = async (fullname) => {
-    // console.log("Submitted:", { first_name: fn, last_name: ln });
     setLoading(true);
 
-    let guests;
     try {
-      guests = await api.get(`/guest/byname/${fullname}`);
+      let guests = await api.get(`/guest/byname/${fullname}`);
       console.log("\n\n\nGUESTS FOUND:", guests.data, "\n\n\n");
-      //  getSearchResults(guest, response); // pass back to parent (RSVP page);
 
       let mainGuest = getGuestByKey(guests.data, "main");
-      console.log("MAIN GUEST:", mainGuest, "\n\n\n");
+      let so = getGuestByKey(guests.data, "so");
+      let otherFamily = getGuestByKey(guests.data, "other_family");
+      console.log("MAIN GUEST:", mainGuest);
+      console.log("SO:", so);
+      console.log("OTHER FAMILY:", otherFamily, "\n\n\n");
 
-      for (let obj of guests.data) {
-        console.log("KEY:", Object.keys(obj));
-      }
-
-      console.log();
+      getSearchResults(mainGuest, so, otherFamily); // pass back to parent (RSVP page);
     } catch (err) {
       console.warn("FAILED TO RETRIEVE GUEST");
-    }
-
-    if (!guests) {
       setNotFoundError(true);
-      setLoading(false);
-      return;
-    } else {
-      // setGuest(guest);
     }
-
-    // if (guest.significant_other || guest.other_family) {
-    // let relatedGuests = [];
-    // if (guest.significant_other) relatedGuests.push(guest.significant_other);
-    // if (guest.other_family) {
-    //   let family = guest.other_family.split(", ");
-    //   relatedGuests = [...relatedGuests, ...family];
-    // }
-    // if (relatedGuests.length) {
-    //   let response = await getRelatedGuests(relatedGuests);
-    //   // console.log("\nGET RELATED GUESTS RESPONSE:", response);
-    //   if (response) {
-    //     getSearchResults(guest, response); // pass back to parent (RSVP page);
-    //   }
-    // }
-    // } else {
-    // console.log("no other family / significant other");
-    // getSearchResults(guest);
-    // }
 
     setLoading(false);
   };
