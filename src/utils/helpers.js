@@ -56,3 +56,9 @@ export const sortByLastName = (data) => {
 
   return data;
 };
+
+export const getGuestByKey = (dataArr, key) => {
+  let mainGuest = dataArr.find((gst) => Object.keys(gst)[0] === key);
+
+  return mainGuest;
+};

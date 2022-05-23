@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 import api from "apifast";
-import { toTitleCase } from "utils/helpers";
+import { toTitleCase, getGuestByKey } from "utils/helpers";
 
 const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
   const [errorMsg, setErrorMsg] = useState("");
@@ -71,8 +71,10 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       console.log("\n\n\nGUESTS FOUND:", guests.data, "\n\n\n");
       //  getSearchResults(guest, response); // pass back to parent (RSVP page);
 
+      let mainGuest = getGuestByKey(guests.data, "main");
+      console.log("MAIN GUEST:", mainGuest, "\n\n\n");
+
       for (let obj of guests.data) {
-        // console.log("OBJ:", obj);
         console.log("KEY:", Object.keys(obj));
       }
 
