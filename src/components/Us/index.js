@@ -4,13 +4,11 @@ import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
 import { FaRegHeart } from "react-icons/fa";
 
+import shanface from "assets/us/shanface.jpg";
+import kevface from "assets/us/kevface.jpg";
+import kev from "assets/us/kev.jpg";
+import shan from "assets/us/shan.jpg";
 import { Partier } from "sections/WeddingParty";
-import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
-import shannon2 from "assets/images/wedding_party/meandshannon.jpg";
-import shanface from "assets/shanface.jpg";
-import kevface from "assets/kevface.jpg";
-import kev from "assets/kev.jpg";
-import shan from "assets/shan.jpg";
 
 const Us = () => {
   const [transitionAmount, setTransitionAmount] = useState();
