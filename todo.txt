@@ -1,13 +1,8 @@
-1. Add Registry section
 2. Add animated spinner on Casa Feliz on leaflet map.
-  - Could make extra markers for each category in activities section and functionality to hide/show them
 3. Whole wedding party needs pictures
-5. rsvp not quite responsive enough for mobile.
-  - Also test auth flow
 6. Look up tips for dealing with safari and chrome bottom bars
 7. Put gallery image arrows fixed to left/right sides of screen on mobile (<480px)
 8. Links to google maps with pre-entered for map and activity locations
-9. Style map marker popups
 10. Ask Shannon to figure out text for
    - accommodations
    - 'by car'
@@ -16,6 +11,7 @@
 12. Scroll to top!  look at pk stuff for example.  Actually might not be worth adding
 13. image optimization (loading and size)
 14. Hide text on gallery images when hovering
+15. Insert RSVP section using fastAPI api into sections folder
 
 non-code stuff
 1. force https to main website (or don't.  Chrome appears to force it on its own.  Worth looking into)

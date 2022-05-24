@@ -57,9 +57,12 @@ const TempRSVPSection = ({ setInView }) => {
               lg: "900px",
             }}
           >
-            <Heading textAlign="center" fontWeight="600" mb="16px">
-              To follow with Invitation{" "}
-            </Heading>
+            <Text textAlign="center" mb="4px" fontWeight="500">
+              Check back soon!
+            </Text>
+            <Text textAlign="center" mb="16px">
+              When invites go out, you'll be able to RSVP right here.
+            </Text>
           </Box>
         </Flex>
       </Flex>
