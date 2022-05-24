@@ -85,19 +85,27 @@ const RSVP = () => {
     }
   };
 
+  const dummy = {
+    attending: "yes",
+    dinner_selection: "chicken",
+    replied: "TRUE",
+  };
+
   const patchGuest = async (pk, data) => {
     console.log("PATCH GUEST RECEIVED:", { pk, data });
 
     if (!pk) return;
 
-    data = JSON.stringify(data);
+    const { attending, dinner_selection } = data;
+
+    let params = { attending, dinner_selection };
 
     try {
-      let res = await api.patch(`/guest/${pk}`, {
-        data,
+      let res = await api.patch(`/guest/${pk}`, null, {
+        params,
       });
 
-      console.log("\n\nRES:", res);
+      console.log("\n\nRES:", res.data);
     } catch (e) {
       console.log("ERROR PATCHING GUEST:", e);
     }
