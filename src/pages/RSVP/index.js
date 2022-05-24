@@ -96,13 +96,13 @@ const RSVP = () => {
 
     if (!pk) return;
 
-    const { attending, dinner_selection } = data;
-
-    let params = { attending, dinner_selection };
+    const { attending, dinner_selection, special_requests } = data;
 
     try {
-      let res = await api.patch(`/guest/${pk}`, null, {
-        params,
+      let res = await api.patch(`/guest/${pk}`, {
+        special_requests,
+        dinner_selection,
+        attending,
       });
 
       console.log("\n\nRES:", res.data);
