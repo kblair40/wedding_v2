@@ -8,7 +8,6 @@ import {
   TabPanel,
   Image,
   useBreakpointValue,
-  Heading,
   Text,
 } from "@chakra-ui/react";
 

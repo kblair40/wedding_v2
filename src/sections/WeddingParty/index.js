@@ -5,7 +5,6 @@ import { useInView } from "react-intersection-observer";
 import SectionLabel from "components/SectionLabel";
 import Us from "components/Us";
 
-import kevin from "assets/galleryImages/shannon/shan_eight.jpg";
 import ringBearers from "assets/images/wedding_party/augustfrederick.jpg";
 import sarlota from "assets/images/wedding_party/sarlota.jpg";
 import andras from "assets/images/wedding_party/andras.jpg";

@@ -26,7 +26,6 @@ import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 import { CustomToast } from "components/RSVPSteps_old/RSVPHelpModal";
 
-import casa8 from "assets/images/casa/casa8.png"; // preferred
 import casa_new from "assets/casa_new.jpg";
 
 import "./index.css";

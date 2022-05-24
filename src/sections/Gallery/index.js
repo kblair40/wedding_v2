@@ -6,7 +6,7 @@ import { MdClose } from "react-icons/md";
 import GalleryImages from "components/GalleryImages";
 import GalleryImageCarousel from "components/GalleryImageCarousel";
 import SectionLabel from "components/SectionLabel";
-// 4356
+
 import one from "assets/galleryImages/sydney/one.jpg";
 import three from "assets/galleryImages/sydney/three.jpg";
 import seven from "assets/galleryImages/sydney/seven.jpg";

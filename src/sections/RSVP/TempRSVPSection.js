@@ -4,7 +4,6 @@ import { useInView } from "react-intersection-observer";
 
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
-import casa8 from "assets/images/casa/casa8.png"; // preferred
 import casa_new from "assets/casa_new.jpg";
 import "./index.css";
 
