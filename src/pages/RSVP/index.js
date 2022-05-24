@@ -157,8 +157,6 @@ const RSVP = () => {
       ),
     });
 
-    return;
-
     setShowRSVPFormModal(false);
     setHasReplied(true);
 
