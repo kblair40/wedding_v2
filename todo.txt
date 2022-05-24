@@ -7,11 +7,11 @@
    - accommodations
    - 'by car'
    - Registry
-11. Still need markers for drinks
-12. Scroll to top!  look at pk stuff for example.  Actually might not be worth adding
+12. Scroll to top.  look at pk stuff for example.  Actually might not be worth adding
 13. image optimization (loading and size)
 14. Hide text on gallery images when hovering
 15. Insert RSVP section using fastAPI api into sections folder
+16. DisneyWorld needs directions icon button
 
 non-code stuff
 1. force https to main website (or don't.  Chrome appears to force it on its own.  Worth looking into)

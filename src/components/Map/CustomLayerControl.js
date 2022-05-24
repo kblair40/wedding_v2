@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Checkbox, Flex, Wrap, WrapItem } from "@chakra-ui/react";
 
-const availableLayers = ["venue", "hotels", "airports", "food", "parks"];
+const availableLayers = ["venue", "hotels", "airports", "food", "drinks"];
 
 const CustomLayerControl = ({
   handleAddActiveLayers,

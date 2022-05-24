@@ -221,11 +221,57 @@ const Markers = ({ activeLayers }) => {
     drinks: [
       {
         icon: drinksIcon,
-        subcategory: "drinks",
-        position: [],
-        popupText: "",
-        websiteURL: "",
-        directionsURL: "",
+        subcategory: "cocktails",
+        position: [28.54168290685651, -81.37716124924918],
+        popupText: "Mather's Social Gathering",
+        websiteURL: "https://www.mathersorlando.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//Mathers+Social+Gathering,+3+Phoenix+Building,+30+S+Magnolia+Ave,+Orlando,+FL+32801/@28.5415227,-81.3797791,17z/data=!3m1!5s0x88e77afe794ba005:0x220364422601d99d!4m9!4m8!1m0!1m5!1m1!1s0x88e77afdcdb5bb8f:0x9ad8b5bc7bcde494!2m2!1d-81.3775904!2d28.5415227!3e0",
+      },
+      {
+        icon: drinksIcon,
+        subcategory: "cocktails",
+        position: [28.54134170829382, -81.37109392253548],
+        popupText: "The Robinson",
+        websiteURL: "https://www.therobinsonroom.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//The+Robinson+Cafe,+East+Pine+Street,+Orlando,+FL/@28.5414925,-81.4128076,13z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77b5787023845:0x675b60befa1bead3!2m2!1d-81.377788!2d28.541497!3e0",
+      },
+      {
+        icon: drinksIcon,
+        subcategory: "cocktails",
+        position: [28.564345303538662, -81.37202975481542],
+        popupText: "The Hall on The Yard at Ivanhoe",
+        websiteURL: "https://thehallontheyard.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//The+Hall+on+The+Yard,+1412+Alden+Rd,+Orlando,+FL+32803/@28.5642134,-81.3744223,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77babfeb91ff1:0x6f36b1aa943cb5f!2m2!1d-81.3722336!2d28.5642134!3e0",
+      },
+      {
+        icon: drinksIcon,
+        subcategory: "wine",
+        position: [28.59640836404682, -81.35015241484446],
+        popupText: "The Wine Room on Park Ave",
+        websiteURL: "https://www.thewineroomonline.com/winter-park",
+        directionsURL:
+          "https://www.google.com/maps/dir//The+Wine+Room+on+Park+Avenue,+270+S+Park+Ave,+Winter+Park,+FL+32789/@28.5961823,-81.3530063,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e77010083a52f3:0x5588f2ddf161fe6c!2m2!1d-81.3508176!2d28.5961823!3e0",
+      },
+      {
+        icon: drinksIcon,
+        subcategory: "wine",
+        position: [28.59739694193161, -81.35041537622864],
+        popupText: "The Parkview",
+        websiteURL: "https://theparkviewwp.com/",
+        directionsURL:
+          "https://www.google.com/maps/dir//The+Parkview,+136+S+Park+Ave,+Winter+Park,+FL+32789/@28.5971803,-81.3530976,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e7701a9cdb92bb:0x7f74117a4d5bc62e!2m2!1d-81.3509257!2d28.5971801!3e0",
+      },
+      {
+        icon: drinksIcon,
+        subcategory: "wine",
+        position: [28.593481809327482, -81.36131781855576],
+        popupText: "The Wine Barn",
+        websiteURL: "https://thewinebarn.net/",
+        directionsURL:
+          "https://www.google.com/maps/dir//The+Wine+Barn,+959+W+Fairbanks+Ave,+Winter+Park,+FL+32789/@28.593284,-81.3640215,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e7700d2b02d677:0x35434f0ca6cc3873!2m2!1d-81.3618328!2d28.593284!3e0",
       },
     ],
   };
@@ -260,6 +306,8 @@ const Markers = ({ activeLayers }) => {
 
       {activeLayers.includes("food") &&
         markers.food.map((marker, i) => <CustomMarker {...marker} key={i} />)}
+      {activeLayers.includes("drinks") &&
+        markers.drinks.map((marker, i) => <CustomMarker {...marker} key={i} />)}
 
       <Marker
         icon={mickeyIcon}
