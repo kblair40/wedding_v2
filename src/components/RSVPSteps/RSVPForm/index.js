@@ -14,7 +14,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-import RSVPSuccessModal from "components/RSVPSteps/RSVPSuccessModal";
+import RSVPSuccessModal from "components/RSVPSteps_old/RSVPSuccessModal";
 
 const RSVPForm = ({
   guest,

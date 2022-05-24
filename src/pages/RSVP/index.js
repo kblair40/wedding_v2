@@ -13,7 +13,6 @@ import { gsap } from "gsap";
 import { useLocalstorageState } from "rooks";
 
 import { glass } from "utils/styles";
-import { patchGuest } from "api/api";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
 import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
@@ -21,7 +20,7 @@ import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
-
+import api from "apifast";
 import casa_new from "assets/casa_new.jpg";
 
 import "./index.css";
@@ -86,19 +85,33 @@ const RSVP = () => {
     }
   };
 
+  const patchGuest = async (pk, data) => {
+    console.log("PATCH GUEST RECEIVED:", { pk, data });
+
+    if (!pk) return;
+
+    data = JSON.stringify(data);
+
+    try {
+      let res = await api.patch(`/guest/${pk}`, {
+        data,
+      });
+
+      console.log("\n\nRES:", res);
+    } catch (e) {
+      console.log("ERROR PATCHING GUEST:", e);
+    }
+  };
+
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
     console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
-
-    return;
 
     let names = Object.keys(data).filter((name) => name !== "special_requests");
     console.log("\n\nNAMES:", names);
 
     for (let name of names) {
-      let [fn, ln] = name.split(" ");
-
       let guest = respondingGuests.find((g) => {
-        return g.first_name === fn && g.last_name === ln;
+        return g.full_name === name;
       });
       console.log("\nGUEST:", guest);
 
@@ -108,8 +121,9 @@ const RSVP = () => {
       }
 
       const guestData = data[name];
+      console.log("\n\nGUEST DATA:", guestData, "\n\n");
       try {
-        const res = await patchGuest(guest.id, {
+        const res = await patchGuest(guest.pk, {
           ...guestData,
           special_requests: data.special_requests,
           replied: "TRUE",
@@ -130,14 +144,16 @@ const RSVP = () => {
       render: () => (
         <CustomToast
           title={`${formatNames(names)}, thanks for replying!`}
-          // description={message}
           isAttending={true}
         />
       ),
     });
 
+    return;
+
     setShowRSVPFormModal(false);
     setHasReplied(true);
+
     return true;
   };
 
