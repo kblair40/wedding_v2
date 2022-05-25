@@ -1,19 +1,11 @@
-2. Add animated spinner on Casa Feliz on leaflet map.
-3. Whole wedding party needs pictures
-6. Look up tips for dealing with safari and chrome bottom bars
-7. Put gallery image arrows fixed to left/right sides of screen on mobile (<480px)
-8. Links to google maps with pre-entered for map and activity locations
-10. Ask Shannon to figure out text for
-   - accommodations
-   - 'by car'
-   - Registry
-12. Scroll to top.  look at pk stuff for example.  Actually might not be worth adding
-13. image optimization (loading and size)
-14. Hide text on gallery images when hovering
-15. Insert RSVP section using fastAPI api into sections folder
-16. DisneyWorld needs directions icon button
+1. Add animated spinner on Casa Feliz on leaflet map.
+2. Consider adding Scroll to top.  look at pk stuff for example.
+3. image optimization (loading and size)
+4. Insert RSVP section using fastAPI api into sections folder
+5. 'Us' animation needs to stay in the same place 
+   - test by resizing window before/during/after animation
+   - probably do a fromTo (gsap) when inView is true
 
 non-code stuff
 1. force https to main website (or don't.  Chrome appears to force it on its own.  Worth looking into)
-2. make firebase accept traffic only from server port ranges
 
