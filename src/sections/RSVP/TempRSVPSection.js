@@ -24,6 +24,7 @@ const TempRSVPSection = ({ setInView }) => {
       w="100%"
       pb="24px"
       px="24px"
+      minW="350px"
     >
       <Image
         src={casa_new}
@@ -56,6 +57,7 @@ const TempRSVPSection = ({ setInView }) => {
               md: "720px",
               lg: "900px",
             }}
+            px="24px"
           >
             <Text textAlign="center" mb="4px" fontWeight="500">
               Check back soon!
