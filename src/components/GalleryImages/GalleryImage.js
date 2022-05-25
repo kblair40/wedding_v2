@@ -2,24 +2,23 @@ import React, { useState } from "react";
 import { Box, Image, Collapse, Text } from "@chakra-ui/react";
 
 const GalleryImage = ({ src, onClick }) => {
-  const [descOpen, setDescOpen] = useState(false);
+  // const [descOpen, setDescOpen] = useState(false);
   return (
     <Box
       onClick={onClick}
       cursor="pointer"
-      onMouseOver={() => setDescOpen(true)}
-      onMouseOut={() => setDescOpen(false)}
+      // onMouseOver={() => setDescOpen(true)}
+      // onMouseOut={() => setDescOpen(false)}
       position="relative"
     >
       <Image src={src} maxWidth="100%" />
-      <Description open={descOpen} src={src} />
+      {/* <Description open={descOpen} src={src} /> */}
     </Box>
   );
 };
 
 export default GalleryImage;
 
-const description = "Aliqua nulla Lorem est consequat";
 const Description = ({ open, src }) => {
   return (
     <Collapse in={open} startingHeight={0}>
