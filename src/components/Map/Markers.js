@@ -14,6 +14,17 @@ import sweets from "assets/images/markers/sweets.png";
 import coffee from "assets/images/markers/coffee.png";
 import { ExternalLink } from "components/Links";
 
+const iconButtonStyle = {
+  borderRadius: "50%",
+  bg: "white",
+  border: "1px solid #546975",
+  transition: ".3s",
+  _hover: {
+    border: "1px solid #344148",
+    bg: "neutral.50",
+  },
+};
+
 const Markers = ({ activeLayers }) => {
   const planeIcon = L.icon({
     iconUrl: airport,
@@ -314,6 +325,17 @@ const Markers = ({ activeLayers }) => {
       >
         <Popup>
           <Text>Disney World</Text>
+
+          <Flex w="100%" mt="-8px" justifyContent="center">
+            <ExternalLink to="https://www.google.com/maps/place/Walt+Disney+World%C2%AE+Resort/@28.3771857,-81.57074,15z/data=!4m2!3m1!1s0x0:0xa71e391fd01cf1a0?sa=X&ved=2ahUKEwjawq3Wwfn3AhUUHuwKHTIwAnYQ_BJ6BAhlEAU">
+              <Tooltip label="Get directions" placement="top">
+                <IconButton
+                  icon={<FaDirections size={24} />}
+                  {...iconButtonStyle}
+                />
+              </Tooltip>
+            </ExternalLink>
+          </Flex>
         </Popup>
       </Marker>
     </React.Fragment>
@@ -330,17 +352,6 @@ const CustomMarker = ({
   directionsURL,
 }) => {
   const hasLinks = Boolean(websiteURL) || Boolean(directionsURL);
-
-  const iconButtonStyle = {
-    borderRadius: "50%",
-    bg: "white",
-    border: "1px solid #546975",
-    transition: ".3s",
-    _hover: {
-      border: "1px solid #344148",
-      bg: "neutral.50",
-    },
-  };
 
   return (
     <Marker icon={icon} position={position}>
