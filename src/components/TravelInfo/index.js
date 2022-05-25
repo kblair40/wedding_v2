@@ -29,25 +29,6 @@ const textStyles = {
   textAlign: "center",
 };
 
-const buttonStyles = {
-  w: "100%",
-  bg: "white",
-  transition: ".2s ease-in-out",
-  border: "1px solid",
-  borderColor: "neutral.black",
-  variant: "outline",
-  fontWeight: "600",
-  _hover: {
-    // bg: "primary.50",
-    // borderColor: "primary.900",
-    // color: "primary.900",
-    bg: "neutral.900",
-    // borderColor: ''
-    color: "#fff",
-  },
-  _active: { bg: "text.secondary" },
-};
-
 const TravelInfo = () => {
   return (
     <Box minW="350px">
@@ -69,7 +50,7 @@ const TravelInfo = () => {
             <Heading fontSize="3xl" fontWeight="600">
               by plane
             </Heading>
-            <VStack>
+            <VStack h={{ base: "auto", md: "200px" }}>
               <Text {...textStyles}>
                 Orlando Int'l Airport (ORL) is predominantly served by Southwest
                 and Delta, although you'll be able to find flights from all
@@ -82,11 +63,7 @@ const TravelInfo = () => {
                 airports
               </Text>
             </VStack>
-            <Box
-              //
-              pt="8px"
-              w="100%"
-            >
+            <Box pt="8px" w="100%">
               <Link
                 isExternal
                 href="https://www.google.com/flights"
@@ -113,25 +90,25 @@ const TravelInfo = () => {
             <Heading fontSize="3xl" fontWeight="600">
               by car
             </Heading>
-            <VStack>
+            <VStack h={{ base: "auto", md: "200px" }}>
               <Text {...textStyles}>
                 If you'll be driving in, Winter Park is located just Northeast
                 of Orlando.
               </Text>
-              {/* <Text {...textStyles}>
-                The drive from either airport to Winter Park is roughly 30
-                minutes. Taxi and rideshare services (Uber, Lyft) are available
-                at both airports
-              </Text> */}
             </VStack>
-            <Box
-              //
-              pt="8px"
-              w="100%"
-            >
-              <Button {...outlineButton} mt="16px" w="100%">
-                Get Directions
-              </Button>
+            <Box pt="8px" w="100%">
+              <Link
+                isExternal
+                href="https://www.google.com/maps/dir//Winter+Park,+FL/@28.6002182,-81.3823086,13z/data=!4m9!4m8!1m0!1m5!1m1!1s0x88e7701bdba629c5:0xc63f82952cf5ee20!2m2!1d-81.3392352!2d28.5999998!3e0"
+                textDecoration="none"
+                _hover={{
+                  textDecoration: "none",
+                }}
+              >
+                <Button {...outlineButton} mt="16px" w="100%">
+                  Get Directions
+                </Button>
+              </Link>
             </Box>
           </VStack>
         </Paper>

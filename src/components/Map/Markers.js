@@ -7,7 +7,6 @@ import { FaDirections, FaExternalLinkAlt } from "react-icons/fa";
 import venue_marker from "assets/icons/venue_marker.png";
 import new_mickey from "assets/icons/mickey_new.svg";
 import hotel from "assets/images/markers/hotel.png";
-import park from "assets/images/markers/park.png";
 import restaurant from "assets/images/markers/restaurant.png";
 import drink from "assets/images/markers/drink.png";
 import airport from "assets/images/markers/airport.png";
@@ -346,13 +345,7 @@ const CustomMarker = ({
   return (
     <Marker icon={icon} position={position}>
       <Popup>
-        <Text
-          fontWeight="500"
-          // border="1px solid #ccc"
-          //
-        >
-          {popupText}
-        </Text>
+        <Text fontWeight="500">{popupText}</Text>
         {hasLinks && (
           <React.Fragment>
             <Flex w="100%" mt="-8px" justifyContent="center">
