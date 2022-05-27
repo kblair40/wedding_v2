@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { Button, HStack } from "@chakra-ui/react";
 
-import api from "apifast";
+// import api from "apifast";
+import api from "apimongo";
 
 const APIButtons = ({ getAllGuests }) => {
   const [loading, setLoading] = useState(false);
 
   const fetchGuests = async () => {
     setLoading(true);
-    const res = await api.get("/guest");
-    console.log("RES:", res);
+    try {
+      const res = await api.get("/guest");
+      console.log("RES:", res);
+      getAllGuests(res.data);
+    } catch (e) {
+      console.log("FAILED FETCHING ALL GUESTS:", e);
+    }
+
     setLoading(false);
-    getAllGuests(res.data);
   };
 
   return (

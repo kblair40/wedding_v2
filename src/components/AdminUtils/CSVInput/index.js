@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Text, Button, HStack, Flex } from "@chakra-ui/react";
 
-import api from "apifast";
+// import api from "apifast";
+import api from "apimongo";
 import InviteList from "components/AdminUtils/InviteList";
 import { useCSVReader } from "react-papaparse";
 
@@ -25,11 +26,10 @@ const CSVInput = ({ apiGuestData }) => {
     console.log("---------------------------");
     setDataFrom("file");
     setData(results.data);
-    // uploadResults(results.data);
   };
 
   const uploadResults = async (results = data) => {
-    console.log("\n\nRESULTS:", results);
+    console.log("\n\nUPLOAD RESULTS:", results);
     results = results.slice(1);
 
     setUploading(true);
@@ -63,7 +63,7 @@ const CSVInput = ({ apiGuestData }) => {
       age_range: result[6],
       special_requests: result[7],
       plus_one: result[8],
-      attending: result[9],
+      attending: Boolean(result[9]),
       email: result[10],
       phone_number: result[11],
       side: result[12],

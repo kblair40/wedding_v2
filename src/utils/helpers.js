@@ -41,12 +41,15 @@ export const getMaxWidths = (arr) => {
 
 export const sortByLastName = (data) => {
   data.sort((a, b) => {
-    let a_last = a.full_name.split(" ")[1];
-    let b_last = b.full_name.split(" ")[1];
+    if (a.full_name && b.full_name) {
+      let a_last = a.full_name.split(" ")[1];
+      let b_last = b.full_name.split(" ")[1];
 
-    let returnVal = a_last > b_last ? 1 : a_last < b_last ? -1 : 0;
+      let returnVal = a_last > b_last ? 1 : a_last < b_last ? -1 : 0;
 
-    return returnVal;
+      return returnVal;
+    }
+    return 0;
   });
 
   return data;

@@ -126,9 +126,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
 
   const getBodyAPI = () => {
     return localData.slice(1).map((row, idx) => {
-      // console.log("ROW:", row);
-      // console.log("ROW[REPLIED]:", row["replied"]);
-
       return (
         <Tr
           key={idx}
@@ -138,7 +135,9 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
           {rowLabels.map((label, i) => {
             let res = row[label];
             if (["other_family", "aliases"].includes(label)) {
-              res = res.join(", ");
+              if (res && Array.isArray(res)) {
+                res = res.join(", ");
+              }
             }
 
             return (
@@ -153,7 +152,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
               onClick={() => {
                 setSelectedRow(row);
                 openManageModal(row);
-                // onOpen();
               }}
             >
               Manage
