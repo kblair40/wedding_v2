@@ -149,8 +149,6 @@ const RSVP = () => {
       }
     }
 
-    return;
-
     if (searchInput) {
       setSearchInput("");
     }
