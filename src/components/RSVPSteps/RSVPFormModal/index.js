@@ -68,15 +68,15 @@ const RSVPFormModal = ({
     if (!guest) return;
     let guestName = guest.full_name;
 
-    let nameToPkMap = { [guestName]: guest.pk };
+    let nameToIdMap = { [guestName]: guest._id };
     let respondants = [guest];
     if (checkedGuests && checkedGuests.length) {
       for (let idx of checkedGuests) {
         let guest = relatedGuests[idx];
         respondants.push(guest);
-        nameToPkMap[guest.full_name] = guest.pk;
+        nameToIdMap[guest.full_name] = guest._id;
       }
-      console.log("\n\n\n\n\nNAME TO PK MAP:", nameToPkMap, "\n\n\n\n\n");
+      console.log("\n\n\n\n\nNAME TO ID MAP:", nameToIdMap, "\n\n\n\n\n");
     }
     // console.log("RESPONDING GUESTS:", respondants);
     setRespondingGuests(respondants);
@@ -102,7 +102,7 @@ const RSVPFormModal = ({
         let guestObj = respondants.find((r) => r.full_name === name);
         console.log("GUEST OBJ:", guestObj);
 
-        blankDataObjects[name] = { ...blankFormData, pk: guestObj.pk };
+        blankDataObjects[name] = { ...blankFormData, _id: guestObj._id };
       }
 
       // console.log("\n\nBLANK OBJECTS:", blankDataObjects);

@@ -20,7 +20,8 @@ import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
-import api from "apifast";
+// import api from "apifast";
+import api from "apimongo";
 import casa_new from "assets/casa_new.jpg";
 
 import "./index.css";
@@ -91,18 +92,24 @@ const RSVP = () => {
     replied: "TRUE",
   };
 
-  const patchGuest = async (pk, data) => {
-    console.log("PATCH GUEST RECEIVED:", { pk, data });
+  const patchGuest = async (_id, data) => {
+    console.log("PATCH GUEST RECEIVED:", { _id, data });
 
-    if (!pk) return;
+    if (!_id) return;
 
-    const { attending, dinner_selection, special_requests } = data;
+    const {
+      attending,
+      dinner_selection,
+      special_requests,
+      dinner_selection_notes,
+    } = data;
 
     try {
-      let res = await api.patch(`/guest/${pk}`, {
+      let res = await api.patch(`/guest/${_id}`, {
         special_requests,
         dinner_selection,
         attending,
+        dinner_selection_notes,
       });
 
       console.log("\n\nRES:", res.data);
@@ -131,16 +138,18 @@ const RSVP = () => {
       const guestData = data[name];
       console.log("\n\nGUEST DATA:", guestData, "\n\n");
       try {
-        const res = await patchGuest(guest.pk, {
+        const res = await patchGuest(guest._id, {
           ...guestData,
           special_requests: data.special_requests,
-          replied: "TRUE",
+          replied: true,
         });
         console.log("RES:", res);
       } catch (e) {
         console.log(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
       }
     }
+
+    return;
 
     if (searchInput) {
       setSearchInput("");
