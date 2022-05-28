@@ -13,6 +13,7 @@ import { gsap } from "gsap";
 import { useLocalstorageState } from "rooks";
 
 import { glass } from "utils/styles";
+import { toTitleCase } from "utils/helpers";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
 import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
@@ -73,7 +74,7 @@ const RSVP = () => {
   const formatNames = (names) => {
     if (!names || !names.length) return;
 
-    names = names.map((name) => name.split(" ")[0]);
+    names = names.map((name) => toTitleCase(name.split(" ")[0]));
 
     if (names.length === 1) {
       return `${names[0]}`;
