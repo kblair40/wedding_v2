@@ -35,7 +35,7 @@ const rowLabels = [
   "phone_number",
   "side",
   "special_requests",
-  "pk",
+  "_id",
 ];
 
 const repliedStyles = {
@@ -138,14 +138,15 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
 
   const getBodyAPI = () => {
     return localData.slice(1).map((row, idx) => {
+      console.log("ROW:", row);
       return (
         <Tr
           key={idx}
           w="100%"
-          sx={row["replied"] === "FALSE" ? notRepliedStyles : repliedStyles}
+          sx={row["replied"] ? repliedStyles : notRepliedStyles}
         >
           {rowLabels.map((label, i) => {
-            let res = row[label];
+            let res = `${row[label]}`;
             if (["other_family", "aliases"].includes(label)) {
               if (res && Array.isArray(res)) {
                 res = res.join(", ");
