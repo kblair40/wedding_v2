@@ -41,8 +41,8 @@ const ManageGuestModal = ({ isOpen, onClose, selectedRow }) => {
       <ModalContent>
         <ModalHeader>
           <Flex flexDirection="column">
-            <Text fontSize="2xl">{toTitleCase(rowData["full_name"])}</Text>
-            <Text>pk: {rowData["pk"]}</Text>
+            {/* <Text fontSize="2xl">{toTitleCase(rowData["full_name"])}</Text> */}
+            {/* <Text>pk: {rowData["pk"]}</Text> */}
           </Flex>
         </ModalHeader>
         <ModalBody>

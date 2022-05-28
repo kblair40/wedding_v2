@@ -14,7 +14,8 @@ import {
 
 // import uniqueRandom from "unique-random";
 // import { addGuest } from "api/api";
-import api from "apifast";
+// import api from "apifast";
+import api from "apimongo";
 import ManageGuestModal from "./ManageGuestModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { sortByLastName } from "utils/helpers";
@@ -58,9 +59,20 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
   const [localData, setLocalData] = useState();
   const [deleting, setDeleting] = useState(false); // for delete btn isLoading
 
-  const openManageModal = (rowData) => {
+  const openManageModal = async (rowData) => {
     console.log("ROW DATA:", rowData);
     onOpen();
+
+    const { full_name } = rowData;
+    try {
+      const res = await api.get("/guest/byname", {
+        params: { full_name },
+      });
+
+      console.log("\nRES:", res);
+    } catch (e) {
+      console.log("FAILED TO FETCH GUEST:", e);
+    }
   };
 
   useEffect(() => {

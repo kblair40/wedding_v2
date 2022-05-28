@@ -11,7 +11,6 @@ import {
 
 // import api from "apifast";
 import api from "apimongo";
-import { toTitleCase, getGuestByKey } from "utils/helpers";
 
 const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
   const [errorMsg, setErrorMsg] = useState("");
@@ -45,7 +44,7 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       .trim()
       .split(/\s+/)
       .map((name) => name.toLowerCase());
-    console.log("NAME ARRAY:", nameArray);
+
     if (nameArray.length < 2) {
       setErrorMsg("First and last names are both required");
       return;
@@ -55,25 +54,22 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
     }
 
     const fullname = nameArray.join(" ");
-    console.log("RETURNING:", fullname);
     handleSubmitSearch(fullname);
   };
 
-  const handleSubmitSearch = async (fullname) => {
+  const handleSubmitSearch = async (full_name) => {
     setLoading(true);
 
     try {
-      let guests = await api.get(`/guest/byname/${fullname}`);
+      let guests = await api.get("/guest/byname", {
+        params: { full_name },
+      });
       console.log("\n\n\nGUESTS FOUND:", guests.data, "\n\n\n");
 
-      let mainGuest = getGuestByKey(guests.data, "main");
-      let so = getGuestByKey(guests.data, "so");
-      let otherFamily = getGuestByKey(guests.data, "other_family");
-      console.log("MAIN GUEST:", mainGuest);
-      console.log("SO:", so);
-      console.log("OTHER FAMILY:", otherFamily, "\n\n\n");
+      const { mainGuest, family, so } = guests.data;
+      console.log("GUEST DATA:", { mainGuest, so, family });
 
-      getSearchResults(mainGuest, so, otherFamily); // pass back to parent (RSVP page);
+      getSearchResults(mainGuest, so, family); // pass back to parent (RSVP page);
     } catch (err) {
       console.warn("FAILED TO RETRIEVE GUEST");
       setNotFoundError(true);
