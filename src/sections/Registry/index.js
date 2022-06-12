@@ -7,6 +7,7 @@ import {
   useToast,
   Box,
   Icon,
+  Link,
 } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { FiAlertTriangle } from "react-icons/fi";
@@ -43,25 +44,6 @@ const Registry = ({ setInView }) => {
     _active: { bg: "text.secondary" },
   };
 
-  const handleClick = () => {
-    toast({
-      duration: 1000,
-      render: () => (
-        <Flex
-          p="16px 24px"
-          bg="secondary.100"
-          borderRadius="4px"
-          alignItems="center"
-        >
-          <Icon as={FiAlertTriangle} mr="8px" />
-          <Text fontWeight="500" fontSize="xl" lineHeight="100%">
-            Sorry, our registry isn't ready yet
-          </Text>
-        </Flex>
-      ),
-    });
-  };
-
   return (
     <Flex
       ref={inViewRef}
@@ -95,18 +77,14 @@ const Registry = ({ setInView }) => {
         <Text textAlign="center" fontWeight="500">
           We’ve picked out a few items and activities that piqued our interest.
         </Text>
-        {/* <Text
-          textAlign="center"
-          fontSize="sm"
-          fontWeight="400"
-          fontStyle="italic"
-        > */}
-        {/* </Text> */}
 
-        <Button onClick={handleClick} {...buttonStyles}>
-          Registry coming soon...
-        </Button>
-        {/* <Button {...buttonStyles}>See Registry on Zola</Button> */}
+        <Link
+          _hover={{ textDecoration: "none" }}
+          href="https://www.zola.com/registry/shannonandkevin2023"
+          isExternal
+        >
+          <Button {...buttonStyles}>Registry</Button>
+        </Link>
       </Flex>
     </Flex>
   );
