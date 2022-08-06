@@ -33,6 +33,11 @@ import newten from "assets/galleryImages/newten.jpg";
 import neweleven from "assets/galleryImages/neweleven.jpg";
 
 // new pics from Caitlin
+import caitone from "assets/galleryImages/caitlin/caitone.jpg";
+import caittwo from "assets/galleryImages/caitlin/caittwo.jpg";
+import caitthree from "assets/galleryImages/caitlin/caitthree.jpg";
+import caitfour from "assets/galleryImages/caitlin/caitfour.jpg";
+import caitfive from "assets/galleryImages/caitlin/caitfive.jpg";
 
 const Gallery = ({ setInView }) => {
   const [showCarousel, setShowCarousel] = useState(false);
