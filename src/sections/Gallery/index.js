@@ -32,6 +32,8 @@ import newnine from "assets/galleryImages/newnine.jpg";
 import newten from "assets/galleryImages/newten.jpg";
 import neweleven from "assets/galleryImages/neweleven.jpg";
 
+// new pics from Caitlin
+
 const Gallery = ({ setInView }) => {
   const [showCarousel, setShowCarousel] = useState(false);
   const [startingSlideIdx, setStartingSlideIdx] = useState();
