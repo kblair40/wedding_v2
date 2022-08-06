@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Flex, Modal, ModalContent, Box, IconButton } from "@chakra-ui/react";
+import {
+  Flex,
+  Modal,
+  ModalContent,
+  Box,
+  IconButton,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { MdClose } from "react-icons/md";
 
@@ -48,30 +55,71 @@ const Gallery = ({ setInView }) => {
   }, [inView]);
 
   // 2-column layout
-  const imagesArray = [
+  const imagesTwo = [one, neweight, shan_five, caitone, newone,
+    newtwo,
+    newthree,
+    shan_seven, // 7
+    caittwo, // 8
+    shan_eight,
+    shan_eleven, // 10
+    neweleven,
+    caitthree, // 12
+    newfour, // 13
+    seven,
+    caitfour, // 15
+    newseven, // 16
+    newfive, // 17
+    newten, // 18
+    newnine, // 19
+    shan_nine, // 20
+    newsix, // 21
+  ];
+
+  const imagesThree = () => {
+    imagesTwo[7] = caittwo;
+    imagesTwo[8] = shan_seven;
+    imagesTwo[10] = newsix;
+    imagesTwo[11] = shan_eleven;
+    imagesTwo[12] = neweleven;
+    imagesTwo[13] = caitthree;
+    imagesTwo[14] = newfour;
+    imagesTwo[15] = seven;
+    imagesTwo[18] = shan_nine;
+    imagesTwo[19] = newten;
+    imagesTwo[20] = newnine;
+    imagesTwo[21] = caitfour;
+  }
+
+  const imagesFour = [
     one,
     neweight,
     shan_five,
     caitone,
+    shan_eight,
     newone,
     newtwo,
     newthree,
-    shan_seven,
     caittwo,
-    shan_eight,
     shan_eleven,
     neweleven,
-    caitthree,
     newfour,
-    seven,
-    caitfour,
-    newseven,
+    caitthree,
+    newsix,
+    shan_nine,
     newfive,
     newten,
+    seven,
     newnine,
-    shan_nine,
-    newsix,
+    shan_seven,
+    newseven,
+    caitfour,
   ];
+
+  const images = useBreakpointValue({
+    base: imagesTwo,
+    md: imagesThree(),
+    xl: imagesFour,
+  });
 
   const openCarousel = (imgIdx) => {
     console.log("IMG IDX:", imgIdx);
@@ -100,7 +148,8 @@ const Gallery = ({ setInView }) => {
         <Box ref={inViewRef} />
 
         <Box className="fade-in-immediate">
-          <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />
+          {/* <GalleryImages imagesArray={imagesArray} onClick={openCarousel} /> */}
+          <GalleryImages imagesArray={images} onClick={openCarousel} />
 
           {showCarousel && (
             <Modal
@@ -124,7 +173,8 @@ const Gallery = ({ setInView }) => {
                 />
                 <Flex alignItems="center" h="100vh">
                   <GalleryImageCarousel
-                    imagesArray={imagesArray}
+                    // imagesArray={imagesArray}
+                    imagesArray={images}
                     startingSlideIdx={startingSlideIdx}
                   />
                 </Flex>
