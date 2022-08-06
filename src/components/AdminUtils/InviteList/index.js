@@ -60,7 +60,7 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
   const [deleting, setDeleting] = useState(false); // for delete btn isLoading
 
   const openManageModal = async (rowData) => {
-    console.log("ROW DATA:", rowData);
+    // console.log("ROW DATA:", rowData);
     onOpen();
 
     const { full_name } = rowData;
@@ -69,15 +69,15 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
         params: { full_name },
       });
 
-      console.log("\nRES:", res);
+      // console.log("\nRES:", res);
     } catch (e) {
-      console.log("FAILED TO FETCH GUEST:", e);
+      console.error("FAILED TO FETCH GUEST:", e);
     }
   };
 
   useEffect(() => {
     if (data && dataFrom) {
-      console.log("DATA TYPE:", typeof data, "isArray?", Array.isArray(data));
+      // console.log("DATA TYPE:", typeof data, "isArray?", Array.isArray(data));
 
       data = sortByLastName(data);
 
@@ -86,7 +86,7 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
   }, [data, dataFrom]);
 
   const uploadGuests = async () => {
-    console.log("UPLOAD GUEST CLICKED!");
+    // console.log("UPLOAD GUEST CLICKED!");
 
     if (data && dataFrom === "file") {
       uploadResults();
@@ -97,13 +97,13 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
 
   const handleConfirmDeleteAllGuests = async () => {
     setDeleting(true);
-    console.log("CONFIRM CLICKED!");
+    // console.log("CONFIRM CLICKED!");
 
     try {
       const res = await api.delete("/guest");
-      console.log("SUCCESSFULLY DELETED ALL GUESTS!", res);
+      // console.log("SUCCESSFULLY DELETED ALL GUESTS!", res);
     } catch (e) {
-      console.log("FAILED TO DELETE GUESTS:", e);
+      console.error("FAILED TO DELETE GUESTS:", e);
     }
 
     setDeleting(false);
@@ -138,7 +138,7 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
 
   const getBodyAPI = () => {
     return localData.slice(1).map((row, idx) => {
-      console.log("ROW:", row);
+      // console.log("ROW:", row);
       return (
         <Tr
           key={idx}

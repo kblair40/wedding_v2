@@ -22,6 +22,6 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 const analytics = getAnalytics(firebaseApp);
 
-console.log("EXPORTING:", db);
+// console.log("EXPORTING:", db);
 
 export default db;

@@ -11,10 +11,10 @@ const APIButtons = ({ getAllGuests }) => {
     setLoading(true);
     try {
       const res = await api.get("/guest");
-      console.log("RES:", res);
+      // console.log("RES:", res);
       getAllGuests(res.data);
     } catch (e) {
-      console.log("FAILED FETCHING ALL GUESTS:", e);
+      console.error("FAILED FETCHING ALL GUESTS:", e);
     }
 
     setLoading(false);

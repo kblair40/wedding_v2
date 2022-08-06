@@ -33,7 +33,7 @@ const FetchedInviteList = () => {
   const fetchGuests = async () => {
     setFetching(true);
     let allInvitees = await getAllInvitees();
-    console.log("ALL INVITEES:", allInvitees);
+    // console.log("ALL INVITEES:", allInvitees);
     setInvitees(allInvitees || []);
     setFetching(false);
   };

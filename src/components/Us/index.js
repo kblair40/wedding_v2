@@ -23,7 +23,7 @@ const Us = () => {
   const [inViewRef, inView] = useInView(options);
 
   useEffect(() => {
-    console.log("INNER WIDTH:", window.innerWidth);
+    // console.log("INNER WIDTH:", window.innerWidth);
     let windowWidth = window.innerWidth;
     if (windowWidth > 480) {
       setTransitionAmount((windowWidth - 480) / 2);

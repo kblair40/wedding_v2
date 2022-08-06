@@ -22,7 +22,7 @@ const InviteList = ({ data }) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
 
   const [selectedRow, setSelectedRow] = useState(null);
-  console.log(data);
+  // console.log(data);
 
   const getHeader = () => {
     return (
@@ -98,19 +98,19 @@ const InviteList = ({ data }) => {
         passcode: num,
       };
       if (guestData.significant_other) {
-        console.log("GUEST DATA:", guestData);
+        // console.log("GUEST DATA:", guestData);
       }
       // console.log("row:", row);
       // console.log("\nGUEST DATA:", guestData);
       try {
         await addGuest(guestData);
-        console.log("\n\nSUCCESS\n\n");
+        // console.log("\n\nSUCCESS\n\n");
       } catch (err) {
-        console.log(`FAILED - ${i}`);
+        console.error(`FAILED - ${i}:`, {guestData});
       }
       i += 1;
     }
-    console.log("RANDOM NUMBERS:", randomNums);
+    // console.log("RANDOM NUMBERS:", randomNums);
   };
 
   // {

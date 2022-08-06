@@ -51,13 +51,13 @@ const PaymentForm = () => {
   }, [stripe]);
 
   const handleSubmit = async (e) => {
-    console.log("SUBMITTING\n");
+    // console.log("SUBMITTING\n");
     e.preventDefault();
 
     const cardNumber = elements.getElement(CardNumberElement);
     const cardExp = elements.getElement(CardExpiryElement);
     const cardCvc = elements.getElement(CardCvcElement);
-    console.log("\n\nVALUES:", { cardNumber, cardExp, cardCvc });
+    // console.log("\n\nVALUES:", { cardNumber, cardExp, cardCvc });
 
     const result = await stripe.confirmPayment({
       //`Elements` instance that was used to create the Payment Element
@@ -68,9 +68,9 @@ const PaymentForm = () => {
     });
 
     if (result.error) {
-      console.log("\n\nPAYMENT ERROR:", result.error.message);
+      // console.log("\n\nPAYMENT ERROR:", result.error.message);
     } else {
-      console.log("PAYMENT SUCCESSFUL!");
+      // console.log("PAYMENT SUCCESSFUL!");
     }
 
     // cardExp.clear();

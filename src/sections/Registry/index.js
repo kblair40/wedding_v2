@@ -21,7 +21,7 @@ const Registry = ({ setInView }) => {
   const toast = useToast();
 
   useEffect(() => {
-    console.log("REGISTRY IN VIEW:", inView);
+    // console.log("REGISTRY IN VIEW:", inView);
     if (inView) {
       setInView("registry");
     }

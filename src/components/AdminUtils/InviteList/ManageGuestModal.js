@@ -28,7 +28,7 @@ const ManageGuestModal = ({ isOpen, onClose, selectedRow }) => {
   }, [selectedRow]);
 
   const fetchGuest = (data) => {
-    console.log("\n\nFETCH GUEST DATA:", data);
+    // console.log("\n\nFETCH GUEST DATA:", data);
   };
 
   if (!rowData || !isOpen) {

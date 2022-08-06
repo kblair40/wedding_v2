@@ -122,7 +122,7 @@ export const patchGuest = async (id, data) => {
     // console.log("PATCH RES:", patchRes);
     return true;
   } catch (err) {
-    console.log("FAILED PATCHING GUEST:", err);
+    console.error("FAILED PATCHING GUEST:", err);
     return false;
   }
 

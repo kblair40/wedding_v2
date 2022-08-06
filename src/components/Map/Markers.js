@@ -290,7 +290,7 @@ const Markers = ({ activeLayers }) => {
   const markerRef = useRef();
 
   useEffect(() => {
-    console.log({ layerRef: layerRef.current, markerRef: markerRef.current });
+    // console.log({ layerRef: layerRef.current, markerRef: markerRef.current });
     if (markerRef.current) {
     }
   }, [layerRef.current, markerRef.current]);

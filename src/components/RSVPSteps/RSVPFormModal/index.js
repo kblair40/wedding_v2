@@ -38,29 +38,29 @@ const RSVPFormModal = ({
 
   useEffect(() => {
     if (!shouldLog.current) return;
-    console.log("\n\n\n\nFORM DATA:", formData);
+    // console.log("\n\n\n\nFORM DATA:", formData);
 
     for (let guest in formData) {
-      console.log("GUEST - CHECK FOR COMPLETION:", guest);
+      // console.log("GUEST - CHECK FOR COMPLETION:", guest);
 
       const { dinner_selection, attending } = formData[guest];
-      console.log("attending? ", attending);
-      console.log("dinner_selection? ", dinner_selection);
+      // console.log("attending? ", attending);
+      // console.log("dinner_selection? ", dinner_selection);
 
       if (attending === undefined) {
-        console.log("INCOMPLETE1");
+        // console.log("INCOMPLETE1");
         setFormComplete(false);
         return;
       } else if (attending === "yes") {
         if (!dinner_selection) {
-          console.log("INCOMPLETE2");
+          // console.log("INCOMPLETE2");
           setFormComplete(false);
           return;
         }
       }
     }
 
-    console.log("COMPLETE");
+    // console.log("COMPLETE");
     setFormComplete(true);
   }, [formData]);
 
@@ -76,7 +76,7 @@ const RSVPFormModal = ({
         respondants.push(guest);
         nameToIdMap[guest.full_name] = guest._id;
       }
-      console.log("\n\n\n\n\nNAME TO ID MAP:", nameToIdMap, "\n\n\n\n\n");
+      // console.log("\n\n\n\n\nNAME TO ID MAP:", nameToIdMap, "\n\n\n\n\n");
     }
     // console.log("RESPONDING GUESTS:", respondants);
     setRespondingGuests(respondants);
@@ -100,7 +100,7 @@ const RSVPFormModal = ({
         let name = guestNames[i].toLowerCase();
 
         let guestObj = respondants.find((r) => r.full_name === name);
-        console.log("GUEST OBJ:", guestObj);
+        // console.log("GUEST OBJ:", guestObj);
 
         blankDataObjects[name] = { ...blankFormData, _id: guestObj._id };
       }
@@ -151,7 +151,7 @@ const RSVPFormModal = ({
 
     setLoading(false);
 
-    console.log("\n\nSUBMIT RES:", res);
+    // console.log("\n\nSUBMIT RES:", res);
   };
 
   const labelStyles = {

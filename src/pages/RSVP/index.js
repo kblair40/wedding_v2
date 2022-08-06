@@ -43,7 +43,7 @@ const RSVP = () => {
   const helpOpenedBy = useRef("");
 
   const getSearchResults = (mainGuest, so, otherFamily) => {
-    console.log({ mainGuest, sig_other: so, otherFamily });
+    // console.log({ mainGuest, sig_other: so, otherFamily });
     setGuest(mainGuest);
 
     if (so || otherFamily) {
@@ -54,7 +54,7 @@ const RSVP = () => {
         relatedGuests = relatedGuests.concat(otherFamily);
       }
 
-      console.log("\n\nRELATED GUESTS:", relatedGuests);
+      // console.log("\n\nRELATED GUESTS:", relatedGuests);
 
       setRelatedGuests(relatedGuests);
       setShowSelectGuestsModal(true);
@@ -94,7 +94,7 @@ const RSVP = () => {
   };
 
   const patchGuest = async (_id, data) => {
-    console.log("PATCH GUEST RECEIVED:", { _id, data });
+    // console.log("PATCH GUEST RECEIVED:", { _id, data });
 
     if (!_id) return;
 
@@ -113,23 +113,23 @@ const RSVP = () => {
         dinner_selection_notes,
       });
 
-      console.log("\n\nRES:", res.data);
+      // console.log("\n\nRES:", res.data);
     } catch (e) {
-      console.log("ERROR PATCHING GUEST:", e);
+      // console.log("ERROR PATCHING GUEST:", e);
     }
   };
 
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
-    console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
+    // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
 
     let names = Object.keys(data).filter((name) => name !== "special_requests");
-    console.log("\n\nNAMES:", names);
+    // console.log("\n\nNAMES:", names);
 
     for (let name of names) {
       let guest = respondingGuests.find((g) => {
         return g.full_name === name;
       });
-      console.log("\nGUEST:", guest);
+      // console.log("\nGUEST:", guest);
 
       if (!guest) {
         console.warn("\n\n\n\nINVALID GUEST:", guest, "\n\n\n");
@@ -137,16 +137,16 @@ const RSVP = () => {
       }
 
       const guestData = data[name];
-      console.log("\n\nGUEST DATA:", guestData, "\n\n");
+      // console.log("\n\nGUEST DATA:", guestData, "\n\n");
       try {
         const res = await patchGuest(guest._id, {
           ...guestData,
           special_requests: data.special_requests,
           replied: true,
         });
-        console.log("RES:", res);
+        // console.log("RES:", res);
       } catch (e) {
-        console.log(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
+        // console.log(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
       }
     }
 
@@ -178,7 +178,7 @@ const RSVP = () => {
   };
 
   const handleClickShowHelp = () => {
-    console.log("SHOW HELP");
+    // console.log("SHOW HELP");
     setShowSelectGuestsModal(false);
 
     setTimeout(() => {
@@ -361,7 +361,7 @@ const SelectGuestContent = ({
       x: "-200%",
       duration: ".2",
       onComplete: () => {
-        console.log("SLIDE OUT LEFT COMPLETE!");
+        // console.log("SLIDE OUT LEFT COMPLETE!");
         onClose();
       },
     });

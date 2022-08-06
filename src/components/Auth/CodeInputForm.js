@@ -20,7 +20,7 @@ const CodeInputForm = ({ getGuest, handleFinishCodeInput }) => {
     setCodeInputComplete(true);
     try {
       let guest = await getGuest(parseInt(code));
-      console.log("\n\nGUEST:", guest, "\n\n");
+      // console.log("\n\nGUEST:", guest, "\n\n");
 
       // pass user object back to context for use elsewhere
       // handleAuthenticated(guest);
@@ -29,7 +29,7 @@ const CodeInputForm = ({ getGuest, handleFinishCodeInput }) => {
 
       // onClose(guest);
     } catch (err) {
-      console.log("FAILED TO FETCH GUEST:", err);
+      // console.log("FAILED TO FETCH GUEST:", err);
     }
     // console.log("\n\nFOUND GUEST:", guest);
   };

@@ -90,7 +90,7 @@ const RSVP = ({ setInView }) => {
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
     // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
     let names = Object.keys(data).filter((name) => name !== "special_requests");
-    console.log("\n\nNAMES:", names);
+    // console.log("\n\nNAMES:", names);
 
     for (let name of names) {
       let [fn, ln] = name.split(" ");
@@ -98,7 +98,7 @@ const RSVP = ({ setInView }) => {
       let guest = respondingGuests.find((g) => {
         return g.first_name === fn && g.last_name === ln;
       });
-      console.log("\nGUEST:", guest);
+      // console.log("\nGUEST:", guest);
 
       if (!guest) {
         console.warn("\n\n\n\nINVALID GUEST:", guest, "\n\n\n");
@@ -112,9 +112,9 @@ const RSVP = ({ setInView }) => {
           special_requests: data.special_requests,
           replied: "TRUE",
         });
-        console.log("RES:", res);
+        // console.log("RES:", res);
       } catch (e) {
-        console.log(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
+        console.error(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
       }
     }
 
@@ -146,7 +146,7 @@ const RSVP = ({ setInView }) => {
   };
 
   const handleClickShowHelp = () => {
-    console.log("SHOW HELP");
+    // console.log("SHOW HELP");
     setShowSelectGuestsModal(false);
 
     setTimeout(() => {
@@ -331,7 +331,7 @@ const SelectGuestContent = ({
       x: "-200%",
       duration: ".2",
       onComplete: () => {
-        console.log("SLIDE OUT LEFT COMPLETE!");
+        // console.log("SLIDE OUT LEFT COMPLETE!");
         onClose();
       },
     });

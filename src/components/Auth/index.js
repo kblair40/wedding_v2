@@ -36,7 +36,7 @@ const Auth = ({ getGuest }) => {
   const handleSubmit = async (formData, extraNotes) => {
     let finalData = {};
     let isValid = true;
-    console.log("values:", Object.values(formData));
+    // console.log("values:", Object.values(formData));
 
     for (let key in formData) {
       if (formData[key]["isAttending"] === "yes") {
@@ -50,14 +50,6 @@ const Auth = ({ getGuest }) => {
 
         finalData[key] = data;
       }
-    }
-
-    console.log("FINAL DATA:", finalData);
-
-    if (isValid) {
-      console.log("\n\nVALID");
-    } else {
-      console.log("\n\nNOT VALID");
     }
 
     setStep();

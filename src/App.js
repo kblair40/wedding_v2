@@ -21,7 +21,7 @@ function App() {
   const [topInView, setTopInView] = useState(true);
 
   const handleChangeSection = (newSection) => {
-    console.log("\n\nNEW SECTION:", newSection, "\n\n");
+    // console.log("\n\nNEW SECTION:", newSection, "\n\n");
     setSection(newSection);
     setSectionInView(newSection);
   };

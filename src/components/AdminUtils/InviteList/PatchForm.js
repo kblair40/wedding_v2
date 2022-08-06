@@ -26,7 +26,7 @@ const PatchForm = ({ data }) => {
 
   useEffect(() => {
     if (data) {
-      console.log("\nPATCH FORM DATA:", data, "\n");
+      // console.log("\nPATCH FORM DATA:", data, "\n");
       setFormData(data);
 
       setRepliedValue(data["replied"] === "FALSE" ? "no" : "yes");
@@ -41,7 +41,7 @@ const PatchForm = ({ data }) => {
       replied: repliedValue,
     };
 
-    console.log("DATA:", data);
+    // console.log("DATA:", data);
   };
 
   if (!formData) {

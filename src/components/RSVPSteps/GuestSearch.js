@@ -64,10 +64,10 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       let guests = await api.get("/guest/byname", {
         params: { full_name },
       });
-      console.log("\n\n\nGUESTS FOUND:", guests.data, "\n\n\n");
+      // console.log("\n\n\nGUESTS FOUND:", guests.data, "\n\n\n");
 
       const { mainGuest, family, so } = guests.data;
-      console.log("GUEST DATA:", { mainGuest, so, family });
+      // console.log("GUEST DATA:", { mainGuest, so, family });
 
       getSearchResults(mainGuest, so, family); // pass back to parent (RSVP page);
     } catch (err) {

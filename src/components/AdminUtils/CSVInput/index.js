@@ -21,32 +21,32 @@ const CSVInput = ({ apiGuestData }) => {
   }, [apiGuestData]);
 
   const handleResults = (results) => {
-    console.log("---------------------------");
-    console.log(results);
-    console.log("---------------------------");
+    // console.log("---------------------------");
+    // console.log(results);
+    // console.log("---------------------------");
     setDataFrom("file");
     setData(results.data);
   };
 
   const uploadResults = async (results = data) => {
-    console.log("\n\nUPLOAD RESULTS:", results);
+    // console.log("\n\nUPLOAD RESULTS:", results);
     results = results.slice(1);
 
     setUploading(true);
 
     let uploadRequests = [];
     for (let res of results) {
-      console.log("\n\nRESULT:", res);
+      // console.log("\n\nRESULT:", res);
       let resObj = getResObject(res);
-      console.log("RES OBJECT:", resObj, "\n\n");
+      // console.log("RES OBJECT:", resObj, "\n\n");
       uploadRequests.push(api.post("/guest", resObj));
     }
 
     try {
       const allResponses = await Promise.all(uploadRequests);
-      console.log("\n\n\nALL RESPONSES:", allResponses, "\n\n\n");
+      // console.log("\n\n\nALL RESPONSES:", allResponses, "\n\n\n");
     } catch (e) {
-      console.log("FAILED UPLOADING GUESTS:", e);
+      console.error("FAILED UPLOADING GUESTS:", e);
     }
 
     setUploading(false);
