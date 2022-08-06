@@ -55,7 +55,12 @@ const Gallery = ({ setInView }) => {
   }, [inView]);
 
   // 2-column layout
-  const imagesTwo = [one, neweight, shan_five, caitone, newone,
+  const images = [
+    one,
+    neweight,
+    shan_five,
+    caitone,
+    newone,
     newtwo,
     newthree,
     shan_seven, // 7
@@ -76,53 +81,57 @@ const Gallery = ({ setInView }) => {
   ];
 
   const imagesThree = () => {
-    imagesTwo[7] = caittwo;
-    imagesTwo[8] = shan_seven;
-    imagesTwo[10] = newsix;
-    imagesTwo[11] = shan_eleven;
-    imagesTwo[12] = neweleven;
-    imagesTwo[13] = caitthree;
-    imagesTwo[14] = newfour;
-    imagesTwo[15] = seven;
-    imagesTwo[18] = shan_nine;
-    imagesTwo[19] = newten;
-    imagesTwo[20] = newnine;
-    imagesTwo[21] = caitfour;
-  }
+    images[7] = caittwo;
+    images[8] = shan_seven;
+    images[10] = newsix;
+    images[11] = shan_eleven;
+    images[12] = neweleven;
+    images[13] = caitthree;
+    images[14] = newfour;
+    images[15] = seven;
+    images[18] = shan_nine;
+    images[19] = newten;
+    images[20] = newnine;
+    images[21] = caitfour;
 
-  const imagesFour = [
-    one,
+    return images
+  };
+
+
+
+  const imagesFour = () => ([
     neweight,
+    newthree,
+    one,
+    shan_seven,
+    caittwo,
+    shan_eight,
+    shan_eleven, 
+    neweleven,
+    seven,
+    shan_nine, 
+    caitthree, 
+    newfour, 
+    newsix, 
+    caitfour, 
+    newseven, 
+    newfive, 
+    newten, 
+    newnine, 
+    newone,
     shan_five,
     caitone,
-    shan_eight,
-    newone,
     newtwo,
-    newthree,
-    caittwo,
-    shan_eleven,
-    neweleven,
-    newfour,
-    caitthree,
-    newsix,
-    shan_nine,
-    newfive,
-    newten,
-    seven,
-    newnine,
-    shan_seven,
-    newseven,
-    caitfour,
-  ];
+  ]);
 
-  const images = useBreakpointValue({
-    base: imagesTwo,
+  const imagesArray = useBreakpointValue({
+    base: images,
     md: imagesThree(),
-    xl: imagesFour,
+    xl: imagesFour(),
   });
 
   const openCarousel = (imgIdx) => {
-    console.log("IMG IDX:", imgIdx);
+    // console.log("IMG IDX:", imgIdx);
     setStartingSlideIdx(imgIdx);
     setShowCarousel(true);
   };
@@ -149,7 +158,7 @@ const Gallery = ({ setInView }) => {
 
         <Box className="fade-in-immediate">
           {/* <GalleryImages imagesArray={imagesArray} onClick={openCarousel} /> */}
-          <GalleryImages imagesArray={images} onClick={openCarousel} />
+          <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />
 
           {showCarousel && (
             <Modal
