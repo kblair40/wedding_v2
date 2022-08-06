@@ -8,13 +8,9 @@ import GalleryImageCarousel from "components/GalleryImageCarousel";
 import SectionLabel from "components/SectionLabel";
 
 import one from "assets/galleryImages/sydney/one.jpg";
-import three from "assets/galleryImages/sydney/three.jpg";
 import seven from "assets/galleryImages/sydney/seven.jpg";
 
-import shan_one from "assets/galleryImages/shannon/shan_one.jpg";
-import shan_three from "assets/galleryImages/shannon/shan_three.jpg";
 import shan_five from "assets/galleryImages/shannon/shan_five.jpg";
-import shan_six from "assets/galleryImages/shannon/shan_six.jpg";
 import shan_seven from "assets/galleryImages/shannon/shan_seven.jpg";
 import shan_eight from "assets/galleryImages/shannon/shan_eight.jpg";
 import shan_nine from "assets/galleryImages/shannon/shan_nine.jpg";
@@ -37,7 +33,6 @@ import caitone from "assets/galleryImages/caitlin/caitone.jpg";
 import caittwo from "assets/galleryImages/caitlin/caittwo.jpg";
 import caitthree from "assets/galleryImages/caitlin/caitthree.jpg";
 import caitfour from "assets/galleryImages/caitlin/caitfour.jpg";
-import caitfive from "assets/galleryImages/caitlin/caitfive.jpg";
 
 const Gallery = ({ setInView }) => {
   const [showCarousel, setShowCarousel] = useState(false);
@@ -52,29 +47,30 @@ const Gallery = ({ setInView }) => {
     }
   }, [inView]);
 
+  // 2-column layout
   const imagesArray = [
     one,
     neweight,
     shan_five,
+    caitone,
     newone,
     newtwo,
     newthree,
+    shan_seven,
+    caittwo,
     shan_eight,
     shan_eleven,
     neweleven,
+    caitthree,
     newfour,
-    shan_one,
-    three,
     seven,
+    caitfour,
     newseven,
     newfive,
-    newsix,
-    shan_nine,
-    newnine,
-    shan_seven,
-    shan_six,
     newten,
-    shan_three,
+    newnine,
+    shan_nine,
+    newsix,
   ];
 
   const openCarousel = (imgIdx) => {
