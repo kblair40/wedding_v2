@@ -34,11 +34,6 @@ export const NAV_ITEMS = [
     href: "/gallery",
     section: "gallery",
   },
-
-  // {
-  //   label: "Admin Stuff",
-  //   href: "/admin",
-  // },
 ];
 
 export const MAX_WIDTHS = () => ({
@@ -64,12 +59,6 @@ export const ACTIVITIES = {
       name: "Prato",
       url: "https://www.prato-wp.com/",
       priceLevel: 2,
-    },
-    {
-      name: "Armando's",
-      url: "http://www.armandosorlando.com/",
-      priceLevel: 2,
-      // 463 W New England Ave., Winter Park, FL
     },
   ],
   breakfast: [
