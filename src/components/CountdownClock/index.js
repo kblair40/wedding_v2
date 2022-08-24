@@ -52,7 +52,7 @@ const CountdownClock = () => {
         containerRef.current.classList.add("slide-in");
       }, 500);
     } else {
-      // console.log("\n\n DO NOT SHOW THE CLOCK \n\n");
+      // console.log("\n\n DO NOT SHOW THE CLOCKd \n\n");
       containerRef.current.classList.remove("slide-in"); // new
       containerRef.current.classList.add("slide-out");
       setTimeout(() => {
