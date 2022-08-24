@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
-import useLocalstorageState from "hooks/useLocalstorageState";
+import useLocalStorageState from "hooks/useLocalStorageState";
 
 import { glass } from "utils/styles";
 import { patchGuest } from "api/api";
@@ -38,7 +38,7 @@ const RSVP = ({ setInView }) => {
   const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
   const [showRSVPFormModal, setShowRSVPFormModal] = useState(false);
 
-  const [hasReplied, setHasReplied] = useLocalstorageState("hasReplied", false);
+  const [hasReplied, setHasReplied] = useLocalStorageState("hasReplied", false);
 
   const toast = useToast();
 

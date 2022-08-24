@@ -34,7 +34,7 @@ function initialize(key, initialState) {
   }
 }
 
-function useLocalstorageState(key, initialState) {
+function useLocalStorageState(key, initialState) {
   const [value, setValue] = useState(() => initialize(key, initialState));
   const isUpdateFromCrossDocumentListener = useRef(false);
   const isUpdateFromWithinDocumentListener = useRef(false);
@@ -161,4 +161,4 @@ function useLocalstorageState(key, initialState) {
   return [value, set, remove];
 }
 
-export default useLocalstorageState;
+export default useLocalStorageState;

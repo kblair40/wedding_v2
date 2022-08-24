@@ -3,13 +3,13 @@ import { Box, IconButton } from "@chakra-ui/react";
 import { MdOutlineChevronRight } from "react-icons/md";
 import { gsap } from "gsap";
 
-import useLocalstorageState from "../../hooks/useLocalStorageState";
+import useLocalStorageState from "hooks/useLocalStorageState";
 import ClockBody from "./ClockBody";
 import "./index.css";
 
 const CountdownClock = () => {
   const [ready, setReady] = useState(false);
-  const [showClock, setShowClock] = useLocalstorageState("showClock", false);
+  const [showClock, setShowClock] = useLocalStorageState("showClock", false);
   const [clockOpacity, setClockOpacity] = useState(0);
 
   const containerRef = useRef();
