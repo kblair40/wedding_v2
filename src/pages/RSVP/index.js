@@ -10,7 +10,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { gsap } from "gsap";
-import useLocalstorageState from "hooks/useLocalstorageState";
+import useLocalstorageState from "hooks/useLocalStorageState";
 
 import { glass } from "utils/styles";
 import { toTitleCase } from "utils/helpers";
@@ -21,8 +21,8 @@ import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
-// import api from "apifast";
 import api from "apimongo";
+
 import casa_new from "assets/casa_new.jpg";
 
 import "./index.css";

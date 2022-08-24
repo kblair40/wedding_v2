@@ -9,22 +9,20 @@ import {
   Text,
   Flex,
   Icon,
-  Heading,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 import { MdCheckCircle } from "react-icons/md";
 import { FaRegSadTear } from "react-icons/fa";
 
 import { toTitleCase } from "utils/helpers";
-import CustomRSVPForm from "components/RSVPSteps_old/RSVPHelpModal/CustomRSVPForm";
+import CustomRSVPForm from "./CustomRSVPForm";
 
 const RSVPHelpModal = ({ isOpen, onClose, setHasReplied }) => {
   const key = "W69ff_xL68cgt7IZI";
 
   const toast = useToast();
 
-  const handleSubmit = async (data, addAnother = false) => {
-    // console.log("DATA:", data);
+  const handleSubmit = async (data) => {
     try {
       await emailjs.send("service_ujghu3o", "template_lxrzaso", data, key);
 
