@@ -19,6 +19,7 @@ function App() {
   // uses 'inview' and updates so nav makes necessary visual changes
   const [sectionInView, setSectionInView] = useState("top");
   const [topInView, setTopInView] = useState(true);
+  const [mainImgLoaded, setMainImgLoaded] = useState(false);
 
   const handleChangeSection = (newSection) => {
     // console.log("\n\nNEW SECTION:", newSection, "\n\n");
@@ -46,12 +47,17 @@ function App() {
     setTopInView(true);
   };
 
+  const handleMainBgImageLoaded = () => {
+    setMainImgLoaded(true);
+  };
+
   return (
     <Box position="relative" sx={{ overflow: "hidden" }}>
       <Nav
         topInView={topInView}
         handleChangeSection={handleChangeSection}
         sectionInView={sectionInView}
+        mainImgLoaded={mainImgLoaded}
       />
       <Box display={{ base: "none", md: "block" }}>
         <CountdownClock />
@@ -68,6 +74,7 @@ function App() {
                   handleChangeSectionInView={handleChangeSectionInView}
                   handleLeaveTopSection={handleLeaveTopSection}
                   handleEnterTopSection={handleEnterTopSection}
+                  handleMainBgImageLoaded={handleMainBgImageLoaded}
                 />
               }
             />

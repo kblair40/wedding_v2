@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, useBreakpointValue } from "@chakra-ui/react";
 
 import MainBackground from "components/MainBackground";
@@ -16,7 +16,10 @@ const Main = ({
   handleChangeSectionInView,
   handleLeaveTopSection,
   handleEnterTopSection,
+  handleMainBgImageLoaded,
 }) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   const topRef = useRef();
   const travelRef = useRef();
   const scheduleRef = useRef();
@@ -45,6 +48,11 @@ const Main = ({
     }
   }, [section]);
 
+  const handleImageLoaded = () => {
+    handleMainBgImageLoaded();
+    setImgLoaded(true);
+  };
+
   const boxStyle = {
     pb: "24px",
     scrollMarginTop: useBreakpointValue({ base: 0, md: "32px" }),
@@ -57,37 +65,47 @@ const Main = ({
           setInView={() => handleChangeSectionInView("top")}
           handleLeaveTopSection={handleLeaveTopSection}
           handleEnterTopSection={handleEnterTopSection}
+          // onMainBgImageLoaded={handleMainBgImageLoaded}
+          onMainBgImageLoaded={handleImageLoaded}
         />
       </Box>
 
-      <WhenAndWhere />
+      {imgLoaded && (
+        <React.Fragment>
+          <WhenAndWhere />
 
-      <Box {...boxStyle} ref={rsvpRef}>
-        {/* <RSVP setInView={() => handleChangeSectionInView("rsvp")} /> */}
-        <TempRSVPSection setInView={() => handleChangeSectionInView("rsvp")} />
-      </Box>
+          <Box {...boxStyle} ref={rsvpRef}>
+            {/* <RSVP setInView={() => handleChangeSectionInView("rsvp")} /> */}
+            <TempRSVPSection
+              setInView={() => handleChangeSectionInView("rsvp")}
+            />
+          </Box>
 
-      <Box {...boxStyle} ref={travelRef}>
-        <Travel setInView={() => handleChangeSectionInView("travel")} />
-      </Box>
+          <Box {...boxStyle} ref={travelRef}>
+            <Travel setInView={() => handleChangeSectionInView("travel")} />
+          </Box>
 
-      <Box {...boxStyle} ref={activitiesRef}>
-        <Activities setInView={() => handleChangeSectionInView("activities")} />
-      </Box>
+          <Box {...boxStyle} ref={activitiesRef}>
+            <Activities
+              setInView={() => handleChangeSectionInView("activities")}
+            />
+          </Box>
 
-      <Box {...boxStyle} ref={registryRef}>
-        <Registry setInView={() => handleChangeSectionInView("registry")} />
-      </Box>
+          <Box {...boxStyle} ref={registryRef}>
+            <Registry setInView={() => handleChangeSectionInView("registry")} />
+          </Box>
 
-      <Box {...boxStyle} ref={weddingPartyRef}>
-        <WeddingParty
-          setInView={() => handleChangeSectionInView("weddingParty")}
-        />
-      </Box>
+          <Box {...boxStyle} ref={weddingPartyRef}>
+            <WeddingParty
+              setInView={() => handleChangeSectionInView("weddingParty")}
+            />
+          </Box>
 
-      <Box {...boxStyle} ref={galleryRef}>
-        <Gallery setInView={() => handleChangeSectionInView("gallery")} />
-      </Box>
+          <Box {...boxStyle} ref={galleryRef}>
+            <Gallery setInView={() => handleChangeSectionInView("gallery")} />
+          </Box>
+        </React.Fragment>
+      )}
     </Box>
   );
 };

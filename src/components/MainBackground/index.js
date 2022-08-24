@@ -1,5 +1,13 @@
-import React, { useEffect, useRef } from "react";
-import { Box, Icon, Flex, Text, Image } from "@chakra-ui/react";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Box,
+  Icon,
+  Flex,
+  Text,
+  Image,
+  Center,
+  Spinner,
+} from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { BsChevronDown } from "react-icons/bs";
 import { gsap } from "gsap";
@@ -11,7 +19,10 @@ const MainBackground = ({
   setInView,
   handleLeaveTopSection,
   handleEnterTopSection,
+  onMainBgImageLoaded,
 }) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   const options = { threshold: 1 };
   const [inViewRef, inView] = useInView(options);
 
@@ -21,6 +32,8 @@ const MainBackground = ({
   const arrowDownRef = useRef();
 
   const fadeInImage = () => {
+    onMainBgImageLoaded();
+    setImgLoaded(true);
     gsap.to(imageRef.current, { duration: ".5", opacity: 1 });
   };
 
@@ -51,6 +64,7 @@ const MainBackground = ({
         justifyContent="center"
         zIndex={10}
         h="100vh"
+        // border="2px solid red"
       >
         <Image
           src={mainbg}
@@ -67,8 +81,10 @@ const MainBackground = ({
           position="absolute"
           h="100vh"
           w="100vw"
+          // bgImage="linear-gradient(rgba(40, 30, 250, 0.45),
+          // rgba(90, 90, 220, 0.2))"
           bgImage="linear-gradient(rgba(0, 0, 0, 0.45),
-        rgba(0, 0, 0, 0.2))"
+          rgba(0, 0, 0, 0.2))"
         />
 
         <Box
@@ -96,6 +112,12 @@ const MainBackground = ({
 };
 
 export default MainBackground;
+
+const Loading = () => {
+  <Center h="100vh" bg="red">
+    <Spinner color="white" />
+  </Center>;
+};
 
 const ArrowDown = () => {
   return (
