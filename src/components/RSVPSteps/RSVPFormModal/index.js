@@ -38,29 +38,21 @@ const RSVPFormModal = ({
 
   useEffect(() => {
     if (!shouldLog.current) return;
-    // console.log("\n\n\n\nFORM DATA:", formData);
 
     for (let guest in formData) {
-      // console.log("GUEST - CHECK FOR COMPLETION:", guest);
-
       const { dinner_selection, attending } = formData[guest];
-      // console.log("attending? ", attending);
-      // console.log("dinner_selection? ", dinner_selection);
 
       if (attending === undefined) {
-        // console.log("INCOMPLETE1");
         setFormComplete(false);
         return;
       } else if (attending === "yes") {
         if (!dinner_selection) {
-          // console.log("INCOMPLETE2");
           setFormComplete(false);
           return;
         }
       }
     }
 
-    // console.log("COMPLETE");
     setFormComplete(true);
   }, [formData]);
 

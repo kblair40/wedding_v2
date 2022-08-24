@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Flex, Text, Image, Heading } from "@chakra-ui/react";
+import { Box, Flex, Image, Heading } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import { glass } from "utils/styles";
@@ -24,6 +24,7 @@ const TempRSVPSection = ({ setInView }) => {
       w="100%"
       pb="24px"
       px="24px"
+      // border="2px solid red"
     >
       <Image
         src={casa_new}

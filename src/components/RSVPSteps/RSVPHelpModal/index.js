@@ -53,11 +53,7 @@ const RSVPHelpModal = ({ isOpen, onClose, setHasReplied }) => {
     <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside">
       <ModalOverlay />
       <ModalContent w="100%" maxW={{ base: "359px", sm: "420px" }} mx="auto">
-        <ModalHeader
-          // border="1px solid #ccc"
-          //
-          pb="8px"
-        >
+        <ModalHeader pb="8px">
           <Text fontSize="xl" fontWeight="700" mb="8px">
             Sorry about that!
           </Text>
