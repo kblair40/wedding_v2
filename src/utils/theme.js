@@ -194,7 +194,6 @@ const theme = extendTheme({
       baseStyle: {
         color: "neutral.black",
         fontWeight: "400",
-        // fontSize: "md",
       },
       defaultProps: {
         size: "md",
@@ -224,7 +223,6 @@ const theme = extendTheme({
   fonts: {
     heading: "Cormorant Garamond",
     body: "Cabin",
-    mono: "Josefin Slab",
   },
 });
 
