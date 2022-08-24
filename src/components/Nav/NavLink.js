@@ -24,7 +24,6 @@ const NavLink = ({ to, children }) => {
             color="text.tertiary"
             fontWeight="400"
             whiteSpace="nowrap"
-            // fontSize="lg"
             fontSize="xl"
             textTransform="uppercase"
             letterSpacing="1px"

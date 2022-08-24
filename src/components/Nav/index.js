@@ -27,8 +27,6 @@ const Nav = ({
   return (
     <Flex
       h="52px"
-      // className={mainImgLoaded ? "fade-in-immediate" : undefined}
-      // className="fade-in-immediate"
       justifyContent="center"
       position="fixed"
       top="0"
@@ -40,12 +38,7 @@ const Nav = ({
       shadow={{ md: "sm" }}
     >
       {mainImgLoaded && (
-        <Box
-          position="relative"
-          w="100%"
-          // new.  originally did not have a className
-          className="fade-in-immediate"
-        >
+        <Box position="relative" w="100%" className="fade-in-immediate">
           <Flex py="8px" justify="center" align="center" w="100%" h="100%">
             <Box
               display={{ base: "flex", md: "none" }}
@@ -133,7 +126,6 @@ const Nav = ({
           <Box
             bg="rgba(255, 255, 255, 0.98)"
             shadow="sm"
-            // border="1px solid red"
             position="absolute"
             top={0}
             w="100vw"

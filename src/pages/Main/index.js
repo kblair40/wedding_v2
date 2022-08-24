@@ -4,7 +4,7 @@ import { Box, useBreakpointValue } from "@chakra-ui/react";
 import MainBackground from "components/MainBackground";
 import Travel from "sections/Travel";
 import Activities from "sections/Activities";
-import RSVP from "sections/RSVP";
+// import RSVP from "sections/RSVP";
 import TempRSVPSection from "sections/RSVP/TempRSVPSection";
 import WeddingParty from "sections/WeddingParty";
 import Gallery from "sections/Gallery";
@@ -65,7 +65,6 @@ const Main = ({
           setInView={() => handleChangeSectionInView("top")}
           handleLeaveTopSection={handleLeaveTopSection}
           handleEnterTopSection={handleEnterTopSection}
-          // onMainBgImageLoaded={handleMainBgImageLoaded}
           onMainBgImageLoaded={handleImageLoaded}
         />
       </Box>
