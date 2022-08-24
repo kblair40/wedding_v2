@@ -17,7 +17,6 @@ import SectionLabel from "components/SectionLabel";
 import one from "assets/galleryImages/sydney/one.jpg";
 import seven from "assets/galleryImages/sydney/seven.jpg";
 
-import shan_five from "assets/galleryImages/shannon/shan_five.jpg";
 import shan_seven from "assets/galleryImages/shannon/shan_seven.jpg";
 import shan_eight from "assets/galleryImages/shannon/shan_eight.jpg";
 import shan_nine from "assets/galleryImages/shannon/shan_nine.jpg";
@@ -26,7 +25,6 @@ import shan_eleven from "assets/galleryImages/shannon/shan_eleven.jpg";
 import newone from "assets/galleryImages/newone.jpg";
 import newtwo from "assets/galleryImages/newtwo.jpg";
 import newthree from "assets/galleryImages/newthree.jpg";
-import newfour from "assets/galleryImages/newfour.jpg";
 import newfive from "assets/galleryImages/newfive.jpg";
 import newsix from "assets/galleryImages/newsix.jpg";
 import newseven from "assets/galleryImages/newseven.jpg";
@@ -38,8 +36,6 @@ import neweleven from "assets/galleryImages/neweleven.jpg";
 // new pics from Caitlin
 import caitone from "assets/galleryImages/caitlin/caitone.jpg";
 import caittwo from "assets/galleryImages/caitlin/caittwo.jpg";
-import caitthree from "assets/galleryImages/caitlin/caitthree.jpg";
-import caitfour from "assets/galleryImages/caitlin/caitfour.jpg";
 
 const Gallery = ({ setInView }) => {
   const [showCarousel, setShowCarousel] = useState(false);
@@ -52,91 +48,62 @@ const Gallery = ({ setInView }) => {
     if (inView) {
       setInView("gallery");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView]);
 
-  // 2-column layout
+  // 2-column & 3-column layout
   const images = [
     one,
     neweight,
-    shan_five,
     caitone,
     newone,
-    newtwo,
-    newthree,
-    shan_seven, // 7
-    caittwo, // 8
-    shan_eight,
-    shan_eleven, // 10
-    neweleven,
-    caitthree, // 12
-    newfour, // 13
-    seven,
-    caitfour, // 15
-    newseven, // 16
-    newfive, // 17
-    newten, // 18
-    newnine, // 19
-    shan_nine, // 20
-    newsix, // 21
-  ];
-
-  const imagesThree = () => {
-    images[7] = caittwo;
-    images[8] = shan_seven;
-    images[10] = newsix;
-    images[11] = shan_eleven;
-    images[12] = neweleven;
-    images[13] = caitthree;
-    images[14] = newfour;
-    images[15] = seven;
-    images[18] = shan_nine;
-    images[19] = newten;
-    images[20] = newnine;
-    images[21] = caitfour;
-
-    return images
-  };
-
-
-
-  const imagesFour = () => ([
-    neweight,
-    newthree,
-    one,
     shan_seven,
+    newtwo,
+    newseven,
+    newthree,
     caittwo,
     shan_eight,
-    shan_eleven, 
     neweleven,
+    shan_eleven,
     seven,
-    shan_nine, 
-    caitthree, 
-    newfour, 
-    newsix, 
-    caitfour, 
-    newseven, 
-    newfive, 
-    newten, 
-    newnine, 
-    newone,
-    shan_five,
+    newten,
+    newfive,
+    shan_nine,
+    newsix,
+    newnine,
+  ];
+
+  // 4-column layout
+  const images4 = [
+    neweight,
+    one,
     caitone,
+    newone,
+    shan_seven,
     newtwo,
-  ]);
+    newthree,
+    newseven,
+    shan_eight,
+    caittwo,
+    neweleven,
+    shan_eleven,
+    seven,
+    newfive,
+    newten,
+    newnine,
+    newsix,
+    shan_nine,
+  ];
 
   const imagesArray = useBreakpointValue({
     base: images,
-    md: imagesThree(),
-    xl: imagesFour(),
+    xl: images4,
   });
 
   const openCarousel = (imgIdx) => {
-    // console.log("IMG IDX:", imgIdx);
     setStartingSlideIdx(imgIdx);
     setShowCarousel(true);
   };
-
-  /* css for react-slick (GalleryImageCarousel) */
 
   return (
     <React.Fragment>
@@ -157,7 +124,6 @@ const Gallery = ({ setInView }) => {
         <Box ref={inViewRef} />
 
         <Box className="fade-in-immediate">
-          {/* <GalleryImages imagesArray={imagesArray} onClick={openCarousel} /> */}
           <GalleryImages imagesArray={imagesArray} onClick={openCarousel} />
 
           {showCarousel && (
@@ -182,7 +148,6 @@ const Gallery = ({ setInView }) => {
                 />
                 <Flex alignItems="center" h="100vh">
                   <GalleryImageCarousel
-                    // imagesArray={imagesArray}
                     imagesArray={images}
                     startingSlideIdx={startingSlideIdx}
                   />
