@@ -8,6 +8,7 @@
     "@emailjs/browser": "^3.6.2",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@rooks/use-localstorage-state": "^4.11.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",

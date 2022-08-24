@@ -10,7 +10,8 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { gsap } from "gsap";
-import useLocalStorageState from "hooks/useLocalStorageState";
+import useLocalstorageState from "@rooks/use-localstorage-state";
+// import useLocalStorageState from "hooks/useLocalStorageState";
 
 import { glass } from "utils/styles";
 import { toTitleCase } from "utils/helpers";
@@ -36,7 +37,7 @@ const RSVP = () => {
   const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
   const [showRSVPFormModal, setShowRSVPFormModal] = useState(false);
 
-  const [hasReplied, setHasReplied] = useLocalStorageState("hasReplied", false);
+  const [hasReplied, setHasReplied] = useLocalstorageState("hasReplied", false);
 
   const toast = useToast();
 
