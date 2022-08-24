@@ -11,10 +11,10 @@ import {
 } from "@chakra-ui/react";
 import { gsap } from "gsap";
 import useLocalstorageState from "@rooks/use-localstorage-state";
-// import useLocalStorageState from "hooks/useLocalStorageState";
 
 import { glass } from "utils/styles";
 import { toTitleCase } from "utils/helpers";
+import api from "apimongo";
 import GuestSearch from "components/RSVPSteps/GuestSearch";
 import SelectGuestsModal from "components/RSVPSteps/SelectGuestsModal";
 import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
@@ -22,10 +22,7 @@ import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 import { CustomToast } from "components/RSVPSteps/RSVPHelpModal";
-import api from "apimongo";
-
 import casa_new from "assets/casa_new.jpg";
-
 import "./index.css";
 
 const RSVP = () => {
@@ -44,7 +41,6 @@ const RSVP = () => {
   const helpOpenedBy = useRef("");
 
   const getSearchResults = (mainGuest, so, otherFamily) => {
-    // console.log({ mainGuest, sig_other: so, otherFamily });
     setGuest(mainGuest);
 
     if (so || otherFamily) {
@@ -54,8 +50,6 @@ const RSVP = () => {
       if (otherFamily) {
         relatedGuests = relatedGuests.concat(otherFamily);
       }
-
-      // console.log("\n\nRELATED GUESTS:", relatedGuests);
 
       setRelatedGuests(relatedGuests);
       setShowSelectGuestsModal(true);
@@ -88,15 +82,7 @@ const RSVP = () => {
     }
   };
 
-  const dummy = {
-    attending: "yes",
-    dinner_selection: "chicken",
-    replied: "TRUE",
-  };
-
   const patchGuest = async (_id, data) => {
-    // console.log("PATCH GUEST RECEIVED:", { _id, data });
-
     if (!_id) return;
 
     const {
@@ -107,7 +93,7 @@ const RSVP = () => {
     } = data;
 
     try {
-      let res = await api.patch(`/guest/${_id}`, {
+      await api.patch(`/guest/${_id}`, {
         special_requests,
         dinner_selection,
         attending,
@@ -121,16 +107,12 @@ const RSVP = () => {
   };
 
   const handleSubmitRSVPForm = async (data, respondingGuests) => {
-    // console.log("\n\nDATA:", data, "\n\n", { respondingGuests });
-
     let names = Object.keys(data).filter((name) => name !== "special_requests");
-    // console.log("\n\nNAMES:", names);
 
     for (let name of names) {
       let guest = respondingGuests.find((g) => {
         return g.full_name === name;
       });
-      // console.log("\nGUEST:", guest);
 
       if (!guest) {
         console.warn("\n\n\n\nINVALID GUEST:", guest, "\n\n\n");
@@ -138,14 +120,12 @@ const RSVP = () => {
       }
 
       const guestData = data[name];
-      // console.log("\n\nGUEST DATA:", guestData, "\n\n");
       try {
-        const res = await patchGuest(guest._id, {
+        await patchGuest(guest._id, {
           ...guestData,
           special_requests: data.special_requests,
           replied: true,
         });
-        // console.log("RES:", res);
       } catch (e) {
         // console.log(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
       }
@@ -179,7 +159,6 @@ const RSVP = () => {
   };
 
   const handleClickShowHelp = () => {
-    // console.log("SHOW HELP");
     setShowSelectGuestsModal(false);
 
     setTimeout(() => {
@@ -249,7 +228,6 @@ const RSVP = () => {
         </Flex>
       </Flex>
 
-      {/*  */}
       <Modal
         isOpen={showSelectGuestsModal || showRSVPFormModal}
         onClose={() => {

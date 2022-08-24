@@ -1,20 +1,17 @@
 import React from "react";
 import {
   Box,
-  useBreakpointValue,
   Flex,
   Text,
   useDisclosure,
-  Heading,
   Stack,
   Collapse,
   IconButton,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { MdClose } from "react-icons/md";
-
-import "./index.css";
 import { NAV_ITEMS } from "utils/constants";
+import "./index.css";
 
 const Nav = ({
   handleChangeSection,
@@ -201,36 +198,6 @@ const MobileNavItem = ({ label, onClick }) => {
       >
         {label}
       </Text>
-    </Flex>
-  );
-};
-
-const OurNamesHorizontal = () => {
-  const headingSize = useBreakpointValue({ base: "2xl", sm: "3xl" });
-  const style = {
-    fontSize: headingSize,
-    letterSpacing: "2px",
-    fontWeight: "600",
-  };
-
-  return (
-    <Flex direction="column" alignItems="center">
-      <Flex w="100%" justifyContent="center" alignItems="start">
-        <Heading {...style}>Shannon</Heading>
-        <Heading {...style} mx="8px">
-          &
-        </Heading>
-        <Heading {...style}>Kevin</Heading>
-      </Flex>
-
-      <Flex w="100%" justifyContent="center">
-        <Text fontWeight="300" fontSize="sm" mr="8px">
-          01.21.23
-        </Text>
-        <Text fontWeight="300" fontSize="sm">
-          Winter Park, FL
-        </Text>
-      </Flex>
     </Flex>
   );
 };

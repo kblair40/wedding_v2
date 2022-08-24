@@ -4,7 +4,6 @@ import { MdOutlineChevronRight } from "react-icons/md";
 import { gsap } from "gsap";
 
 import useLocalstorageState from "@rooks/use-localstorage-state";
-// import useLocalStorageState from "hooks/useLocalStorageState";
 import ClockBody from "./ClockBody";
 import "./index.css";
 
@@ -53,7 +52,6 @@ const CountdownClock = () => {
         containerRef.current.classList.add("slide-in");
       }, 500);
     } else {
-      // console.log("\n\n DO NOT SHOW THE CLOCKd \n\n");
       containerRef.current.classList.remove("slide-in"); // new
       containerRef.current.classList.add("slide-out");
       setTimeout(() => {

@@ -1,14 +1,7 @@
 import React from "react";
 import { Text, Flex, Heading, Button } from "@chakra-ui/react";
 
-const ScheduleItem = ({
-  heading,
-  time,
-  who,
-  dressCode,
-  locationName,
-  locationMapLink,
-}) => {
+const ScheduleItem = ({ heading, time, who, dressCode, locationName }) => {
   const textStyles = {
     fontSize: "lgt",
     fontWeight: "500",

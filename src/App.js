@@ -3,7 +3,6 @@ import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 import "animate.css";
 
-import UserProvider from "store/UserContext";
 import Admin from "pages/Admin";
 import Main from "pages/Main";
 import RSVPTest from "pages/RSVP";
@@ -22,7 +21,6 @@ function App() {
   const [mainImgLoaded, setMainImgLoaded] = useState(false);
 
   const handleChangeSection = (newSection) => {
-    // console.log("\n\nNEW SECTION:", newSection, "\n\n");
     setSection(newSection);
     setSectionInView(newSection);
   };
@@ -63,26 +61,24 @@ function App() {
         <CountdownClock />
       </Box>
 
-      <UserProvider>
-        <ScrollToTop>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  section={section}
-                  handleChangeSectionInView={handleChangeSectionInView}
-                  handleLeaveTopSection={handleLeaveTopSection}
-                  handleEnterTopSection={handleEnterTopSection}
-                  handleMainBgImageLoaded={handleMainBgImageLoaded}
-                />
-              }
-            />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/rsvp-test" element={<RSVPTest />} />
-          </Routes>
-        </ScrollToTop>
-      </UserProvider>
+      <ScrollToTop>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main
+                section={section}
+                handleChangeSectionInView={handleChangeSectionInView}
+                handleLeaveTopSection={handleLeaveTopSection}
+                handleEnterTopSection={handleEnterTopSection}
+                handleMainBgImageLoaded={handleMainBgImageLoaded}
+              />
+            }
+          />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/rsvp-test" element={<RSVPTest />} />
+        </Routes>
+      </ScrollToTop>
     </Box>
   );
 }

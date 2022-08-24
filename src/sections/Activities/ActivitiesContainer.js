@@ -93,7 +93,6 @@ const ActivitiesContainer = () => {
               activities={ACTIVITIES.cocktailBars}
             />
 
-            {/* <ActivityList label="parks" activities={ACTIVITIES.parks} /> */}
             <ActivityList label="sweets" activities={ACTIVITIES.sweets} />
           </Masonry>
         </Flex>

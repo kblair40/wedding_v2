@@ -4,7 +4,6 @@ import { Flex, Text, Box } from "@chakra-ui/react";
 const SectionLabel = ({ label, pt = "32px", ...rest }) => {
   return (
     <Flex
-      // bg="#f7f5f1"
       pt={pt}
       w="100%"
       justifyContent="center"

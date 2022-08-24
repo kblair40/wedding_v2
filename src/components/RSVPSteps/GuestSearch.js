@@ -9,7 +9,6 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 
-// import api from "apifast";
 import api from "apimongo";
 
 const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
@@ -64,10 +63,8 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
       let guests = await api.get("/guest/byname", {
         params: { full_name },
       });
-      // console.log("\n\n\nGUESTS FOUND:", guests.data, "\n\n\n");
 
       const { mainGuest, family, so } = guests.data;
-      // console.log("GUEST DATA:", { mainGuest, so, family });
 
       getSearchResults(mainGuest, so, family); // pass back to parent (RSVP page);
     } catch (err) {
@@ -192,11 +189,6 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
           </Button>
         </Box>
       )}
-
-      {/* <Text mt="8px" fontSize="sm" fontWeight="500" color="text.secondary">
-        *Tip - Try using short and long versions of your first name. &nbsp;Ex.
-        If your first name is James, try using Jim
-      </Text> */}
     </form>
   );
 };
