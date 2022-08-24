@@ -3,7 +3,7 @@ import { Box, IconButton } from "@chakra-ui/react";
 import { MdOutlineChevronRight } from "react-icons/md";
 import { gsap } from "gsap";
 
-import useLocalstorageState from "hooks/useLocalStorageState";
+import useLocalstorageState from "../../hooks/useLocalStorageState";
 import ClockBody from "./ClockBody";
 import "./index.css";
 
