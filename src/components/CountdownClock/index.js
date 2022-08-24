@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box, IconButton } from "@chakra-ui/react";
 import { MdOutlineChevronRight } from "react-icons/md";
-import { useLocalstorageState } from "rooks";
 import { gsap } from "gsap";
 
+import useLocalstorageState from "hooks/useLocalstorageState";
 import ClockBody from "./ClockBody";
 import "./index.css";
 
@@ -23,7 +23,7 @@ const CountdownClock = () => {
     if (isReady) {
       gsap.to(".vertical-center", { duration: 0.5, delay: 0.75, opacity: 1 });
     }
-  }, [containerRef.current, showButtonRef.current]);
+  }, [containerRef, showButtonRef]);
 
   useEffect(() => {
     if (ready) {

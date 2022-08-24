@@ -6,13 +6,12 @@ import {
   ModalContent,
   ModalCloseButton,
   Modal,
-  Text,
   useToast,
   Image,
 } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
-import { useLocalstorageState } from "rooks";
+import useLocalstorageState from "hooks/useLocalstorageState";
 
 import { glass } from "utils/styles";
 import { patchGuest } from "api/api";

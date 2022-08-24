@@ -47,11 +47,6 @@ const CountdownClock = ({ onHide }) => {
     });
   };
 
-  const textStyles = {
-    fontFamily: "Great Vibes",
-    // border: "1px solid #ccc",
-    fontSize: "lg",
-  };
   return (
     <Box>
       <Flex direction="column" pt="8px">
@@ -63,21 +58,7 @@ const CountdownClock = ({ onHide }) => {
 
         <TimeUnit unit={"Seconds"} value={timeDiff.seconds} />
 
-        <Flex
-          flexDirection="column"
-          alignItems="center"
-          mt=".5rem"
-          mb="1rem"
-          // border="1px solid #333"
-          display="none"
-        >
-          <Text {...textStyles}>Until</Text>
-          <Text {...textStyles}>We</Text>
-          <Text {...textStyles}>Celebrate </Text>
-        </Flex>
-
         <Button
-          // border="1px solid #aaa"
           onClick={onHide}
           variant="link"
           size="sm"

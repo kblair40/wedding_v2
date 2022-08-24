@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
-  Box,
   Modal,
   ModalHeader,
   ModalContent,
   ModalOverlay,
   ModalBody,
-  ModalFooter,
-  Heading,
-  Text,
   Flex,
 } from "@chakra-ui/react";
 
-import { toTitleCase } from "utils/helpers";
-import api from "apifast";
 import PatchForm from "./PatchForm";
 
 const ManageGuestModal = ({ isOpen, onClose, selectedRow }) => {

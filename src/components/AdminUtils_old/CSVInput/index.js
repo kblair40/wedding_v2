@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Text,
-  Heading,
-  Button,
-  HStack,
-  Flex,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Button, HStack, Flex } from "@chakra-ui/react";
 
 import InviteList from "components/AdminUtils/InviteList";
 import { useCSVReader } from "react-papaparse";

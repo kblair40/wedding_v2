@@ -10,7 +10,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { gsap } from "gsap";
-import { useLocalstorageState } from "rooks";
+import useLocalstorageState from "hooks/useLocalstorageState";
 
 import { glass } from "utils/styles";
 import { toTitleCase } from "utils/helpers";
