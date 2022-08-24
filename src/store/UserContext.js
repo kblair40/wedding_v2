@@ -6,7 +6,7 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
 
   const handleAuthenticated = (userObject) => {
-    console.log("USER OBJECT:", userObject);
+    // console.log("USER OBJECT:", userObject);
     setUser(userObject);
   };
 
