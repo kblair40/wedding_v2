@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { Text, Heading, Flex, Grid, GridItem, Box } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
+import {
+  LazyLoadImage,
+  trackWindowScroll,
+} from "react-lazy-load-image-component";
 
 import SectionLabel from "components/SectionLabel";
 import Us from "components/Us";
@@ -18,7 +22,7 @@ import cassidy from "assets/images/wedding_party/cassidy.jpeg";
 import erin2 from "assets/images/wedding_party/erin2.jpg";
 import kelly2 from "assets/images/wedding_party/kelly2.jpg";
 
-const WeddingParty = ({ setInView }) => {
+const WeddingParty = ({ setInView, scrollPosition }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
 
   useEffect(() => {
@@ -74,6 +78,7 @@ const WeddingParty = ({ setInView }) => {
             role="BEST MAN"
             imgURL={caleb3}
             position="center 20%"
+            scrollPosition={scrollPosition}
           />
         </GridItem>
 
@@ -83,6 +88,7 @@ const WeddingParty = ({ setInView }) => {
             role="GROOMSMAN"
             imgURL={trevor}
             position="center 20%"
+            scrollPosition={scrollPosition}
           />
         </GridItem>
 
@@ -92,6 +98,7 @@ const WeddingParty = ({ setInView }) => {
             role="GROOMSMAN"
             imgURL={andrew2}
             position="center 10%"
+            scrollPosition={scrollPosition}
           />
         </GridItem>
         <GridItem gridArea="ted">
@@ -100,6 +107,7 @@ const WeddingParty = ({ setInView }) => {
             role="GROOMSMAN"
             imgURL={ted2}
             position="center 10%"
+            scrollPosition={scrollPosition}
           />
         </GridItem>
 
@@ -109,6 +117,7 @@ const WeddingParty = ({ setInView }) => {
             role="MAID OF HONOR"
             imgURL={erin2}
             position="center 10%"
+            scrollPosition={scrollPosition}
           />
         </GridItem>
         <GridItem gridArea="kelly">
@@ -117,6 +126,7 @@ const WeddingParty = ({ setInView }) => {
             role="MATRON OF HONOR"
             imgURL={kelly2}
             position="center 10%"
+            scrollPosition={scrollPosition}
           />
         </GridItem>
 
@@ -126,11 +136,17 @@ const WeddingParty = ({ setInView }) => {
             role="MAIDEN OF HONOR"
             imgURL={karissa}
             position="center 45%"
+            scrollPosition={scrollPosition}
           />
         </GridItem>
 
         <GridItem gridArea="cassidy">
-          <Partier name="cassidy gerber" role="BRIDESMAID" imgURL={cassidy} />
+          <Partier
+            name="cassidy gerber"
+            role="BRIDESMAID"
+            imgURL={cassidy}
+            scrollPosition={scrollPosition}
+          />
         </GridItem>
 
         <GridItem mt={{ lg: "2rem" }}>
@@ -140,6 +156,7 @@ const WeddingParty = ({ setInView }) => {
             role="RING BEARERS"
             imgURL={ringBearers}
             position="center 30%"
+            scrollPosition={scrollPosition}
           />
         </GridItem>
 
@@ -149,6 +166,7 @@ const WeddingParty = ({ setInView }) => {
             name="sarlota reichle"
             role="FLOWER GIRL"
             imgURL={sarlota}
+            scrollPosition={scrollPosition}
           />
         </GridItem>
 
@@ -159,6 +177,7 @@ const WeddingParty = ({ setInView }) => {
             role="HEAD USHER"
             imgURL={andras}
             position="center 10%"
+            scrollPosition={scrollPosition}
           />
         </GridItem>
 
@@ -168,6 +187,7 @@ const WeddingParty = ({ setInView }) => {
             name="cameron reichle"
             role="ASST. TO ANDRAS"
             imgURL={cameron}
+            scrollPosition={scrollPosition}
             flex={1}
           />
         </GridItem>
@@ -176,24 +196,48 @@ const WeddingParty = ({ setInView }) => {
   );
 };
 
-export default WeddingParty;
+// export default WeddingParty;
+export default trackWindowScroll(WeddingParty);
 
-export const Partier = ({
-  name,
-  role,
-  imgURL,
-  position = "center 50%",
-  size = "cover",
-}) => {
+export const Partier = ({ name, role, imgURL, scrollPosition }) => {
   return (
-    <Flex
-      className="partier"
-      w={{ base: "280px", sm: "232px" }}
-      direction="column"
-      alignItems="center"
-      px={{ base: 0, lg: "16px" }}
+    <Box
+      sx={{
+        ".partier-img": {
+          borderRadius: "full",
+          mb: "8px",
+        },
+      }}
     >
-      <Box
+      <Flex
+        className="partier"
+        w={{ base: "280px", sm: "232px" }}
+        direction="column"
+        alignItems="center"
+        px={{ base: 0, lg: "16px" }}
+      >
+        <Box
+          boxSize={{ base: "250px", sm: "180px" }}
+          borderRadius="full"
+          mb="8px"
+          overflow="hidden"
+        >
+          <LazyLoadImage
+            // className="partier-img"
+            height="100%"
+            width="100%"
+            // height={boxSize}
+            // width={boxSize}
+            alt="image of member of wedding party"
+            src={imgURL}
+            effect="opacity"
+            // threshold={0}
+            scrollPosition={scrollPosition}
+            // afterLoad={() => console.log(`${imgURL} LOADED!`)}
+          />
+        </Box>
+
+        {/* <Box
         borderRadius="full"
         boxSize={{ base: "250px", sm: "180px" }}
         mb="8px"
@@ -201,20 +245,62 @@ export const Partier = ({
         bgPosition={position}
         bgRepeat="no-repeat"
         bgSize={size}
-      />
+      /> */}
 
-      <Heading
-        fontWeight="700"
-        fontSize="28px"
-        textAlign="center"
-        lineHeight="28px"
-        mb="4px"
-      >
-        {name}
-      </Heading>
-      <Text letterSpacing="1.25px" fontSize="sm">
-        {role}
-      </Text>
-    </Flex>
+        <Heading
+          fontWeight="700"
+          fontSize="28px"
+          textAlign="center"
+          lineHeight="28px"
+          mb="4px"
+        >
+          {name}
+        </Heading>
+        <Text letterSpacing="1.25px" fontSize="sm">
+          {role}
+        </Text>
+      </Flex>
+    </Box>
   );
 };
+
+// export const Partier = ({
+//   name,
+//   role,
+//   imgURL,
+//   position = "center 50%",
+//   size = "cover",
+// }) => {
+//   return (
+//     <Flex
+//       className="partier"
+//       w={{ base: "280px", sm: "232px" }}
+//       direction="column"
+//       alignItems="center"
+//       px={{ base: 0, lg: "16px" }}
+//     >
+//       <Box
+//         borderRadius="full"
+//         boxSize={{ base: "250px", sm: "180px" }}
+//         mb="8px"
+//         bgImage={imgURL}
+//         bgPosition={position}
+//         bgRepeat="no-repeat"
+//         bgSize={size}
+//       />
+
+//       <Heading
+//         fontWeight="700"
+//         fontSize="28px"
+//         textAlign="center"
+//         lineHeight="28px"
+//         mb="4px"
+//       >
+//         {name}
+//       </Heading>
+//       <Text letterSpacing="1.25px" fontSize="sm">
+//         {role}
+//       </Text>
+//     </Flex>
+//   );
+// };
