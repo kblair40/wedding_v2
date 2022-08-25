@@ -10,8 +10,6 @@ import Nav from "components/Nav";
 import ScrollToTop from "components/containers/ScrollToTop";
 import CountdownClock from "components/CountdownClock";
 
-import "./App.css";
-
 function App() {
   // will actually change section
   const [section, setSection] = useState("top");

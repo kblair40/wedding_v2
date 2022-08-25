@@ -8,7 +8,7 @@ import shanface from "assets/us/shanface.jpg";
 import kevface from "assets/us/kevface.jpg";
 import kev from "assets/us/kev.jpg";
 import shan from "assets/us/shan.jpg";
-import { Partier } from "sections/WeddingParty";
+import { Partier } from "sections/WeddingParty/WeddingParty";
 
 const Us = () => {
   const [transitionAmount, setTransitionAmount] = useState();
