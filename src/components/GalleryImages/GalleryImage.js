@@ -1,30 +1,23 @@
-import React from "react";
-import { Box, Image, Collapse, Text } from "@chakra-ui/react";
+import React, { useEffect, useRef } from "react";
+import { Box } from "@chakra-ui/react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
-const GalleryImage = ({ src, onClick }) => {
+const GalleryImage = ({ src, onClick, scrollPosition }) => {
+  const rerenders = useRef(0);
+  useEffect(() => {
+    rerenders.current++;
+    console.log("\n\nRERENDER COUNT:", rerenders.current);
+  }, [scrollPosition]);
+
   return (
     <Box onClick={onClick} cursor="pointer" position="relative">
-      <Image src={src} maxWidth="100%" />
+      <LazyLoadImage
+        src={src}
+        scrollPosition={scrollPosition}
+        afterLoad={() => console.log("\n", `${src} LOADED!`)}
+      />
     </Box>
   );
 };
 
 export default GalleryImage;
-
-// const Description = ({ open, src }) => {
-//   return (
-//     <Collapse in={open} startingHeight={0}>
-//       <Box
-//         w="100%"
-//         p="4px 8px"
-//         bg="rgba(30,30,30,0.7)"
-//         position="absolute"
-//         bottom={0}
-//         left={0}
-//         right={0}
-//       >
-//         <Text color="neutral.white">{src}</Text>
-//       </Box>
-//     </Collapse>
-//   );
-// };
