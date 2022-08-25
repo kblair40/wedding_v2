@@ -23,9 +23,8 @@ const CustomLayerControl = ({
         <Wrap spacing="1.25rem">
           {availableLayers.map((lyr, i) => {
             return (
-              <WrapItem>
+              <WrapItem key={i}>
                 <Checkbox
-                  key={i}
                   value={lyr}
                   textTransform="capitalize"
                   onChange={handleChange}

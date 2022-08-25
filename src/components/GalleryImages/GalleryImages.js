@@ -1,10 +1,11 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import Masonry from "react-masonry-css";
+import { trackWindowScroll } from "react-lazy-load-image-component";
 
 import GalleryImage from "./GalleryImage";
 
-const GalleryImages = ({ imagesArray, onClick }) => {
+const GalleryImages = ({ imagesArray, onClick, scrollPosition }) => {
   const colBreakpoints = {
     default: 4,
     768: 2,
@@ -37,11 +38,17 @@ const GalleryImages = ({ imagesArray, onClick }) => {
         columnClassName="masonry-grid_column"
       >
         {imagesArray.map((img, i) => (
-          <GalleryImage src={img} onClick={() => onClick(i)} />
+          <GalleryImage
+            key={i}
+            src={img}
+            onClick={() => onClick(i)}
+            scrollPosition={scrollPosition}
+          />
         ))}
       </Masonry>
     </Box>
   );
 };
 
-export default GalleryImages;
+// export default GalleryImages;
+export default trackWindowScroll(GalleryImages);
