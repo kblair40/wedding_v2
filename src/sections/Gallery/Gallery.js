@@ -148,7 +148,7 @@ const Gallery = ({ setInView }) => {
                 />
                 <Flex alignItems="center" h="100vh">
                   <GalleryImageCarousel
-                    imagesArray={images}
+                    imagesArray={imagesArray}
                     startingSlideIdx={startingSlideIdx}
                   />
                 </Flex>
