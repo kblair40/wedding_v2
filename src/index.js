@@ -5,7 +5,6 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
-
 import theme from "utils/theme";
 
 ReactDOM.render(

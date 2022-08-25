@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Flex, Text, Image, Heading } from "@chakra-ui/react";
+import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import { glass } from "utils/styles";
