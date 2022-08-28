@@ -44,6 +44,7 @@ function App() {
   };
 
   const handleMainBgImageLoaded = () => {
+    console.log("loaded");
     setMainImgLoaded(true);
   };
 
