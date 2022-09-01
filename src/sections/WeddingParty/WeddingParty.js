@@ -223,29 +223,14 @@ export const Partier = ({ name, role, imgURL, scrollPosition }) => {
           overflow="hidden"
         >
           <LazyLoadImage
-            // className="partier-img"
             height="100%"
             width="100%"
-            // height={boxSize}
-            // width={boxSize}
             alt="image of member of wedding party"
             src={imgURL}
             effect="opacity"
-            // threshold={0}
             scrollPosition={scrollPosition}
-            // afterLoad={() => console.log(`${imgURL} LOADED!`)}
           />
         </Box>
-
-        {/* <Box
-        borderRadius="full"
-        boxSize={{ base: "250px", sm: "180px" }}
-        mb="8px"
-        bgImage={imgURL}
-        bgPosition={position}
-        bgRepeat="no-repeat"
-        bgSize={size}
-      /> */}
 
         <Heading
           fontWeight="700"
@@ -263,44 +248,3 @@ export const Partier = ({ name, role, imgURL, scrollPosition }) => {
     </Box>
   );
 };
-
-// export const Partier = ({
-//   name,
-//   role,
-//   imgURL,
-//   position = "center 50%",
-//   size = "cover",
-// }) => {
-//   return (
-//     <Flex
-//       className="partier"
-//       w={{ base: "280px", sm: "232px" }}
-//       direction="column"
-//       alignItems="center"
-//       px={{ base: 0, lg: "16px" }}
-//     >
-//       <Box
-//         borderRadius="full"
-//         boxSize={{ base: "250px", sm: "180px" }}
-//         mb="8px"
-//         bgImage={imgURL}
-//         bgPosition={position}
-//         bgRepeat="no-repeat"
-//         bgSize={size}
-//       />
-
-//       <Heading
-//         fontWeight="700"
-//         fontSize="28px"
-//         textAlign="center"
-//         lineHeight="28px"
-//         mb="4px"
-//       >
-//         {name}
-//       </Heading>
-//       <Text letterSpacing="1.25px" fontSize="sm">
-//         {role}
-//       </Text>
-//     </Flex>
-//   );
-// };

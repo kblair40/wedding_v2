@@ -2,8 +2,8 @@ import React from "react";
 import { Box, Flex, Heading, Text, Button, Link } from "@chakra-ui/react";
 
 import OverlayCard from "components/containers/OverlayCard";
-import alfond from "assets/images/alfond1.jpeg";
-import hgi_lobby from "assets/images/hgi_lobby.jpeg";
+import alfond from "assets/images/alfond1.avif";
+import hgi_lobby from "assets/images/hgi_lobby.avif";
 
 const Accommodations = () => {
   return (
