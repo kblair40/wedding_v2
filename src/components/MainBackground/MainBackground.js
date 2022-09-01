@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { BsChevronDown } from "react-icons/bs";
 import { gsap } from "gsap";
 
-import mainbg from "assets/images/mainbg.webp";
+import mainbg from "assets/images/mainbg.jpg";
 import OurNames from "components/MainBackground/OurNames";
 
 const MainBackground = ({
