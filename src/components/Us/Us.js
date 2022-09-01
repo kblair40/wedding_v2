@@ -57,6 +57,7 @@ const Us = () => {
   let shift = useBreakpointValue({ base: 0, sm: "60px" });
   let kevImg = useBreakpointValue({ base: kev, sm: kevface });
   let shanImg = useBreakpointValue({ base: shan, sm: shanface });
+  let imgSize = useBreakpointValue({ base: "250px", sm: "180px" });
 
   return (
     <Flex
@@ -79,7 +80,17 @@ const Us = () => {
       <Box className="heart" position="relative" bottom="16px" opacity={0}>
         <Icon as={FaRegHeart} boxSize="40px" fill="error.400" />
       </Box>
-      <Box className="us groom" position="relative" bottom={shift}>
+      <Box
+        className="us groom"
+        position="relative"
+        bottom={shift}
+        sx={{
+          img: {
+            height: imgSize,
+            width: imgSize,
+          },
+        }}
+      >
         <Partier name="kevin blair" role="GROOM" imgURL={kevImg} />
       </Box>
     </Flex>

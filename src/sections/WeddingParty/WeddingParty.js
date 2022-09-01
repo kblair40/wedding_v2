@@ -196,19 +196,11 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
   );
 };
 
-// export default WeddingParty;
 export default trackWindowScroll(WeddingParty);
 
 export const Partier = ({ name, role, imgURL, scrollPosition }) => {
   return (
-    <Box
-      sx={{
-        ".partier-img": {
-          borderRadius: "full",
-          mb: "8px",
-        },
-      }}
-    >
+    <Box>
       <Flex
         className="partier"
         w={{ base: "280px", sm: "232px" }}
