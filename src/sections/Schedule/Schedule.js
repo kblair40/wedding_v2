@@ -11,7 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import casa1 from "assets/images/casa/casa_1.png";
+import casa1 from "assets/images/casa/casa_1.webp";
 import { glass } from "utils/styles";
 import ScheduleItems from "components/ScheduleItems";
 import SectionLabel from "components/SectionLabel";

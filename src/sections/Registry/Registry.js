@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
-import casa7 from "assets/images/casa/casa7.png";
+import casa7 from "assets/images/casa/casa7.webp";
 
 const Registry = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
