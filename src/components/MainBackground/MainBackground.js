@@ -55,6 +55,19 @@ const MainBackground = ({
         h="100vh"
         // border="2px solid red"
       >
+        {/* <LazyLoadImage
+          src={mainbg}
+          width="100%"
+          height="100%"
+          effect="opacity"
+          wrapperProps={{
+            position: "absolute",
+            width: "100%",
+            objectFit: "cover",
+            ref: imageRef,
+          }}
+        /> */}
+
         <Image
           src={mainbg}
           opacity={0}
