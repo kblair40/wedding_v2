@@ -23,15 +23,15 @@ import shan_nine from "assets/galleryImages/shannon/shan_nine.webp";
 import shan_eleven from "assets/galleryImages/shannon/shan_eleven.webp";
 
 import newone from "assets/galleryImages/newone.webp";
-import newtwo from "assets/galleryImages/newtwo.webp";
-import newthree from "assets/galleryImages/newthree.webp";
-import newfive from "assets/galleryImages/newfive.webp";
-import newsix from "assets/galleryImages/newsix.webp";
-import newseven from "assets/galleryImages/newseven.webp";
-import neweight from "assets/galleryImages/neweight.webp";
+import newtwo from "assets/galleryImages/newtwo.jpg";
+import newthree from "assets/galleryImages/newthree.jpg";
+import newfive from "assets/galleryImages/newfive.jpg";
+import newsix from "assets/galleryImages/newsix.jpg";
+import newseven from "assets/galleryImages/newseven.jpg";
+import neweight from "assets/galleryImages/neweight.jpg";
 import newnine from "assets/galleryImages/newnine.webp";
 import newten from "assets/galleryImages/newten.webp";
-import neweleven from "assets/galleryImages/neweleven.webp";
+import neweleven from "assets/galleryImages/neweleven.jpg";
 
 // new pics from Caitlin
 import caitone from "assets/galleryImages/caitlin/caitone.webp";

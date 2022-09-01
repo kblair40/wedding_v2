@@ -9,7 +9,7 @@ import {
 import SectionLabel from "components/SectionLabel";
 import Us from "components/Us";
 
-import ringBearers from "assets/images/wedding_party/augustfrederick.webp";
+import ringBearers from "assets/images/wedding_party/augustfrederick.jpg";
 import sarlota from "assets/images/wedding_party/sarlota.webp";
 import andras from "assets/images/wedding_party/andras.webp";
 import cameron from "assets/images/wedding_party/cameron.webp";
