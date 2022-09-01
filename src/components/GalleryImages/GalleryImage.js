@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box } from "@chakra-ui/react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const GalleryImage = ({ src, onClick, scrollPosition }) => {
-  const [showImage, setShowImage] = useState(false);
+  // const [showImage, setShowImage] = useState(false);
   return (
     <Box onClick={onClick} cursor="pointer" position="relative">
       <LazyLoadImage
         src={src}
-        visibleByDefault={showImage}
+        // visibleByDefault={showImage}
         threshold={3000}
         effect="blur"
         scrollPosition={scrollPosition}
-        // afterLoad={() => console.log("\n", `${src} LOADED!`)}
         // afterLoad={() => {
         //   console.log("\n", `${src} LOADED!`);
         //   setShowImage(true);
