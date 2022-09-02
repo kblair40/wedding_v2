@@ -14,28 +14,28 @@ import GalleryImages from "components/GalleryImages";
 import GalleryImageCarousel from "components/GalleryImageCarousel";
 import SectionLabel from "components/SectionLabel";
 
-import one from "assets/galleryImages/sydney/one.webp"; // good
-import seven from "assets/galleryImages/sydney/seven.webp"; // good
+import one from "assets/images/gallery/sydney/one.webp"; // good
+import seven from "assets/images/gallery/sydney/seven.webp"; // good
 
-import shan_seven from "assets/galleryImages/shannon/shan_seven.webp"; // good
-import shan_eight from "assets/galleryImages/shannon/shan_eight.webp";
-import shan_nine from "assets/galleryImages/shannon/shan_nine.webp";
-import shan_eleven from "assets/galleryImages/shannon/shan_eleven.webp"; // good
+import shan_seven from "assets/images/gallery/shannon/shan_seven.webp"; // good
+import shan_eight from "assets/images/gallery/shannon/shan_eight.webp";
+import shan_nine from "assets/images/gallery/shannon/shan_nine.webp";
+import shan_eleven from "assets/images/gallery/shannon/shan_eleven.webp"; // good
 
-import newone from "assets/galleryImages/newone.webp"; // good
-import newtwo from "assets/galleryImages/newtwo.webp"; // good
-import newthree from "assets/galleryImages/newthree.webp"; // good
-import newfive from "assets/galleryImages/newfive.webp"; // good
-import newsix from "assets/galleryImages/newsix.webp"; // good
-import newseven from "assets/galleryImages/newseven.webp"; // good
-import neweight from "assets/galleryImages/neweight.webp"; // good
-import newnine from "assets/galleryImages/newnine.webp"; // good
-import newten from "assets/galleryImages/newten.webp"; // good
-import neweleven from "assets/galleryImages/neweleven.webp";
+import newone from "assets/images/gallery/newone.webp"; // good
+import newtwo from "assets/images/gallery/newtwo.webp"; // good
+import newthree from "assets/images/gallery/newthree.webp"; // good
+import newfive from "assets/images/gallery/newfive.webp"; // good
+import newsix from "assets/images/gallery/newsix.webp"; // good
+import newseven from "assets/images/gallery/newseven.webp"; // good
+import neweight from "assets/images/gallery/neweight.webp"; // good
+import newnine from "assets/images/gallery/newnine.webp"; // good
+import newten from "assets/images/gallery/newten.webp"; // good
+import neweleven from "assets/images/gallery/neweleven.webp";
 
 // new pics from Caitlin
-import caitone from "assets/galleryImages/caitlin/caitone.webp";
-import caittwo from "assets/galleryImages/caitlin/caittwo.webp";
+import caitone from "assets/images/gallery/caitlin/caitone.webp";
+import caittwo from "assets/images/gallery/caitlin/caittwo.webp";
 
 const Gallery = ({ setInView }) => {
   const [showCarousel, setShowCarousel] = useState(false);

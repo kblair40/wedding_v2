@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Text, Button, Link } from "@chakra-ui/react";
 
 import OverlayCard from "components/containers/OverlayCard";
 import alfond from "assets/images/alfond1.webp";
-import hgi_lobby from "assets/images/hgi_lobby.jpg";
+import hgi_lobby from "assets/images/hgi_lobby.webp";
 
 const Accommodations = () => {
   return (

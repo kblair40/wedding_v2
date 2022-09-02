@@ -21,7 +21,7 @@ import RSVPHelpModal from "components/RSVPSteps/RSVPHelpModal";
 import RSVPFormModal from "components/RSVPSteps/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
-import casa_new from "assets/casa_new.webp";
+import casa_new from "assets/images/casa/casa_new.webp";
 import CustomToast from "components/CustomToast";
 import "./index.css";
 

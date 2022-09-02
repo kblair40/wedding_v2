@@ -9,18 +9,18 @@ import {
 import SectionLabel from "components/SectionLabel";
 import Us from "components/Us";
 
-import ringBearers from "assets/images/wedding_party/augustfrederick.jpg"; // good
-import sarlota from "assets/images/wedding_party/sarlota.jpg"; // good
+import ringBearers from "assets/images/wedding_party/augustfrederick.webp"; // good
+import sarlota from "assets/images/wedding_party/sarlota.webp"; // good
 import andras from "assets/images/wedding_party/andras.webp";
-import cameron from "assets/images/wedding_party/cameron.jpg"; // good
+import cameron from "assets/images/wedding_party/cameron.webp"; // good
 import ted2 from "assets/images/wedding_party/ted2.webp";
 import trevor from "assets/images/wedding_party/trevor.webp";
 import caleb3 from "assets/images/wedding_party/caleb3.webp";
 import andrew2 from "assets/images/wedding_party/andrew2.webp";
-import karissa from "assets/images/wedding_party/karissa.jpg"; // good
+import karissa from "assets/images/wedding_party/karissa.webp"; // good
 import cassidy from "assets/images/wedding_party/cassidy.webp";
-import erin2 from "assets/images/wedding_party/erin2.jpg"; // good
-import kelly2 from "assets/images/wedding_party/kelly2.jpg"; // good
+import erin2 from "assets/images/wedding_party/erin2.webp"; // good
+import kelly2 from "assets/images/wedding_party/kelly2.webp"; // good
 
 const WeddingParty = ({ setInView, scrollPosition }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });

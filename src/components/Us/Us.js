@@ -4,10 +4,10 @@ import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
 import { FaRegHeart } from "react-icons/fa";
 
-import shanface from "assets/us/shanface.webp";
-import kevface from "assets/us/kevface.webp";
-import kev from "assets/us/kev.webp";
-import shan from "assets/us/shan.webp";
+import shanface from "assets/images/us/shanface.webp";
+import kevface from "assets/images/us/kevface.webp";
+import kev from "assets/images/us/kev.webp";
+import shan from "assets/images/us/shan.webp";
 import { Partier } from "sections/WeddingParty/WeddingParty";
 
 const Us = () => {

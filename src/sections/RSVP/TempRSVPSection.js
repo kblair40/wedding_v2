@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
-import casa_new from "assets/casa_new.webp";
+import casa_new from "assets/images/casa/casa_new.webp";
 import "./index.css";
 
 const TempRSVPSection = ({ setInView }) => {

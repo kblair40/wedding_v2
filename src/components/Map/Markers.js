@@ -4,14 +4,14 @@ import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { FaDirections, FaExternalLinkAlt } from "react-icons/fa";
 
-import venue_marker from "assets/icons/venue_marker.png";
+import venue_marker from "assets/icons/venue_marker.webp";
 import new_mickey from "assets/icons/mickey_new.svg";
-import hotel from "assets/images/markers/hotel.png";
-import restaurant from "assets/images/markers/restaurant.png";
-import drink from "assets/images/markers/drink.png";
-import airport from "assets/images/markers/airport.png";
-import sweets from "assets/images/markers/sweets.png";
-import coffee from "assets/images/markers/coffee.png";
+import hotel from "assets/images/markers/hotel.webp";
+import restaurant from "assets/images/markers/restaurant.webp";
+import drink from "assets/images/markers/drink.webp";
+import airport from "assets/images/markers/airport.webp";
+import sweets from "assets/images/markers/sweets.webp";
+import coffee from "assets/images/markers/coffee.webp";
 import { ExternalLink } from "components/Links";
 
 const iconButtonStyle = {

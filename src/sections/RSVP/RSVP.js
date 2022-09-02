@@ -23,7 +23,7 @@ import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 import { CustomToast } from "components/RSVPSteps_old/RSVPHelpModal";
 
-import casa_new from "assets/casa_new.webp";
+import casa_new from "assets/images/casa/casa_new.webp";
 
 import "./index.css";
 
