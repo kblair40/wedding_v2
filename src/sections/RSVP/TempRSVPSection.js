@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { Box, Flex, Text, Image } from "@chakra-ui/react";
+import { Box, Flex, Text, Image, useBreakpointValue } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
 import casa_new from "assets/images/casa/casa_new.webp";
+import casa_new_sm from "assets/images/casa/casa_new_sm.webp";
 import "./index.css";
 
 const TempRSVPSection = ({ setInView }) => {
@@ -15,6 +16,8 @@ const TempRSVPSection = ({ setInView }) => {
       setInView("rsvp");
     }
   }, [inView]);
+
+  const bgImage = useBreakpointValue({ base: casa_new_sm, xs: casa_new });
 
   return (
     <Flex
@@ -27,7 +30,7 @@ const TempRSVPSection = ({ setInView }) => {
       minW="350px"
     >
       <Image
-        src={casa_new}
+        src={bgImage}
         w="100%"
         minW="900px"
         zIndex="-1"
@@ -73,3 +76,4 @@ const TempRSVPSection = ({ setInView }) => {
 };
 
 export default TempRSVPSection;
+// 419
