@@ -74,7 +74,47 @@ const Main = ({
           <WhenAndWhere />
 
           <Box {...boxStyle} ref={rsvpRef}>
-            {/* <RSVP setInView={() => handleChangeSectionInView("rsvp")} /> */}
+            <TempRSVPSection
+              setInView={() => handleChangeSectionInView("rsvp")}
+            />
+          </Box>
+        </React.Fragment>
+      )}
+
+      <Box {...boxStyle} ref={travelRef}>
+        <Travel setInView={() => handleChangeSectionInView("travel")} />
+      </Box>
+
+      {imgLoaded && (
+        <React.Fragment>
+          <Box {...boxStyle} ref={activitiesRef}>
+            <Activities
+              setInView={() => handleChangeSectionInView("activities")}
+            />
+          </Box>
+
+          <Box {...boxStyle} ref={registryRef}>
+            <Registry setInView={() => handleChangeSectionInView("registry")} />
+          </Box>
+
+          <Box {...boxStyle} ref={weddingPartyRef}>
+            <WeddingParty
+              setInView={() => handleChangeSectionInView("weddingParty")}
+            />
+          </Box>
+
+          <Box {...boxStyle} ref={galleryRef}>
+            <Gallery setInView={() => handleChangeSectionInView("gallery")} />
+          </Box>
+        </React.Fragment>
+      )}
+
+      {/* OLD VERSION */}
+      {/* {imgLoaded && (
+        <React.Fragment>
+          <WhenAndWhere />
+
+          <Box {...boxStyle} ref={rsvpRef}>
             <TempRSVPSection
               setInView={() => handleChangeSectionInView("rsvp")}
             />
@@ -104,7 +144,7 @@ const Main = ({
             <Gallery setInView={() => handleChangeSectionInView("gallery")} />
           </Box>
         </React.Fragment>
-      )}
+      )} */}
     </Box>
   );
 };

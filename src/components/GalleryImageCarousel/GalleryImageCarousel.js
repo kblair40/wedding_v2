@@ -90,7 +90,6 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
             key={index}
           >
             <Image
-              key={index}
               mx="auto"
               src={url}
               maxH="80vh"

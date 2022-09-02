@@ -68,21 +68,7 @@ const MainBackground = ({
         justifyContent="center"
         zIndex={10}
         h="100vh"
-        // border="2px solid red"
       >
-        {/* <LazyLoadImage
-          src={mainbg}
-          width="100%"
-          height="100%"
-          effect="opacity"
-          wrapperProps={{
-            position: "absolute",
-            width: "100%",
-            objectFit: "cover",
-            ref: imageRef,
-          }}
-        /> */}
-
         <Image
           opacity={0}
           boxSize="100%"
@@ -91,14 +77,6 @@ const MainBackground = ({
           loading="eager"
           ref={imageRef}
           onLoad={fadeInImage}
-          // srcSet={`${mainbg_sm} 425w, ${mainbg} 1920w`}
-          // sizes="(max-width: 425px) 425px,
-          //   1920px"
-          // srcSet={`${mainbg_sm} 425w, ${mainbg_md} 1200w, ${mainbg} 1920w`}
-          // sizes="(min-width: 900px) 1200px,
-          // (max-width: 425px) 425px
-          //   1920px"
-          // src={mainbg}
           src={img}
         />
 
