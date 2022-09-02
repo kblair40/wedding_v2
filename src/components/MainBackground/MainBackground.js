@@ -1,10 +1,19 @@
 import React, { useEffect, useRef } from "react";
-import { Box, Icon, Flex, Text, Image } from "@chakra-ui/react";
+import {
+  Box,
+  Icon,
+  Flex,
+  Text,
+  Image,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { BsChevronDown } from "react-icons/bs";
 import { gsap } from "gsap";
 
 import mainbg from "assets/images/mainbg.webp";
+import mainbg_sm from "assets/images/mainbg_sm.webp";
+import mainbg_md from "assets/images/mainbg_md.webp";
 import OurNames from "components/MainBackground/OurNames";
 
 const MainBackground = ({
@@ -15,6 +24,12 @@ const MainBackground = ({
 }) => {
   const options = { threshold: 1 };
   const [inViewRef, inView] = useInView(options);
+
+  const img = useBreakpointValue({
+    base: mainbg_sm,
+    xs: mainbg_md,
+    lg: mainbg,
+  });
 
   const [atAllInViewRef, atAllInView] = useInView({ threshold: 0.03 });
 
@@ -69,7 +84,6 @@ const MainBackground = ({
         /> */}
 
         <Image
-          src={mainbg}
           opacity={0}
           boxSize="100%"
           position="absolute"
@@ -77,6 +91,15 @@ const MainBackground = ({
           loading="eager"
           ref={imageRef}
           onLoad={fadeInImage}
+          // srcSet={`${mainbg_sm} 425w, ${mainbg} 1920w`}
+          // sizes="(max-width: 425px) 425px,
+          //   1920px"
+          // srcSet={`${mainbg_sm} 425w, ${mainbg_md} 1200w, ${mainbg} 1920w`}
+          // sizes="(min-width: 900px) 1200px,
+          // (max-width: 425px) 425px
+          //   1920px"
+          // src={mainbg}
+          src={img}
         />
 
         <Box
