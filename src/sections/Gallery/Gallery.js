@@ -14,24 +14,24 @@ import GalleryImages from "components/GalleryImages";
 import GalleryImageCarousel from "components/GalleryImageCarousel";
 import SectionLabel from "components/SectionLabel";
 
-import one from "assets/galleryImages/sydney/one.jpg"; // good
-import seven from "assets/galleryImages/sydney/seven.jpg"; // good
+import one from "assets/galleryImages/sydney/one.webp"; // good
+import seven from "assets/galleryImages/sydney/seven.webp"; // good
 
-import shan_seven from "assets/galleryImages/shannon/shan_seven.jpg"; // good
+import shan_seven from "assets/galleryImages/shannon/shan_seven.webp"; // good
 import shan_eight from "assets/galleryImages/shannon/shan_eight.webp";
 import shan_nine from "assets/galleryImages/shannon/shan_nine.webp";
-import shan_eleven from "assets/galleryImages/shannon/shan_eleven.jpg"; // good
+import shan_eleven from "assets/galleryImages/shannon/shan_eleven.webp"; // good
 
-import newone from "assets/galleryImages/newone.jpg"; // good
-import newtwo from "assets/galleryImages/newtwo.jpg"; // good
-import newthree from "assets/galleryImages/newthree.jpg"; // good
-import newfive from "assets/galleryImages/newfive.jpg"; // good
-import newsix from "assets/galleryImages/newsix.jpg"; // good
-import newseven from "assets/galleryImages/newseven.jpg"; // good
-import neweight from "assets/galleryImages/neweight.jpg"; // good
-import newnine from "assets/galleryImages/newnine.jpg"; // good
-import newten from "assets/galleryImages/newten.jpg"; // good
-import neweleven from "assets/galleryImages/neweleven.jpg";
+import newone from "assets/galleryImages/newone.webp"; // good
+import newtwo from "assets/galleryImages/newtwo.webp"; // good
+import newthree from "assets/galleryImages/newthree.webp"; // good
+import newfive from "assets/galleryImages/newfive.webp"; // good
+import newsix from "assets/galleryImages/newsix.webp"; // good
+import newseven from "assets/galleryImages/newseven.webp"; // good
+import neweight from "assets/galleryImages/neweight.webp"; // good
+import newnine from "assets/galleryImages/newnine.webp"; // good
+import newten from "assets/galleryImages/newten.webp"; // good
+import neweleven from "assets/galleryImages/neweleven.webp";
 
 // new pics from Caitlin
 import caitone from "assets/galleryImages/caitlin/caitone.webp";
