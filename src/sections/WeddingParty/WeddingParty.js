@@ -221,8 +221,8 @@ export const Partier = ({ name, role, imgURL, scrollPosition }) => {
             src={imgURL}
             effect="opacity"
             scrollPosition={scrollPosition}
-            // threshold={3000}
-            visibleByDefault={true}
+            threshold={3000}
+            // visibleByDefault={true}
             // afterLoad={() => console.log("GALLERY IMAGE LOADED!")}
           />
         </Box>

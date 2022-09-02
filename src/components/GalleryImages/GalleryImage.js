@@ -8,8 +8,8 @@ const GalleryImage = ({ src, onClick, scrollPosition }) => {
     <Box onClick={onClick} cursor="pointer" position="relative">
       <LazyLoadImage
         src={src}
-        visibleByDefault={true}
-        // threshold={3000}
+        // visibleByDefault={true}
+        threshold={3000}
         effect="blur"
         scrollPosition={scrollPosition}
         // afterLoad={() => {
