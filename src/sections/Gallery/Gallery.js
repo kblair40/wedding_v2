@@ -14,23 +14,23 @@ import GalleryImages from "components/GalleryImages";
 import GalleryImageCarousel from "components/GalleryImageCarousel";
 import SectionLabel from "components/SectionLabel";
 
-import one from "assets/galleryImages/sydney/one.webp";
-import seven from "assets/galleryImages/sydney/seven.webp";
+import one from "assets/galleryImages/sydney/one.jpg"; // good
+import seven from "assets/galleryImages/sydney/seven.jpg"; // good
 
-import shan_seven from "assets/galleryImages/shannon/shan_seven.webp";
+import shan_seven from "assets/galleryImages/shannon/shan_seven.jpg"; // good
 import shan_eight from "assets/galleryImages/shannon/shan_eight.webp";
 import shan_nine from "assets/galleryImages/shannon/shan_nine.webp";
-import shan_eleven from "assets/galleryImages/shannon/shan_eleven.webp";
+import shan_eleven from "assets/galleryImages/shannon/shan_eleven.jpg"; // good
 
-import newone from "assets/galleryImages/newone.webp";
-import newtwo from "assets/galleryImages/newtwo.jpg";
-import newthree from "assets/galleryImages/newthree.jpg";
-import newfive from "assets/galleryImages/newfive.jpg";
-import newsix from "assets/galleryImages/newsix.jpg";
-import newseven from "assets/galleryImages/newseven.jpg";
-import neweight from "assets/galleryImages/neweight.jpg";
-import newnine from "assets/galleryImages/newnine.webp";
-import newten from "assets/galleryImages/newten.webp";
+import newone from "assets/galleryImages/newone.jpg"; // good
+import newtwo from "assets/galleryImages/newtwo.jpg"; // good
+import newthree from "assets/galleryImages/newthree.jpg"; // good
+import newfive from "assets/galleryImages/newfive.jpg"; // good
+import newsix from "assets/galleryImages/newsix.jpg"; // good
+import newseven from "assets/galleryImages/newseven.jpg"; // good
+import neweight from "assets/galleryImages/neweight.jpg"; // good
+import newnine from "assets/galleryImages/newnine.jpg"; // good
+import newten from "assets/galleryImages/newten.jpg"; // good
 import neweleven from "assets/galleryImages/neweleven.jpg";
 
 // new pics from Caitlin
