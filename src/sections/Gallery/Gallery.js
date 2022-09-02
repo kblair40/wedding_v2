@@ -15,11 +15,13 @@ import GalleryImageCarousel from "components/GalleryImageCarousel";
 import SectionLabel from "components/SectionLabel";
 
 import one from "assets/images/gallery/sydney/one.webp";
+import one_sm from "assets/images/gallery/sydney/one_sm.webp";
 import seven from "assets/images/gallery/sydney/seven.webp";
 import seven_sm from "assets/images/gallery/sydney/seven_sm.webp";
 
 import shan_seven from "assets/images/gallery/shannon/shan_seven.webp";
 import shan_eight from "assets/images/gallery/shannon/shan_eight.webp";
+import shan_eight_sm from "assets/images/gallery/shannon/shan_eight_sm.webp";
 import shan_nine from "assets/images/gallery/shannon/shan_nine.webp";
 import shan_nine_sm from "assets/images/gallery/shannon/shan_nine_sm.webp";
 import shan_eleven from "assets/images/gallery/shannon/shan_eleven.webp";
@@ -33,7 +35,9 @@ import newthree_sm from "assets/images/gallery/newthree_sm.webp";
 import newfive from "assets/images/gallery/newfive.webp";
 import newfive_sm from "assets/images/gallery/newfive_sm.webp";
 import newsix from "assets/images/gallery/newsix.webp";
+import newsix_sm from "assets/images/gallery/newsix_sm.webp";
 import newseven from "assets/images/gallery/newseven.webp";
+import newseven_sm from "assets/images/gallery/newseven_sm.webp";
 import neweight from "assets/images/gallery/neweight.webp";
 import neweight_sm from "assets/images/gallery/neweight_sm.webp";
 import newnine from "assets/images/gallery/newnine.webp";
@@ -45,6 +49,7 @@ import neweleven_sm from "assets/images/gallery/neweleven_sm.webp";
 // new pics from Caitlin
 import caitone from "assets/images/gallery/caitlin/caitone.webp";
 import caittwo from "assets/images/gallery/caitlin/caittwo.webp";
+import caittwo_sm from "assets/images/gallery/caitlin/caittwo_sm.webp";
 
 const Gallery = ({ setInView }) => {
   const [showCarousel, setShowCarousel] = useState(false);
@@ -60,6 +65,12 @@ const Gallery = ({ setInView }) => {
     neweight: neweight_sm, // good
     newten: newten_sm,
     neweleven: neweleven_sm,
+    // NEW BELOW
+    newseven: newseven_sm,
+    newsix: newsix_sm,
+    shan_eight: shan_eight_sm,
+    caittwo: caittwo_sm,
+    one: one_sm,
   };
 
   const largeImages = {
@@ -72,6 +83,12 @@ const Gallery = ({ setInView }) => {
     neweight,
     newten,
     neweleven,
+    // NEW BELOW
+    newseven,
+    newsix,
+    shan_eight,
+    caittwo,
+    one,
   };
 
   const responsiveImages = useBreakpointValue({
@@ -91,7 +108,8 @@ const Gallery = ({ setInView }) => {
 
   // 2-column & 3-column layout
   const images = [
-    one,
+    // one,
+    responsiveImages.one,
     // neweight,
     responsiveImages.neweight,
     caitone,
@@ -99,11 +117,14 @@ const Gallery = ({ setInView }) => {
     shan_seven,
     // newtwo,
     responsiveImages.newtwo,
-    newseven,
+    // newseven,
+    responsiveImages.newseven,
     // newthree,
     responsiveImages.newthree,
-    caittwo,
-    shan_eight,
+    // caittwo,
+    responsiveImages.caittwo,
+    // shan_eight,
+    responsiveImages.shan_eight,
     // neweleven,
     responsiveImages.neweleven,
     // shan_eleven,
@@ -116,7 +137,8 @@ const Gallery = ({ setInView }) => {
     responsiveImages.newfive,
     // shan_nine,
     responsiveImages.shan_nine,
-    newsix,
+    // newsix,
+    responsiveImages.newsix,
     newnine,
   ];
 
@@ -124,7 +146,8 @@ const Gallery = ({ setInView }) => {
   const images4 = [
     // neweight,
     responsiveImages.neweight,
-    one,
+    // one,
+    responsiveImages.one,
     caitone,
     newone,
     shan_seven,
@@ -132,9 +155,12 @@ const Gallery = ({ setInView }) => {
     responsiveImages.newtwo,
     // newthree,
     responsiveImages.newthree,
-    newseven,
-    shan_eight,
-    caittwo,
+    // newseven,
+    responsiveImages.newseven,
+    // shan_eight,
+    responsiveImages.shan_eight,
+    // caittwo,
+    responsiveImages.caittwo,
     // neweleven,
     responsiveImages.neweleven,
     // shan_eleven,
@@ -146,7 +172,8 @@ const Gallery = ({ setInView }) => {
     // newten,
     responsiveImages.newten,
     newnine,
-    newsix,
+    // newsix,
+    responsiveImages.newsix,
     // shan_nine,
     responsiveImages.shan_nine,
   ];
