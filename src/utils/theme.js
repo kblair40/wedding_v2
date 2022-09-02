@@ -224,6 +224,14 @@ const theme = extendTheme({
     heading: "Cormorant Garamond",
     body: "Cabin",
   },
+  breakpoints: {
+    xs: "26em", // 416px
+    sm: "30em",
+    md: "48em",
+    lg: "62em",
+    xl: "80em",
+    "2xl": "96em",
+  },
 });
 
 export default theme;
