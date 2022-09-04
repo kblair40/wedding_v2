@@ -5,14 +5,20 @@ import loadable from "@loadable/component";
 // import RSVP from "sections/RSVP";
 import MainBackground from "components/MainBackground";
 // import Travel from "sections/Travel";
-import Activities from "sections/Activities";
-import TempRSVPSection from "sections/RSVP/TempRSVPSection";
-import WeddingParty from "sections/WeddingParty";
-import Gallery from "sections/Gallery";
-import WhenAndWhere from "sections/WhenAndWhere";
-import Registry from "sections/Registry";
+// import Activities from "sections/Activities";
+// import TempRSVPSection from "sections/RSVP/TempRSVPSection";
+// import WeddingParty from "sections/WeddingParty";
+// import Gallery from "sections/Gallery";
+// import WhenAndWhere from "sections/WhenAndWhere";
+// import Registry from "sections/Registry";
 
 const Travel = loadable(() => import("sections/Travel"));
+const Activities = loadable(() => import("sections/Activities"));
+const TempRSVPSection = loadable(() => import("sections/RSVP/TempRSVPSection"));
+const WeddingParty = loadable(() => import("sections/WeddingParty"));
+const Gallery = loadable(() => import("sections/Gallery"));
+const WhenAndWhere = loadable(() => import("sections/WhenAndWhere"));
+const Registry = loadable(() => import("sections/Registry"));
 
 const Main = ({
   section,
