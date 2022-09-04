@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { Text, Flex, IconButton, Tooltip } from "@chakra-ui/react";
 import { Marker, Popup } from "react-leaflet";
-import L from "leaflet";
+// import L from "leaflet";
+import L from "leaflet/dist/leaflet";
 import { FaDirections, FaExternalLinkAlt } from "react-icons/fa";
 
 import venue_marker from "assets/icons/venue_marker.webp";

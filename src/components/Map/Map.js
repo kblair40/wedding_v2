@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MapContainer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import { Box } from "@chakra-ui/react";
 import loadable from "@loadable/component";
 
