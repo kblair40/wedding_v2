@@ -1,13 +1,12 @@
-import React, { useState, Suspense } from "react";
-// import loadable from "@loadable/component";
+import React, { useState } from "react";
 import { MapContainer } from "react-leaflet";
-import { Box, Center, Spinner } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import loadable from "@loadable/component";
 
-import MapContents from "./MapContents";
-import CustomLayerControl from "./CustomLayerControl";
-
-// const { MapContainer } = loadable(() => import("react-leaflet"));
-// const { MapContainer } = React.lazy(() => import("react-leaflet"));
+// import MapContents from "./MapContents";
+// import CustomLayerControl from "./CustomLayerControl";
+const MapContents = loadable(() => import("./MapContents"));
+const CustomLayerControl = loadable(() => import("./CustomLayerControl"));
 
 const Map = () => {
   const [ready, setReady] = useState(false);
@@ -27,13 +26,6 @@ const Map = () => {
 
   return (
     <Box>
-      {/* <Suspense
-        fallback={
-          <Center h="400px">
-            <Spinner />
-          </Center>
-        }
-      > */}
       <MapContainer
         maxBounds={[
           [28.15, -81.85],
@@ -52,7 +44,6 @@ const Map = () => {
         handleAddActiveLayers={handleAddActiveLayers}
         handleRemoveActiveLayers={handleRemoveActiveLayers}
       />
-      {/* </Suspense> */}
     </Box>
   );
 };

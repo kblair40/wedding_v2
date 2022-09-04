@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
+import loadable from "@loadable/component";
+
 import "animate.css";
 
 // import Admin from "pages/Admin";
@@ -8,7 +10,8 @@ import Main from "pages/Main";
 // import RSVPTest from "pages/RSVP";
 import Nav from "components/Nav";
 import ScrollToTop from "components/containers/ScrollToTop";
-import CountdownClock from "components/CountdownClock";
+// import CountdownClock from "components/CountdownClock";
+const CountdownClock = loadable(() => import("components/CountdownClock"));
 
 function App() {
   // will actually change section
