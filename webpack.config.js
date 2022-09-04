@@ -6,8 +6,8 @@ module.exports = {
   plugins: [
     new BundleAnalyzerPlugin(),
     new webpack.NormalModuleReplacementPlugin(
-      /leaflet\/dist\/leaflet-src\.js$/,
-      "leaflet/dist/leaflet.js"
+      /leaflet\/dist\/leaflet-src\.js/,
+      "./leaflet/dist/leaflet.js"
     ),
   ],
 };
