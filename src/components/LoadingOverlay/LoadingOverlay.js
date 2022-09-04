@@ -1,23 +1,26 @@
 import React, { useRef, useEffect } from "react";
-import { Center, Spinner } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 import { gsap } from "gsap";
 
+import "./LoadingOverlay.css";
+import { LogoLoadingIcon } from "components/Icons";
+
 const LoadingOverlay = ({ hide }) => {
-  const ref = useRef();
+  const containerRef = useRef();
+  const spinnerRef = useRef();
 
   const fadeOut = () => {
-    gsap.to(ref.current, { duration: ".5", opacity: 0 });
+    window.scrollTo({ x: 0, y: 0, behavior: "smooth" });
+    gsap.to(containerRef.current, { ease: "none", duration: ".5", opacity: 0 });
   };
 
   useEffect(() => {
-    if (hide === true) {
-      fadeOut();
-    }
+    if (hide) fadeOut();
   }, [hide]);
 
   return (
     <Center
-      ref={ref}
+      ref={containerRef}
       h="100vh"
       w="100vw"
       position="absolute"
@@ -28,7 +31,9 @@ const LoadingOverlay = ({ hide }) => {
       zIndex={11}
       bg="white"
     >
-      <Spinner color="gray.600" />
+      <div id="loading">
+        <LogoLoadingIcon ref={spinnerRef} />
+      </div>
     </Center>
   );
 };

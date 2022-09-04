@@ -2,15 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Box, useBreakpointValue } from "@chakra-ui/react";
 import loadable from "@loadable/component";
 
-// import RSVP from "sections/RSVP";
 import MainBackground from "components/MainBackground";
-// import Travel from "sections/Travel";
-// import Activities from "sections/Activities";
-// import TempRSVPSection from "sections/RSVP/TempRSVPSection";
-// import WeddingParty from "sections/WeddingParty";
-// import Gallery from "sections/Gallery";
-// import WhenAndWhere from "sections/WhenAndWhere";
-// import Registry from "sections/Registry";
+import LoadingOverlay from "components/LoadingOverlay";
 
 const Travel = loadable(() => import("sections/Travel"));
 const Activities = loadable(() => import("sections/Activities"));
@@ -76,9 +69,10 @@ const Main = ({
           handleEnterTopSection={handleEnterTopSection}
           onMainBgImageLoaded={handleImageLoaded}
         />
+
+        <LoadingOverlay hide={imgLoaded} />
       </Box>
 
-      {/* {imgLoaded && ( */}
       <React.Fragment>
         <WhenAndWhere />
 
@@ -112,7 +106,6 @@ const Main = ({
           <Gallery setInView={() => handleChangeSectionInView("gallery")} />
         </Box>
       </React.Fragment>
-      {/* )} */}
     </Box>
   );
 };

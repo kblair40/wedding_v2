@@ -5,9 +5,9 @@ import {
   LazyLoadImage,
   trackWindowScroll,
 } from "react-lazy-load-image-component";
+import loadable from "@loadable/component";
 
 import SectionLabel from "components/SectionLabel";
-import Us from "components/Us";
 
 import ringBearers from "assets/images/wedding_party/augustfrederick.webp"; // good
 import sarlota from "assets/images/wedding_party/sarlota.webp"; // good
@@ -21,6 +21,9 @@ import karissa from "assets/images/wedding_party/karissa.webp"; // good
 import cassidy from "assets/images/wedding_party/cassidy.webp";
 import erin2 from "assets/images/wedding_party/erin2.webp"; // good
 import kelly2 from "assets/images/wedding_party/kelly2.webp"; // good
+
+// import Us from "components/Us";
+const Us = loadable(() => import("components/Us"));
 
 const WeddingParty = ({ setInView, scrollPosition }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
