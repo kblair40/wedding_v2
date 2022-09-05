@@ -35,6 +35,7 @@ const TempRSVPSection = ({ setInView }) => {
         minW="900px"
         zIndex="-1"
         position="absolute"
+        loading="lazy"
       />
       <Flex
         mt="24px"
