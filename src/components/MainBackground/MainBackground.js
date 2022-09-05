@@ -1,16 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import {
-  Box,
-  Icon,
-  Flex,
-  Text,
-  Image,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, Image, useBreakpointValue } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
-import { BsChevronDown } from "react-icons/bs";
 import { gsap } from "gsap";
 
+import { ChevronDownIcon } from "components/Icons";
 import mainbg from "assets/images/mainbg.webp";
 import mainbg_sm from "assets/images/mainbg_sm.webp";
 import mainbg_md from "assets/images/mainbg_md.webp";
@@ -132,12 +125,17 @@ const ArrowDown = () => {
       >
         SCROLL FOR MORE
       </Text>
-      <Icon
+      <ChevronDownIcon
+        fill="#fff"
+        mt="8px"
+        boxSize={{ base: "40px", md: "50px", lg: "60px" }}
+      />
+      {/* <Icon
         mt="8px"
         as={BsChevronDown}
         color="#fff"
         boxSize={{ base: "40px", md: "50px", lg: "60px" }}
-      />
+      /> */}
     </Flex>
   );
 };
