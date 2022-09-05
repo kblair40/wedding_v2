@@ -32,7 +32,7 @@ const LoadingOverlay = ({ hide }) => {
       bg="white"
     >
       <div id="loading">
-        <LogoLoadingIcon ref={spinnerRef} />
+        <LogoLoadingIcon />
       </div>
     </Center>
   );
