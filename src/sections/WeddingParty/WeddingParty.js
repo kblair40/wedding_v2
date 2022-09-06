@@ -22,14 +22,12 @@ import cassidy from "assets/images/wedding_party/cassidy.webp";
 import erin2 from "assets/images/wedding_party/erin2.webp"; // good
 import kelly2 from "assets/images/wedding_party/kelly2.webp"; // good
 
-// import Us from "components/Us";
 const Us = loadable(() => import("components/Us"));
 
 const WeddingParty = ({ setInView, scrollPosition }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
 
   useEffect(() => {
-    // console.log("WEDDING PARTY IN VIEW:", inView);
     if (inView) {
       setInView("weddingParty");
     }

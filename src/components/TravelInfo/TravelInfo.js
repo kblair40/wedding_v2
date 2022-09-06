@@ -14,6 +14,7 @@ import { AiOutlineCar } from "react-icons/ai";
 
 import { outlineButton } from "utils/styles";
 import Paper from "components/containers/Paper";
+import { colors } from "utils/custom-theme";
 
 const paperStyles = {
   flex: 1,
@@ -44,12 +45,11 @@ const TravelInfo = () => {
             <Icon
               as={IoAirplaneOutline}
               boxSize="48px"
-              color="neutral.black"
+              // color="neutral.black"
+              color={colors.neutral.black}
               transform="rotate(-90deg)"
             />
-            <Heading fontSize="3xl" fontWeight="600">
-              by plane
-            </Heading>
+            <Heading fontWeight="600">by plane</Heading>
             <VStack h={{ base: "auto", md: "200px" }}>
               <Text {...textStyles}>
                 Orlando Int'l Airport (ORL) is predominantly served by Southwest
@@ -86,10 +86,12 @@ const TravelInfo = () => {
           mt={{ base: "1rem", md: 0 }}
         >
           <VStack alignItems="center" spacing="1rem">
-            <Icon as={AiOutlineCar} boxSize="48px" color="neutral.black" />
-            <Heading fontSize="3xl" fontWeight="600">
-              by car
-            </Heading>
+            <Icon
+              as={AiOutlineCar}
+              boxSize="48px"
+              color={colors.neutral.black}
+            />
+            <Heading fontWeight="600">by car</Heading>
             <VStack h={{ base: "auto", md: "200px" }}>
               <Text {...textStyles}>
                 If you'll be driving in, Winter Park is located just Northeast

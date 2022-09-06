@@ -2,6 +2,8 @@ import React from "react";
 import { Link as RRLink } from "react-router-dom";
 import { Link, Text, Flex, Box } from "@chakra-ui/react";
 
+import { colors } from "utils/custom-theme";
+
 const NavLink = ({ to, children }) => {
   return (
     <Link
@@ -21,7 +23,7 @@ const NavLink = ({ to, children }) => {
           transition=".2s ease-in-out"
         >
           <Text
-            color="text.tertiary"
+            color={colors.text.tertiary}
             fontWeight="400"
             whiteSpace="nowrap"
             fontSize="xl"

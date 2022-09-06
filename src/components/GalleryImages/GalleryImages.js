@@ -50,5 +50,4 @@ const GalleryImages = ({ imagesArray, onClick, scrollPosition }) => {
   );
 };
 
-// export default GalleryImages;
 export default trackWindowScroll(GalleryImages);

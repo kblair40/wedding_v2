@@ -17,3 +17,17 @@
     opacity: 1;
   }
 }
+
+h1, h2, h3, h4 {
+  color: #344148;
+  font-weight: 300;
+  font-family: "Cormorant Garamond" !important;
+}
+
+p {
+  font-family: Cabin
+}
+
+button {
+  font-family: Cabin !important;
+}

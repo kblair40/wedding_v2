@@ -13,6 +13,7 @@ import { MdClose } from "react-icons/md";
 import GalleryImages from "components/GalleryImages";
 import GalleryImageCarousel from "components/GalleryImageCarousel";
 import SectionLabel from "components/SectionLabel";
+import { colors } from "utils/custom-theme";
 
 import one from "assets/images/gallery/sydney/one.webp";
 import one_sm from "assets/images/gallery/sydney/one_sm.webp";
@@ -225,8 +226,10 @@ const Gallery = ({ setInView }) => {
                   left={{ base: "16px", sm: "24px" }}
                   top={{ base: "8px", sm: "16px" }}
                   _hover={{ bg: "#2d2d2d" }}
-                  _active={{ bg: "neutral.black" }}
-                  bg="neutral.black"
+                  // _active={{ bg: "neutral.black" }}
+                  _active={{ bg: colors.neutral.black }}
+                  // bg="neutral.black"
+                  bg={colors.neutral.black}
                   icon={<MdClose fill="white" size={24} />}
                 />
                 <Flex alignItems="center" h="100vh">

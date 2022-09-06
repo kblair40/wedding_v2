@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Box, Text, Flex, Button } from "@chakra-ui/react";
 import { MdOutlineChevronLeft } from "react-icons/md";
 
+import { colors } from "utils/custom-theme";
+
 const WEDDING_DATE = "2023-01-21";
 
 const CountdownClock = ({ onHide }) => {
@@ -62,7 +64,8 @@ const CountdownClock = ({ onHide }) => {
           onClick={onHide}
           variant="link"
           size="sm"
-          color="neutral.black"
+          // color="neutral.black"
+          color={colors.neutral.black}
           fontWeight="500"
           mt="16px"
           pb="4px"

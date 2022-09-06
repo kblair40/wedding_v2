@@ -15,18 +15,20 @@ import casa1 from "assets/images/casa/casa_1.webp";
 import { glass } from "utils/styles";
 import ScheduleItems from "components/ScheduleItems";
 import SectionLabel from "components/SectionLabel";
+import { colors } from "utils/custom-theme";
 
 const Schedule = () => {
   const tabStyles = {
-    color: "text.primary",
+    color: colors.text.primary,
     fontWeight: "500",
     fontSize: useBreakpointValue({ base: "xlt", sm: "2xlt" }),
     borderBottom: "none",
     p: 0,
     _selected: {
-      color: "text.primary",
+      color: colors.text.primary,
       borderBottom: "3px solid",
-      borderColor: "neutral.700",
+      // borderColor: "neutral.700",
+      borderColor: colors.neutral["700"],
       fontWeight: "600",
     },
     _active: {

@@ -76,4 +76,3 @@ const TempRSVPSection = ({ setInView }) => {
 };
 
 export default TempRSVPSection;
-// 419

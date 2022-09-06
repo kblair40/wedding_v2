@@ -1,14 +1,17 @@
 import React from "react";
 import { Box, Link, Text } from "@chakra-ui/react";
 
+import { colors } from "utils/custom-theme";
+
 const ActivityItem = ({ activity: { name, url, priceLevel } }) => {
   return (
     <Box
       w="auto"
       my="4px"
+      fontFamily="Cabin"
       _hover={{
         ".activity-link": {
-          bg: "primary.50",
+          bg: colors.primary["50"],
         },
       }}
     >
@@ -16,7 +19,8 @@ const ActivityItem = ({ activity: { name, url, priceLevel } }) => {
         isExternal
         href={url}
         lineHeight="26px"
-        color="neutral.black"
+        // color="neutral.black"
+        color={colors.neutral.black}
         _hover={{
           textDecoration: "none",
         }}
@@ -30,7 +34,8 @@ const ActivityItem = ({ activity: { name, url, priceLevel } }) => {
             ml="6px"
             d="inline"
             fontSize="sm"
-            color="text.tertiary"
+            // color="text.tertiary"
+            color={colors.text.tertiary}
             fontStyle="italic"
           >
             {"$".repeat(priceLevel)}

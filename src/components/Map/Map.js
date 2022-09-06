@@ -4,8 +4,6 @@ import "leaflet/dist/leaflet.css";
 import { Box } from "@chakra-ui/react";
 import loadable from "@loadable/component";
 
-// import MapContents from "./MapContents";
-// import CustomLayerControl from "./CustomLayerControl";
 const MapContents = loadable(() => import("./MapContents"));
 const CustomLayerControl = loadable(() => import("./CustomLayerControl"));
 

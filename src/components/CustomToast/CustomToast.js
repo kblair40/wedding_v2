@@ -1,13 +1,15 @@
 import { Box, Text, Flex } from "@chakra-ui/react";
 
 import { SadTearIcon, CheckCircleOutlineIcon } from "components/Icons";
+import { colors } from "utils/custom-theme";
 
 const CustomToast = ({ isAttending, title, description }) => {
   return (
     <Flex
       p={description ? "8px 24px" : "8px 16px"}
       borderRadius="8px"
-      bg={isAttending ? "primary.400" : "error.400"}
+      // bg={isAttending ? "primary.400" : "error.400"}
+      bg={isAttending ? colors.primary["400"] : colors.error["400"]}
       w="min-content"
       alignItems={!description ? "center" : "flex-start"}
     >

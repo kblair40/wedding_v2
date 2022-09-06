@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
 
+import { colors } from "utils/custom-theme";
+
 const WhenAndWhere = () => {
   const headerStyles = {
     fontSize: "40px",
@@ -40,7 +42,7 @@ const WhenAndWhere = () => {
         // border="1px solid #ccc"
       >
         <Text {...headerStyles}>WHERE</Text>
-        <Box h="3px" w="60px" bg="neutral.800" mb="16px" />
+        <Box h="3px" w="60px" bg={colors.neutral["800"]} mb="16px" />
         <Text {...detailStyles}>
           Casa Feliz
           <br />

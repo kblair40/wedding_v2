@@ -3,6 +3,7 @@ import { Flex, useBreakpointValue, Text, Box } from "@chakra-ui/react";
 import Masonry from "react-masonry-css";
 
 import { ACTIVITIES } from "utils/constants";
+import { fontSizes } from "utils/custom-theme";
 import ActivityList from "./ActivityList";
 import SectionLabel from "components/SectionLabel";
 
@@ -27,7 +28,7 @@ const ActivitiesContainer = () => {
       <Text
         mb="24px"
         textAlign="center"
-        fontSize="lgt"
+        fontSize={fontSizes.lgt}
         fontWeight="500"
         minW="300px"
       >

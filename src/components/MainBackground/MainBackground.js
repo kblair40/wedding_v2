@@ -7,6 +7,7 @@ import mainbg from "assets/images/mainbg.webp";
 import mainbg_sm from "assets/images/mainbg_sm.webp";
 import mainbg_md from "assets/images/mainbg_md.webp";
 import OurNames from "components/MainBackground/OurNames";
+import { fontSizes } from "utils/custom-theme";
 
 const MainBackground = ({
   setInView,
@@ -119,7 +120,7 @@ const ArrowDown = () => {
       zIndex={10}
     >
       <Text
-        fontSize={{ base: "mdt", sm: "lgt", md: "xlt" }}
+        fontSize={{ base: fontSizes.mdt, sm: fontSizes.lgt, md: fontSizes.xlt }}
         letterSpacing="2px"
         color="#fff"
         fontWeight="500"

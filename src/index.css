@@ -14,3 +14,9 @@ html,
 body {
   overflow-x: hidden;
 }
+
+p {
+  color: #344148;
+  font-weight: 400;
+}
+

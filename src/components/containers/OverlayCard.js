@@ -39,7 +39,7 @@ const OverlayCard = ({ imageURL, children, label, to, ...rest }) => {
                 borderRadius="8px"
                 pointerEvents="none"
                 textAlign="center"
-                color="neutral.white"
+                color="#f8eef1"
                 fontWeight="700"
                 fontSize={{ base: "xl", md: "2xl" }}
                 bg="rgba(0,0,0,.5)"

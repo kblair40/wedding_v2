@@ -7,7 +7,8 @@ import { MAX_WIDTHS } from "utils/constants";
 import TravelInfo from "components/TravelInfo";
 import Accommodations from "components/Accommodations";
 import SectionLabel from "components/SectionLabel";
-// import Map from "components/Map";
+import { colors } from "utils/custom-theme";
+
 const Map = loadable(() => import("components/Map"));
 
 const Travel = ({ setInView }) => {
@@ -21,7 +22,12 @@ const Travel = ({ setInView }) => {
   }, [inView]);
 
   return (
-    <Flex alignItems="center" direction="column" w="100%" bg="neutral.100">
+    <Flex
+      alignItems="center"
+      direction="column"
+      w="100%"
+      bg={colors.neutral["100"]}
+    >
       <Box bg="#fff" w="100%">
         <Flex direction="column" alignItems="center">
           <SectionLabel label="getting there" />

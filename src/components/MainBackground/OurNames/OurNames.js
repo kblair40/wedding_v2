@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { Box, Flex, Text, Heading, useBreakpointValue } from "@chakra-ui/react";
 
+import { fontSizes } from "utils/custom-theme";
+
 const OurNames = () => {
   const headingStyles = {
     color: "#fff",
@@ -10,13 +12,17 @@ const OurNames = () => {
 
   const initialStyles = {
     color: "#fff",
-    fontSize: "xlt",
+    fontSize: fontSizes.xlt,
     fontWeight: "400",
     letterSpacing: "2px",
   };
 
   const dateLocStyles = {
-    fontSize: useBreakpointValue({ base: "mdt", sm: "lgt", md: "xlt" }),
+    fontSize: useBreakpointValue({
+      base: fontSizes.mdt,
+      sm: fontSizes.lgt,
+      md: fontSizes.xlt,
+    }),
     fontWeight: useBreakpointValue({ base: "500", sm: "400" }),
     color: "#fff",
     letterSpacing: "2px",

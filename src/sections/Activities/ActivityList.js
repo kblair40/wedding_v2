@@ -5,10 +5,15 @@ import ActivityItem from "./ActivityItem";
 
 const ActivityList = ({ label, activities }) => {
   return (
-    <Flex flexDirection="column" alignItems="flex-start">
-      <Heading fontWeight="700" mb="16px" fontSize="3xl">
+    <Flex
+      flexDirection="column"
+      alignItems="flex-start"
+      // border="1px solid green"
+    >
+      <Heading fontWeight="700" mb="16px">
         {label}
       </Heading>
+
       {activities.map((act, i) => {
         return <ActivityItem activity={act} key={i} />;
       })}

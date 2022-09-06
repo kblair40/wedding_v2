@@ -5,7 +5,7 @@ import Markers from "./Markers";
 
 const MapContents = ({ activeLayers }) => {
   const LEAFLET_API_KEY = process.env.REACT_APP_LEAFLET_API_KEY;
-  // console.log({ LEAFLET_API_KEY });
+
   return (
     <React.Fragment>
       <TileLayer

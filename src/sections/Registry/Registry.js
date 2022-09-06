@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
 import casa7 from "assets/images/casa/casa7.webp";
+import { colors } from "utils/custom-theme";
 
 const Registry = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
@@ -21,7 +22,8 @@ const Registry = ({ setInView }) => {
     bg: "white",
     transition: ".2s ease-in-out",
     border: "1px solid",
-    borderColor: "neutral.black",
+    // borderColor: "neutral.black",
+    borderColor: colors.neutral.black,
     variant: "outline",
     fontWeight: "400",
     fontStyle: "italic",
@@ -30,7 +32,8 @@ const Registry = ({ setInView }) => {
       bg: "neutral.900",
       color: "#fff",
     },
-    _active: { bg: "text.secondary" },
+    // _active: { bg: "text.secondary" },
+    _active: { bg: colors.text.secondary },
   };
 
   return (

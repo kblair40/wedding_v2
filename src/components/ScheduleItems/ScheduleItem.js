@@ -1,16 +1,18 @@
 import React from "react";
 import { Text, Flex, Heading, Button } from "@chakra-ui/react";
 
+import { fontSizes, colors } from "utils/custom-theme";
+
 const ScheduleItem = ({ heading, time, who, dressCode, locationName }) => {
   const textStyles = {
-    fontSize: "lgt",
+    fontSize: fontSizes.lgt,
     fontWeight: "500",
   };
 
   return (
     <Flex direction="column" mb="40px" w="100%" maxW="600px">
       <Flex justifyContent="space-between" w="100%" mb="12px">
-        <Heading mr="4px" fontSize="2xlh" fontWeight="700">
+        <Heading mr="4px" fontSize="30.38px" fontWeight="700">
           {heading}
         </Heading>
         <Text {...textStyles}>{time}</Text>
@@ -21,7 +23,7 @@ const ScheduleItem = ({ heading, time, who, dressCode, locationName }) => {
           <Text {...textStyles}>Dress: {dressCode}</Text>
         </Flex>
         <Button
-          color="neutral.black"
+          color={colors.neutral.black}
           variant="link"
           fontSize="lg"
           textDecoration="underline"

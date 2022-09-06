@@ -10,7 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { MdClose } from "react-icons/md";
+
 import { NAV_ITEMS } from "utils/constants";
+import { colors } from "utils/custom-theme";
 import "./index.css";
 
 const Nav = ({
@@ -103,10 +105,10 @@ const Nav = ({
                         transition=".2s ease-in-out"
                       >
                         <Text
-                          color="text.primary"
+                          color={colors.text.primary}
                           fontWeight="700"
                           whiteSpace="nowrap"
-                          fontSize="smt"
+                          fontSize="14.22px"
                           textTransform="uppercase"
                           letterSpacing="1px"
                         >
@@ -186,14 +188,14 @@ const MobileNavItem = ({ label, onClick }) => {
       <Text
         borderRadius="full"
         fontSize="lg"
-        color="text.primary"
+        color={colors.text.primary}
         textAlign="center"
         lineHeight="100%"
         py="8px"
         w="100%"
         _hover={{
-          textDecoration: "none",
-          bg: "neutral.50",
+          // bg: "neutral.50",
+          bg: colors.neutral["50"],
         }}
       >
         {label}

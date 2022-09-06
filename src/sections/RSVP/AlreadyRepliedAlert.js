@@ -9,6 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 
+import { colors } from "utils/custom-theme";
+
 const AlreadyRepliedAlert = () => {
   return (
     <Alert
@@ -17,9 +19,11 @@ const AlreadyRepliedAlert = () => {
       w="auto"
       mt="-8px"
       mb="16px"
-      bg="primary.50"
+      // bg="primary.50"
+      bg={colors.primary["50"]}
       border="1px solid"
-      borderColor="primary.100"
+      // borderColor="primary.100"
+      borderColor={colors.primary["100"]}
     >
       <Icon as={MdOutlineCheckCircleOutline} boxSize="24px" />
       <Box ml="12px">

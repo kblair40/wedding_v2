@@ -1,6 +1,8 @@
 import React from "react";
 import { Flex, Text, Box } from "@chakra-ui/react";
 
+import { colors } from "utils/custom-theme";
+
 const SectionLabel = ({ label, pt = "32px", ...rest }) => {
   return (
     <Flex
@@ -21,7 +23,7 @@ const SectionLabel = ({ label, pt = "32px", ...rest }) => {
       >
         {label}
       </Text>
-      <Box h="3px" w="60px" bg="neutral.800" mb="32px" />
+      <Box h="3px" w="60px" bg={colors.neutral["800"]} mb="32px" />
     </Flex>
   );
 };

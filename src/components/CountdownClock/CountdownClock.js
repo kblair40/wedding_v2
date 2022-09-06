@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 
 import useLocalstorageState from "@rooks/use-localstorage-state";
 import ClockBody from "./ClockBody";
+import { colors } from "utils/custom-theme";
 import "./index.css";
 
 const CountdownClock = () => {
@@ -101,7 +102,7 @@ const CountdownClock = () => {
             size="xs"
             borderRadius="full"
             transition=".2s"
-            _hover={{ bg: "neutral.50" }}
+            _hover={{ bg: colors.neutral["50"] }}
             zIndex={10}
           />
         </Box>
