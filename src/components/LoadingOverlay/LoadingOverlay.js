@@ -7,7 +7,6 @@ import { LogoLoadingIcon } from "components/Icons";
 
 const LoadingOverlay = ({ hide }) => {
   const containerRef = useRef();
-  // const spinnerRef = useRef();
 
   const fadeOut = () => {
     window.scrollTo({ x: 0, y: 0, behavior: "smooth" });

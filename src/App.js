@@ -3,26 +3,14 @@ import { ChakraProvider, Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 import loadable from "@loadable/component";
 import "animate.css";
-
-import "@fontsource/cabin/400.css"; // need on initial load
-// import "@fontsource/cabin/400-italic.css";
+// fonts needed on initial load - the rest are imported in loadFonts called by 'onmount' useEffect
+import "@fontsource/cabin/400.css";
 import "@fontsource/cabin/500.css"; // need on initial load
-// import "@fontsource/cabin/500-italic.css";
-// import "@fontsource/cabin/600.css";
-// import "@fontsource/cabin/700.css";
-
-// import "@fontsource/cormorant-garamond/400.css";
-// import "@fontsource/cormorant-garamond/500.css";
-// import "@fontsource/cormorant-garamond/600.css";
 import "@fontsource/cormorant-garamond/700.css"; // need on initial load
 
-// import Fonts from "fonts";
-// import Admin from "pages/Admin";
 import Main from "pages/Main";
-// import RSVPTest from "pages/RSVP";
 import Nav from "components/Nav";
 import ScrollToTop from "components/containers/ScrollToTop";
-// import CountdownClock from "components/CountdownClock";
 import theme from "utils/theme";
 
 const CountdownClock = loadable(() => import("components/CountdownClock"));
@@ -112,8 +100,6 @@ function App() {
                 />
               }
             />
-            {/* <Route path="/admin" element={<Admin />} /> */}
-            {/* <Route path="/rsvp-test" element={<RSVPTest />} /> */}
           </Routes>
         </ScrollToTop>
       </Box>
