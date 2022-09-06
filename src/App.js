@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { ChakraProvider, Box } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 import loadable from "@loadable/component";
-import "animate.css";
+// import "animate.css";
 // fonts needed on initial load - the rest are imported in loadFonts called by 'onmount' useEffect
 import "@fontsource/cabin/400.css";
 import "@fontsource/cabin/500.css";

@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { Box, Flex, Image, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
 import casa_new from "assets/images/casa/casa_new.webp";
-import "./index.css";
 
 const TempRSVPSection = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
@@ -25,16 +24,9 @@ const TempRSVPSection = ({ setInView }) => {
       w="100%"
       pb="24px"
       px="24px"
-      // border="2px solid red"
     >
-      {/* <Image
-        src={casa_new}
-        w="100%"
-        minW="900px"
-        zIndex="-1"
-        position="absolute"
-      /> */}
       <LazyLoadImage src={casa_new} />
+
       <Flex
         mt="24px"
         p={{ base: "16px" }}
