@@ -1,7 +1,6 @@
-import { Box, Text, Flex, Icon } from "@chakra-ui/react";
+import { Box, Text, Flex } from "@chakra-ui/react";
 
-import { MdCheckCircle } from "react-icons/md";
-import { FaRegSadTear } from "react-icons/fa";
+import { SadTearIcon, CheckCircleOutlineIcon } from "components/Icons";
 
 const CustomToast = ({ isAttending, title, description }) => {
   return (
@@ -13,9 +12,11 @@ const CustomToast = ({ isAttending, title, description }) => {
       alignItems={!description ? "center" : "flex-start"}
     >
       {!isAttending ? (
-        <Icon as={FaRegSadTear} color="white" boxSize="24px" />
+        // <Icon as={SadTearIcon} color="white" boxSize="24px" />
+        <SadTearIcon />
       ) : (
-        <Icon as={MdCheckCircle} color="white" boxSize="24px" />
+        // <Icon as={MdCheckCircle} color="white" boxSize="24px" />
+        <CheckCircleOutlineIcon />
       )}
 
       <Box ml="16px">

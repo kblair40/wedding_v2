@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Flex, Box, Icon, useBreakpointValue } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
-import { FaRegHeart } from "react-icons/fa";
 
 import shanface from "assets/images/us/shanface.webp";
 import kevface from "assets/images/us/kevface.webp";
 import kev from "assets/images/us/kev.webp";
 import shan from "assets/images/us/shan.webp";
 import { Partier } from "sections/WeddingParty/WeddingParty";
+import { HeartIcon } from "components/Icons";
 
 const Us = () => {
   const [transitionAmount, setTransitionAmount] = useState();
@@ -78,7 +78,8 @@ const Us = () => {
         />
       </Box>
       <Box className="heart" position="relative" bottom="16px" opacity={0}>
-        <Icon as={FaRegHeart} boxSize="40px" fill="error.400" />
+        {/* <Icon as={FaRegHeart} boxSize="40px" fill="error.400" /> */}
+        <HeartIcon />
       </Box>
       <Box
         className="us groom"

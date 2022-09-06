@@ -2,8 +2,6 @@ import React, { useRef, useEffect } from "react";
 import { Text, Flex, IconButton, Tooltip } from "@chakra-ui/react";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-// import L from "leaflet/dist/leaflet";
-import { FaDirections, FaExternalLinkAlt } from "react-icons/fa";
 
 import venue_marker from "assets/icons/venue_marker.webp";
 import new_mickey from "assets/icons/mickey_new.svg";
@@ -14,6 +12,7 @@ import airport from "assets/images/markers/airport.webp";
 import sweets from "assets/images/markers/sweets.webp";
 import coffee from "assets/images/markers/coffee.webp";
 import { ExternalLink } from "components/Links";
+import { DirectionsIcon, ExternalLinkIcon } from "components/Icons";
 
 const iconButtonStyle = {
   borderRadius: "50%",
@@ -330,10 +329,7 @@ const Markers = ({ activeLayers }) => {
           <Flex w="100%" mt="-8px" justifyContent="center">
             <ExternalLink to="https://www.google.com/maps/place/Walt+Disney+World%C2%AE+Resort/@28.3771857,-81.57074,15z/data=!4m2!3m1!1s0x0:0xa71e391fd01cf1a0?sa=X&ved=2ahUKEwjawq3Wwfn3AhUUHuwKHTIwAnYQ_BJ6BAhlEAU">
               <Tooltip label="Get directions" placement="top">
-                <IconButton
-                  icon={<FaDirections size={24} />}
-                  {...iconButtonStyle}
-                />
+                <IconButton icon={<DirectionsIcon />} {...iconButtonStyle} />
               </Tooltip>
             </ExternalLink>
           </Flex>
@@ -365,7 +361,7 @@ const CustomMarker = ({
                 <ExternalLink to={directionsURL} mr={websiteURL ? "1.5rem" : 0}>
                   <Tooltip label="Get directions" placement="top">
                     <IconButton
-                      icon={<FaDirections size={24} />}
+                      icon={<DirectionsIcon />}
                       {...iconButtonStyle}
                     />
                   </Tooltip>
@@ -376,7 +372,7 @@ const CustomMarker = ({
                 <ExternalLink to={websiteURL}>
                   <Tooltip label="Go to website" placement="top">
                     <IconButton
-                      icon={<FaExternalLinkAlt size={18} />}
+                      icon={<ExternalLinkIcon boxSize="18px" />}
                       {...iconButtonStyle}
                     />
                   </Tooltip>
