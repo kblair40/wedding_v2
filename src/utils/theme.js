@@ -1,13 +1,13 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
-  fontSizes: {
-    smt: "14.22px",
-    mdt: "16px",
-    lgt: "18px",
-    xlt: "20.25px",
-    "2xlt": "22.78px",
-  },
+  // fontSizes: {
+  //   smt: "14.22px",
+  //   mdt: "16px",
+  //   lgt: "18px",
+  //   xlt: "20.25px",
+  //   "2xlt": "22.78px",
+  // },
   components: {
     // Radio: {
     //   baseStyle: {
