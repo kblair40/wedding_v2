@@ -5,8 +5,9 @@ import loadable from "@loadable/component";
 import "animate.css";
 // fonts needed on initial load - the rest are imported in loadFonts called by 'onmount' useEffect
 import "@fontsource/cabin/400.css";
-import "@fontsource/cabin/500.css"; // need on initial load
-import "@fontsource/cormorant-garamond/700.css"; // need on initial load
+import "@fontsource/cabin/500.css";
+import "@fontsource/cabin/700.css";
+import "@fontsource/cormorant-garamond/700.css";
 
 import Main from "pages/Main";
 import Nav from "components/Nav";
@@ -25,11 +26,11 @@ function App() {
 
   const loadFonts = async () => {
     try {
+      // These fonts are needed further down the site's main page.  No need to load immediately.
       await Promise.all([
         import("@fontsource/cabin/400-italic.css"),
         import("@fontsource/cabin/500-italic.css"),
         import("@fontsource/cabin/600.css"),
-        import("@fontsource/cabin/700.css"),
         import("@fontsource/cormorant-garamond/400.css"),
         import("@fontsource/cormorant-garamond/500.css"),
         import("@fontsource/cormorant-garamond/600.css"),

@@ -3,7 +3,8 @@ import { Box, useBreakpointValue } from "@chakra-ui/react";
 import loadable from "@loadable/component";
 
 import MainBackground from "components/MainBackground";
-import LoadingOverlay from "components/LoadingOverlay";
+// import LoadingOverlay from "components/LoadingOverlay";
+// import { LogoLoadingIcon } from "components/Icons";
 
 const Travel = loadable(() => import("sections/Travel"));
 const Activities = loadable(() => import("sections/Activities"));
@@ -30,6 +31,8 @@ const Main = ({
   const galleryRef = useRef();
   const rsvpRef = useRef();
   const registryRef = useRef();
+
+  const loadingrRef = useRef();
 
   useEffect(() => {
     const refMap = {
@@ -70,7 +73,20 @@ const Main = ({
           onMainBgImageLoaded={handleImageLoaded}
         />
 
-        <LoadingOverlay hide={imgLoaded} />
+        {!imgLoaded && (
+          <Box
+            ref={loadingrRef}
+            h="100vh"
+            w="100vw"
+            position="absolute"
+            top={0}
+            bottom={0}
+            left={0}
+            right={0}
+            zIndex={11}
+            bg="white"
+          />
+        )}
       </Box>
 
       <React.Fragment>

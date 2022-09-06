@@ -18,13 +18,9 @@ const Nav = ({
   sectionInView,
   topInView,
   mainImgLoaded,
+  fontsLoaded,
 }) => {
   const { isOpen, onToggle } = useDisclosure();
-
-  // useEffect(() => {
-  //   console.log("\n\n\n\nSCROLL TO TOP!!!!\n\n\n\n\n");
-  //   window.scrollTo(0, 0);
-  // }, [window]);
 
   return (
     <Flex
