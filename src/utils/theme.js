@@ -37,25 +37,9 @@ const theme = extendTheme({
       800: "#00437f",
       900: "#00326d",
     },
-    // 6e8eb4 - nice shade of blue that should pair well with secondary.600
-    secondary: {
-      main: "#b4946e", // pink
-      50: "#fdecd0",
-      100: "#e9d0b2",
-      200: "#d0b291",
-      300: "#b4946e",
-      400: "#9f7d52",
-      500: "#896637",
-      600: "#7e5c31",
-      700: "#6f4f27",
-      800: "#624120",
-      900: "#533216",
-    },
     neutral: {
       black: "#344148",
       main: "#344148",
-      // black: "#14230C",
-      // main: "#14230C",
       white: "#f8eef1",
       50: "#e9edef",
       100: "#d2dadf",

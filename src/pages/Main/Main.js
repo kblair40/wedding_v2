@@ -31,18 +31,18 @@ const Main = ({
   const rsvpRef = useRef();
   const registryRef = useRef();
 
-  const refMap = {
-    top: topRef,
-    rsvp: rsvpRef,
-    travel: travelRef,
-    schedule: scheduleRef,
-    activities: activitiesRef,
-    weddingParty: weddingPartyRef,
-    gallery: galleryRef,
-    registry: registryRef,
-  };
-
   useEffect(() => {
+    const refMap = {
+      top: topRef,
+      rsvp: rsvpRef,
+      travel: travelRef,
+      schedule: scheduleRef,
+      activities: activitiesRef,
+      weddingParty: weddingPartyRef,
+      gallery: galleryRef,
+      registry: registryRef,
+    };
+
     const ref = refMap[section];
 
     if (ref.current) {
