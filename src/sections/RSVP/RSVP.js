@@ -25,8 +25,6 @@ import { CustomToast } from "components/RSVPSteps_old/RSVPHelpModal";
 
 import casa_new from "assets/images/casa/casa_new.webp";
 
-import "./index.css";
-
 const RSVP = ({ setInView }) => {
   const [guest, setGuest] = useState();
   const [relatedGuests, setRelatedGuests] = useState();

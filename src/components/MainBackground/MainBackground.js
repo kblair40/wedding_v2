@@ -44,10 +44,7 @@ const MainBackground = ({
   const didMount = useRef(false);
   useEffect(() => {
     if (!didMount.current) {
-      console.log("CLASSES:", arrowDownRef.current.classList);
       arrowDownRef.current.classList.add("fade-in-delayed");
-      console.log("CLASSES AFTER:", arrowDownRef.current.classList);
-      // gsap.to(arrowDownRef.current, { duration: 0.5, delay: 1, opacity: 1 });
       didMount.current = true;
     }
 

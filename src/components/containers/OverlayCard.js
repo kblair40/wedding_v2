@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, Link } from "@chakra-ui/react";
+import { Flex, Text, Link, Tooltip } from "@chakra-ui/react";
 
 import Paper from "components/containers/Paper";
 
@@ -13,58 +13,43 @@ const OverlayCard = ({ imageURL, children, label, to, ...rest }) => {
       isExternal
     >
       <Paper h="200px" p={0} position="relative" overflow="hidden">
-        <Flex
-          className="wrapper"
-          zIndex={5}
-          alignItems="center"
-          direction="column"
-          justifyContent="center"
-          bgImage={imageURL}
-          bgSize="cover"
-          bgPosition="center center"
-          h="100%"
-          sx={{
-            ".label": {
-              bg: "rgba(0, 0, 0, 0)",
-            },
-          }}
-          _hover={{
-            ".label": {
-              bg: "rgba(0, 0, 0, 0.35)",
-              boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
-              backdropFilter: "blur('6px')",
-              borderRadius: "10px",
-            },
-          }}
-        >
-          <Box
-            cursor="pointer"
-            position="absolute"
-            boxSize="100%"
-            bg="neutral.black"
-            opacity=".5"
-            transition=".15s ease-in-out"
-            className="overlay"
-            _hover={{
-              opacity: 0,
-            }}
-          />
-          <Text
-            className="label"
-            lineHeight="36px"
-            transition=".25s"
-            px="8px"
-            borderRadius="4px"
-            pointerEvents="none"
-            textAlign="center"
-            color="neutral.white"
-            fontWeight="700"
-            fontSize={{ base: "xl", md: "2xl" }}
-            zIndex={1}
+        <Tooltip label={label} openDelay={1500}>
+          <Flex
+            justifyContent="center"
+            bgImage={imageURL}
+            bgSize="cover"
+            bgPosition="center center"
+            h="100%"
           >
-            {label}
-          </Text>
-        </Flex>
+            <Flex
+              align="center"
+              justify="center"
+              cursor="pointer"
+              position="absolute"
+              boxSize="100%"
+              transition=".25s ease-in-out"
+              className="overlay"
+              bg="rgba(0,0,0,.35)"
+              _hover={{
+                opacity: 0,
+              }}
+            >
+              <Text
+                lineHeight="36px"
+                borderRadius="8px"
+                pointerEvents="none"
+                textAlign="center"
+                color="neutral.white"
+                fontWeight="700"
+                fontSize={{ base: "xl", md: "2xl" }}
+                bg="rgba(0,0,0,.5)"
+                px="8px"
+              >
+                {label}
+              </Text>
+            </Flex>
+          </Flex>
+        </Tooltip>
       </Paper>
     </Link>
   );

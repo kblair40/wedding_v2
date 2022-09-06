@@ -6,7 +6,6 @@ import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
 import casa_new from "assets/images/casa/casa_new.webp";
 import casa_new_sm from "assets/images/casa/casa_new_sm.webp";
-import "./index.css";
 
 const TempRSVPSection = ({ setInView }) => {
   const [inViewRef, inView] = useInView({ threshold: 0.01 });
