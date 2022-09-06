@@ -5,6 +5,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 // import loadable from "@loadable/component";
 
+// import Fonts from "fonts";
+
 // fonts
 import "@fontsource/cabin/400.css"; // need on initial load
 import "@fontsource/cabin/400-italic.css";
@@ -31,6 +33,7 @@ import theme from "utils/theme";
 
 ReactDOM.render(
   <ChakraProvider theme={theme}>
+    {/* <Fonts /> */}
     <BrowserRouter>
       <App />
     </BrowserRouter>

@@ -5,6 +5,7 @@ import loadable from "@loadable/component";
 
 import "animate.css";
 
+import Fonts from "fonts";
 // import Admin from "pages/Admin";
 import Main from "pages/Main";
 // import RSVPTest from "pages/RSVP";
