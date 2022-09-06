@@ -3,8 +3,7 @@ import { Box, useBreakpointValue } from "@chakra-ui/react";
 import loadable from "@loadable/component";
 
 import MainBackground from "components/MainBackground";
-// import LoadingOverlay from "components/LoadingOverlay";
-// import { LogoLoadingIcon } from "components/Icons";
+import "./Main.css";
 
 const Travel = loadable(() => import("sections/Travel"));
 const Activities = loadable(() => import("sections/Activities"));

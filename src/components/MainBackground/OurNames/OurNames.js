@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Box, Flex, Text, Heading, useBreakpointValue } from "@chakra-ui/react";
-import { gsap } from "gsap";
 
 const OurNames = () => {
   const headingStyles = {
@@ -24,11 +23,14 @@ const OurNames = () => {
   };
 
   useEffect(() => {
-    gsap.to(".names-container", { duration: 0.5, delay: 1, opacity: 1 });
+    containerRef.current.classList.add("fade-in-delayed");
   }, []);
+
+  const containerRef = useRef();
 
   return (
     <Flex
+      ref={containerRef}
       className="names-container"
       opacity={0}
       mx="auto"

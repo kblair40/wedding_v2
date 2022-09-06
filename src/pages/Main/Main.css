@@ -1,0 +1,19 @@
+.fade-in-delayed {
+  animation: customFadeIn 0.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+.fade-in-immediate {
+  animation: customFadeIn 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes customFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

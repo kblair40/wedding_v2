@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Box,
   Flex,
@@ -18,7 +18,6 @@ const Nav = ({
   sectionInView,
   topInView,
   mainImgLoaded,
-  fontsLoaded,
 }) => {
   const { isOpen, onToggle } = useDisclosure();
 

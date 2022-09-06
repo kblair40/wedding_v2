@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Box, Flex, Text, Image, useBreakpointValue } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
-import { gsap } from "gsap";
 
 import { ChevronDownIcon } from "components/Icons";
 import mainbg from "assets/images/mainbg.webp";
@@ -31,12 +30,8 @@ const MainBackground = ({
 
   const fadeInImage = () => {
     onMainBgImageLoaded();
-    gsap.to(imageRef.current, { duration: ".5", opacity: 1 });
+    imageRef.current.classList.add("fade-in-immediate");
   };
-
-  useEffect(() => {
-    gsap.to(arrowDownRef.current, { duration: 0.5, delay: 1, opacity: 1 });
-  }, []);
 
   useEffect(() => {
     if (atAllInView) {
@@ -46,7 +41,16 @@ const MainBackground = ({
     }
   }, [atAllInView]);
 
+  const didMount = useRef(false);
   useEffect(() => {
+    if (!didMount.current) {
+      console.log("CLASSES:", arrowDownRef.current.classList);
+      arrowDownRef.current.classList.add("fade-in-delayed");
+      console.log("CLASSES AFTER:", arrowDownRef.current.classList);
+      // gsap.to(arrowDownRef.current, { duration: 0.5, delay: 1, opacity: 1 });
+      didMount.current = true;
+    }
+
     if (inView) {
       setInView("top");
     }
@@ -130,12 +134,6 @@ const ArrowDown = () => {
         mt="8px"
         boxSize={{ base: "40px", md: "50px", lg: "60px" }}
       />
-      {/* <Icon
-        mt="8px"
-        as={BsChevronDown}
-        color="#fff"
-        boxSize={{ base: "40px", md: "50px", lg: "60px" }}
-      /> */}
     </Flex>
   );
 };
