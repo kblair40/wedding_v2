@@ -3,18 +3,15 @@ import {
   Heading,
   Flex,
   VStack,
-  Icon,
   Text,
   Button,
   Box,
   Link,
 } from "@chakra-ui/react";
-import { IoAirplaneOutline } from "react-icons/io5";
-import { AiOutlineCar } from "react-icons/ai";
 
+import { AirplaneIcon, CarIcon } from "components/Icons";
 import { outlineButton } from "utils/styles";
 import Paper from "components/containers/Paper";
-import { colors } from "utils/custom-theme";
 
 const paperStyles = {
   flex: 1,
@@ -42,13 +39,7 @@ const TravelInfo = () => {
       >
         <Paper {...paperStyles}>
           <VStack alignItems="center" spacing="1rem">
-            <Icon
-              as={IoAirplaneOutline}
-              boxSize="48px"
-              // color="neutral.black"
-              color={colors.neutral.black}
-              transform="rotate(-90deg)"
-            />
+            <AirplaneIcon boxSize="56px" />
             <Heading fontWeight="600">by plane</Heading>
             <VStack h={{ base: "auto", md: "200px" }}>
               <Text {...textStyles}>
@@ -86,11 +77,7 @@ const TravelInfo = () => {
           mt={{ base: "1rem", md: 0 }}
         >
           <VStack alignItems="center" spacing="1rem">
-            <Icon
-              as={AiOutlineCar}
-              boxSize="48px"
-              color={colors.neutral.black}
-            />
+            <CarIcon boxSize="52px" />
             <Heading fontWeight="600">by car</Heading>
             <VStack h={{ base: "auto", md: "200px" }}>
               <Text {...textStyles}>

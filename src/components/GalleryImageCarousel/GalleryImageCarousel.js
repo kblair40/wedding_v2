@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Box, IconButton, Image, Flex } from "@chakra-ui/react";
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
+
+import { ArrowLeftIcon, ArrowRightIcon } from "components/Icons";
 
 export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
   // reference variable to change the state of custom buttons
@@ -68,7 +69,7 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
         onClick={() => (slider ? slider.slickPrev() : undefined)}
         {...arrowBtnStyles}
       >
-        <BiLeftArrowAlt fontSize="24px" />
+        <ArrowLeftIcon />
       </IconButton>
 
       <IconButton
@@ -77,7 +78,7 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
         onClick={() => slider?.slickNext()}
         {...arrowBtnStyles}
       >
-        <BiRightArrowAlt fontSize="24px" />
+        <ArrowRightIcon />
       </IconButton>
 
       <Slider ref={(slider) => setSlider(slider)} {...settings}>

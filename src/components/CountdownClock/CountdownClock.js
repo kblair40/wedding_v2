@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box, IconButton } from "@chakra-ui/react";
-import { MdOutlineChevronRight } from "react-icons/md";
 import { gsap } from "gsap";
 
 import useLocalstorageState from "@rooks/use-localstorage-state";
 import ClockBody from "./ClockBody";
+import { ChevronRightIcon } from "components/Icons";
 import { colors } from "utils/custom-theme";
 import "./index.css";
 
@@ -98,7 +98,7 @@ const CountdownClock = () => {
           <IconButton
             onClick={onShowClock}
             bg="white"
-            icon={<MdOutlineChevronRight size={24} />}
+            icon={<ChevronRightIcon />}
             size="xs"
             borderRadius="full"
             transition=".2s"

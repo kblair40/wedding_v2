@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Text, Flex, Button } from "@chakra-ui/react";
-import { MdOutlineChevronLeft } from "react-icons/md";
 
+import { ChevronLeftIcon } from "components/Icons";
 import { colors } from "utils/custom-theme";
 
 const WEDDING_DATE = "2023-01-21";
@@ -64,7 +64,6 @@ const CountdownClock = ({ onHide }) => {
           onClick={onHide}
           variant="link"
           size="sm"
-          // color="neutral.black"
           color={colors.neutral.black}
           fontWeight="500"
           mt="16px"
@@ -75,9 +74,7 @@ const CountdownClock = ({ onHide }) => {
             },
           }}
           _hover={{ textDecoration: "none" }}
-          leftIcon={
-            <MdOutlineChevronLeft style={{ width: "16px", height: "16px" }} />
-          }
+          leftIcon={<ChevronLeftIcon boxSize="16px" />}
         >
           Hide
         </Button>
