@@ -1,48 +1,41 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
-  // fontSizes: {
-  //   smt: "14.22px",
-  //   mdt: "16px",
-  //   lgt: "18px",
-  //   xlt: "20.25px",
-  //   "2xlt": "22.78px",
-  // },
   components: {
-    // Radio: {
-    //   baseStyle: {
-    //     container: {
-    //       borderColor: "neutral.800",
-    //       _checked: {
-    //         borderColor: "#000",
-    //       },
-    //     },
-    //     control: {
-    //       _hover: {
-    //         bg: "primary.50",
-    //       },
-    //       _checked: {
-    //         bg: "neutral.800",
-    //         borderColor: "neutral.900",
-    //         _hover: {
-    //           borderColor: "neutral.900",
-    //           bg: "neutral.800",
-    //         },
-    //         _before: {
-    //           bg: "primary.50",
-    //         },
-    //       },
-    //     },
-    //   },
-    //   defaultProps: {
-    //     colorScheme: undefined,
-    //   },
-    // },
-    // Checkbox: {
-    //   defaultProps: {
-    //     colorScheme: "darkScheme",
-    //   },
-    // },
+    Radio: {
+      baseStyle: {
+        container: {
+          borderColor: "neutral.800",
+          _checked: {
+            borderColor: "#000",
+          },
+        },
+        control: {
+          _hover: {
+            bg: "primary.50",
+          },
+          _checked: {
+            bg: "neutral.800",
+            borderColor: "neutral.900",
+            _hover: {
+              borderColor: "neutral.900",
+              bg: "neutral.800",
+            },
+            _before: {
+              bg: "primary.50",
+            },
+          },
+        },
+      },
+      defaultProps: {
+        colorScheme: undefined,
+      },
+    },
+    Checkbox: {
+      defaultProps: {
+        colorScheme: "darkScheme",
+      },
+    },
     Button: {
       baseStyle: {
         color: "neutral.black",
