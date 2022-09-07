@@ -8,11 +8,11 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
-import { MdClose } from "react-icons/md";
 
 import GalleryImages from "components/GalleryImages";
 import GalleryImageCarousel from "components/GalleryImageCarousel";
 import SectionLabel from "components/SectionLabel";
+import { CloseIcon } from "components/Icons";
 import { colors } from "utils/custom-theme";
 
 import one from "assets/images/gallery/sydney/one.webp";
@@ -230,7 +230,8 @@ const Gallery = ({ setInView }) => {
                   _active={{ bg: colors.neutral.black }}
                   // bg="neutral.black"
                   bg={colors.neutral.black}
-                  icon={<MdClose fill="white" size={24} />}
+                  // icon={<MdClose fill="white" size={24} />}
+                  icon={<CloseIcon fill="white" />}
                 />
                 <Flex alignItems="center" h="100vh">
                   <GalleryImageCarousel

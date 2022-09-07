@@ -5,6 +5,8 @@
 5. 'Us' animation needs to stay in the same place 
    - test by resizing window before/during/after animation
    - probably do a fromTo (gsap) when inView is true
+6. Implement useOutsideClick for gallery carousel
+7. Fix Karissa's picture
 
 non-code stuff
 1. force https to main website (or don't.  Chrome appears to force it on its own.  Worth looking into)

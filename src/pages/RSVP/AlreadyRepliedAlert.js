@@ -7,7 +7,8 @@ import {
   Icon,
   Text,
 } from "@chakra-ui/react";
-import { MdOutlineCheckCircleOutline } from "react-icons/md";
+
+import { CheckCircleOutlineIcon } from "components/Icons";
 
 const AlreadyRepliedAlert = () => {
   return (
@@ -21,7 +22,8 @@ const AlreadyRepliedAlert = () => {
       border="1px solid"
       borderColor="primary.100"
     >
-      <Icon as={MdOutlineCheckCircleOutline} boxSize="24px" />
+      {/* <Icon as={MdOutlineCheckCircleOutline} boxSize="24px" /> */}
+      <Icon as={CheckCircleOutlineIcon} />
       <Box ml="12px">
         <AlertTitle>Looks Like you've already replied, thank you!</AlertTitle>
         <AlertDescription>
