@@ -237,6 +237,7 @@ const Gallery = ({ setInView }) => {
                   <GalleryImageCarousel
                     imagesArray={imagesArray}
                     startingSlideIdx={startingSlideIdx}
+                    onClose={() => setShowCarousel(false)}
                   />
                 </Flex>
               </ModalContent>

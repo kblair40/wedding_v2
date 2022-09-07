@@ -312,6 +312,7 @@ export const ArrowLeftIcon = ({ fill = "black", ...props }) => {
   return (
     <Icon width="16px" height="16px" viewBox="0 0 24 24" fill="none" {...props}>
       <path
+        className={props.className ? props.className : undefined}
         d="M13.5703 20.8641L12.5297 21.9047C12.0891 22.3453 11.3766 22.3453 10.9406 21.9047L1.82813 12.7969C1.3875 12.3562 1.3875 11.6437 1.82813 11.2078L10.9406 2.0953C11.3813 1.65468 12.0938 1.65468 12.5297 2.0953L13.5703 3.13593C14.0156 3.58124 14.0063 4.3078 13.5516 4.74374L7.90313 10.125H21.375C21.9984 10.125 22.5 10.6266 22.5 11.25V12.75C22.5 13.3734 21.9984 13.875 21.375 13.875H7.90313L13.5516 19.2562C14.0109 19.6922 14.0203 20.4187 13.5703 20.8641Z"
         fill={fill}
       />
@@ -320,5 +321,10 @@ export const ArrowLeftIcon = ({ fill = "black", ...props }) => {
 };
 
 export const ArrowRightIcon = ({ fill = "black", ...props }) => {
-  return <ArrowLeftIcon transform="rotate(180deg)" />;
+  return (
+    <ArrowLeftIcon
+      transform="rotate(180deg)"
+      className={props.className ? props.className : undefined}
+    />
+  );
 };

@@ -1,14 +1,45 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, IconButton, Image, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  IconButton,
+  Image,
+  Flex,
+  useOutsideClick,
+} from "@chakra-ui/react";
 import Slider from "react-slick";
 
 import { ArrowLeftIcon, ArrowRightIcon } from "components/Icons";
 
-export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
+export const GalleryImageCarousel = ({
+  imagesArray,
+  startingSlideIdx,
+  onClose,
+}) => {
   // reference variable to change the state of custom buttons
   const [slider, setSlider] = useState(null);
 
   const keysDisabled = useRef(false);
+  const outsideClickRef = useRef();
+
+  const handleOutsideClick = (e) => {
+    // ignore if... (1) e.target.type === 'button', (2) e.target.classList.includes("dontclick")
+    const hasClassList = Boolean(e.target.classList);
+    let classList;
+    if (hasClassList) classList = e.target.classList;
+
+    if (
+      e.target.type === "button" ||
+      (hasClassList && classList.contains("dontclick"))
+    ) {
+      return;
+    }
+    onClose();
+  };
+
+  useOutsideClick({
+    ref: outsideClickRef,
+    handler: handleOutsideClick,
+  });
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
@@ -62,23 +93,35 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
   };
 
   return (
-    <Box position="relative" width="100%" overflow="hidden" pt="12px">
+    <Box
+      position="relative"
+      width="100%"
+      overflow="hidden"
+      pt="12px"
+      // ref={outsideClickRef}
+    >
       <IconButton
+        className="dontclose"
         aria-label="left-arrow"
         left={{ base: "8px", sm: "16px" }}
         onClick={() => (slider ? slider.slickPrev() : undefined)}
         {...arrowBtnStyles}
       >
-        <ArrowLeftIcon />
+        <ArrowLeftIcon className="dontclose" />
       </IconButton>
 
       <IconButton
+        className="dontclose"
         aria-label="right-arrow"
         right={{ base: "8px", sm: "16px" }}
-        onClick={() => slider?.slickNext()}
+        // onClick={() => slider?.slickNext()}
+        onClick={(e) => {
+          e.stopPropagation();
+          slider?.slickNext();
+        }}
         {...arrowBtnStyles}
       >
-        <ArrowRightIcon />
+        <ArrowRightIcon className="dontclose" />
       </IconButton>
 
       <Slider ref={(slider) => setSlider(slider)} {...settings}>
@@ -96,6 +139,7 @@ export const GalleryImageCarousel = ({ imagesArray, startingSlideIdx }) => {
               maxH="80vh"
               maxW="100%"
               borderRadius="2px"
+              ref={outsideClickRef}
             />
           </Flex>
         ))}
