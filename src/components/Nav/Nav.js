@@ -8,9 +8,8 @@ import {
   Collapse,
   IconButton,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { MdClose } from "react-icons/md";
 
+import { CloseIcon, HamburgerIcon } from "components/Icons";
 import { NAV_ITEMS } from "utils/constants";
 import { colors } from "utils/custom-theme";
 import "./index.css";
@@ -53,12 +52,15 @@ const Nav = ({
                 _hover={{ bg: "transparent" }}
                 _active={{ bg: "transparent" }}
                 onClick={onToggle}
-                color={topInView ? "#fff" : "#000"}
                 icon={
                   isOpen ? (
-                    <CloseIcon w={3} h={3} />
+                    <CloseIcon />
                   ) : (
-                    <HamburgerIcon w={8} h={8} />
+                    <HamburgerIcon
+                      width={8}
+                      height={8}
+                      fill={topInView ? "#fff" : "#000"}
+                    />
                   )
                 }
                 variant={"ghost"}
@@ -135,7 +137,8 @@ const Nav = ({
                 position="relative"
                 top="8px"
                 left="8px"
-                icon={<MdClose size="24" />}
+                // icon={<MdClose size="24" />}
+                icon={<CloseIcon />}
                 bg="transparent"
                 _hover={{ bg: "transparent" }}
                 _active={{ bg: "transparent" }}
