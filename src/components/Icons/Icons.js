@@ -210,3 +210,75 @@ export const HeartIcon = ({ fill = "#FF7C7B", ...props }) => {
     </Icon>
   );
 };
+
+export const ChevronLeftIcon = ({ fill = "black", ...props }) => {
+  return (
+    <Icon width="24px" height="24px" viewBox="0 0 24 24" fill="none" {...props}>
+      <g clipPath="url(#clip0_228_2)">
+        <path
+          d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"
+          fill={fill}
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_228_2">
+          <rect width="24px" height="24px" fill="white" />
+        </clipPath>
+      </defs>
+    </Icon>
+  );
+};
+
+export const ChevronRightIcon = ({ fill = "black", ...props }) => {
+  return (
+    <Icon width="24px" height="24px" viewBox="0 0 24 24" fill="none" {...props}>
+      <g clipPath="url(#clip0_228_5)">
+        <path
+          d="M10 6L8.59 7.41L13.17 12L8.59 16.59L10 18L16 12L10 6Z"
+          fill={fill}
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_228_5">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </Icon>
+  );
+};
+
+export const CloseIcon = ({ fill = "black", ...props }) => {
+  return (
+    <Icon width="24px" height="24px" viewBox="0 0 24 24" fill="none" {...props}>
+      <g clipPath="url(#clip0_229_8)">
+        <path
+          d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+          fill={fill}
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_229_8">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </Icon>
+  );
+};
+
+export const HamburgerIcon = ({ fill = "white", ...props }) => {
+  return (
+    <Icon width="24px" height="24px" viewBox="0 0 24 24" fill="none" {...props}>
+      <g clipPath="url(#clip0_230_11)">
+        <path
+          d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z"
+          fill={fill}
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_230_11">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </Icon>
+  );
+};
