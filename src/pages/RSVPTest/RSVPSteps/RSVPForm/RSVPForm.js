@@ -112,9 +112,12 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
         <FormControl>
           <FormLabel>Anything else we should know? (optional)</FormLabel>
           <Textarea
-            bg="white"
+            bg="gray.50"
             borderColor="gray.200"
             focusBorderColor="gray.400"
+            transition="background 0.4s"
+            _hover={{ bg: "white" }}
+            _focus={{ bg: "white" }}
             ref={anythingElseRef}
           />
         </FormControl>
@@ -122,17 +125,20 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
 
       <HStack pt="16px" pb="8px" justifyContent="flex-end">
         <Button
+          mt="8px"
           onClick={sendFormData}
           w="100px"
-          bg="white"
+          bg="gray.50"
+          size="lg"
           border="1px solid transparent"
           transition="all 0.3s"
           boxSizing="content-box"
           _hover={{
             borderColor: "gray.300",
+            bg: "white",
           }}
           _active={{
-            bg: "gray.50",
+            bg: "white",
           }}
         >
           Submit
