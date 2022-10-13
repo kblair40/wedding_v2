@@ -11,6 +11,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   PopoverBody,
+  Portal,
 } from "@chakra-ui/react";
 
 import SearchResults from "./SearchResults";
@@ -87,7 +88,10 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
     if (notFoundError) setNotFoundError(false);
 
     const { value } = e.target;
-    if (value.length <= 2) return;
+    if (value.length <= 2) {
+      setSearchResults([]);
+      return;
+    }
 
     const response = await api.get("/search", {
       params: { name: e.target.value },
@@ -143,9 +147,11 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
               />
             </PopoverTrigger>
 
-            <PopoverContent>
-              <SearchResults searchResults={searchResults} />
-            </PopoverContent>
+            <Portal>
+              <PopoverContent>
+                <SearchResults searchResults={searchResults} />
+              </PopoverContent>
+            </Portal>
           </Popover>
           <Button
             onClick={validateInput}

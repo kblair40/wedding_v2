@@ -45,6 +45,7 @@ const LiveRSVPSection = () => {
       pb="24px"
       px="24px"
       minW="350px"
+      h="100vh"
     >
       <Image
         src={bgImage}

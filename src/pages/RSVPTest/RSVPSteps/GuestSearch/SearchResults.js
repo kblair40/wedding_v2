@@ -38,7 +38,7 @@ const Result = ({ result }) => {
       py="4px"
     >
       <Text textTransform="capitalize">{invite_label}</Text>
-      <Text textTransform="capitalize">{invited_names}</Text>
+      {/* <Text textTransform="capitalize">{invited_names}</Text> */}
     </Box>
   );
 };
