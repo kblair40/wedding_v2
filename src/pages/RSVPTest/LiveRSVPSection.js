@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import useLocalstorageState from "@rooks/use-localstorage-state";
 import gsap from "gsap";
+import api from "apimongo";
 
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
@@ -33,6 +34,39 @@ const LiveRSVPSection = () => {
 
   const searchRef = useRef();
   const formRef = useRef();
+
+  const handleSubmitRSVPForm = async (data, special_requests) => {
+    console.log("DATA:", data, "\n");
+    const attending_names = [];
+    const not_attending_names = [];
+    for (let guest in data) {
+      console.log("DATA[GUEST]:", data[guest]);
+      if (data[guest].attending === "yes") attending_names.push(guest);
+      else not_attending_names.push(guest);
+    }
+
+    console.log("ATTENDING:", attending_names);
+    console.log("NOT ATTENDING:", not_attending_names);
+
+    const reply_method = "website";
+
+    try {
+      const response = await api.patch(`/invite/${selectedResult._id}`, {
+        attending_names,
+        not_attending_names,
+        special_requests,
+        reply_method,
+      });
+
+      console.log("RESPONSE:", response.data);
+    } catch (e) {
+      console.log("FAILURE!", e);
+      return false;
+    }
+
+    setHasReplied(true);
+    return true;
+  };
 
   useEffect(() => {
     if (selectedResult) {
@@ -113,7 +147,10 @@ const LiveRSVPSection = () => {
           </Box>
 
           <Box ref={formRef} display="none" opacity={0}>
-            <RSVPForm guestNames={guestNames} />
+            <RSVPForm
+              guestNames={guestNames}
+              handleSubmit={handleSubmitRSVPForm}
+            />
           </Box>
         </Flex>
       </Flex>

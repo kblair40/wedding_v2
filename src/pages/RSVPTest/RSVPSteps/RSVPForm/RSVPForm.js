@@ -4,22 +4,18 @@ import {
   FormControl,
   FormLabel,
   HStack,
-  Input,
   Radio,
   RadioGroup,
   Text,
   Divider,
   Button,
   Textarea,
-  Flex,
 } from "@chakra-ui/react";
-
-// import RSVPSuccessModal from "components/RSVPSteps_old/RSVPSuccessModal";
 
 const RSVPForm = ({ guestNames, handleSubmit }) => {
   const [attendingNames, setAttendingNames] = useState([]);
   const [formData, setFormData] = useState(null);
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   const anythingElseRef = useRef();
 
@@ -34,12 +30,10 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
       blankDataObjects[name] = blankFormData;
     }
 
-    // console.log("\n\nBLANK OBJECTS:", blankDataObjects);
     setFormData(blankDataObjects);
   }, [guestNames]);
 
   const handleChangeAttendance = (val, name) => {
-    // console.log("CHANGE ATTENDANCE:", { val, name });
     setFormData({
       ...formData,
       [name]: { ...formData[name], attending: val },
@@ -56,18 +50,20 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
     }
   };
 
-  const handleChangeMeal = (val, name, field) => {
-    setFormData({
-      ...formData,
-      [name]: { ...formData[name], [field]: val },
-    });
-  };
-
   const sendFormData = async () => {
-    let res = await handleSubmit({
-      ...formData,
-      special_requests: anythingElseRef.current.value,
-    });
+    setSaving(true);
+    try {
+      let res = await handleSubmit(formData, anythingElseRef.current.value);
+      // let res = await handleSubmit({
+      //   ...formData,
+      //   special_requests: anythingElseRef.current.value,
+      // });
+      console.log("SAVE RES:", res);
+    } catch (e) {
+      console.error("FAILURE");
+    }
+
+    setSaving(false);
   };
 
   return (
@@ -127,6 +123,7 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
         <Button
           mt="8px"
           onClick={sendFormData}
+          isLoading={saving}
           w="100px"
           bg="gray.50"
           size="lg"
