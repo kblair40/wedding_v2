@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   Input,
   Text,
   HStack,
   Box,
-  FormHelperText,
   FormControl,
   Popover,
   PopoverTrigger,
@@ -26,7 +25,6 @@ const GuestSearch = ({ selectedResult, onSelectResult }) => {
   const [notFoundError, setNotFoundError] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [inputVal, setInputVal] = useState("");
-  // const [selectedResult, setSelectedResult] = useState();
 
   const inputRef = useRef();
 
@@ -58,6 +56,8 @@ const GuestSearch = ({ selectedResult, onSelectResult }) => {
     const result = searchResults.find((res) => res._id === _id);
     console.log("SELECTED RESULT:", result);
     onSelectResult(result);
+    setInputVal("");
+    setSearchResults([]);
   };
 
   return (
@@ -99,7 +99,7 @@ const GuestSearch = ({ selectedResult, onSelectResult }) => {
                 value={inputVal}
                 onChange={handleChange}
                 w="100%"
-                transition="all 0.3s"
+                transition="border-color 0.3s"
                 placeholder="Write your name..."
                 borderColor="gray.200"
                 _hover={{ borderColor: "gray.400" }}

@@ -54,10 +54,6 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
     setSaving(true);
     try {
       let res = await handleSubmit(formData, anythingElseRef.current.value);
-      // let res = await handleSubmit({
-      //   ...formData,
-      //   special_requests: anythingElseRef.current.value,
-      // });
       console.log("SAVE RES:", res);
     } catch (e) {
       console.error("FAILURE");
@@ -111,7 +107,7 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
             bg="gray.50"
             borderColor="gray.200"
             focusBorderColor="gray.400"
-            transition="background 0.4s"
+            transition="background 0.3s"
             _hover={{ bg: "white" }}
             _focus={{ bg: "white" }}
             ref={anythingElseRef}

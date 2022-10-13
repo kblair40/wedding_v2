@@ -4,6 +4,7 @@ import {
   Flex,
   Text,
   Image,
+  Button,
   useBreakpointValue,
   ModalOverlay,
   ModalContent,
@@ -28,12 +29,37 @@ import RSVPForm from "./RSVPSteps/RSVPForm";
 const LiveRSVPSection = () => {
   const [selectedResult, setSelectedResult] = useState();
   const [guestNames, setGuestNames] = useState();
+  const [step, setStep] = useState(1);
 
   const [hasReplied, setHasReplied] = useLocalstorageState("hasReplied", false);
   const bgImage = useBreakpointValue({ base: casa_new_sm, xs: casa_new });
 
   const searchRef = useRef();
   const formRef = useRef();
+  const successRef = useRef();
+
+  useEffect(() => {
+    if (selectedResult) {
+      setStep(2);
+      setGuestNames(selectedResult.invited_names.split(", "));
+      gsap.to(searchRef.current, {
+        opacity: 0,
+        duration: 0.01,
+        // onComplete: () => console.log("FADE OUT COMPLETE!"),
+        onComplete: () => {
+          console.log("FADE OUT COMPLETE!");
+          searchRef.current.style.display = "none";
+        },
+      });
+
+      formRef.current.style.display = "block";
+      gsap.to(formRef.current, {
+        opacity: 1,
+        duration: 0.5,
+        // delay: 0.25,
+      });
+    }
+  }, [selectedResult]);
 
   const handleSubmitRSVPForm = async (data, special_requests) => {
     console.log("DATA:", data, "\n");
@@ -59,6 +85,27 @@ const LiveRSVPSection = () => {
       });
 
       console.log("RESPONSE:", response.data);
+      if (response.data && response.data.msg) {
+        const { msg } = response.data;
+        if (msg === "success") {
+          gsap.to(formRef.current, {
+            opacity: 0,
+            duration: 0.5,
+            onComplete: () => {
+              console.log("FADE OUT COMPLETE!");
+              setStep(3);
+              formRef.current.style.display = "none";
+            },
+          });
+
+          successRef.current.style.display = "block";
+          gsap.to(successRef.current, {
+            opacity: 1,
+            duration: 0.5,
+            delay: 0.5,
+          });
+        }
+      }
     } catch (e) {
       console.log("FAILURE!", e);
       return false;
@@ -68,27 +115,27 @@ const LiveRSVPSection = () => {
     return true;
   };
 
-  useEffect(() => {
-    if (selectedResult) {
-      setGuestNames(selectedResult.invited_names.split(", "));
-      gsap.to(searchRef.current, {
-        opacity: 0,
-        duration: 0.5,
-        // onComplete: () => console.log("FADE OUT COMPLETE!"),
-        onComplete: () => {
-          console.log("FADE OUT COMPLETE!");
-          searchRef.current.style.display = "none";
-        },
-      });
+  const restart = () => {
+    setStep(1);
+    setSelectedResult(undefined);
+    setGuestNames(undefined);
+    setHasReplied(false);
 
-      formRef.current.style.display = "block";
-      gsap.to(formRef.current, {
-        opacity: 1,
-        duration: 0.5,
-        delay: 0.25,
-      });
-    }
-  }, [selectedResult]);
+    // successRef.current.style.display
+    gsap.to(successRef.current, {
+      opacity: 0,
+      duration: 0.5,
+
+      onComplete: () => (successRef.current.style.display = "none"),
+    });
+
+    searchRef.current.style.display = "block";
+    gsap.to(searchRef.current, {
+      opacity: 1,
+      duration: 0.5,
+      delay: 0.25,
+    });
+  };
 
   return (
     <Flex
@@ -126,20 +173,17 @@ const LiveRSVPSection = () => {
           w="100%"
           justifyContent="center"
           // border="1px solid green"
+          // maxHeight={step === 3 ? "160px" : undefined}
           position="relative"
+          transition="height 0.3s"
+          alignItems="center"
           h={
-            selectedResult
+            selectedResult && step !== 3
               ? "auto"
               : { base: "200px", sm: "176px", md: "154px" }
           }
         >
-          <Box
-            ref={searchRef}
-            position="absolute"
-            h="100%"
-            w="100%"
-            // border="1px solid green"
-          >
+          <Box ref={searchRef} position="absolute" h="100%" w="100%">
             <GuestSearch
               selectedResult={selectedResult}
               onSelectResult={setSelectedResult}
@@ -152,45 +196,31 @@ const LiveRSVPSection = () => {
               handleSubmit={handleSubmitRSVPForm}
             />
           </Box>
+
+          <Box position="absolute" ref={successRef} display="none" opacity={0}>
+            <RSVPSuccess restart={restart} />
+          </Box>
         </Flex>
       </Flex>
-
-      {/* <Modal
-        isOpen={showSelectGuestsModal || showRSVPFormModal}
-        onClose={() => {
-          setShowRSVPFormModal(false);
-          setShowSelectGuestsModal(false);
-        }}
-        motionPreset="none"
-        scrollBehavior="inside"
-        overflowY="auto"
-        isCentered
-        preserveScrollBarGap
-      >
-        <ModalOverlay />
-
-        {showSelectGuestsModal && (
-          <SelectGuestContent
-            onClose={() => setShowSelectGuestsModal(false)}
-            guest={guest}
-            getCheckedGuests={getCheckedGuests}
-            relatedGuests={relatedGuests}
-            handleClickShowHelp={handleClickShowHelp}
-          />
-        )}
-
-        {!showSelectGuestsModal && checkedGuests && (
-          <RSVPFormContent
-            onClose={() => setShowRSVPFormModal(false)}
-            guest={guest}
-            relatedGuests={relatedGuests}
-            checkedGuests={checkedGuests}
-            onSubmit={handleSubmitRSVPForm}
-          />
-        )}
-      </Modal> */}
     </Flex>
   );
 };
 
 export default LiveRSVPSection;
+
+const RSVPSuccess = ({ restart }) => {
+  return (
+    <Flex w="100%" h="100%" direction="column" align="center">
+      <Text textAlign="center" fontSize="xl" fontWeight="600">
+        RSVP received, thank you!
+      </Text>
+      <Text textAlign="center" mt="1rem">
+        Hit the restart button below if you need to change anything
+      </Text>
+
+      <Button mt="1rem" w="50%" mx="auto" onClick={restart}>
+        Restart
+      </Button>
+    </Flex>
+  );
+};
