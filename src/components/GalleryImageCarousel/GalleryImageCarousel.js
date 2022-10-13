@@ -42,6 +42,20 @@ export const GalleryImageCarousel = ({
   });
 
   useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (keysDisabled.current) {
+        return;
+      }
+
+      if (e.key === "ArrowRight") {
+        slider.slickNext();
+      } else if (e.key === "ArrowLeft") {
+        slider.slickPrev();
+      }
+
+      keysDisabled.current = true;
+    };
+
     window.addEventListener("keydown", handleKeyPress);
     window.addEventListener("keyup", enableKeyPress);
 
@@ -55,20 +69,6 @@ export const GalleryImageCarousel = ({
     if (keysDisabled.current) {
       keysDisabled.current = false;
     }
-  };
-
-  const handleKeyPress = (e) => {
-    if (keysDisabled.current) {
-      return;
-    }
-
-    if (e.key === "ArrowRight") {
-      slider.slickNext();
-    } else if (e.key === "ArrowLeft") {
-      slider.slickPrev();
-    }
-
-    keysDisabled.current = true;
   };
 
   // Slider settings
