@@ -10,11 +10,13 @@ import {
   Divider,
   Button,
   Textarea,
+  Tooltip,
 } from "@chakra-ui/react";
 
 const RSVPForm = ({ guestNames, handleSubmit }) => {
   const [attendingNames, setAttendingNames] = useState([]);
   const [formData, setFormData] = useState(null);
+  const [preventSubmit, setPreventSubmit] = useState(true);
   const [saving, setSaving] = useState(false);
 
   const anythingElseRef = useRef();
@@ -34,10 +36,11 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
   }, [guestNames]);
 
   const handleChangeAttendance = (val, name) => {
-    setFormData({
+    let revisedFormData = {
       ...formData,
       [name]: { ...formData[name], attending: val },
-    });
+    };
+    setFormData(revisedFormData);
 
     if (val === "yes") {
       if (!attendingNames.includes(name)) {
@@ -48,12 +51,21 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
         setAttendingNames([...attendingNames].filter((n) => n !== name));
       }
     }
+
+    console.log("revisedFormData:", revisedFormData);
+    for (let guest in revisedFormData) {
+      if (revisedFormData[guest].attending === undefined) {
+        setPreventSubmit(true);
+        return;
+      }
+    }
+    setPreventSubmit(false);
   };
 
   const sendFormData = async () => {
     setSaving(true);
     try {
-      let res = await handleSubmit(formData, anythingElseRef.current.value);
+      await handleSubmit(formData, anythingElseRef.current.value);
       // console.log("SAVE RES:", res);
     } catch (e) {
       console.error("FAILURE");
@@ -64,7 +76,7 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
 
   return (
     <Box maxW="580px" mb="16px" px="16px" py="16px" maxH="100%" w="100%">
-      <Box overflowY="hidden" flex={1}>
+      <Box overflowY="hidden" flex={1} mb="1rem">
         <FormControl>
           <React.Fragment>
             <FormLabel fontWeight="500" mb="1rem">
@@ -115,27 +127,38 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
         </FormControl>
       </Box>
 
-      <HStack pt="16px" pb="8px" justifyContent="flex-end">
-        <Button
-          mt="8px"
-          onClick={sendFormData}
-          isLoading={saving}
-          w="100px"
-          bg="gray.50"
-          size="lg"
-          border="1px solid transparent"
-          transition="all 0.3s"
-          boxSizing="content-box"
-          _hover={{
-            borderColor: "gray.300",
-            bg: "white",
-          }}
-          _active={{
-            bg: "white",
-          }}
+      <HStack justifyContent="flex-end">
+        <Tooltip
+          zIndex={10000000}
+          placement="bottom-end"
+          isDisabled={!preventSubmit}
+          label="Please select an attendance option for all guests"
+          // hasArrow
         >
-          Submit
-        </Button>
+          <Box>
+            <Button
+              isDisabled={preventSubmit}
+              mt="8px"
+              onClick={sendFormData}
+              isLoading={saving}
+              w="100px"
+              bg="gray.50"
+              size="lg"
+              border="1px solid transparent"
+              transition="all 0.3s"
+              boxSizing="content-box"
+              _hover={{
+                borderColor: "gray.300",
+                bg: "white",
+              }}
+              _active={{
+                bg: "white",
+              }}
+            >
+              Submit
+            </Button>
+          </Box>
+        </Tooltip>
       </HStack>
     </Box>
   );
