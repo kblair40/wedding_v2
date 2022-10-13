@@ -10,8 +10,6 @@ import "@fontsource/cabin/700.css";
 import "@fontsource/cormorant-garamond/700.css";
 
 import Main from "pages/Main";
-// import RSVPTest from "pages/RSVPTest";
-// import Admin from "pages/Admin";
 import Nav from "components/Nav";
 import ScrollToTop from "components/containers/ScrollToTop";
 import theme from "utils/theme";

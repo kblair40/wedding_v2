@@ -54,20 +54,16 @@ const CSVInput = ({ apiGuestData }) => {
 
   const getResObject = (result) => {
     let res = {
-      full_name: result[0].toLowerCase(),
-      aliases: makeArray(result[1]),
-      replied: result[2],
-      significant_other: result[3].toLowerCase(),
-      other_family: makeArray(result[4]),
-      dinner_selection: result[5],
-      age_range: result[6],
-      special_requests: result[7],
-      plus_one: result[8],
-      attending: Boolean(result[9]),
-      email: result[10],
-      phone_number: result[11],
-      side: result[12],
-      dinner_selection_notes: result[13],
+      invite_label: result[0].toLowerCase(),
+      replied: result[1] === "true" ? true : false,
+      invited_names: makeArray(result[2]),
+      attending_names: makeArray(result[3]),
+      not_attending_names: makeArray(result[4]),
+      reply_method: result[5],
+      plus_one: result[6] === "true" ? true : false,
+      plus_one_attending: result[7] === "true" ? true : false,
+      special_requests: result[8],
+      email: result[9],
     };
 
     return res;
@@ -78,7 +74,7 @@ const CSVInput = ({ apiGuestData }) => {
     data ? data.split(sep).map((n) => n.toLowerCase()) : [];
 
   return (
-    <Box>
+    <Box position="relative">
       <CSVReader onUploadAccepted={(results) => handleResults(results)}>
         {({ getRootProps, acceptedFile }) => (
           <>

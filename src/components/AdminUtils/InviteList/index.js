@@ -12,9 +12,6 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-// import uniqueRandom from "unique-random";
-// import { addGuest } from "api/api";
-// import api from "apifast";
 import api from "apimongo";
 import ManageGuestModal from "./ManageGuestModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
@@ -246,16 +243,20 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
           ml="8px"
           onClick={onDeleteModalOpen}
           size="sm"
-          variant="danger"
+          variant="ghost"
         >
           Delete
         </Button>
       </Flex>
 
-      <TableContainer>
+      <TableContainer mt="1rem">
         <Table
           size="sm"
-          // variant="striped"
+          sx={{
+            "& td": {
+              padding: "4px 0",
+            },
+          }}
         >
           <Thead>{dataFrom === "api" ? getHeaderAPI() : getHeaderFile()}</Thead>
           <Tbody>{dataFrom === "api" ? getBodyAPI() : getBodyFile()}</Tbody>
