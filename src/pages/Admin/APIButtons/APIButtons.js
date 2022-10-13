@@ -9,7 +9,7 @@ const APIButtons = ({ getAllGuests }) => {
   const fetchGuests = async () => {
     setLoading(true);
     try {
-      const res = await api.get("/guest");
+      const res = await api.get("/invites");
       getAllGuests(res.data);
     } catch (e) {
       console.error("FAILED FETCHING ALL GUESTS:", e);
@@ -23,7 +23,7 @@ const APIButtons = ({ getAllGuests }) => {
       <Button size="sm" onClick={fetchGuests} isLoading={loading}>
         Get All Guests
       </Button>
-      <Button size="sm">Add Guest</Button>
+      {/* <Button size="sm">Add Guest</Button> */}
     </HStack>
   );
 };

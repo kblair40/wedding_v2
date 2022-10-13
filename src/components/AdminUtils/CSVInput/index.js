@@ -81,7 +81,7 @@ const CSVInput = ({ apiGuestData }) => {
             <HStack>
               <Flex>
                 <Button {...getRootProps()} size="sm">
-                  Browse file
+                  Browse files
                 </Button>
                 {acceptedFile && <Text ml="8px">{acceptedFile.name}</Text>}
               </Flex>

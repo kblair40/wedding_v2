@@ -14,14 +14,14 @@ import { gsap } from "gsap";
 import useLocalstorageState from "@rooks/use-localstorage-state";
 
 import { glass } from "utils/styles";
-import { patchGuest } from "api/api";
-import GuestSearch from "components/RSVPSteps_old/GuestSearch";
-import SelectGuestsModal from "components/RSVPSteps_old/SelectGuestsModal";
-import RSVPHelpModal from "components/RSVPSteps_old/RSVPHelpModal";
-import RSVPFormModal from "components/RSVPSteps_old/RSVPFormModal";
+// import { patchGuest } from "api/api";
+// import GuestSearch from "components/RSVPSteps_old/GuestSearch";
+// import SelectGuestsModal from "components/RSVPSteps_old/SelectGuestsModal";
+// import RSVPHelpModal from "components/RSVPSteps_old/RSVPHelpModal";
+// import RSVPFormModal from "components/RSVPSteps_old/RSVPFormModal";
 import SectionLabel from "components/SectionLabel";
 import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
-import { CustomToast } from "components/RSVPSteps_old/RSVPHelpModal";
+// import { CustomToast } from "components/RSVPSteps_old/RSVPHelpModal";
 
 import casa_new from "assets/images/casa/casa_new.webp";
 
@@ -101,32 +101,22 @@ const RSVP = ({ setInView }) => {
       }
 
       const guestData = data[name];
-      try {
-        const res = await patchGuest(guest.id, {
-          ...guestData,
-          special_requests: data.special_requests,
-          replied: "TRUE",
-        });
-        // console.log("RES:", res);
-      } catch (e) {
-        console.error(`\n\n\nFAILED PATCHING ${guestData}:`, e, "\n\n\n");
-      }
     }
 
     if (searchInput) {
       setSearchInput("");
     }
 
-    toast({
-      duration: 7000,
-      isClosable: true,
-      render: () => (
-        <CustomToast
-          title={`${formatNames(names)}, thanks for replying!`}
-          isAttending={true}
-        />
-      ),
-    });
+    // toast({
+    //   duration: 7000,
+    //   isClosable: true,
+    //   render: () => (
+    //     <CustomToast
+    //       title={`${formatNames(names)}, thanks for replying!`}
+    //       isAttending={true}
+    //     />
+    //   ),
+    // });
 
     setShowRSVPFormModal(false);
     setHasReplied(true);
@@ -196,7 +186,7 @@ const RSVP = ({ setInView }) => {
               lg: "900px",
             }}
           >
-            <GuestSearch
+            {/* <GuestSearch
               getSearchResults={getSearchResults}
               onChange={(e) => setSearchInput(e.target.value)}
               searchInput={searchInput}
@@ -205,7 +195,7 @@ const RSVP = ({ setInView }) => {
                 setShowHelp(true);
                 setSearchInput("");
               }}
-            />
+            /> */}
           </Box>
         </Flex>
       </Flex>
@@ -246,13 +236,13 @@ const RSVP = ({ setInView }) => {
         )}
       </Modal>
 
-      {showHelp && (
+      {/* {showHelp && (
         <RSVPHelpModal
           isOpen={showHelp}
           onClose={closeHelpModal}
           setHasReplied={setHasReplied}
         />
-      )}
+      )} */}
     </Flex>
   );
 };
@@ -288,13 +278,13 @@ const RSVPFormContent = ({
     >
       <ModalCloseButton />
 
-      <RSVPFormModal
+      {/* <RSVPFormModal
         onClose={onClose}
         guest={guest}
         relatedGuests={relatedGuests}
         checkedGuests={checkedGuests}
         onSubmit={onSubmit}
-      />
+      /> */}
     </ModalContent>
   );
 };
@@ -338,13 +328,13 @@ const SelectGuestContent = ({
   return (
     <ModalContent className="select-guests" display="none">
       <ModalCloseButton />
-      <SelectGuestsModal
+      {/* <SelectGuestsModal
         onClose={onClose}
         guest={guest}
         getCheckedGuests={receiveGuestIndexes}
         relatedGuests={relatedGuests}
         showHelpModal={handleClickShowHelp}
-      />
+      /> */}
     </ModalContent>
   );
 };

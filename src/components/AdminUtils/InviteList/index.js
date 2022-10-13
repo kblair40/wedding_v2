@@ -18,20 +18,16 @@ import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { sortByLastName } from "utils/helpers";
 
 const rowLabels = [
-  "full_name",
-  "aliases",
-  "significant_other",
-  "other_family",
+  "invite_label",
   "replied",
-  "attending",
+  "invited_names",
+  "attending_names",
+  "not_attending_names",
+  "reply_method",
   "plus_one",
-  "dinner_selection",
-  "dinner_selection_notes",
-  "age_range",
-  "email",
-  "phone_number",
-  "side",
+  "plus_one_attending",
   "special_requests",
+  "email",
   "_id",
 ];
 
@@ -134,8 +130,8 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
   };
 
   const getBodyAPI = () => {
-    return localData.slice(1).map((row, idx) => {
-      // console.log("ROW:", row);
+    // return localData.slice(1).map((row, idx) => {
+    return localData.map((row, idx) => {
       return (
         <Tr
           key={idx}
@@ -143,10 +139,18 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
           sx={row["replied"] ? repliedStyles : notRepliedStyles}
         >
           {rowLabels.map((label, i) => {
+            console.log("ROW:", label, row[label]);
             let res = `${row[label]}`;
-            if (["other_family", "aliases"].includes(label)) {
-              if (res && Array.isArray(res)) {
-                res = res.join(", ");
+            if (
+              [
+                "invited_names",
+                "attending_names",
+                "not_attending_names",
+              ].includes(label)
+            ) {
+              if (res && Array.isArray(row[label])) {
+                console.log("JOINING");
+                res = row[label].join(", ");
               }
             }
 
@@ -194,11 +198,14 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
     return localData.slice(1).map((row, idx) => {
       return (
         <Tr key={idx}>
-          {row.map((text, i) => (
-            <Td textAlign={i > 0 ? "center" : undefined} key={i}>
-              {text}
-            </Td>
-          ))}
+          {row.map((text, i) => {
+            console.log("ROW:", row);
+            return (
+              <Td textAlign={i > 0 ? "center" : undefined} key={i}>
+                {text}
+              </Td>
+            );
+          })}
           <Td>
             <Button
               bg={idx % 2 ? "white" : "#EDF2F7"}
