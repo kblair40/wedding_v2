@@ -9,7 +9,6 @@ import {
   useToast,
   Image,
 } from "@chakra-ui/react";
-import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
 import useLocalstorageState from "@rooks/use-localstorage-state";
 
@@ -39,14 +38,6 @@ const RSVP = ({ setInView }) => {
   const toast = useToast();
 
   const helpOpenedBy = useRef("");
-
-  const [inViewRef, inView] = useInView({ threshold: 0.01 });
-
-  useEffect(() => {
-    if (inView) {
-      setInView("rsvp");
-    }
-  }, [inView]);
 
   const getSearchResults = (guest, relatedGuests) => {
     setGuest(guest);
@@ -167,8 +158,6 @@ const RSVP = ({ setInView }) => {
         {...glass}
       >
         <SectionLabel label="rsvp" />
-
-        <Box ref={inViewRef} />
 
         {hasReplied && (
           <Flex w="100%" justifyContent="center">

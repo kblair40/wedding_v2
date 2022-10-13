@@ -1,12 +1,8 @@
 import React from "react";
-import RSVP from "sections/RSVP";
+import LiveRSVPSection from "./LiveRSVPSection";
 
 const RSVPTest = () => {
-  return (
-    <div>
-      <RSVP />
-    </div>
-  );
+  return <LiveRSVPSection />;
 };
 
 export default RSVPTest;
