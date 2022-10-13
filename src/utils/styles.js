@@ -13,7 +13,7 @@ export const outlineButton = {
   variant: "outline",
   fontWeight: "600",
   _hover: {
-    bg: "neutral.900",
+    bg: "gray.700",
     color: "#fff",
   },
   _active: { bg: "text.secondary" },
