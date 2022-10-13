@@ -18,6 +18,7 @@ const WhenAndWhere = () => {
 
   return (
     <Flex
+      // border="1px solid #ccc"
       py="32px"
       bg="#fff"
       direction={{ base: "column", sm: "row" }}
@@ -27,7 +28,7 @@ const WhenAndWhere = () => {
     >
       <Flex alignItems="center" justifyContent="center" flexDirection="column">
         <Text {...headerStyles}>WHEN</Text>
-        <Box h="3px" w="60px" bg="neutral.800" mb="16px" />
+        <Box h="3px" w="60px" bg={colors.neutral["800"]} mb="16px" />
         <Text {...detailStyles}>
           Saturday
           <br />
@@ -39,7 +40,6 @@ const WhenAndWhere = () => {
         alignItems="center"
         flexDirection="column"
         ml={{ base: 0, sm: "4rem", md: "8rem" }}
-        // border="1px solid #ccc"
       >
         <Text {...headerStyles}>WHERE</Text>
         <Box h="3px" w="60px" bg={colors.neutral["800"]} mb="16px" />
