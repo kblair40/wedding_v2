@@ -56,7 +56,13 @@ const CSVInput = ({ apiGuestData }) => {
     let res = {
       invite_label: result[0].toLowerCase(),
       replied: result[1] === "true" ? true : false,
-      invited_names: makeArray(result[2]),
+      invited_names: result[2]
+        .split(",")
+        .map((name) => {
+          name = name.trim().toLowerCase();
+          return name;
+        })
+        .join(", "),
       attending_names: makeArray(result[3]),
       not_attending_names: makeArray(result[4]),
       reply_method: result[5],

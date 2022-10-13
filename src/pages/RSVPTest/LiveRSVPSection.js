@@ -1,5 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Box, Flex, Text, Image, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Text,
+  Image,
+  useBreakpointValue,
+  ModalOverlay,
+  ModalContent,
+  ModalCloseButton,
+  Modal,
+} from "@chakra-ui/react";
 import useLocalstorageState from "@rooks/use-localstorage-state";
 
 import { glass } from "utils/styles";
@@ -58,7 +68,7 @@ const LiveRSVPSection = () => {
         <SectionLabel label="rsvp" />
 
         <Flex w="100%" justifyContent="center">
-          <GuestSearch />
+          <GuestSearch onChange={(e) => setSearchInput(e.target.value)} />
           {/* <Box
             minW="340px"
             maxW={{
@@ -78,6 +88,41 @@ const LiveRSVPSection = () => {
           </Box> */}
         </Flex>
       </Flex>
+
+      {/* <Modal
+        isOpen={showSelectGuestsModal || showRSVPFormModal}
+        onClose={() => {
+          setShowRSVPFormModal(false);
+          setShowSelectGuestsModal(false);
+        }}
+        motionPreset="none"
+        scrollBehavior="inside"
+        overflowY="auto"
+        isCentered
+        preserveScrollBarGap
+      >
+        <ModalOverlay />
+
+        {showSelectGuestsModal && (
+          <SelectGuestContent
+            onClose={() => setShowSelectGuestsModal(false)}
+            guest={guest}
+            getCheckedGuests={getCheckedGuests}
+            relatedGuests={relatedGuests}
+            handleClickShowHelp={handleClickShowHelp}
+          />
+        )}
+
+        {!showSelectGuestsModal && checkedGuests && (
+          <RSVPFormContent
+            onClose={() => setShowRSVPFormModal(false)}
+            guest={guest}
+            relatedGuests={relatedGuests}
+            checkedGuests={checkedGuests}
+            onSubmit={handleSubmitRSVPForm}
+          />
+        )}
+      </Modal> */}
     </Flex>
   );
 };

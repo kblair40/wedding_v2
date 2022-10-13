@@ -75,15 +75,19 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
     setLoading(false);
   };
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     onChange(e);
-    if (errorMsg) {
-      setErrorMsg("");
-    }
+    if (errorMsg) setErrorMsg("");
+    if (notFoundError) setNotFoundError(false);
 
-    if (notFoundError) {
-      setNotFoundError(false);
-    }
+    const { value } = e.target;
+    if (value.length <= 2) return;
+
+    const response = await api.get("/search", {
+      params: { name: e.target.value },
+    });
+
+    console.log("RESPONSE:", response.data);
   };
 
   return (
