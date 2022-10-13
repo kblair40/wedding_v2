@@ -21,7 +21,7 @@ const iconButtonStyle = {
   transition: ".3s",
   _hover: {
     border: "1px solid #344148",
-    bg: "neutral.50",
+    bg: "gray.100",
   },
 };
 
