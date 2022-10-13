@@ -7,14 +7,20 @@ import {
   Box,
   FormHelperText,
   FormControl,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
 } from "@chakra-ui/react";
 
+import SearchResults from "./SearchResults";
 import api from "apimongo";
 
 const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [notFoundError, setNotFoundError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     if (searchInput === "") {
@@ -88,6 +94,11 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
     });
 
     console.log("RESPONSE:", response.data);
+    if (response.data) {
+      setSearchResults(response.data);
+    } else {
+      setSearchResults([]);
+    }
   };
 
   return (
@@ -113,21 +124,29 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
           spacing={{ base: "16px", sm: "32px" }}
           justifyContent="center"
         >
-          <Input
-            pl=".5rem"
-            variant="flushed"
-            value={searchInput}
-            onChange={handleChange}
-            w="100%"
-            placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
-            borderColor="text.tertiary"
-            _hover={{ borderColor: "text.secondary" }}
-            focusBorderColor="text.primary"
-            _placeholder={{
-              color: "text.primary",
-              fontSize: { base: "13px", sm: "sm" },
-            }}
-          />
+          <Popover isOpen={searchResults && Boolean(searchResults.length)}>
+            <PopoverTrigger>
+              <Input
+                pl=".5rem"
+                variant="flushed"
+                value={searchInput}
+                onChange={handleChange}
+                w="100%"
+                placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
+                borderColor="text.tertiary"
+                _hover={{ borderColor: "text.secondary" }}
+                focusBorderColor="text.primary"
+                _placeholder={{
+                  color: "text.primary",
+                  fontSize: { base: "13px", sm: "sm" },
+                }}
+              />
+            </PopoverTrigger>
+
+            <PopoverContent>
+              <SearchResults searchResults={searchResults} />
+            </PopoverContent>
+          </Popover>
           <Button
             onClick={validateInput}
             isLoading={loading}
