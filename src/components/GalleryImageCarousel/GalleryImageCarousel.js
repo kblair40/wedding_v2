@@ -29,7 +29,7 @@ export const GalleryImageCarousel = ({
 
     if (
       e.target.type === "button" ||
-      (hasClassList && classList.contains("dontclick"))
+      (hasClassList && classList.contains("dontclose"))
     ) {
       return;
     }
@@ -101,16 +101,22 @@ export const GalleryImageCarousel = ({
       // ref={outsideClickRef}
     >
       <IconButton
+        zIndex={10000}
         className="dontclose"
         aria-label="left-arrow"
         left={{ base: "8px", sm: "16px" }}
-        onClick={() => (slider ? slider.slickPrev() : undefined)}
+        onClick={(e) => {
+          e.stopPropagation();
+          slider?.slickPrev();
+        }}
+        // onClick={() => (slider ? slider.slickPrev() : undefined)}
         {...arrowBtnStyles}
       >
         <ArrowLeftIcon className="dontclose" />
       </IconButton>
 
       <IconButton
+        zIndex={10000}
         className="dontclose"
         aria-label="right-arrow"
         right={{ base: "8px", sm: "16px" }}
