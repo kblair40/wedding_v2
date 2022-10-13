@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Input,
   Button,
@@ -17,11 +17,19 @@ import {
 import SearchResults from "./SearchResults";
 import api from "apimongo";
 
+const textColors = {
+  primary: "rgba(52, 65, 72, 1)",
+  secondary: "rgba(52, 65, 72, .78)",
+  tertiary: "rgba(52, 65, 72, .51)",
+};
+
 const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [notFoundError, setNotFoundError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+
+  const inputRef = useRef();
 
   useEffect(() => {
     if (searchInput === "") {
@@ -128,9 +136,14 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
           spacing={{ base: "16px", sm: "32px" }}
           justifyContent="center"
         >
-          <Popover isOpen={searchResults && Boolean(searchResults.length)}>
+          <Popover
+            flip={false}
+            isOpen={searchResults && Boolean(searchResults.length)}
+            initialFocusRef={inputRef}
+          >
             <PopoverTrigger>
               <Input
+                ref={inputRef}
                 pl=".5rem"
                 variant="flushed"
                 value={searchInput}
@@ -139,16 +152,16 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
                 placeholder="ex. Kevin Blair (not The Blair Family or Mr. Blair)"
                 borderColor="text.tertiary"
                 _hover={{ borderColor: "text.secondary" }}
-                focusBorderColor="text.primary"
+                focusBorderColor={textColors.primary}
                 _placeholder={{
-                  color: "text.primary",
+                  color: textColors.secondary,
                   fontSize: { base: "13px", sm: "sm" },
                 }}
               />
             </PopoverTrigger>
 
             <Portal>
-              <PopoverContent>
+              <PopoverContent p={0} border="1px solid black">
                 <SearchResults searchResults={searchResults} />
               </PopoverContent>
             </Portal>
@@ -198,6 +211,7 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
             sure you entered your first and last name correctly, please RSVP by
             filling out our form
           </Text>
+
           <Button
             borderRadius={0}
             variant="link"
