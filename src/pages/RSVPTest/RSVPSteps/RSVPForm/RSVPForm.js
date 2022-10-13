@@ -54,7 +54,7 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
     setSaving(true);
     try {
       let res = await handleSubmit(formData, anythingElseRef.current.value);
-      console.log("SAVE RES:", res);
+      // console.log("SAVE RES:", res);
     } catch (e) {
       console.error("FAILURE");
     }

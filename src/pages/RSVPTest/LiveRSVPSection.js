@@ -6,10 +6,6 @@ import {
   Image,
   Button,
   useBreakpointValue,
-  ModalOverlay,
-  ModalContent,
-  ModalCloseButton,
-  Modal,
 } from "@chakra-ui/react";
 import useLocalstorageState from "@rooks/use-localstorage-state";
 import gsap from "gsap";
@@ -22,9 +18,6 @@ import casa_new_sm from "assets/images/casa/casa_new_sm.webp";
 import GuestSearch from "./RSVPSteps/GuestSearch";
 
 import RSVPForm from "./RSVPSteps/RSVPForm";
-// import RSVPHelpModal from "./RSVPSteps/RSVPHelpModal";
-// import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
-// import { CustomToast } from "./RSVPSteps/RSVPHelpModal";
 
 const LiveRSVPSection = () => {
   const [selectedResult, setSelectedResult] = useState();
@@ -71,8 +64,8 @@ const LiveRSVPSection = () => {
       else not_attending_names.push(guest);
     }
 
-    console.log("ATTENDING:", attending_names);
-    console.log("NOT ATTENDING:", not_attending_names);
+    // console.log("ATTENDING:", attending_names);
+    // console.log("NOT ATTENDING:", not_attending_names);
 
     const reply_method = "website";
 
@@ -84,7 +77,7 @@ const LiveRSVPSection = () => {
         reply_method,
       });
 
-      console.log("RESPONSE:", response.data);
+      // console.log("RESPONSE:", response.data);
       if (response.data && response.data.msg) {
         const { msg } = response.data;
         if (msg === "success") {

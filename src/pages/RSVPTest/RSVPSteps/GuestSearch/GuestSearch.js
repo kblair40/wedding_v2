@@ -44,7 +44,7 @@ const GuestSearch = ({ selectedResult, onSelectResult }) => {
       params: { name: e.target.value },
     });
 
-    console.log("RESPONSE:", response.data);
+    // console.log("RESPONSE:", response.data);
     if (response.data) {
       setSearchResults(response.data);
     } else {
@@ -54,7 +54,7 @@ const GuestSearch = ({ selectedResult, onSelectResult }) => {
 
   const handleSelectResult = (_id) => {
     const result = searchResults.find((res) => res._id === _id);
-    console.log("SELECTED RESULT:", result);
+    // console.log("SELECTED RESULT:", result);
     onSelectResult(result);
     setInputVal("");
     setSearchResults([]);
@@ -127,23 +127,6 @@ const GuestSearch = ({ selectedResult, onSelectResult }) => {
             </Portal>
           </Popover>
         </HStack>
-
-        {/* <HStack alignItems="center" spacing="8px" mt="8px">
-          <Text color="error.700" fontSize="15px" lineHeight="100%">
-            {errorMsg ? `${errorMsg}` : ""}
-          </Text>
-          <Button
-            onClick={handleClickShowHelp}
-            variant="link"
-            size="sm"
-            fontSize="15px"
-            color="text.primary"
-            fontWeight="600"
-            display={errorMsg ? "block" : "none"}
-          >
-            Need help?
-          </Button>
-        </HStack> */}
       </FormControl>
     </Box>
   );
