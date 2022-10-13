@@ -5,35 +5,31 @@ const theme = extendTheme({
     Radio: {
       baseStyle: {
         container: {
-          borderColor: "neutral.800",
+          borderColor: "gray.700",
           _checked: {
             borderColor: "#000",
           },
         },
         control: {
+          transition: "background 0.3s",
           _hover: {
-            bg: "primary.50",
+            bg: "gray.300",
           },
           _checked: {
-            bg: "neutral.800",
-            borderColor: "neutral.900",
+            bg: "gray.700",
+            borderColor: "gray.700",
             _hover: {
-              borderColor: "neutral.900",
-              bg: "neutral.800",
+              borderColor: "gray.700",
+              bg: "gray.700",
             },
             _before: {
-              bg: "primary.50",
+              bg: "gray.200",
             },
           },
         },
       },
       defaultProps: {
         colorScheme: undefined,
-      },
-    },
-    Checkbox: {
-      defaultProps: {
-        colorScheme: "darkScheme",
       },
     },
     Button: {

@@ -16,38 +16,26 @@ import {
 
 // import RSVPSuccessModal from "components/RSVPSteps_old/RSVPSuccessModal";
 
-const RSVPForm = ({ guestNames, handleSubmit, startOver }) => {
-  const [multipleRespondants, setMultipleRespondants] = useState(null);
+const RSVPForm = ({ guestNames, handleSubmit }) => {
   const [attendingNames, setAttendingNames] = useState([]);
   const [formData, setFormData] = useState(null);
   // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const anythingElseRef = useRef();
 
-  const formatName = (fn, ln) => {
-    return `${fn} ${ln}`;
-  };
-
   useEffect(() => {
     if (!guestNames) return;
 
-    let multipleRespondants = guestNames.length > 1;
-    setMultipleRespondants(multipleRespondants);
-
     const blankFormData = { attending: undefined };
 
-    if (multipleRespondants) {
-      let blankDataObjects = {};
+    let blankDataObjects = {};
 
-      for (let name of guestNames) {
-        blankDataObjects[name] = blankFormData;
-      }
-
-      // console.log("\n\nBLANK OBJECTS:", blankDataObjects);
-      setFormData(blankDataObjects);
-    } else {
-      setFormData({ [guestNames[0]]: blankFormData });
+    for (let name of guestNames) {
+      blankDataObjects[name] = blankFormData;
     }
+
+    // console.log("\n\nBLANK OBJECTS:", blankDataObjects);
+    setFormData(blankDataObjects);
   }, [guestNames]);
 
   const handleChangeAttendance = (val, name) => {
@@ -119,22 +107,36 @@ const RSVPForm = ({ guestNames, handleSubmit, startOver }) => {
           </React.Fragment>
         </FormControl>
 
-        <Divider my="16px" />
-
-        <Divider my="12px" />
+        <Divider my="12px" borderColor="transparent" />
 
         <FormControl>
           <FormLabel>Anything else we should know? (optional)</FormLabel>
-          <Textarea focusBorderColor="text.tertiary" ref={anythingElseRef} />
+          <Textarea
+            bg="white"
+            borderColor="gray.200"
+            focusBorderColor="gray.400"
+            ref={anythingElseRef}
+          />
         </FormControl>
       </Box>
 
       <HStack pt="16px" pb="8px" justifyContent="flex-end">
-        <Button onClick={startOver} zIndex={1} variant="ghost">
-          Reset
+        <Button
+          onClick={sendFormData}
+          w="100px"
+          bg="white"
+          border="1px solid transparent"
+          transition="all 0.3s"
+          boxSizing="content-box"
+          _hover={{
+            borderColor: "gray.300",
+          }}
+          _active={{
+            bg: "gray.50",
+          }}
+        >
+          Submit
         </Button>
-
-        <Button onClick={sendFormData}>Submit</Button>
       </HStack>
     </Box>
   );
