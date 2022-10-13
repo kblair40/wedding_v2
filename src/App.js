@@ -10,11 +10,14 @@ import "@fontsource/cabin/700.css";
 import "@fontsource/cormorant-garamond/700.css";
 
 import Main from "pages/Main";
-import RSVPTest from "pages/RSVPTest";
-import Admin from "pages/Admin";
+// import RSVPTest from "pages/RSVPTest";
+// import Admin from "pages/Admin";
 import Nav from "components/Nav";
 import ScrollToTop from "components/containers/ScrollToTop";
 import theme from "utils/theme";
+
+const Admin = React.lazy(() => import("pages/Admin"));
+const RSVPTest = React.lazy(() => import("pages/RSVPTest"));
 
 const CountdownClock = loadable(() => import("components/CountdownClock"));
 
@@ -91,22 +94,25 @@ function App() {
         </Box>
 
         <ScrollToTop>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  section={section}
-                  handleChangeSectionInView={handleChangeSectionInView}
-                  handleLeaveTopSection={handleLeaveTopSection}
-                  handleEnterTopSection={handleEnterTopSection}
-                  handleMainBgImageLoaded={handleMainBgImageLoaded}
-                />
-              }
-            />
-            <Route path="/rsvp-test" element={<RSVPTest />} />
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    section={section}
+                    handleChangeSectionInView={handleChangeSectionInView}
+                    handleLeaveTopSection={handleLeaveTopSection}
+                    handleEnterTopSection={handleEnterTopSection}
+                    handleMainBgImageLoaded={handleMainBgImageLoaded}
+                  />
+                }
+              />
+
+              <Route path="/rsvp-test" element={<RSVPTest />} />
+              <Route path="/admin" element={<Admin />} />
+            </Routes>
+          </React.Suspense>
         </ScrollToTop>
       </Box>
     </ChakraProvider>
