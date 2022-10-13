@@ -113,6 +113,12 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
     }
   };
 
+  const handleSelectResult = (_id) => {
+    const result = searchResults.find((res) => res._id === _id);
+
+    console.log("SELECTED RESULT:", result);
+  };
+
   return (
     <form
       onSubmit={validateInput}
@@ -162,7 +168,10 @@ const GuestSearch = ({ getSearchResults, showHelp, onChange, searchInput }) => {
 
             <Portal>
               <PopoverContent p={0} border="1px solid black">
-                <SearchResults searchResults={searchResults} />
+                <SearchResults
+                  searchResults={searchResults}
+                  selectResult={handleSelectResult}
+                />
               </PopoverContent>
             </Portal>
           </Popover>

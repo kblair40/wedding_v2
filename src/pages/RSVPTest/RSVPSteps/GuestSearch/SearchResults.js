@@ -7,13 +7,13 @@ const textColors = {
   tertiary: "rgba(52, 65, 72, .51)",
 };
 
-const SearchResults = ({ searchResults }) => {
+const SearchResults = ({ searchResults, selectResult }) => {
   return (
     <PopoverBody p={0}>
       {searchResults && searchResults.length
         ? searchResults.map((result, i) => {
             console.log("result:", result);
-            return <Result key={i} result={result} />;
+            return <Result key={i} result={result} onClick={selectResult} />;
           })
         : null}
     </PopoverBody>
@@ -22,11 +22,12 @@ const SearchResults = ({ searchResults }) => {
 
 export default SearchResults;
 
-const Result = ({ result }) => {
-  const { invite_label, replied, invited_names } = result;
+const Result = ({ result, onClick }) => {
+  const { invite_label, replied, invited_names, _id } = result;
 
   return (
     <Box
+      onClick={() => onClick(_id)}
       _hover={{ background: "#eee" }}
       transition="background 0.2s"
       cursor="pointer"
