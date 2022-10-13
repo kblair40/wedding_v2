@@ -71,7 +71,13 @@ const GuestSearch = ({ selectedResult, onSelectResult }) => {
           Please enter the first and last name of one member of your party
           below.
         </Text>
-        <Text textAlign="center" mt="8px" fontSize="md" fontWeight="400">
+        <Text
+          color="#344148"
+          textAlign="center"
+          mt="8px"
+          fontSize="md"
+          fontWeight="400"
+        >
           If you're responding for you and a guest (or your family), you'll be
           able to RSVP for your entire group on the next page.
         </Text>
