@@ -11,6 +11,7 @@ import {
   Modal,
 } from "@chakra-ui/react";
 import useLocalstorageState from "@rooks/use-localstorage-state";
+import gsap from "gsap";
 
 import { glass } from "utils/styles";
 import SectionLabel from "components/SectionLabel";
@@ -18,23 +19,42 @@ import casa_new from "assets/images/casa/casa_new.webp";
 import casa_new_sm from "assets/images/casa/casa_new_sm.webp";
 import GuestSearch from "./RSVPSteps/GuestSearch";
 
-// import SelectGuestsModal from "./RSVPSteps/SelectGuestsModal";
+import RSVPForm from "./RSVPSteps/RSVPForm";
 // import RSVPHelpModal from "./RSVPSteps/RSVPHelpModal";
-// import RSVPFormModal from "./RSVPSteps/RSVPFormModal";
 // import AlreadyRepliedAlert from "./AlreadyRepliedAlert";
 // import { CustomToast } from "./RSVPSteps/RSVPHelpModal";
 
 const LiveRSVPSection = () => {
-  const [guest, setGuest] = useState();
-  const [relatedGuests, setRelatedGuests] = useState();
-  const [checkedGuests, setCheckedGuests] = useState();
-  const [showHelp, setShowHelp] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
-  const [showSelectGuestsModal, setShowSelectGuestsModal] = useState(false);
-  const [showRSVPFormModal, setShowRSVPFormModal] = useState(false);
+  const [selectedResult, setSelectedResult] = useState();
+  const [guestNames, setGuestNames] = useState();
 
   const [hasReplied, setHasReplied] = useLocalstorageState("hasReplied", false);
   const bgImage = useBreakpointValue({ base: casa_new_sm, xs: casa_new });
+
+  const searchRef = useRef();
+  const formRef = useRef();
+
+  useEffect(() => {
+    if (selectedResult) {
+      setGuestNames(selectedResult.invited_names.split(", "));
+      gsap.to(searchRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        // onComplete: () => console.log("FADE OUT COMPLETE!"),
+        onComplete: () => {
+          console.log("FADE OUT COMPLETE!");
+          searchRef.current.style.display = "none";
+        },
+      });
+
+      formRef.current.style.display = "block";
+      gsap.to(formRef.current, {
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.25,
+      });
+    }
+  }, [selectedResult]);
 
   return (
     <Flex
@@ -68,25 +88,33 @@ const LiveRSVPSection = () => {
       >
         <SectionLabel label="rsvp" />
 
-        <Flex w="100%" justifyContent="center">
-          <GuestSearch onChange={(e) => setSearchInput(e.target.value)} />
-          {/* <Box
-            minW="340px"
-            maxW={{
-              base: "420px",
-              sm: "524px", // allows full placeholder text to show
-              md: "720px",
-              lg: "900px",
-            }}
-            px="24px"
+        <Flex
+          w="100%"
+          justifyContent="center"
+          // border="1px solid green"
+          position="relative"
+          h={
+            selectedResult
+              ? "auto"
+              : { base: "200px", sm: "176px", md: "154px" }
+          }
+        >
+          <Box
+            ref={searchRef}
+            position="absolute"
+            h="100%"
+            w="100%"
+            // border="1px solid green"
           >
-            <Text textAlign="center" mb="4px" fontWeight="500">
-              Check back soon!
-            </Text>
-            <Text textAlign="center" mb="16px">
-              When invites go out, you'll be able to RSVP right here.
-            </Text>
-          </Box> */}
+            <GuestSearch
+              selectedResult={selectedResult}
+              onSelectResult={setSelectedResult}
+            />
+          </Box>
+
+          <Box ref={formRef} display="none" opacity={0}>
+            <RSVPForm guestNames={guestNames} />
+          </Box>
         </Flex>
       </Flex>
 
