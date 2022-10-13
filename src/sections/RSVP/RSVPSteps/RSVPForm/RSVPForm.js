@@ -79,11 +79,11 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
       <Box overflowY="hidden" flex={1} mb="1rem">
         <FormControl>
           <React.Fragment>
-            {/* <FormLabel fontWeight="500" mb="1rem">
+            <FormLabel fontWeight="500" mb="1rem">
               Please let us know who can and cannot make it
-            </FormLabel> */}
+            </FormLabel>
 
-            <Box border="3px solid red">
+            <Box overflowY="scroll">
               {guestNames && guestNames.length
                 ? guestNames.map((name, i) => {
                     return (
@@ -135,7 +135,6 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
           placement="bottom-end"
           isDisabled={!preventSubmit}
           label="Please select an attendance option for all guests"
-          // hasArrow
         >
           <Box>
             <Button

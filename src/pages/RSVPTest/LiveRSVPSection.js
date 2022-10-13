@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import useLocalstorageState from "@rooks/use-localstorage-state";
 import gsap from "gsap";
+import { useInView } from "react-intersection-observer";
 import api from "apimongo";
 
 import { glass } from "utils/styles";
@@ -16,20 +17,28 @@ import SectionLabel from "components/SectionLabel";
 import casa_new from "assets/images/casa/casa_new.webp";
 import casa_new_sm from "assets/images/casa/casa_new_sm.webp";
 import GuestSearch from "./RSVPSteps/GuestSearch";
-
 import RSVPForm from "./RSVPSteps/RSVPForm";
 
-const LiveRSVPSection = () => {
+const LiveRSVPSection = ({ setInView }) => {
+  const [inViewRef, inView] = useInView({ threshold: 0.01 });
+
   const [selectedResult, setSelectedResult] = useState();
   const [guestNames, setGuestNames] = useState();
   const [step, setStep] = useState(1);
 
   const [hasReplied, setHasReplied] = useLocalstorageState("hasReplied", false);
+
   const bgImage = useBreakpointValue({ base: casa_new_sm, xs: casa_new });
 
   const searchRef = useRef();
   const formRef = useRef();
   const successRef = useRef();
+
+  useEffect(() => {
+    if (inView) {
+      setInView("rsvp");
+    }
+  }, [inView]);
 
   useEffect(() => {
     if (selectedResult) {
@@ -38,7 +47,6 @@ const LiveRSVPSection = () => {
       gsap.to(searchRef.current, {
         opacity: 0,
         duration: 0.01,
-        // onComplete: () => console.log("FADE OUT COMPLETE!"),
         onComplete: () => {
           console.log("FADE OUT COMPLETE!");
           searchRef.current.style.display = "none";
@@ -49,7 +57,6 @@ const LiveRSVPSection = () => {
       gsap.to(formRef.current, {
         opacity: 1,
         duration: 0.5,
-        // delay: 0.25,
       });
     }
   }, [selectedResult]);
@@ -114,7 +121,6 @@ const LiveRSVPSection = () => {
     setGuestNames(undefined);
     setHasReplied(false);
 
-    // successRef.current.style.display
     gsap.to(successRef.current, {
       opacity: 0,
       duration: 0.5,
@@ -162,11 +168,11 @@ const LiveRSVPSection = () => {
       >
         <SectionLabel label="rsvp" />
 
+        <Box ref={inViewRef} />
+
         <Flex
           w="100%"
           justifyContent="center"
-          // border="1px solid green"
-          // maxHeight={step === 3 ? "160px" : undefined}
           position="relative"
           transition="height 0.3s"
           alignItems="center"
