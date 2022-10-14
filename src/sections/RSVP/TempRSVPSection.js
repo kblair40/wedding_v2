@@ -159,7 +159,7 @@ const TempRSVPSection = ({ setInView }) => {
         p={{ base: "16px" }}
         shadow="md"
         justifyContent={{ base: "center" }}
-        maxW={{ base: "350px", sm: "450px", md: "600px" }}
+        maxW={{ base: "350px", sm: "450px", md: "550px" }}
         flexDirection="column"
         alignItems="center"
         w="100%"
@@ -188,7 +188,7 @@ const TempRSVPSection = ({ setInView }) => {
             />
           </Box>
 
-          <Box ref={formRef} display="none" opacity={0}>
+          <Box w={{ base: "100%" }} ref={formRef} display="none" opacity={0}>
             <RSVPForm
               guestNames={guestNames}
               handleSubmit={handleSubmitRSVPForm}

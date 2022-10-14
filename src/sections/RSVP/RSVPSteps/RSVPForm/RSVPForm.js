@@ -4,6 +4,7 @@ import {
   FormControl,
   FormLabel,
   HStack,
+  Stack,
   Radio,
   RadioGroup,
   Text,
@@ -11,6 +12,7 @@ import {
   Button,
   Textarea,
   Tooltip,
+  Flex,
 } from "@chakra-ui/react";
 
 const RSVPForm = ({ guestNames, handleSubmit }) => {
@@ -75,11 +77,33 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
   };
 
   return (
-    <Box maxW="580px" mb="16px" px="16px" py="16px" maxH="100%" w="100%">
-      <Box overflowY="hidden" flex={1} mb="1rem">
-        <FormControl>
+    <Flex
+      // border="1px solid #aaa"
+      // maxW="580px"
+      maxW={{ base: "300px", sm: "480px" }}
+      mb="16px"
+      px="16px"
+      py="16px"
+      maxH="100%"
+      w="100%"
+      direction="column"
+      align="center"
+      // position="relative"
+    >
+      <Flex
+        direction="column"
+        align="center"
+        overflowY="hidden"
+        flex={1}
+        mb="1rem"
+        // border="1px solid green"
+      >
+        <FormControl
+          // border="1px solid green"
+          w={{ base: "100%", sm: "max-content" }}
+        >
           <React.Fragment>
-            <FormLabel fontWeight="500" mb="1rem">
+            <FormLabel textAlign="center" fontWeight="500" mb="1rem">
               Please let us know who can and cannot make it
             </FormLabel>
 
@@ -88,6 +112,7 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
                 ? guestNames.map((name, i) => {
                     return (
                       <RadioGroup
+                        // border="1px solid red"
                         key={i}
                         mb="16px"
                         onChange={(val) => handleChangeAttendance(val, name)}
@@ -100,10 +125,24 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
                           >
                             {name}
                           </Text>
-                          <HStack spacing="16px">
-                            <Radio value="yes">I'll be there!</Radio>
-                            <Radio value="no">Regretfully decline</Radio>
-                          </HStack>
+                          <Stack
+                            direction={{ base: "column", sm: "row" }}
+                            mt="4px"
+                            spacing={{ base: "8px", sm: "16px", md: "28px" }}
+                          >
+                            <Radio
+                              fontSize={{ base: "sm", sm: "md" }}
+                              value="yes"
+                            >
+                              I'll be there!
+                            </Radio>
+                            <Radio
+                              fontSize={{ base: "sm", sm: "md" }}
+                              value="no"
+                            >
+                              Regretfully decline
+                            </Radio>
+                          </Stack>
                         </Box>
                       </RadioGroup>
                     );
@@ -127,7 +166,7 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
             ref={anythingElseRef}
           />
         </FormControl>
-      </Box>
+      </Flex>
 
       <HStack justifyContent="flex-end">
         <Tooltip
@@ -161,7 +200,7 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
           </Box>
         </Tooltip>
       </HStack>
-    </Box>
+    </Flex>
   );
 };
 
