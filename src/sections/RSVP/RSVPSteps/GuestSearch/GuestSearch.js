@@ -98,6 +98,7 @@ const GuestSearch = ({ selectedResult, onSelectResult }) => {
           >
             <PopoverTrigger>
               <Input
+                autoComplete="off"
                 size="lg"
                 ref={inputRef}
                 bg="white"
