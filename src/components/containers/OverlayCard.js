@@ -35,7 +35,8 @@ const OverlayCard = ({ imageURL, children, label, to, ...rest }) => {
               }}
             >
               <Text
-                lineHeight="36px"
+                maxW={{ base: "92%", sm: undefined }}
+                lineHeight={{ base: "32px", sm: "36px" }}
                 borderRadius="8px"
                 pointerEvents="none"
                 textAlign="center"
