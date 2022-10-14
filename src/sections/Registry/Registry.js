@@ -22,17 +22,15 @@ const Registry = ({ setInView }) => {
     bg: "white",
     transition: ".2s ease-in-out",
     border: "1px solid",
-    // borderColor: "neutral.black",
     borderColor: colors.neutral.black,
     variant: "outline",
-    fontWeight: "400",
+    fontWeight: "500",
     fontStyle: "italic",
     mt: "24px",
     _hover: {
-      bg: "neutral.900",
+      bg: "gray.900",
       color: "#fff",
     },
-    // _active: { bg: "text.secondary" },
     _active: { bg: colors.text.secondary },
   };
 
