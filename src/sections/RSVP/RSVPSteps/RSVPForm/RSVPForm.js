@@ -54,7 +54,7 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
       }
     }
 
-    console.log("revisedFormData:", revisedFormData);
+    // console.log("revisedFormData:", revisedFormData);
     for (let guest in revisedFormData) {
       if (revisedFormData[guest].attending === undefined) {
         setPreventSubmit(true);
@@ -69,6 +69,9 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
     try {
       await handleSubmit(formData, anythingElseRef.current.value);
       // console.log("SAVE RES:", res);
+      setFormData(null);
+      setAttendingNames([]);
+      anythingElseRef.current.value = "";
     } catch (e) {
       console.error("FAILURE");
     }
@@ -78,8 +81,6 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
 
   return (
     <Flex
-      // border="1px solid #aaa"
-      // maxW="580px"
       maxW={{ base: "300px", sm: "480px" }}
       mb="16px"
       px="16px"
@@ -88,7 +89,6 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
       w="100%"
       direction="column"
       align="center"
-      // position="relative"
     >
       <Flex
         direction="column"
@@ -96,12 +96,8 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
         overflowY="hidden"
         flex={1}
         mb="1rem"
-        // border="1px solid green"
       >
-        <FormControl
-          // border="1px solid green"
-          w={{ base: "100%", sm: "max-content" }}
-        >
+        <FormControl w={{ base: "100%", sm: "max-content" }}>
           <React.Fragment>
             <FormLabel textAlign="center" fontWeight="500" mb="1rem">
               Please let us know who can and cannot make it
@@ -112,7 +108,6 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
                 ? guestNames.map((name, i) => {
                     return (
                       <RadioGroup
-                        // border="1px solid red"
                         key={i}
                         mb="16px"
                         onChange={(val) => handleChangeAttendance(val, name)}
