@@ -66,12 +66,14 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
           'karissa andrew'
           'cassidy ted'
           'rb fg'
+          'margot margot'
           'andras cam'
         `,
           lg: `
           'erin kelly caleb trevor'
           'karissa cassidy andrew ted'
           'rb fg andras cam'
+          'margot margot margot margot'
         `,
         }}
       >
@@ -104,6 +106,7 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
             scrollPosition={scrollPosition}
           />
         </GridItem>
+
         <GridItem gridArea="ted">
           <Partier
             name="ted keller"
@@ -123,6 +126,7 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
             scrollPosition={scrollPosition}
           />
         </GridItem>
+
         <GridItem gridArea="kelly">
           <Partier
             name="kelly brown"
@@ -194,7 +198,7 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
         <GridItem mt={{ lg: "2rem" }} gridArea="margot">
           <Partier
             name="Margot Desmarais"
-            role="Flower Girl"
+            role="FLOWER GIRL"
             imgURL={margot}
             scrollPosition={scrollPosition}
             flex={1}
