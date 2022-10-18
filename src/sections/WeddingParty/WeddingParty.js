@@ -21,6 +21,7 @@ import karissa from "assets/images/wedding_party/karissa.webp"; // good
 import cassidy from "assets/images/wedding_party/cassidy.webp";
 import erin2 from "assets/images/wedding_party/erin2.webp"; // good
 import kelly2 from "assets/images/wedding_party/kelly2.webp"; // good
+import margot from "assets/images/wedding_party/margot.jpg"; // good
 
 const Us = loadable(() => import("components/Us"));
 
@@ -55,6 +56,7 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
           'ted'
           'rb'
           'fg'
+          'margot'
           'andras'
           'cam'
         `,
@@ -150,9 +152,8 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
           />
         </GridItem>
 
-        <GridItem mt={{ lg: "2rem" }}>
+        <GridItem mt={{ lg: "2rem" }} gridArea="rb">
           <Partier
-            gridArea="rb"
             name="august & frederick gerber"
             role="RING BEARERS"
             imgURL={ringBearers}
@@ -161,9 +162,8 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
           />
         </GridItem>
 
-        <GridItem mt={{ lg: "2rem" }}>
+        <GridItem mt={{ lg: "2rem" }} gridArea="fg">
           <Partier
-            gridArea="fg"
             name="sarlota reichle"
             role="FLOWER GIRL"
             imgURL={sarlota}
@@ -171,9 +171,8 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
           />
         </GridItem>
 
-        <GridItem mt={{ lg: "2rem" }}>
+        <GridItem mt={{ lg: "2rem" }} gridArea="andras">
           <Partier
-            gridArea="andras"
             name="andras reichle"
             role="HEAD USHER"
             imgURL={andras}
@@ -182,12 +181,21 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
           />
         </GridItem>
 
-        <GridItem mt={{ lg: "2rem" }}>
+        <GridItem mt={{ lg: "2rem" }} gridArea="cam">
           <Partier
-            gridArea="cam"
             name="cameron reichle"
             role="ASST. TO ANDRAS"
             imgURL={cameron}
+            scrollPosition={scrollPosition}
+            flex={1}
+          />
+        </GridItem>
+
+        <GridItem mt={{ lg: "2rem" }} gridArea="margot">
+          <Partier
+            name="Margot Desmarais"
+            role="Flower Girl"
+            imgURL={margot}
             scrollPosition={scrollPosition}
             flex={1}
           />
