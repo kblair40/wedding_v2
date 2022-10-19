@@ -103,7 +103,7 @@ const RSVPForm = ({ guestNames, handleSubmit }) => {
               Please let us know who can and cannot make it
             </FormLabel>
 
-            <Box overflowY="scroll">
+            <Box>
               {guestNames && guestNames.length
                 ? guestNames.map((name, i) => {
                     return (
