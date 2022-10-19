@@ -38,33 +38,7 @@ const notRepliedStyles = {
 };
 
 const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
-  const { onOpen, isOpen, onClose } = useDisclosure();
-  const {
-    onOpen: onDeleteModalOpen,
-    isOpen: isDeleteModalOpen,
-    onClose: onDeleteModalClose,
-  } = useDisclosure();
-
-  const [selectedRow, setSelectedRow] = useState(null);
-  // console.log("\n\nINVITE LIST DATA:", data);
   const [localData, setLocalData] = useState();
-  const [deleting, setDeleting] = useState(false); // for delete btn isLoading
-
-  const openManageModal = async (rowData) => {
-    // console.log("ROW DATA:", rowData);
-    onOpen();
-
-    const { full_name } = rowData;
-    try {
-      const res = await api.get("/guest/byname", {
-        params: { full_name },
-      });
-
-      // console.log("\nRES:", res);
-    } catch (e) {
-      console.error("FAILED TO FETCH GUEST:", e);
-    }
-  };
 
   useEffect(() => {
     if (data && dataFrom) {
@@ -86,29 +60,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
     return;
   };
 
-  const handleConfirmDeleteAllGuests = async () => {
-    setDeleting(true);
-    // console.log("CONFIRM CLICKED!");
-
-    try {
-      const res = await api.delete("/guest");
-      // console.log("SUCCESSFULLY DELETED ALL GUESTS!", res);
-    } catch (e) {
-      console.error("FAILED TO DELETE GUESTS:", e);
-    }
-
-    setDeleting(false);
-
-    // then close delete modal and reset state
-    onDeleteModalClose();
-
-    setLocalData();
-
-    if (selectedRow) {
-      setSelectedRow(null);
-    }
-  };
-
   const getHeaderAPI = () => {
     return (
       <Tr>
@@ -128,7 +79,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
   };
 
   const getBodyAPI = () => {
-    // return localData.slice(1).map((row, idx) => {
     return localData.map((row, idx) => {
       return (
         <Tr
@@ -158,17 +108,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
               </Td>
             );
           })}
-          <Td>
-            <Button
-              bg={idx % 2 ? "white" : "#EDF2F7"}
-              onClick={() => {
-                setSelectedRow(row);
-                openManageModal(row);
-              }}
-            >
-              Manage
-            </Button>
-          </Td>
         </Tr>
       );
     });
@@ -187,7 +126,7 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
           </Th>
         ))}
 
-        <Th>Manage</Th>
+        {/* <Th>Manage</Th> */}
       </Tr>
     );
   };
@@ -204,7 +143,7 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
               </Td>
             );
           })}
-          <Td>
+          {/* <Td>
             <Button
               bg={idx % 2 ? "white" : "#EDF2F7"}
               onClick={() => {
@@ -214,7 +153,7 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
             >
               Manage
             </Button>
-          </Td>
+          </Td> */}
         </Tr>
       );
     });
@@ -241,16 +180,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
           w="min-content"
         >
           Upload Guests
-        </Button>
-
-        <Button
-          isDisabled={disabled}
-          ml="8px"
-          onClick={onDeleteModalOpen}
-          size="sm"
-          variant="ghost"
-        >
-          Delete
         </Button>
       </Flex>
 
