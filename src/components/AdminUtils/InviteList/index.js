@@ -13,8 +13,6 @@ import {
 } from "@chakra-ui/react";
 
 import api from "apimongo";
-import ManageGuestModal from "./ManageGuestModal";
-import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { sortByLastName } from "utils/helpers";
 
 const rowLabels = [
@@ -269,19 +267,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
           <Tbody>{dataFrom === "api" ? getBodyAPI() : getBodyFile()}</Tbody>
         </Table>
       </TableContainer>
-
-      <ManageGuestModal
-        isOpen={isOpen}
-        onClose={onClose}
-        selectedRow={selectedRow}
-      />
-
-      <ConfirmDeleteModal
-        isOpen={isDeleteModalOpen}
-        onClose={onDeleteModalClose}
-        onConfirm={handleConfirmDeleteAllGuests}
-        deleting={deleting}
-      />
     </React.Fragment>
   );
 };
