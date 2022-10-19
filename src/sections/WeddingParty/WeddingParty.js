@@ -168,7 +168,7 @@ const WeddingParty = ({ setInView, scrollPosition }) => {
 
         <GridItem mt={{ lg: "2rem" }} gridArea="fg">
           <Partier
-            name="sarlota reichle"
+            name="sarolta reichle"
             role="FLOWER GIRL"
             imgURL={sarlota}
             scrollPosition={scrollPosition}
