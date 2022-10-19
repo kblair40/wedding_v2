@@ -102,7 +102,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
 
             return (
               <Td
-                border="1px solid orange"
                 key={i}
                 textAlign={i === 0 ? "left" : "center"}
                 maxWidth={i === 2 ? "140px" : undefined}
