@@ -72,8 +72,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
             {label}
           </Th>
         ))}
-
-        <Th>Manage</Th>
       </Tr>
     );
   };
