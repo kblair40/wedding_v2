@@ -12,7 +12,7 @@ const Admin = () => {
   };
 
   return (
-    <Box px="24px" marginTop="4rem">
+    <Box px=".5rem" marginTop="4rem">
       <Box>
         <APIButtons getAllGuests={getAllGuests} />
         <CSVInput apiGuestData={apiGuestData} />

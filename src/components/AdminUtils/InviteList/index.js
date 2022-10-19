@@ -85,7 +85,7 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
           sx={row["replied"] ? repliedStyles : notRepliedStyles}
         >
           {rowLabels.map((label, i) => {
-            console.log("ROW:", label, row[label]);
+            // console.log("ROW:", label, row[label]);
             let res = `${row[label]}`;
             if (
               [
@@ -101,7 +101,13 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
             }
 
             return (
-              <Td key={i} textAlign={i === 0 ? "left" : "center"}>
+              <Td
+                border="1px solid orange"
+                key={i}
+                textAlign={i === 0 ? "left" : "center"}
+                maxWidth={i === 2 ? "140px" : undefined}
+                whiteSpace={i === 2 ? "pre-wrap" : undefined}
+              >
                 {res}
               </Td>
             );
@@ -123,8 +129,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
             {label}
           </Th>
         ))}
-
-        {/* <Th>Manage</Th> */}
       </Tr>
     );
   };
@@ -141,17 +145,6 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
               </Td>
             );
           })}
-          {/* <Td>
-            <Button
-              bg={idx % 2 ? "white" : "#EDF2F7"}
-              onClick={() => {
-                setSelectedRow(row);
-                onOpen();
-              }}
-            >
-              Manage
-            </Button>
-          </Td> */}
         </Tr>
       );
     });
@@ -181,7 +174,13 @@ const InviteList = ({ data, dataFrom, uploadResults, uploading }) => {
         </Button>
       </Flex>
 
-      <TableContainer mt="1rem">
+      <TableContainer
+        mt="1rem"
+        overflowX="auto"
+        px="1.5rem"
+        maxW="100vw"
+        w="100%"
+      >
         <Table
           size="sm"
           sx={{
