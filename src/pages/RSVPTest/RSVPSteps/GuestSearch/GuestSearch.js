@@ -44,7 +44,7 @@ const GuestSearch = ({ selectedResult, onSelectResult }) => {
       params: { name: e.target.value },
     });
 
-    // console.log("RESPONSE:", response.data);
+    console.log("RESPONSE:", response.data);
     if (response.data) {
       setSearchResults(response.data);
     } else {

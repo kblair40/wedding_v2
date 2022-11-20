@@ -12,7 +12,7 @@ const SearchResults = ({ searchResults, selectResult }) => {
     <PopoverBody p={0}>
       {searchResults && searchResults.length
         ? searchResults.map((result, i) => {
-            // console.log("result:", result);
+            console.log("result:", result);
             return <Result key={i} result={result} onClick={selectResult} />;
           })
         : null}

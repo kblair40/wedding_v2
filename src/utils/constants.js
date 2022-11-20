@@ -230,8 +230,8 @@ export const ACTIVITIES = {
 export const scheduleItems = {
   friday: [
     {
-      heading: "rehearsal",
-      time: "10:30am - 12pm",
+      heading: "wedding rehearsal",
+      time: "11am - 12pm",
       who: "Wedding Party",
       locationName: "Casa Feliz",
       dressCode: "Casual",
@@ -239,9 +239,17 @@ export const scheduleItems = {
     },
     {
       heading: "rehearsal brunch",
-      time: "12pm - 2pm",
-      who: "Wedding Party and Family",
-      locationName: "Brunch Place",
+      time: "12:30pm - 3:30pm",
+      who: "Wedding Party",
+      locationName: "Sixty Vines",
+      dressCode: "Casual",
+      locationMapLink: "",
+    },
+    {
+      heading: "welcome party",
+      time: "tbd",
+      who: "Everybody",
+      locationName: "tbd",
       dressCode: "Casual",
       locationMapLink: "",
     },
