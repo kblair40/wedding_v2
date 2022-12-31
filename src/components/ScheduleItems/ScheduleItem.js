@@ -102,12 +102,12 @@ const InfoModal = ({ isOpen, onClose }) => {
         <ModalCloseButton right="6px" top="6px" size="sm" />
         <ModalBody pt="2.5rem" pb="1rem">
           <Text mb=".75rem" textAlign="center" fontWeight="600">
-            This will be a casual get together at the Hall on the Yard Food Hall
-            on Ivanhoe.
+            Join us for a casual get together at The Hall on the Yard on
+            Ivanhoe!
           </Text>
           <Text textAlign="center" fontWeight="600">
-            Different cocktail bars, beer stations and food spots are available
-            in the hall if you wish to join.
+            The space has several cocktail bars, beer taps, and food options
+            available.
           </Text>
         </ModalBody>
       </ModalContent>
