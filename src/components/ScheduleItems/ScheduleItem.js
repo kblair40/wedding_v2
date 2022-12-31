@@ -1,9 +1,25 @@
-import React from "react";
-import { Text, Flex, Heading, Button, Icon } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {
+  Text,
+  Flex,
+  Heading,
+  Button,
+  Icon,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  IconButton,
+} from "@chakra-ui/react";
 
 import { fontSizes, colors } from "utils/custom-theme";
 
 const ScheduleItem = ({ heading, time, who, dressCode, locationName }) => {
+  const [showInfo, setShowInfo] = useState(false);
+
   const textStyles = {
     fontSize: fontSizes.lgt,
     fontWeight: "500",
@@ -23,16 +39,32 @@ const ScheduleItem = ({ heading, time, who, dressCode, locationName }) => {
           <Text {...textStyles}>Dress: {dressCode}</Text>
         </Flex>
 
-        <Button
-          color={colors.neutral.black}
-          variant="link"
-          fontSize="lg"
-          textDecoration="underline"
-          fontWeight="500"
-        >
-          {locationName}
-        </Button>
+        <Flex>
+          {locationName === "The Hall on the Yard" && (
+            <IconButton
+              size="xs"
+              rounded="full"
+              bg="transparent"
+              aria-label="show info"
+              icon={<InfoIcon boxSize="15px" />}
+              mr="4px"
+              onClick={() => setShowInfo(true)}
+            />
+          )}
+          <Button
+            cursor="default"
+            color={colors.neutral.black}
+            variant="link"
+            fontSize="lg"
+            textDecoration="underline"
+            fontWeight="500"
+          >
+            {locationName}
+          </Button>
+        </Flex>
       </Flex>
+
+      <InfoModal isOpen={showInfo} onClose={() => setShowInfo(false)} />
     </Flex>
   );
 };
@@ -59,5 +91,21 @@ const InfoIcon = ({ boxSize = "26px" }) => {
         </clipPath>
       </defs>
     </Icon>
+  );
+};
+
+const InfoModal = ({ isOpen, onClose }) => {
+  return (
+    <Modal isCentered isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalCloseButton size="sm" />
+        <ModalBody pt="2.5rem" pb="1rem">
+          <Text textAlign="center" fontWeight="600">
+            Info Info Info Info Info Info Info Info Info Info Info
+          </Text>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   );
 };
