@@ -249,7 +249,7 @@ export const scheduleItems = {
       heading: "welcome gathering",
       time: "4:00pm - 7:00pm",
       who: "Everybody",
-      locationName: "tbd",
+      locationName: "The Hall on the Yard",
       dressCode: "Casual",
       locationMapLink: "",
     },
