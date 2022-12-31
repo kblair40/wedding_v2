@@ -11,7 +11,7 @@ const ScheduleItem = ({ heading, time, who, dressCode, locationName }) => {
 
   return (
     <Flex direction="column" mb="40px" w="100%" maxW="600px">
-      <Flex justifyContent="space-between" w="100%" mb="12px">
+      <Flex align="center" justifyContent="space-between" w="100%" mb="12px">
         <Heading mr="4px" fontSize="30.38px" fontWeight="700">
           {heading}
         </Heading>

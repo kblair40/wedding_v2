@@ -246,8 +246,8 @@ export const scheduleItems = {
       locationMapLink: "",
     },
     {
-      heading: "welcome party",
-      time: "tbd",
+      heading: "welcome gathering",
+      time: "4:00pm - 7:00pm",
       who: "Everybody",
       locationName: "tbd",
       dressCode: "Casual",

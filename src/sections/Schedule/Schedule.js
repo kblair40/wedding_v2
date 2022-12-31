@@ -27,7 +27,6 @@ const Schedule = () => {
     _selected: {
       color: colors.text.primary,
       borderBottom: "3px solid",
-      // borderColor: "neutral.700",
       borderColor: colors.neutral["700"],
       fontWeight: "600",
     },
@@ -63,7 +62,7 @@ const Schedule = () => {
         p={{ base: "16px" }}
         shadow="md"
         justifyContent={{ base: "center" }}
-        maxW={{ base: "350px", sm: "450px", md: "600px" }}
+        maxW={{ base: "350px", sm: "480px", md: "600px" }}
         flexDirection="column"
         alignItems="center"
         w="100%"
